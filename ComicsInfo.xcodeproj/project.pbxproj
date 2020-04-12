@@ -99,13 +99,12 @@
 		64DCD68E2443527B004BF449 /* ComicsInfo */ = {
 			isa = PBXGroup;
 			children = (
-				64DCD68F2443527B004BF449 /* AppDelegate.swift */,
-				64DCD6912443527B004BF449 /* SceneDelegate.swift */,
-				64DCD6932443527B004BF449 /* ContentView.swift */,
-				64DCD6952443527B004BF449 /* Assets.xcassets */,
-				64DCD69A2443527B004BF449 /* LaunchScreen.storyboard */,
-				64DCD69D2443527B004BF449 /* Info.plist */,
+				64DCD6BF24435300004BF449 /* Configs */,
+				64DCD6C024435313004BF449 /* Controllers */,
+				64DCD6C324435341004BF449 /* Launch Screen */,
 				64DCD6972443527B004BF449 /* Preview Content */,
+				64DCD6C12443532B004BF449 /* Resources */,
+				64DCD6C224435336004BF449 /* Views */,
 			);
 			path = ComicsInfo;
 			sourceTree = "<group>";
@@ -134,6 +133,47 @@
 				64DCD6B32443527C004BF449 /* Info.plist */,
 			);
 			path = ComicsInfoUITests;
+			sourceTree = "<group>";
+		};
+		64DCD6BF24435300004BF449 /* Configs */ = {
+			isa = PBXGroup;
+			children = (
+				64DCD69D2443527B004BF449 /* Info.plist */,
+			);
+			path = Configs;
+			sourceTree = "<group>";
+		};
+		64DCD6C024435313004BF449 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				64DCD68F2443527B004BF449 /* AppDelegate.swift */,
+				64DCD6912443527B004BF449 /* SceneDelegate.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		64DCD6C12443532B004BF449 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				64DCD6952443527B004BF449 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		64DCD6C224435336004BF449 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				64DCD6932443527B004BF449 /* ContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		64DCD6C324435341004BF449 /* Launch Screen */ = {
+			isa = PBXGroup;
+			children = (
+				64DCD69A2443527B004BF449 /* LaunchScreen.storyboard */,
+			);
+			path = "Launch Screen";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -438,7 +478,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"ComicsInfo/Preview Content\"";
 				DEVELOPMENT_TEAM = HGJPBAF3DU;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = ComicsInfo/Info.plist;
+				INFOPLIST_FILE = ComicsInfo/Configs/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -459,7 +499,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"ComicsInfo/Preview Content\"";
 				DEVELOPMENT_TEAM = HGJPBAF3DU;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = ComicsInfo/Info.plist;
+				INFOPLIST_FILE = ComicsInfo/Configs/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
