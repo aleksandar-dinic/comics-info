@@ -1,18 +1,29 @@
 # Comics Info
 
-<p align="center">
+<p align="center">    
     <a href="https://swift.org">
         <img src="https://img.shields.io/badge/Swift-5.2-orange.svg" />
     </a>
     <a href="https://www.apple.com/ios/ios-13/">
         <img src="https://img.shields.io/badge/iOS-13.4+-blue.svg" />
     </a>
+    <img src="https://github.com/AleksandarDinic/comics-info/workflows/Tests/badge.svg"/>
     <a href="https://app.bitrise.io/app/60a39755007bbb58">
         <img src="https://app.bitrise.io/app/60a39755007bbb58/status.svg?token=H5tWH2MDoKQhH_YJXoh6Dw&branch=master" />
     </a>
 </p>
 
 Comics Info is simple iOS app that provides informations about comics. 🖖
+
+</br>
+
+<p align="center">
+    <img height="500" src=".github/assets/Home.png">
+    <img height="500" src=".github/assets/Home.png">
+    <img height="500" src=".github/assets/Home.png">
+</p>
+
+</br>
 
 ## License
 
