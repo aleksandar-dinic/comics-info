@@ -7,7 +7,7 @@
     <a href="https://www.apple.com/ios/ios-13/">
         <img src="https://img.shields.io/badge/iOS-13.4+-blue.svg" />
     </a>
-    <img src="https://github.com/AleksandarDinic/comics-info/workflows/Tests/badge.svg"/>
+    <img src="https://github.com/AleksandarDinic/comics-info/workflows/Test%20pipeline/badge.svg"/>
     <a href="https://app.bitrise.io/app/60a39755007bbb58">
         <img src="https://app.bitrise.io/app/60a39755007bbb58/status.svg?token=H5tWH2MDoKQhH_YJXoh6Dw&branch=master" />
     </a>
