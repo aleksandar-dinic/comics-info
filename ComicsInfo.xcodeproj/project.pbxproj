@@ -35,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6459F0122450B7350075C51A /* Domain */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Domain; sourceTree = "<group>"; };
 		64DCD68C2443527B004BF449 /* ComicsInfo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ComicsInfo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		64DCD68F2443527B004BF449 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		64DCD6912443527B004BF449 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -79,6 +80,7 @@
 		64DCD6832443527B004BF449 = {
 			isa = PBXGroup;
 			children = (
+				6459F0122450B7350075C51A /* Domain */,
 				64DCD68E2443527B004BF449 /* ComicsInfo */,
 				64DCD6A52443527C004BF449 /* ComicsInfoTests */,
 				64DCD6B02443527C004BF449 /* ComicsInfoUITests */,
