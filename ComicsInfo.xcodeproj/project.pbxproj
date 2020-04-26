@@ -50,6 +50,7 @@
 		64DCD6AD2443527C004BF449 /* ComicsInfoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ComicsInfoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		64DCD6B12443527C004BF449 /* ComicsInfoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicsInfoUITests.swift; sourceTree = "<group>"; };
 		64DCD6B32443527C004BF449 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		64E33D78245625D30004F0F3 /* CIData */ = {isa = PBXFileReference; lastKnownFileType = folder; path = CIData; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +82,7 @@
 			isa = PBXGroup;
 			children = (
 				6459F0122450B7350075C51A /* Domain */,
+				64E33D78245625D30004F0F3 /* CIData */,
 				64DCD68E2443527B004BF449 /* ComicsInfo */,
 				64DCD6A52443527C004BF449 /* ComicsInfoTests */,
 				64DCD6B02443527C004BF449 /* ComicsInfoUITests */,
