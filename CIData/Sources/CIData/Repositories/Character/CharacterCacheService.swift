@@ -12,7 +12,7 @@ import Foundation
 public protocol CharacterCacheService {
 
     func getCharacters() -> [Domain.Character]?
-    
+
     func getCharacter(withID characterID: String) -> Domain.Character?
 
     func save(characters: [Domain.Character])
