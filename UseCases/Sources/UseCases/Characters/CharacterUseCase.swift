@@ -32,7 +32,7 @@ public final class CharacterUseCase {
         }
     }
 
-    func getCharacter(
+    public func getCharacter(
         withID characterID: String,
         fromDataSource dataSource: CIData.DataSourceLayer,
         onComplete complete: @escaping (Result<Domain.Character, Error>) -> Void
