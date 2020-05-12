@@ -18,7 +18,7 @@ struct IronManMock: MockCharacter {
         Tony Stark instead created an advanced suit of armor to save his life and escape captivity. Now with a new \
         outlook on life, Tony uses his money and intelligence to make the world a safer, better place as Iron Man.
         """
-    private let thumbnail = "http://i.annihil.us/u/prod/marvel/i/mg/9/c0/527bb7b37ff55.jpg"
+    private let thumbnail = "IronMan"
 
     var data: Data? {
         json.data(using: .utf8)

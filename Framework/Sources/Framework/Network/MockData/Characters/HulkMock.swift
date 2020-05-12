@@ -18,7 +18,7 @@ struct HulkMock: MockCharacter {
         Banner was transformed into the incredibly powerful creature called the Hulk. An all too often misunderstood \
         hero, the angrier the Hulk gets, the stronger the Hulk gets.
         """
-    private let thumbnail = "http://i.annihil.us/u/prod/marvel/i/mg/5/a0/538615ca33ab0.jpg"
+    private let thumbnail = "Hulk"
 
     var data: Data? {
         json.data(using: .utf8)

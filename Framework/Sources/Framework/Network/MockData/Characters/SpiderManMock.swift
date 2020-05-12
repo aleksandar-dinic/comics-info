@@ -19,7 +19,7 @@ struct SpiderManMock: MockCharacter {
         new abilities. Taught that with great power comes great responsibility, Spidey has vowed to use his powers \
         to help people.
         """
-    private let thumbnail = "http://i.annihil.us/u/prod/marvel/i/mg/3/50/526548a343e4b.jpg"
+    private let thumbnail = "SpiderMan"
 
     var data: Data? {
         json.data(using: .utf8)

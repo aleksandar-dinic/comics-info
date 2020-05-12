@@ -19,7 +19,7 @@ struct SilverSurferMock: MockCharacter {
         for saving his own. Years later, thse Surfer has protected Earth and many other planets, becoming one of the \
         greatest heroes in the universe.
         """
-    private let thumbnail = "http://i.annihil.us/u/prod/marvel/i/mg/3/50/527bb6490a176.jpg"
+    private let thumbnail = "SilverSurfer"
 
     var data: Data? {
         json.data(using: .utf8)
