@@ -9,7 +9,7 @@
 import struct Domain.Character
 import Foundation
 
-struct CharacterAPIWrapper {
+public struct CharacterAPIWrapper {
 
     private let characterAPIService: CharacterAPIService
 

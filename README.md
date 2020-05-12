@@ -18,9 +18,9 @@ Comics Info is simple iOS app that provides informations about comics. 🖖
 </br>
 
 <p align="center">
-    <img height="500" src=".github/assets/Home.png">
-    <img height="500" src=".github/assets/Home.png">
-    <img height="500" src=".github/assets/Home.png">
+    <img height="400" src=".github/assets/Characters.png">
+    <img height="400" src=".github/assets/Home.png">
+    <img height="400" src=".github/assets/Home.png">
 </p>
 
 </br>
