@@ -1,5 +1,5 @@
 //
-//  CharacterUseCase.swift
+//  CharacterUseCaseAdapter.swift
 //  ComicsInfo
 //
 //  Created by Aleksandar Dinic on 10/05/2020.
@@ -8,11 +8,11 @@
 
 import protocol UseCases.CharacterUseCaseFactory
 import enum CIData.DataSourceLayer
-import protocol CIData.CharacterCacheService
 import protocol CIData.CharacterAPIService
+import protocol CIData.CharacterCacheService
 import Foundation
 
-struct CharacterUseCase: UseCases.CharacterUseCaseFactory {
+struct CharacterUseCaseAdapter: UseCases.CharacterUseCaseFactory {
 
     private lazy var useCase = makeCharacterUseCase()
 

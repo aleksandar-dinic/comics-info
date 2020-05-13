@@ -19,12 +19,12 @@ struct CharactersListView: View {
     var body: some View {
         NavigationView {
             Group {
-                if viewModel.isLoading {
+                if viewModel.status == .loading {
                     Text("Loading...")
                         .font(.title)
                 } else {
                     List(viewModel.characters, id: \.identifier) { character in
-                        NavigationLink(destination: Text(character.description ?? "")) {
+                        NavigationLink(destination: Text(character.description)) {
                             CharacterView(character: character)
                         }
                     }
@@ -52,9 +52,10 @@ struct CharactersListView_Previews: PreviewProvider {
             Character.captainAmerica,
             Character.hulk,
             Character.ironMan,
-            Character.silverSurfer
+            Character.silverSurfer,
+            Character.unknown
         ],
-        isLoading: false
+        status: .showCharacters
     )
 
     static var previews: some View {

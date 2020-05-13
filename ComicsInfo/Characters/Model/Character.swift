@@ -9,7 +9,7 @@
 import struct Domain.Character
 import Foundation
 
-struct Character: Codable {
+struct Character {
 
     /// The unique ID of the character resource.
     let identifier: String
@@ -21,10 +21,15 @@ struct Character: Codable {
     let name: String
 
     /// The representative image for this character.
-    let thumbnail: String?
+    let thumbnail: String
 
     ///  A short bio or description of the character
-    let description: String?
+    let description: String
+
+    /// The representative system image for this character.
+    var thumbnailSystemName: String {
+        return "person.crop.circle"
+    }
 
 }
 
@@ -34,8 +39,8 @@ extension Character {
         identifier = character.identifier
         popularity = character.popularity
         name = character.name
-        thumbnail = character.thumbnail
-        description = character.description
+        thumbnail = character.thumbnail ?? ""
+        description = character.description ?? ""
     }
 
 }
@@ -48,7 +53,7 @@ extension Character {
         popularity: 0,
         name: "Flash",
         thumbnail: "Flash",
-        description: nil
+        description: ""
     )
 
     static let spiderMan = Character(
@@ -111,6 +116,14 @@ extension Character {
             serum to become America's one-man army. Fighting for the red, white and blue for over 60 years, Captain \
             America is the living, breathing symbol of freedom and liberty.
             """
+    )
+
+    static let unknown = Character(
+        identifier: "7",
+        popularity: 6,
+        name: "Unknown",
+        thumbnail: "",
+        description: ""
     )
 
 }

@@ -11,42 +11,52 @@ import Foundation
 
 final class CharacterViewModel: ObservableObject {
 
-    private var characterUseCase: CharacterUseCase
-    @Published private(set) var characters: [Character]
+    enum Status: Equatable {
+        case loading
+        case error(message: String)
+        case showCharacters
+    }
 
-    private(set) var errorMessage: String = "" {
+    private var characterUseCaseAdapter: CharacterUseCaseAdapter
+    private(set) var characters: [Character]
+
+    @Published private(set) var status: Status {
         didSet {
-            showError = errorMessage != ""
+            switch status {
+            case let .error(message):
+                showError = true
+                errorMessage = message
+            default:
+                showError = false
+                errorMessage = ""
+            }
         }
     }
-    @Published var showError: Bool
-    @Published var isLoading: Bool
+    @Published var showError: Bool = false
+    private(set) var errorMessage: String = ""
 
     init(
-        characterUseCase: CharacterUseCase = CharacterUseCase(),
+        characterUseCaseAdapter: CharacterUseCaseAdapter = CharacterUseCaseAdapter(),
         characters: [Character] = [],
-        showError: Bool = false,
-        isLoading: Bool = true
+        status: Status = .loading
     ) {
-        self.characterUseCase = characterUseCase
+        self.characterUseCaseAdapter = characterUseCaseAdapter
         self.characters = characters
-        self.showError = showError
-        self.isLoading = isLoading
+        self.status = status
     }
 
     func loadCharacters(fromDataSource dataSource: CIData.DataSourceLayer = .memory) {
         guard dataSource == .network || characters.isEmpty else { return }
 
-        characterUseCase.getCharacters(fromDataSource: dataSource) { [weak self] result in
+        characterUseCaseAdapter.getCharacters(fromDataSource: dataSource) { [weak self] result in
             guard let self = self else { return }
-            self.isLoading = false
 
             switch result {
             case let .success(characters):
                 self.characters = characters.sorted { $0.popularity < $1.popularity }
-                self.errorMessage = ""
+                self.status = .showCharacters
             case let .failure(error):
-                self.errorMessage = error.localizedDescription
+                self.status = .error(message: error.localizedDescription)
             }
         }
     }
@@ -57,9 +67,8 @@ final class CharacterViewModel: ObservableObject {
     ) {
         guard dataSource == .network || !characters.contains(where: { $0.identifier == characterID }) else { return }
 
-        characterUseCase.getCharacter(withID: characterID, fromDataSource: dataSource) { [weak self] result in
+        characterUseCaseAdapter.getCharacter(withID: characterID, fromDataSource: dataSource) { [weak self] result in
             guard let self = self else { return }
-            self.isLoading = false
 
             switch result {
             case let .success(character):
@@ -68,9 +77,9 @@ final class CharacterViewModel: ObservableObject {
                 } else {
                     self.characters.append(character)
                 }
-                self.errorMessage = ""
+                self.status = .showCharacters
             case let .failure(error):
-                self.errorMessage = error.localizedDescription
+                self.status = .error(message: error.localizedDescription)
             }
         }
     }
