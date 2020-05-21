@@ -9,7 +9,7 @@
 import struct Domain.Character
 import Foundation
 
-public struct CharacterAPIWrapper {
+public struct CharacterAPIWrapper: ResultDecoder {
 
     private let characterAPIService: CharacterAPIService
 
@@ -21,7 +21,7 @@ public struct CharacterAPIWrapper {
         onComplete complete: @escaping (Result<[Domain.Character], Error>) -> Void
     ) {
         characterAPIService.getCharacters { result in
-            complete(self.decodeResult(result))
+            complete(self.decode(result))
         }
     }
 
@@ -30,31 +30,7 @@ public struct CharacterAPIWrapper {
         onComplete complete: @escaping (Result<Domain.Character, Error>) -> Void
     ) {
         characterAPIService.getCharacter(withID: characterID) { result in
-            complete(self.decodeResult(result))
-        }
-    }
-
-}
-
-extension CharacterAPIWrapper {
-
-    private func decodeResult<T: Codable>(_ result: Result<Data, Error>) -> Result<T, Error> {
-        switch result {
-        case let .success(data):
-
-            let decoder = JSONDecoder()
-            decoder.dateDecodingStrategy = .millisecondsSince1970
-
-            do {
-                let response = try decoder.decode(T.self, from: data)
-                return .success(response)
-
-            } catch {
-                return .failure(error)
-            }
-
-        case let .failure(error):
-            return .failure(error)
+            complete(self.decode(result))
         }
     }
 

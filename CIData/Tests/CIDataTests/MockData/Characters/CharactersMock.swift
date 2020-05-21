@@ -6,6 +6,8 @@
 //  Copyright © 2020 Aleksandar Dinic. All rights reserved.
 //
 
+import Foundation
+
 struct CharactersMock {
 
     // MARK: - Characters
