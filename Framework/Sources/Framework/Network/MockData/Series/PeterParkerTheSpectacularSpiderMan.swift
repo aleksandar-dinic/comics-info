@@ -20,7 +20,6 @@ struct PeterParkerTheSpectacularSpiderMan: MockData {
     private let thumbnail = "PeterParkerTheSpectacularSpiderMan"
     private let startYear = 1976
     private let endYear = 1987
-    private let charactersID = ["1"]
 
     var data: Data? {
         json.data(using: .utf8)
@@ -34,9 +33,9 @@ struct PeterParkerTheSpectacularSpiderMan: MockData {
         "title": "\(title)", \
         "description": "\(description)", \
         "thumbnail": "\(thumbnail)", \
-        "startYear": "\(startYear)", \
-        "endYear": "\(endYear)", \
-        "charactersID": \(charactersID)" \
+        "startYear": \(startYear), \
+        "endYear": \(endYear), \
+        "charactersID": ["1"] \
         }
         """
     }

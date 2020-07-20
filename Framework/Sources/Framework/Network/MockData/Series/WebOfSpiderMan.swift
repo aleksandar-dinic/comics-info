@@ -21,7 +21,6 @@ struct WebOfSpiderMan: MockData {
     private let thumbnail = "WebOfSpiderMan"
     private let startYear = 1985
     private let endYear = 2012
-    private let charactersID = ["1"]
 
     var data: Data? {
         json.data(using: .utf8)
@@ -35,9 +34,9 @@ struct WebOfSpiderMan: MockData {
         "title": "\(title)", \
         "description": "\(description)", \
         "thumbnail": "\(thumbnail)", \
-        "startYear": "\(startYear)", \
-        "endYear": "\(endYear)", \
-        "charactersID": \(charactersID)" \
+        "startYear": \(startYear), \
+        "endYear": \(endYear), \
+        "charactersID": ["1"] \
         }
         """
     }
