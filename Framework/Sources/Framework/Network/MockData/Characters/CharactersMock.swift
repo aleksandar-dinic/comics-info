@@ -10,9 +10,9 @@ import Foundation
 
 struct CharactersMock {
 
-    private let mockCharacters: [MockCharacter]
+    private let mockCharacters: [MockData]
 
-    init(_ mockCharacters: [MockCharacter] = [
+    init(_ mockCharacters: [MockData] = [
             SpiderManMock(),
             CaptainAmericaMock(),
             HulkMock(),
