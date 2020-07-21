@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct HulkMock: MockCharacter {
+struct HulkMock: MockData {
 
     let identifier = "3"
     private let popularity = 2

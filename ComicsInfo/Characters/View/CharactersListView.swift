@@ -24,7 +24,9 @@ struct CharactersListView: View {
                         .font(.title)
                 } else {
                     List(viewModel.characters, id: \.identifier) { character in
-                        NavigationLink(destination: Text(character.description)) {
+                        NavigationLink(
+                            destination: SeriesListView(forCharacter: character)
+                        ) {
                             CharacterView(character: character)
                         }
                     }

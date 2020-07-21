@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct IronManMock: MockCharacter {
+struct IronManMock: MockData {
 
     let identifier = "4"
     private let popularity = 3
