@@ -14,7 +14,10 @@ struct CharacterView: View {
 
     var body: some View {
         HStack {
-            CharacterThumbnailView(imageName: character.thumbnail ?? "")
+            CharacterThumbnailView(
+                imageName: character.thumbnail,
+                systemName: character.thumbnailSystemName
+            )
 
             Text(character.name)
                 .frame(maxWidth: .infinity)

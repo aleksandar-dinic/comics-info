@@ -31,8 +31,8 @@ public struct Series: Codable {
     /// The representative image for this series.
     public let thumbnail: String?
 
-    /// A resource list containing characters which appear in comics in this series.
-    public let characters: [Character]?
+    /// A resource list containing characters ID which appear in comics in this series.
+    public let charactersID: Set<String>
 
     /// ID of the series which follows this series.
     public let nextIdentifier: String?

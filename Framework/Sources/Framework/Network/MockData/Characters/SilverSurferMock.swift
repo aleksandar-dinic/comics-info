@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct SilverSurferMock: MockCharacter {
+struct SilverSurferMock: MockData {
 
     let identifier = "5"
     private let popularity = 4

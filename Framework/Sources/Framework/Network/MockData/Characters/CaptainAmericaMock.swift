@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct CaptainAmericaMock: MockCharacter {
+struct CaptainAmericaMock: MockData {
 
     let identifier = "2"
     private let popularity = 1
