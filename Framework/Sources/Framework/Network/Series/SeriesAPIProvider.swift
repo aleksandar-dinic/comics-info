@@ -16,7 +16,7 @@ public struct SeriesAPIProvider: CIData.SeriesAPIService {
         onComplete complete: @escaping (Result<Data, Error>) -> Void
     ) {
         usleep(useconds_t(Int.random(in: 500_000...2_000_000)))
-        guard let data = SeriesMock().data else {
+        guard let data = SeriesMock(forCharacterID: characterID).data else {
             return complete(.failure(NetworkError.noData))
         }
         complete(.success(data))

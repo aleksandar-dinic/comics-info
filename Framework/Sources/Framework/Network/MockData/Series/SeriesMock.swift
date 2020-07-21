@@ -10,16 +10,18 @@ import Foundation
 
 struct SeriesMock {
 
-    private let mockSeries: [MockData]
+    private let mockSeries: [MockSeries]
 
-    init(_ mockSeries: [MockData] = [
+    init(
+        forCharacterID characterID: String,
+        mockSeries: [MockSeries] = [
         AmazingSpiderMan(),
         AmazingSpiderManVol5(),
         PeterParkerTheSpectacularSpiderMan(),
         WebOfSpiderMan()
         ]
     ) {
-        self.mockSeries = mockSeries
+        self.mockSeries = mockSeries.filter { $0.charactersID.contains(characterID) }
     }
 
     var data: Data? {

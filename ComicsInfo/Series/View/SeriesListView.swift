@@ -29,7 +29,7 @@ struct SeriesListView: View {
             } else {
                 List(viewModel.series, id: \.identifier) { series in
                     NavigationLink(destination: Text(series.description)) {
-                        Text(series.title)
+                        SeriesView(series: series)
                     }
                 }
             }

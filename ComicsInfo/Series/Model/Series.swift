@@ -37,7 +37,19 @@ struct Series {
 
     /// The representative system image for this character.
     var thumbnailSystemName: String {
-        return "person.crop.circle"
+        "photo.on.rectangle"
+    }
+
+    var startAndEndYer: String {
+        if let startYear = startYear, let endYear = endYear {
+            return "(\(startYear) - \(endYear))"
+        } else if let startYear = startYear {
+            return "(\(startYear) - ...)"
+        } else if let endYear = endYear {
+            return "(???? - \(endYear))"
+        }
+
+        return "(???? - ????)"
     }
 
 }
@@ -66,7 +78,7 @@ extension Series {
         identifier: "1",
         popularity: 1,
         title: "The Flash",
-        thumbnail: "",
+        thumbnail: "TheFlash",
         description: """
             The Flash (Volume 1) is an ongoing series published by DC Comics. It has primarily starred Barry Allen, \
             the Silver Age Flash. The series was originally published for 246 issues from February/March of 1959 until \

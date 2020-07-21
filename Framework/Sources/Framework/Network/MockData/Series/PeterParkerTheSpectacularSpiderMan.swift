@@ -8,9 +8,10 @@
 
 import Foundation
 
-struct PeterParkerTheSpectacularSpiderMan: MockData {
+struct PeterParkerTheSpectacularSpiderMan: MockSeries {
 
     let identifier = "2"
+    let charactersID: Set<String> = ["1"]
     private let popularity = 1
     private let title = "Peter Parker, The Spectacular Spider-Man"
     private let description = """

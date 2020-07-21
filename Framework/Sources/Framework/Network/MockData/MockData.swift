@@ -15,3 +15,9 @@ protocol MockData {
     var json: String { get }
 
 }
+
+protocol MockSeries: MockData {
+
+    var charactersID: Set<String> { get }
+
+}
