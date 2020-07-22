@@ -16,7 +16,7 @@ public protocol SeriesDataProviderFactory: SeriesAPIWrapperFactory {
 
 }
 
-extension SeriesRepositoryFactory {
+extension SeriesDataProviderFactory {
 
     public func makeSeriesDataProvider() -> SeriesDataProvider {
         SeriesDataProvider(
