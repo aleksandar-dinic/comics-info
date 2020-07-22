@@ -21,3 +21,9 @@ protocol MockSeries: MockData {
     var charactersID: Set<String> { get }
 
 }
+
+protocol MockComic: MockData {
+
+    var seriesID: Set<String> { get }
+
+}
