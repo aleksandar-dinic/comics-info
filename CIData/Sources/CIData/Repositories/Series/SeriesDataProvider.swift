@@ -22,8 +22,6 @@ public struct SeriesDataProvider {
         self.seriesCacheService = seriesCacheService
     }
 
-    // Get Characters
-
     func getSeries(
         forCharacterID characterID: String,
         fromDataSource dataSource: DataSourceLayer,
