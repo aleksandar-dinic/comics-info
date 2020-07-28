@@ -23,7 +23,7 @@ public struct Comic: Codable {
     public let thumbnail: String?
 
     /// The number of the issue in the series.
-    public let issueNumber: Double?
+    public let issueNumber: String?
 
     /// The preferred description of the comic.
     public let description: String?
@@ -58,5 +58,8 @@ public struct Comic: Codable {
 
     /// A resource list containing characters ID which appear in this comic.
     public let charactersID: Set<String>
+
+    /// The date of publication for this comic.
+    public let published: Date?
 
 }

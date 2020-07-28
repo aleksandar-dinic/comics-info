@@ -22,9 +22,11 @@ struct AmazingSpiderMan1: MockComic {
         in the Daily Bugle effectively quelch his career. Besides denouncing Spider-Man as a \
         publicity-seeking phony, J. Jonah Jameson also publishes articles lauding his son, John Jameson, \
         a courageous astronaut about to be launched into orbit in a space capsule. J. Jonah Jameson calls \
-        his son a "real hero."
+        his son a real hero.
         """
     private let thumbnail = "AmazingSpiderMan1"
+    private let issueNumber = "1"
+    private let published = Date()
 
     var data: Data? {
         json.data(using: .utf8)
@@ -36,10 +38,12 @@ struct AmazingSpiderMan1: MockComic {
         "identifier": "\(identifier)", \
         "popularity": \(popularity), \
         "title": "\(title)", \
+        "issueNumber": "\(issueNumber)", \
         "description": "\(description)", \
         "thumbnail": "\(thumbnail)", \
         "seriesID": ["1"], \
-        "charactersID": ["1"] \
+        "charactersID": ["1"], \
+        "published": \(published.timeIntervalSince1970) \
         }
         """
     }

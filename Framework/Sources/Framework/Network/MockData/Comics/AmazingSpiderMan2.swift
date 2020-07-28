@@ -24,6 +24,8 @@ struct AmazingSpiderMan2: MockComic {
         his Aunt May make ends meet.
         """
     private let thumbnail = "AmazingSpiderMan2"
+    private let issueNumber = "2"
+    private let published = Date()
 
     var data: Data? {
         json.data(using: .utf8)
@@ -35,10 +37,12 @@ struct AmazingSpiderMan2: MockComic {
         "identifier": "\(identifier)", \
         "popularity": \(popularity), \
         "title": "\(title)", \
+        "issueNumber": "\(issueNumber)", \
         "description": "\(description)", \
         "thumbnail": "\(thumbnail)", \
         "seriesID": ["1"], \
-        "charactersID": ["1"] \
+        "charactersID": ["1"], \
+        "published": \(published.timeIntervalSince1970) \
         }
         """
     }

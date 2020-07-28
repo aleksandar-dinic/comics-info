@@ -15,6 +15,11 @@ struct ComicsMock {
     init(
         forSeriesID seriesID: String,
         _ mockComics: [MockComic] = [
+            AmazingSpiderMan1(),
+            AmazingSpiderMan2(),
+            AmazingSpiderMan3(),
+            AmazingSpiderMan4(),
+            AmazingSpiderMan5()
         ]
     ) {
         self.mockComics = mockComics.filter { $0.seriesID.contains(seriesID) }

@@ -28,6 +28,8 @@ struct AmazingSpiderMan4: MockComic {
         also shows Sandman robbing a bank and fleeing the police.
         """
     private let thumbnail = "AmazingSpiderMan4"
+    private let issueNumber = "4"
+    private let published = Date()
 
     var data: Data? {
         json.data(using: .utf8)
@@ -39,10 +41,12 @@ struct AmazingSpiderMan4: MockComic {
         "identifier": "\(identifier)", \
         "popularity": \(popularity), \
         "title": "\(title)", \
+        "issueNumber": "\(issueNumber)", \
         "description": "\(description)", \
         "thumbnail": "\(thumbnail)", \
         "seriesID": ["1"], \
-        "charactersID": ["1"] \
+        "charactersID": ["1"], \
+        "published": \(published.timeIntervalSince1970) \
         }
         """
     }
