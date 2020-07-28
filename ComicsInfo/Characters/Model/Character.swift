@@ -28,7 +28,7 @@ struct Character {
 
     /// The representative system image for this character.
     var thumbnailSystemName: String {
-        return "person.crop.circle"
+        "person.crop.circle"
     }
 
 }
