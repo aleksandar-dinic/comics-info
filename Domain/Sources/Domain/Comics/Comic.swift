@@ -14,7 +14,7 @@ public struct Comic: Codable {
     public let identifier: String
 
     /// The value of comic popularity
-    public let popularity: Int?
+    public let popularity: Int
 
     /// The canonical title of the comic.
     public let title: String
@@ -23,7 +23,7 @@ public struct Comic: Codable {
     public let thumbnail: String?
 
     /// The number of the issue in the series.
-    public let issueNumber: Double?
+    public let issueNumber: String?
 
     /// The preferred description of the comic.
     public let description: String?
@@ -53,10 +53,13 @@ public struct Comic: Codable {
     /// A list of promotional images associated with this comic.
     public let images: [String]?
 
-    /// A summary representation of the series to which this comic belongs.
-    public let series: [Series]?
+    /// A resource list containing series ID to which this comic belongs.
+    public let seriesID: Set<String>
 
-    /// A resource list containing the characters which appear in this comic.
-    public let characters: [Character]?
+    /// A resource list containing characters ID which appear in this comic.
+    public let charactersID: Set<String>
+
+    /// The date of publication for this comic.
+    public let published: Date?
 
 }

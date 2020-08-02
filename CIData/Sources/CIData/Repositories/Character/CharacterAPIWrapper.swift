@@ -17,10 +17,10 @@ public struct CharacterAPIWrapper: ResultDecoder {
         self.characterAPIService = characterAPIService
     }
 
-    func getCharacters(
+    func getAllCharacters(
         onComplete complete: @escaping (Result<[Domain.Character], Error>) -> Void
     ) {
-        characterAPIService.getCharacters { result in
+        characterAPIService.getAllCharacters { result in
             complete(self.decode(result))
         }
     }

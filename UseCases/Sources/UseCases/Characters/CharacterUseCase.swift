@@ -19,12 +19,12 @@ public final class CharacterUseCase {
         self.characterRepository = characterRepository
     }
 
-    public func getCharacters(
+    public func getAllCharacters(
         fromDataSource dataSource: CIData.DataSourceLayer,
         onComplete complete: @escaping (Result<[Domain.Character], Error>) -> Void
     ) {
         DispatchQueue.global(qos: .utility).async { [weak self] in
-            self?.characterRepository.getCharacters(fromDataSource: dataSource) { result in
+            self?.characterRepository.getAllCharacters(fromDataSource: dataSource) { result in
                 DispatchQueue.main.async {
                     complete(result)
                 }

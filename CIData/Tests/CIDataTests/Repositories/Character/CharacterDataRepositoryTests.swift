@@ -22,7 +22,7 @@ final class CharacterDataRepositoryTests: XCTestCase {
 
     // MARK: - Characters
 
-    func testGetCharacters() {
+    func testGetAllCharacters() {
         // Given
         let characterDataProvider = CharacterDataProviderMockFactory.makeWithCharactersFromNetwork()
         let sut = CharacterDataRepository(characterDataProvider: characterDataProvider)
@@ -32,7 +32,7 @@ final class CharacterDataRepositoryTests: XCTestCase {
         let promise = expectation(description: #function)
 
         // When
-        sut.getCharacters(fromDataSource: dataSourceLayer) {
+        sut.getAllCharacters(fromDataSource: dataSourceLayer) {
             result = $0
             promise.fulfill()
         }

@@ -20,7 +20,7 @@ final class SeriesDataRepositoryTests: XCTestCase {
         super.tearDown()
     }
 
-    func testGetSeries() {
+    func testGetAllSeries() {
         // Given
         let seriesDataProvider = SeriesDataProviderMockFactory.makeWithSeriesFromNetwork()
         let sut = SeriesDataRepository(seriesDataProvider: seriesDataProvider)
@@ -30,7 +30,7 @@ final class SeriesDataRepositoryTests: XCTestCase {
         let promise = expectation(description: #function)
 
         // When
-        sut.getSeries(forCharacterID: "1", fromDataSource: dataSourceLayer) {
+        sut.getAllSeries(forCharacterID: "1", fromDataSource: dataSourceLayer) {
             result = $0
             promise.fulfill()
         }

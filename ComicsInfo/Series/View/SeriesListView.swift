@@ -28,14 +28,14 @@ struct SeriesListView: View {
                     .font(.title)
             } else {
                 List(viewModel.series, id: \.identifier) { series in
-                    NavigationLink(destination: Text(series.description)) {
+                    NavigationLink(destination: ComicsListView(forSeries: series)) {
                         SeriesView(series: series)
                     }
                 }
             }
         }
         .onAppear {
-            self.viewModel.loadSeries(forCharacterID: self.character.identifier)
+            self.viewModel.loadAllSeries(forCharacterID: self.character.identifier)
         }
         .alert(isPresented: $viewModel.showError) {
             Alert(title: Text(viewModel.errorMessage))

@@ -21,7 +21,7 @@ final class SeriesUseCaseTests: XCTestCase {
         super.tearDown()
     }
 
-    func testGetSeries() throws {
+    func testGetAllSeries() throws {
         // Given
         let seriesRepository = SeriesRepositoryMockFactory.makeWithSeries()
         let sut = SeriesUseCase(seriesRepository: seriesRepository)
@@ -31,7 +31,7 @@ final class SeriesUseCaseTests: XCTestCase {
         let promise = expectation(description: #function)
 
         // When
-        sut.getSeries(forCharacterID: "1", fromDataSource: dataSourceLayer) {
+        sut.getAllSeries(forCharacterID: "1", fromDataSource: dataSourceLayer) {
             result = $0
             promise.fulfill()
         }

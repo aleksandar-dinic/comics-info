@@ -16,7 +16,7 @@ public protocol CharacterDataProviderFactory: CharacterAPIWrapperFactory {
 
 }
 
-extension CharacterRepositoryFactory {
+extension CharacterDataProviderFactory {
 
     public func makeCharacterDataProvider() -> CharacterDataProvider {
         CharacterDataProvider(

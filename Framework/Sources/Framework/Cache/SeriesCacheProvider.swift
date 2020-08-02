@@ -18,7 +18,7 @@ public struct SeriesCacheProvider: CIData.SeriesCacheService {
         self.inMemoryCache = inMemoryCache
     }
 
-    public func getSeries(forCharacterID characterID: String) -> [Domain.Series]? {
+    public func getAllSeries(forCharacterID characterID: String) -> [Domain.Series]? {
         let cache = inMemoryCache.values.filter { $0.charactersID.contains(characterID)}
         return cache.isEmpty ? nil : cache
     }

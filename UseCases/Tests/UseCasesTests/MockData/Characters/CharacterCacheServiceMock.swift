@@ -18,7 +18,7 @@ final class CharacterCacheServiceMock: CharacterCacheService {
         self.characters = characters
     }
 
-    func getCharacters() -> [Domain.Character]? {
+    func getAllCharacters() -> [Domain.Character]? {
         guard !characters.isEmpty else {
             return nil
         }

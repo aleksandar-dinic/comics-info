@@ -10,7 +10,7 @@ import Foundation
 
 public protocol CharacterAPIService {
 
-    func getCharacters(
+    func getAllCharacters(
         onComplete complete: @escaping (Result<Data, Error>) -> Void
     )
 

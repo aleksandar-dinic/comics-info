@@ -11,7 +11,7 @@ import Foundation
 
 public struct SeriesAPIProvider: CIData.SeriesAPIService {
 
-    public func getSeries(
+    public func getAllSeries(
         forCharacterID characterID: String,
         onComplete complete: @escaping (Result<Data, Error>) -> Void
     ) {

@@ -23,7 +23,7 @@ final class CharacterUseCaseTests: XCTestCase {
 
     // MARK: - Characters
 
-    func testGetCharacters() {
+    func testGetAllCharacters() {
         // Given
         let characterRepository = CharacterRepositoryMockFactory.makeWithCharacters()
         let sut = CharacterUseCase(characterRepository: characterRepository)
@@ -33,7 +33,7 @@ final class CharacterUseCaseTests: XCTestCase {
         let promise = expectation(description: #function)
 
         // When
-        sut.getCharacters(fromDataSource: dataSourceLayer) {
+        sut.getAllCharacters(fromDataSource: dataSourceLayer) {
             result = $0
             promise.fulfill()
         }

@@ -11,7 +11,7 @@ import Foundation
 
 public protocol CharacterCacheService {
 
-    func getCharacters() -> [Domain.Character]?
+    func getAllCharacters() -> [Domain.Character]?
 
     func getCharacter(withID characterID: String) -> Domain.Character?
 
