@@ -15,13 +15,13 @@ public protocol ComicRepository {
 
     init(comicDataProvider: ComicDataProvider)
 
-    /// Gets comics
+    /// Gets all comics
     ///
     /// - Parameters:
     ///   - seriesID: Series ID
     ///   - dataSource: Layer of data source
     ///   - complete: Result who contains Comics in Success, or Error in Failure.
-    func getComics(
+    func getAllComics(
         forSeriesID seriesID: String,
         fromDataSource dataSource: DataSourceLayer,
         onComplete complete: @escaping (Result<[Domain.Comic], Error>) -> Void

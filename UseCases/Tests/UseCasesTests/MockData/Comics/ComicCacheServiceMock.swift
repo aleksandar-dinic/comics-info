@@ -18,7 +18,7 @@ final class ComicCacheServiceMock: ComicCacheService {
         self.comics = comics
     }
 
-    func getComics(forSeriesID seriesID: String) -> [Domain.Comic]? {
+    func getAllComics(forSeriesID seriesID: String) -> [Domain.Comic]? {
         guard !comics.isEmpty else {
             return nil
         }

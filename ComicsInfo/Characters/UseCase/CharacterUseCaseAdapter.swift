@@ -27,11 +27,11 @@ struct CharacterUseCaseAdapter: UseCases.CharacterUseCaseFactory {
         self.characterCacheService = characterCacheService
     }
 
-    mutating func getCharacters(
+    mutating func getAllCharacters(
         fromDataSource dataSource: CIData.DataSourceLayer,
         onComplete complete: @escaping (Result<[Character], Error>) -> Void
     ) {
-        useCase.getCharacters(fromDataSource: dataSource) { result in
+        useCase.getAllCharacters(fromDataSource: dataSource) { result in
             complete(result.map { $0.map { Character(from: $0) } })
         }
     }

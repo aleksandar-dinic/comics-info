@@ -21,7 +21,7 @@ final class CharacterAPIServiceTests: XCTestCase {
 
     // MARK: - Characters
 
-    func testGetCharacters() {
+    func testGetAllCharacters() {
         // Given
         let sut = CharacterAPIProvider()
 
@@ -29,7 +29,7 @@ final class CharacterAPIServiceTests: XCTestCase {
         let promise = expectation(description: #function)
 
         // When
-        sut.getCharacters {
+        sut.getAllCharacters {
             result = $0
             promise.fulfill()
         }

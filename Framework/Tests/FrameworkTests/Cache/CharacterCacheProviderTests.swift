@@ -40,13 +40,13 @@ final class CharacterCacheProviderTests: XCTestCase {
 
     // MARK: - Characters
 
-    func testGetCharacters() {
+    func testGetAllCharacters() {
         // Given
         let inMemoryCache = InMemoryCache(storage: givenCharacters)
         let sut = CharacterCacheProvider(inMemoryCache)
 
         // When
-        let characters = sut.getCharacters()
+        let characters = sut.getAllCharacters()
 
         // Then
         XCTAssertEqual(characters?.count, givenCharacters.count)
@@ -57,7 +57,7 @@ final class CharacterCacheProviderTests: XCTestCase {
         let sut = CharacterCacheProvider()
 
         // When
-        let characters = sut.getCharacters()
+        let characters = sut.getAllCharacters()
 
         // Then
         XCTAssertNil(characters)

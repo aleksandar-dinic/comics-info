@@ -45,13 +45,13 @@ final class ComicViewModel: ObservableObject {
         self.status = status
     }
 
-    func loadComics(
+    func loadAllComics(
         forSeriesID seriesID: String,
         fromDataSource dataSource: CIData.DataSourceLayer = .memory
     ) {
         guard dataSource == .network || comics.filter({ $0.seriesID.contains(seriesID) }).isEmpty else { return }
 
-        comicUseCaseAdapter.getComics(
+        comicUseCaseAdapter.getAllComics(
             forSeriesID: seriesID,
             fromDataSource: dataSource
         ) { [weak self] result in

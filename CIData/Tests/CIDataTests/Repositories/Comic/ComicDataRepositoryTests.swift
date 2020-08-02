@@ -20,7 +20,7 @@ final class ComicDataRepositoryTests: XCTestCase {
         super.tearDown()
     }
 
-    func testGetComics() {
+    func testGetAllComics() {
         // Given
         let comicDataProvider = ComicDataProviderMockFactory.makeWithComicFromNetwork()
         let sut = ComicDataRepository(comicDataProvider: comicDataProvider)
@@ -30,7 +30,7 @@ final class ComicDataRepositoryTests: XCTestCase {
         let promise = expectation(description: #function)
 
         // When
-        sut.getComics(forSeriesID: "1", fromDataSource: dataSourceLayer) {
+        sut.getAllComics(forSeriesID: "1", fromDataSource: dataSourceLayer) {
             result = $0
             promise.fulfill()
         }

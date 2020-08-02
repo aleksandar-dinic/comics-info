@@ -18,7 +18,7 @@ public struct CharacterCacheProvider: CIData.CharacterCacheService {
         self.inMemoryCache = inMemoryCache
     }
 
-    public func getCharacters() -> [Domain.Character]? {
+    public func getAllCharacters() -> [Domain.Character]? {
         inMemoryCache.isEmpty ? nil : inMemoryCache.values
     }
 

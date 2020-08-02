@@ -45,13 +45,13 @@ final class SeriesViewModel: ObservableObject {
         self.status = status
     }
 
-    func loadSeries(
+    func loadAllSeries(
         forCharacterID characterID: String,
         fromDataSource dataSource: CIData.DataSourceLayer = .memory
     ) {
         guard dataSource == .network || series.filter({ $0.charactersID.contains(characterID) }).isEmpty else { return }
 
-        seriesUseCaseAdapter.getSeries(
+        seriesUseCaseAdapter.getAllSeries(
             forCharacterID: characterID,
             fromDataSource: dataSource
         ) { [weak self] result in

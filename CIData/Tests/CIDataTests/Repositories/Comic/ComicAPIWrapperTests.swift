@@ -20,14 +20,14 @@ final class ComicAPIWrapperTests: XCTestCase {
         super.tearDown()
     }
 
-    func testGetComicSuccess() throws {
+    func testGetAllComicSuccess() throws {
         // Given
         let sut = ComicAPIWrapperMockFactory.makeWithComics()
         var result: Result<[Domain.Comic], Error>?
         let promise = expectation(description: #function)
 
         // When
-        sut.getComics(forSeriesID: "1") {
+        sut.getAllComics(forSeriesID: "1") {
             result = $0
             promise.fulfill()
         }
@@ -43,14 +43,14 @@ final class ComicAPIWrapperTests: XCTestCase {
         XCTAssertEqual(comics.count, 3)
     }
 
-    func testGetComicFailure() {
+    func testGetAllComicsFailure() {
         // Given
         let sut = ComicAPIWrapperMockFactory.makeWithoutData()
         var result: Result<[Domain.Comic], Error>?
         let promise = expectation(description: #function)
 
         // When
-        sut.getComics(forSeriesID: "1") {
+        sut.getAllComics(forSeriesID: "1") {
             result = $0
             promise.fulfill()
         }
@@ -65,14 +65,14 @@ final class ComicAPIWrapperTests: XCTestCase {
         XCTAssertThrowsError(try res.get())
     }
 
-    func testGetComicFailureBadData() {
+    func testGetAllComicsFailureBadData() {
         // Given
         let sut = ComicAPIWrapperMockFactory.makeWithComicBadData()
         var result: Result<[Domain.Comic], Error>?
         let promise = expectation(description: #function)
 
         // When
-        sut.getComics(forSeriesID: "1") {
+        sut.getAllComics(forSeriesID: "1") {
             result = $0
             promise.fulfill()
         }

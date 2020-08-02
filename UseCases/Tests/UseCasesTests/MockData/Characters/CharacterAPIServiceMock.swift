@@ -17,7 +17,7 @@ final class CharacterAPIServiceMock: CharacterAPIService {
         self.data = data
     }
 
-    func getCharacters(
+    func getAllCharacters(
         onComplete complete: @escaping (Result<Data, Error>) -> Void
     ) {
         guard let data = data else {

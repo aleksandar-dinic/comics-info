@@ -17,11 +17,11 @@ public struct ComicAPIWrapper: ResultDecoder {
         self.comicAPIService = comicAPIService
     }
 
-    func getComics(
+    func getAllComics(
         forSeriesID seriesID: String,
         onComplete complete: @escaping (Result<[Domain.Comic], Error>) -> Void
     ) {
-        comicAPIService.getComics(forSeriesID: seriesID) { result in
+        comicAPIService.getAllComics(forSeriesID: seriesID) { result in
             complete(self.decode(result))
         }
     }

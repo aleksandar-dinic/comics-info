@@ -11,7 +11,7 @@ import Foundation
 
 public struct ComicAPIProvider: CIData.ComicAPIService {
 
-    public func getComics(
+    public func getAllComics(
         forSeriesID seriesID: String,
         onComplete complete: @escaping (Result<Data, Error>) -> Void
     ) {

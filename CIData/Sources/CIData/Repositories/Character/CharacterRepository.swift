@@ -15,12 +15,12 @@ public protocol CharacterRepository {
 
     init(characterDataProvider: CharacterDataProvider)
 
-    /// Gets characters
+    /// Gets all characters
     ///
     /// - Parameters:
     ///   - dataSource: Layer of data source
     ///   - complete: Result who contains Characters in Success, or Error in Failure
-    func getCharacters(
+    func getAllCharacters(
         fromDataSource dataSource: DataSourceLayer,
         onComplete complete: @escaping (Result<[Domain.Character], Error>) -> Void
     )

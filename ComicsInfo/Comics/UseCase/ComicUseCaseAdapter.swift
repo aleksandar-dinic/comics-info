@@ -27,12 +27,12 @@ struct ComicUseCaseAdapter: UseCases.ComicUseCaseFactory {
         self.comicCacheService = comicCacheService
     }
 
-    mutating func getComics(
+    mutating func getAllComics(
         forSeriesID seriesID: String,
         fromDataSource dataSource: CIData.DataSourceLayer,
         onComplete complete: @escaping (Result<[Comic], Error>) -> Void
     ) {
-        useCase.getComics(
+        useCase.getAllComics(
             forSeriesID: seriesID,
             fromDataSource: dataSource
         ) { result in

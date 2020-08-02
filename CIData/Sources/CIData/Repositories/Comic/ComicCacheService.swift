@@ -11,7 +11,7 @@ import Foundation
 
 public protocol ComicCacheService {
 
-    func getComics(forSeriesID seriesID: String) -> [Domain.Comic]?
+    func getAllComics(forSeriesID seriesID: String) -> [Domain.Comic]?
 
     func getComic(withID comicID: String) -> Domain.Comic?
 

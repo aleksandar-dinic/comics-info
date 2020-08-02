@@ -15,13 +15,13 @@ public protocol SeriesRepository {
 
     init(seriesDataProvider: SeriesDataProvider)
 
-    /// Gets series
+    /// Gets all series
     ///
     /// - Parameters:
     ///   - characterID: Character ID
     ///   - dataSource: Layer of data source
     ///   - complete: Result who contains Series in Success, or Error in Failure.
-    func getSeries(
+    func getAllSeries(
         forCharacterID characterID: String,
         fromDataSource dataSource: DataSourceLayer,
         onComplete complete: @escaping (Result<[Domain.Series], Error>) -> Void

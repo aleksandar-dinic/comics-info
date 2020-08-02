@@ -10,7 +10,7 @@ import Foundation
 
 public protocol ComicAPIService {
 
-    func getComics(
+    func getAllComics(
         forSeriesID seriesID: String,
         onComplete complete: @escaping (Result<Data, Error>) -> Void
     )

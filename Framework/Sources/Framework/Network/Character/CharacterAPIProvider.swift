@@ -11,7 +11,7 @@ import Foundation
 
 public struct CharacterAPIProvider: CIData.CharacterAPIService {
 
-    public func getCharacters(
+    public func getAllCharacters(
         onComplete complete: @escaping (Result<Data, Error>) -> Void
     ) {
         usleep(useconds_t(Int.random(in: 500_000...2_000_000)))

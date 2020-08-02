@@ -22,7 +22,7 @@ final class CharacterDataProviderTests: XCTestCase {
 
     // MARK: - Characters
 
-    func testGetCharactersFromNetwork() {
+    func testGetAllCharactersFromNetwork() {
         // Given
         let sut = CharacterDataProviderMockFactory.makeWithCharactersFromNetwork()
         let dataSourceLayer = DataSourceLayer.network
@@ -31,7 +31,7 @@ final class CharacterDataProviderTests: XCTestCase {
         let promise = expectation(description: #function)
 
         // When
-        sut.getCharacters(fromDataSource: dataSourceLayer) {
+        sut.getAllCharacters(fromDataSource: dataSourceLayer) {
             result = $0
             promise.fulfill()
         }
@@ -51,7 +51,7 @@ final class CharacterDataProviderTests: XCTestCase {
         }
     }
 
-    func testGetCharactersFromMemory() {
+    func testGetAllCharactersFromMemory() {
         // Given
         let sut = CharacterDataProviderMockFactory.makeWithCharactersFromMemory()
         let dataSourceLayer = DataSourceLayer.memory
@@ -60,7 +60,7 @@ final class CharacterDataProviderTests: XCTestCase {
         let promise = expectation(description: #function)
 
         // When
-        sut.getCharacters(fromDataSource: dataSourceLayer) {
+        sut.getAllCharacters(fromDataSource: dataSourceLayer) {
             result = $0
             promise.fulfill()
         }
@@ -80,7 +80,7 @@ final class CharacterDataProviderTests: XCTestCase {
         }
     }
 
-    func testGetCharactersFromEmptyMemory() {
+    func testGetAllCharactersFromEmptyMemory() {
         // Given
         let sut = CharacterDataProviderMockFactory.makeWithCharactersFromNetwork()
         let dataSourceLayer = DataSourceLayer.memory
@@ -89,7 +89,7 @@ final class CharacterDataProviderTests: XCTestCase {
         let promise = expectation(description: #function)
 
         // When
-        sut.getCharacters(fromDataSource: dataSourceLayer) {
+        sut.getAllCharacters(fromDataSource: dataSourceLayer) {
             result = $0
             promise.fulfill()
         }
@@ -109,7 +109,7 @@ final class CharacterDataProviderTests: XCTestCase {
         }
     }
 
-    func testGetCharactersFailure() {
+    func testGetAllCharactersFailure() {
         // Given
         let sut = CharacterDataProviderMockFactory.makeWithoutData()
         let dataSourceLayer = DataSourceLayer.network
@@ -118,7 +118,7 @@ final class CharacterDataProviderTests: XCTestCase {
         let promise = expectation(description: #function)
 
         // When
-        sut.getCharacters(fromDataSource: dataSourceLayer) {
+        sut.getAllCharacters(fromDataSource: dataSourceLayer) {
             result = $0
             promise.fulfill()
         }

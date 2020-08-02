@@ -58,25 +58,25 @@ final class ComicCacheProviderTests: XCTestCase {
         super.tearDown()
     }
 
-    func testGetComicsForSeriesID() {
+    func testGetAllComicsForSeriesID() {
         // Give
         let inMemoryCache = InMemoryCache(storage: givenComics)
         let sut = ComicCacheProvider(inMemoryCache)
 
         // When
-        let comics = sut.getComics(forSeriesID: "1")
+        let comics = sut.getAllComics(forSeriesID: "1")
 
         // Then
         XCTAssertEqual(comics?.count, givenComics.count)
     }
 
-    func testGetComicsWithNonExistingSeriesID() {
+    func testGetAllComicsWithNonExistingSeriesID() {
         // Give
         let inMemoryCache = InMemoryCache(storage: givenComics)
         let sut = ComicCacheProvider(inMemoryCache)
 
         // When
-        let comics = sut.getComics(forSeriesID: "-1")
+        let comics = sut.getAllComics(forSeriesID: "-1")
 
         // Then
         XCTAssertNil(comics)

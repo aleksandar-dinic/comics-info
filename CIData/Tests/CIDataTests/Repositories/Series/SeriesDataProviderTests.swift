@@ -20,7 +20,7 @@ final class SeriesDataProviderTests: XCTestCase {
         super.tearDown()
     }
 
-    func testGetSeriesFromNetwork() throws {
+    func testGetAllSeriesFromNetwork() throws {
         // Given
         let sut = SeriesDataProviderMockFactory.makeWithSeriesFromNetwork()
         let dataSourceLayer = DataSourceLayer.network
@@ -29,7 +29,7 @@ final class SeriesDataProviderTests: XCTestCase {
         let promise = expectation(description: #function)
 
         // When
-        sut.getSeries(forCharacterID: "1", fromDataSource: dataSourceLayer) {
+        sut.getAllSeries(forCharacterID: "1", fromDataSource: dataSourceLayer) {
             result = $0
             promise.fulfill()
         }
@@ -45,7 +45,7 @@ final class SeriesDataProviderTests: XCTestCase {
         XCTAssertEqual(series.count, 3)
     }
 
-    func testGetSeriesFromMemory() throws {
+    func testGetAllSeriesFromMemory() throws {
         // Given
         let sut = SeriesDataProviderMockFactory.makeWithSeriesFromMemory()
         let dataSourceLayer = DataSourceLayer.memory
@@ -54,7 +54,7 @@ final class SeriesDataProviderTests: XCTestCase {
         let promise = expectation(description: #function)
 
         // When
-        sut.getSeries(forCharacterID: "1", fromDataSource: dataSourceLayer) {
+        sut.getAllSeries(forCharacterID: "1", fromDataSource: dataSourceLayer) {
             result = $0
             promise.fulfill()
         }
@@ -70,7 +70,7 @@ final class SeriesDataProviderTests: XCTestCase {
         XCTAssertEqual(series.count, 1)
     }
 
-    func testGetSeriesFromEmptyMemory() throws {
+    func testGetAllSeriesFromEmptyMemory() throws {
         // Given
         let sut = SeriesDataProviderMockFactory.makeWithSeriesFromNetwork()
         let dataSourceLayer = DataSourceLayer.memory
@@ -79,7 +79,7 @@ final class SeriesDataProviderTests: XCTestCase {
         let promise = expectation(description: #function)
 
         // When
-        sut.getSeries(forCharacterID: "1", fromDataSource: dataSourceLayer) {
+        sut.getAllSeries(forCharacterID: "1", fromDataSource: dataSourceLayer) {
             result = $0
             promise.fulfill()
         }
@@ -95,7 +95,7 @@ final class SeriesDataProviderTests: XCTestCase {
         XCTAssertEqual(series.count, 3)
     }
 
-    func testGetSeriesFailure() {
+    func testGetAllSeriesFailure() {
         // Given
         let sut = SeriesDataProviderMockFactory.makeWithoutData()
         let dataSourceLayer = DataSourceLayer.network
@@ -104,7 +104,7 @@ final class SeriesDataProviderTests: XCTestCase {
         let promise = expectation(description: #function)
 
         // When
-        sut.getSeries(forCharacterID: "1", fromDataSource: dataSourceLayer) {
+        sut.getAllSeries(forCharacterID: "1", fromDataSource: dataSourceLayer) {
             result = $0
             promise.fulfill()
         }
