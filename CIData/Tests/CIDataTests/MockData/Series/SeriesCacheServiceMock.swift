@@ -18,7 +18,7 @@ final class SeriesCacheServiceMock: SeriesCacheService {
         self.series = series
     }
 
-    func getSeries(forCharacterID characterID: String) -> [Domain.Series]? {
+    func getAllSeries(forCharacterID characterID: String) -> [Domain.Series]? {
         guard !series.isEmpty else {
             return nil
         }

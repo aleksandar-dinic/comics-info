@@ -33,7 +33,7 @@ struct CharactersListView: View {
                 }
             }
             .onAppear {
-                self.viewModel.loadCharacters()
+                self.viewModel.loadAllCharacters()
             }
             .alert(isPresented: $viewModel.showError) {
                 Alert(title: Text(viewModel.errorMessage))

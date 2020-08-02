@@ -20,7 +20,7 @@ final class ComicDataProviderTests: XCTestCase {
         super.tearDown()
     }
 
-    func testGetComicFromNetwork() throws {
+    func testGetAllComicsFromNetwork() throws {
         // Given
         let sut = ComicDataProviderMockFactory.makeWithComicFromNetwork()
         let dataSourceLayer = DataSourceLayer.network
@@ -29,7 +29,7 @@ final class ComicDataProviderTests: XCTestCase {
         let promise = expectation(description: #function)
 
         // When
-        sut.getComics(forSeriesID: "1", fromDataSource: dataSourceLayer) {
+        sut.getAllComics(forSeriesID: "1", fromDataSource: dataSourceLayer) {
             result = $0
             promise.fulfill()
         }
@@ -45,7 +45,7 @@ final class ComicDataProviderTests: XCTestCase {
         XCTAssertEqual(comics.count, 3)
     }
 
-    func testGetComicsFromMemory() throws {
+    func testGetAllComicsFromMemory() throws {
         // Given
         let sut = ComicDataProviderMockFactory.makeWithComicFromMemory()
         let dataSourceLayer = DataSourceLayer.memory
@@ -54,7 +54,7 @@ final class ComicDataProviderTests: XCTestCase {
         let promise = expectation(description: #function)
 
         // When
-        sut.getComics(forSeriesID: "1", fromDataSource: dataSourceLayer) {
+        sut.getAllComics(forSeriesID: "1", fromDataSource: dataSourceLayer) {
             result = $0
             promise.fulfill()
         }
@@ -70,7 +70,7 @@ final class ComicDataProviderTests: XCTestCase {
         XCTAssertEqual(comics.count, 1)
     }
 
-    func testGetComicFromEmptyMemory() throws {
+    func testGetAllComicsFromEmptyMemory() throws {
         // Given
         let sut = ComicDataProviderMockFactory.makeWithComicFromNetwork()
         let dataSourceLayer = DataSourceLayer.memory
@@ -79,7 +79,7 @@ final class ComicDataProviderTests: XCTestCase {
         let promise = expectation(description: #function)
 
         // When
-        sut.getComics(forSeriesID: "1", fromDataSource: dataSourceLayer) {
+        sut.getAllComics(forSeriesID: "1", fromDataSource: dataSourceLayer) {
             result = $0
             promise.fulfill()
         }
@@ -95,7 +95,7 @@ final class ComicDataProviderTests: XCTestCase {
         XCTAssertEqual(comics.count, 3)
     }
 
-    func testGetComicsFailure() {
+    func testGetAllComicsFailure() {
         // Given
         let sut = ComicDataProviderMockFactory.makeWithoutData()
         let dataSourceLayer = DataSourceLayer.network
@@ -104,7 +104,7 @@ final class ComicDataProviderTests: XCTestCase {
         let promise = expectation(description: #function)
 
         // When
-        sut.getComics(forSeriesID: "1", fromDataSource: dataSourceLayer) {
+        sut.getAllComics(forSeriesID: "1", fromDataSource: dataSourceLayer) {
             result = $0
             promise.fulfill()
         }

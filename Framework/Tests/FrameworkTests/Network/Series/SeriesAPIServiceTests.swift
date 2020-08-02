@@ -19,7 +19,7 @@ final class SeriesAPIServiceTests: XCTestCase {
         super.tearDown()
     }
 
-    func testGetCharacters() {
+    func testGetAllCharacters() {
         // Given
         let sut = SeriesAPIProvider()
 
@@ -27,7 +27,7 @@ final class SeriesAPIServiceTests: XCTestCase {
         let promise = expectation(description: #function)
 
         // When
-        sut.getSeries(forCharacterID: "1") {
+        sut.getAllSeries(forCharacterID: "1") {
             result = $0
             promise.fulfill()
         }

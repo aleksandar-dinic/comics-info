@@ -21,7 +21,7 @@ final class ComicUseCaseTests: XCTestCase {
         super.tearDown()
     }
 
-    func testGetComics() throws {
+    func testGetAllComics() throws {
         // Given
         let comicRepository = ComicRepositoryMockFactory.makeWithComics()
         let sut = ComicUseCase(comicRepository: comicRepository)
@@ -31,7 +31,7 @@ final class ComicUseCaseTests: XCTestCase {
         let promise = expectation(description: #function)
 
         // When
-        sut.getComics(forSeriesID: "1", fromDataSource: dataSourceLayer) {
+        sut.getAllComics(forSeriesID: "1", fromDataSource: dataSourceLayer) {
             result = $0
             promise.fulfill()
         }

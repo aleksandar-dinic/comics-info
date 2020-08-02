@@ -35,7 +35,7 @@ struct ComicsListView: View {
             }
         }
         .onAppear {
-            self.viewModel.loadComics(forSeriesID: self.series.identifier)
+            self.viewModel.loadAllComics(forSeriesID: self.series.identifier)
         }
         .alert(isPresented: $viewModel.showError) {
             Alert(title: Text(viewModel.errorMessage))

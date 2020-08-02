@@ -22,14 +22,14 @@ final class CharacterAPIWrapperTests: XCTestCase {
 
     // MARK: - Characters
 
-    func testGetCharactersSuccess() {
+    func testGetAllCharactersSuccess() {
         // Given
         let sut = CharacterAPIWrapperMockFactory.makeWithCharacters()
         var result: Result<[Domain.Character], Error>?
         let promise = expectation(description: #function)
 
         // When
-        sut.getCharacters {
+        sut.getAllCharacters {
             result = $0
             promise.fulfill()
         }
@@ -49,14 +49,14 @@ final class CharacterAPIWrapperTests: XCTestCase {
         }
     }
 
-    func testGetCharactersFailure() {
+    func testGetAllCharactersFailure() {
         // Given
         let sut = CharacterAPIWrapperMockFactory.makeWithoutData()
         var result: Result<[Domain.Character], Error>?
         let promise = expectation(description: #function)
 
         // When
-        sut.getCharacters {
+        sut.getAllCharacters {
             result = $0
             promise.fulfill()
         }
@@ -71,14 +71,14 @@ final class CharacterAPIWrapperTests: XCTestCase {
         XCTAssertThrowsError(try res.get())
     }
 
-    func testGetCharactersFailureBadData() {
+    func testGetAllCharactersFailureBadData() {
         // Given
         let sut = CharacterAPIWrapperMockFactory.makeWithCharactersBadData()
         var result: Result<[Domain.Character], Error>?
         let promise = expectation(description: #function)
 
         // When
-        sut.getCharacters {
+        sut.getAllCharacters {
             result = $0
             promise.fulfill()
         }
@@ -95,7 +95,7 @@ final class CharacterAPIWrapperTests: XCTestCase {
 
     // MARK: - Character
 
-    func testGetCharacterSuccess() {
+    func testGetAllCharacterSuccess() {
         // Given
         let sut = CharacterAPIWrapperMockFactory.makeWithCharacter()
         let characterID = "1"

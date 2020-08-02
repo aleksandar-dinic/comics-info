@@ -46,25 +46,25 @@ final class SeriesCacheProviderTests: XCTestCase {
         super.tearDown()
     }
 
-    func testGetSeriesForCharacterID() {
+    func testGetAllSeriesForCharacterID() {
         // Give
         let inMemoryCache = InMemoryCache(storage: givenSeries)
         let sut = SeriesCacheProvider(inMemoryCache)
 
         // When
-        let series = sut.getSeries(forCharacterID: "1")
+        let series = sut.getAllSeries(forCharacterID: "1")
 
         // Then
         XCTAssertEqual(series?.count, givenSeries.count)
     }
 
-    func testGetSeriesWithNonExistingCharacterID() {
+    func testGetAllSeriesWithNonExistingCharacterID() {
         // Give
         let inMemoryCache = InMemoryCache(storage: givenSeries)
         let sut = SeriesCacheProvider(inMemoryCache)
 
         // When
-        let series = sut.getSeries(forCharacterID: "-1")
+        let series = sut.getAllSeries(forCharacterID: "-1")
 
         // Then
         XCTAssertNil(series)

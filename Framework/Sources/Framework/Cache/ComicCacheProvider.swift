@@ -18,7 +18,7 @@ public struct ComicCacheProvider: CIData.ComicCacheService {
         self.inMemoryCache = inMemoryCache
     }
 
-    public func getComics(forSeriesID seriesID: String) -> [Domain.Comic]? {
+    public func getAllComics(forSeriesID seriesID: String) -> [Domain.Comic]? {
         let cache = inMemoryCache.values.filter { $0.seriesID.contains(seriesID)}
         return cache.isEmpty ? nil : cache
     }

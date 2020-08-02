@@ -17,11 +17,11 @@ public struct SeriesAPIWrapper: ResultDecoder {
         self.seriesAPIService = seriesAPIService
     }
 
-    func getSeries(
+    func getAllSeries(
         forCharacterID characterID: String,
         onComplete complete: @escaping (Result<[Domain.Series], Error>) -> Void
     ) {
-        seriesAPIService.getSeries(forCharacterID: characterID) { result in
+        seriesAPIService.getAllSeries(forCharacterID: characterID) { result in
             complete(self.decode(result))
         }
     }

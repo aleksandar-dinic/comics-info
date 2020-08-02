@@ -27,12 +27,12 @@ struct SeriesUseCaseAdapter: UseCases.SeriesUseCaseFactory {
         self.seriesCacheService = seriesCacheService
     }
 
-    mutating func getSeries(
+    mutating func getAllSeries(
         forCharacterID characterID: String,
         fromDataSource dataSource: CIData.DataSourceLayer,
         onComplete complete: @escaping (Result<[Series], Error>) -> Void
     ) {
-        useCase.getSeries(
+        useCase.getAllSeries(
             forCharacterID: characterID,
             fromDataSource: dataSource
         ) { result in

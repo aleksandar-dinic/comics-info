@@ -20,14 +20,14 @@ final class SeriesAPIWrapperTests: XCTestCase {
         super.tearDown()
     }
 
-    func testGetSeriesSuccess() throws {
+    func testGetAllSeriesSuccess() throws {
         // Given
         let sut = SeriesAPIWrapperMockFactory.makeWithSeries()
         var result: Result<[Domain.Series], Error>?
         let promise = expectation(description: #function)
 
         // When
-        sut.getSeries(forCharacterID: "1") {
+        sut.getAllSeries(forCharacterID: "1") {
             result = $0
             promise.fulfill()
         }
@@ -43,14 +43,14 @@ final class SeriesAPIWrapperTests: XCTestCase {
         XCTAssertEqual(series.count, 3)
     }
 
-    func testGetSeriesFailure() {
+    func testGetAllSeriesFailure() {
         // Given
         let sut = SeriesAPIWrapperMockFactory.makeWithoutData()
         var result: Result<[Domain.Series], Error>?
         let promise = expectation(description: #function)
 
         // When
-        sut.getSeries(forCharacterID: "1") {
+        sut.getAllSeries(forCharacterID: "1") {
             result = $0
             promise.fulfill()
         }
@@ -65,14 +65,14 @@ final class SeriesAPIWrapperTests: XCTestCase {
         XCTAssertThrowsError(try res.get())
     }
 
-    func testGetSeriesFailureBadData() {
+    func testGetAllSeriesFailureBadData() {
         // Given
         let sut = SeriesAPIWrapperMockFactory.makeWithSeriesBadData()
         var result: Result<[Domain.Series], Error>?
         let promise = expectation(description: #function)
 
         // When
-        sut.getSeries(forCharacterID: "1") {
+        sut.getAllSeries(forCharacterID: "1") {
             result = $0
             promise.fulfill()
         }

@@ -19,7 +19,7 @@ final class ComicAPIServiceTests: XCTestCase {
         super.tearDown()
     }
 
-    func testGetComics() {
+    func testGetAllComics() {
         // Given
         let sut = ComicAPIProvider()
 
@@ -27,7 +27,7 @@ final class ComicAPIServiceTests: XCTestCase {
         let promise = expectation(description: #function)
 
         // When
-        sut.getComics(forSeriesID: "1") {
+        sut.getAllComics(forSeriesID: "1") {
             result = $0
             promise.fulfill()
         }

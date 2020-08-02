@@ -35,7 +35,7 @@ struct SeriesListView: View {
             }
         }
         .onAppear {
-            self.viewModel.loadSeries(forCharacterID: self.character.identifier)
+            self.viewModel.loadAllSeries(forCharacterID: self.character.identifier)
         }
         .alert(isPresented: $viewModel.showError) {
             Alert(title: Text(viewModel.errorMessage))

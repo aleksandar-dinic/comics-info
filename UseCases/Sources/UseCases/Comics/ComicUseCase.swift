@@ -19,13 +19,13 @@ public final class ComicUseCase {
         self.comicRepository = comicRepository
     }
 
-    public func getComics(
+    public func getAllComics(
         forSeriesID seriesID: String,
         fromDataSource dataSource: DataSourceLayer,
         onComplete complete: @escaping (Result<[Domain.Comic], Error>) -> Void
     ) {
         DispatchQueue.global(qos: .utility).async { [weak self] in
-            self?.comicRepository.getComics(forSeriesID: seriesID, fromDataSource: dataSource) { result in
+            self?.comicRepository.getAllComics(forSeriesID: seriesID, fromDataSource: dataSource) { result in
                 DispatchQueue.main.async {
                     complete(result)
                 }

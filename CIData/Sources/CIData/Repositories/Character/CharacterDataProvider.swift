@@ -22,15 +22,15 @@ public struct CharacterDataProvider {
         self.characterCacheService = characterCacheService
     }
 
-    // Get Characters
+    // Get all characters
 
-    func getCharacters(
+    func getAllCharacters(
         fromDataSource dataSource: DataSourceLayer,
         onComplete complete: @escaping (Result<[Domain.Character], Error>) -> Void
     ) {
         switch dataSource {
         case .memory:
-            if let charactersFromMemory = getCharactersFromMemory() {
+            if let charactersFromMemory = getAllCharactersFromMemory() {
                 return complete(.success(charactersFromMemory))
             }
 
@@ -38,20 +38,20 @@ public struct CharacterDataProvider {
             break
         }
 
-        getCharactersFromNetwork(onComplete: complete)
+        getAllCharactersFromNetwork(onComplete: complete)
     }
 
-    private func getCharactersFromMemory() -> [Domain.Character]? {
-        guard let characters = characterCacheService.getCharacters() else {
+    private func getAllCharactersFromMemory() -> [Domain.Character]? {
+        guard let characters = characterCacheService.getAllCharacters() else {
             return nil
         }
         return characters.isEmpty ? nil : characters
     }
 
-    private func getCharactersFromNetwork(
+    private func getAllCharactersFromNetwork(
         onComplete complete: @escaping (Result<[Domain.Character], Error>) -> Void
     ) {
-        characterAPIWrapper.getCharacters { (result: Result<[Domain.Character], Error>) in
+        characterAPIWrapper.getAllCharacters { (result: Result<[Domain.Character], Error>) in
             switch result {
             case let .success(characters):
                 self.characterCacheService.save(characters: characters)

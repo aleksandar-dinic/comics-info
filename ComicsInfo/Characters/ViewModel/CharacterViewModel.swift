@@ -45,10 +45,10 @@ final class CharacterViewModel: ObservableObject {
         self.status = status
     }
 
-    func loadCharacters(fromDataSource dataSource: CIData.DataSourceLayer = .memory) {
+    func loadAllCharacters(fromDataSource dataSource: CIData.DataSourceLayer = .memory) {
         guard dataSource == .network || characters.isEmpty else { return }
 
-        characterUseCaseAdapter.getCharacters(fromDataSource: dataSource) { [weak self] result in
+        characterUseCaseAdapter.getAllCharacters(fromDataSource: dataSource) { [weak self] result in
             guard let self = self else { return }
 
             switch result {

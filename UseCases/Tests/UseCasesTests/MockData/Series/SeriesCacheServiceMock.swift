@@ -18,14 +18,14 @@ final class SeriesCacheServiceMock: SeriesCacheService {
         self.series = series
     }
 
-    func getSeries(forCharacterID characterID: String) -> [Domain.Series]? {
+    func getAllSeries(forCharacterID characterID: String) -> [Domain.Series]? {
         guard !series.isEmpty else {
             return nil
         }
         return Array(series.values.filter { $0.charactersID.contains(characterID) })
     }
 
-    func getSeries(withID seriesID: String) -> Domain.Series? {
+    func getAllSeries(withID seriesID: String) -> Domain.Series? {
         series[seriesID]
     }
 
