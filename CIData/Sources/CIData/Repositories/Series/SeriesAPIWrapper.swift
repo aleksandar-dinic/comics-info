@@ -18,10 +18,10 @@ public struct SeriesAPIWrapper: ResultDecoder {
     }
 
     func getAllSeries(
-        forCharacterID characterID: String,
+        forCharacters characters: [String],
         onComplete complete: @escaping (Result<[Domain.Series], Error>) -> Void
     ) {
-        seriesAPIService.getAllSeries(forCharacterID: characterID) { result in
+        seriesAPIService.getAllSeries(forCharacters: characters.joined(separator: ",")) { result in
             complete(self.decode(result))
         }
     }

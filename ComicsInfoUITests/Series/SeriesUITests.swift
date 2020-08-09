@@ -26,10 +26,8 @@ final class SeriesUITests: XCTestCase {
 
     func testSeriesList() {
         // Given
-        let characterList = app.tables.element
-        XCTAssertTrue(characterList.waitForExistence(timeout: 5))
-        characterList.cells.buttons.firstMatch.tap()
         let seriesList = app.tables.element
+        XCTAssertTrue(seriesList.waitForExistence(timeout: 5))
 
         // Then
         XCTAssertTrue(seriesList.waitForExistence(timeout: 5))
@@ -37,15 +35,12 @@ final class SeriesUITests: XCTestCase {
 
     func testTapOnSeries() {
         // When
-        let characterList = app.tables.element
-        XCTAssertTrue(characterList.waitForExistence(timeout: 5))
-        characterList.cells.buttons.firstMatch.tap()
         let seriesList = app.tables.element
         XCTAssertTrue(seriesList.waitForExistence(timeout: 5))
         seriesList.cells.buttons.firstMatch.tap()
 
         // Then
-        XCTAssertTrue(app.navigationBars.buttons["Spider-Man"].isHittable)
+        XCTAssertTrue(app.navigationBars.buttons["Discover"].isHittable)
     }
 
 }

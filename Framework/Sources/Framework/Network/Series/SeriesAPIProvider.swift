@@ -12,11 +12,11 @@ import Foundation
 public struct SeriesAPIProvider: CIData.SeriesAPIService {
 
     public func getAllSeries(
-        forCharacterID characterID: String,
+        forCharacters characters: String,
         onComplete complete: @escaping (Result<Data, Error>) -> Void
     ) {
         usleep(useconds_t(Int.random(in: 500_000...2_000_000)))
-        guard let data = SeriesMock(forCharacterID: characterID).data else {
+        guard let data = SeriesMock(forCharacters: characters).data else {
             return complete(.failure(NetworkError.noData))
         }
         complete(.success(data))

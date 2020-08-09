@@ -25,7 +25,7 @@ struct CharactersListView: View {
                 } else {
                     List(viewModel.characters, id: \.identifier) { character in
                         NavigationLink(
-                            destination: SeriesListView(forCharacter: character)
+                            destination: Text(character.name) // SeriesListView(forCharacter: character)
                         ) {
                             CharacterView(character: character)
                         }

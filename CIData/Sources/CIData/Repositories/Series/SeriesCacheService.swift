@@ -11,7 +11,7 @@ import Foundation
 
 public protocol SeriesCacheService {
 
-    func getAllSeries(forCharacterID characterID: String) -> [Domain.Series]?
+    func getAllSeries(forCharacters characters: [String]) -> [Domain.Series]?
 
     func getSeries(withID seriesID: String) -> Domain.Series?
 

@@ -69,6 +69,14 @@ extension Series {
 
 }
 
+extension Series: Hashable {
+
+    static func == (lhs: Series, rhs: Series) -> Bool {
+        lhs.identifier == rhs.identifier
+    }
+
+}
+
 #if DEBUG
 extension Series {
 

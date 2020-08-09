@@ -32,8 +32,16 @@ struct SeriesUseCaseAdapter: UseCases.SeriesUseCaseFactory {
         fromDataSource dataSource: CIData.DataSourceLayer,
         onComplete complete: @escaping (Result<[Series], Error>) -> Void
     ) {
+        getAllSeries(forCharacters: [characterID], fromDataSource: dataSource, onComplete: complete)
+    }
+
+    mutating func getAllSeries(
+        forCharacters characters: [String],
+        fromDataSource dataSource: CIData.DataSourceLayer,
+        onComplete complete: @escaping (Result<[Series], Error>) -> Void
+    ) {
         useCase.getAllSeries(
-            forCharacterID: characterID,
+            forCharacters: characters,
             fromDataSource: dataSource
         ) { result in
             complete(result.map { $0.map { Series(from: $0) } })

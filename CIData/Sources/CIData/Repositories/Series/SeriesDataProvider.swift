@@ -23,13 +23,13 @@ public struct SeriesDataProvider {
     }
 
     func getAllSeries(
-        forCharacterID characterID: String,
+        forCharacters characters: [String],
         fromDataSource dataSource: DataSourceLayer,
         onComplete complete: @escaping (Result<[Domain.Series], Error>) -> Void
     ) {
         switch dataSource {
         case .memory:
-            if let seriesFromMemory = getAllSeriesFromMemory(forCharacterID: characterID) {
+            if let seriesFromMemory = getAllSeriesFromMemory(forCharacters: characters) {
                 return complete(.success(seriesFromMemory))
             }
 
@@ -37,21 +37,21 @@ public struct SeriesDataProvider {
             break
         }
 
-        getAllSeriesFromNetwork(forCharacterID: characterID, onComplete: complete)
+        getAllSeriesFromNetwork(forCharacters: characters, onComplete: complete)
     }
 
-    private func getAllSeriesFromMemory(forCharacterID characterID: String) -> [Domain.Series]? {
-        guard let series = seriesCacheService.getAllSeries(forCharacterID: characterID) else {
+    private func getAllSeriesFromMemory(forCharacters characters: [String]) -> [Domain.Series]? {
+        guard let series = seriesCacheService.getAllSeries(forCharacters: characters) else {
             return nil
         }
         return series.isEmpty ? nil : series
     }
 
     private func getAllSeriesFromNetwork(
-        forCharacterID characterID: String,
+        forCharacters characters: [String],
         onComplete complete: @escaping (Result<[Domain.Series], Error>) -> Void
     ) {
-        seriesAPIWrapper.getAllSeries(forCharacterID: characterID) { (result: Result<[Domain.Series], Error>) in
+        seriesAPIWrapper.getAllSeries(forCharacters: characters) { (result: Result<[Domain.Series], Error>) in
             switch result {
             case let .success(series):
                 self.seriesCacheService.save(series: series)
