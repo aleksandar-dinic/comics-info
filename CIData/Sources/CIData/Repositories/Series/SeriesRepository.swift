@@ -18,11 +18,11 @@ public protocol SeriesRepository {
     /// Gets all series
     ///
     /// - Parameters:
-    ///   - characterID: Character ID
+    ///   - characters: List of characters
     ///   - dataSource: Layer of data source
     ///   - complete: Result who contains Series in Success, or Error in Failure.
     func getAllSeries(
-        forCharacterID characterID: String,
+        forCharacters characters: [String],
         fromDataSource dataSource: DataSourceLayer,
         onComplete complete: @escaping (Result<[Domain.Series], Error>) -> Void
     )

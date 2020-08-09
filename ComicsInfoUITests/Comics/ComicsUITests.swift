@@ -26,9 +26,6 @@ final class ComicsUITests: XCTestCase {
 
     func testComicsList() {
         // Given
-        let characterList = app.tables.element
-        XCTAssertTrue(characterList.waitForExistence(timeout: 5))
-        characterList.cells.buttons.firstMatch.tap()
         let seriesList = app.tables.element
         XCTAssertTrue(seriesList.waitForExistence(timeout: 5))
         seriesList.cells.buttons.firstMatch.tap()
@@ -40,9 +37,6 @@ final class ComicsUITests: XCTestCase {
 
     func testTapOnComic() {
         // When
-        let characterList = app.tables.element
-        XCTAssertTrue(characterList.waitForExistence(timeout: 5))
-        characterList.cells.buttons.firstMatch.tap()
         let seriesList = app.tables.element
         XCTAssertTrue(seriesList.waitForExistence(timeout: 5))
         seriesList.cells.buttons.firstMatch.tap()
