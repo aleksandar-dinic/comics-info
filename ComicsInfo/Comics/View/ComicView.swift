@@ -19,6 +19,7 @@ struct ComicView: View {
                 imageName: comic.thumbnail,
                 systemName: comic.thumbnailSystemName
             )
+            .frame(width: 100, height: 150)
 
             VStack {
                 Spacer()
@@ -32,7 +33,7 @@ struct ComicView: View {
                     .frame(maxWidth: .infinity)
                     .font(.footnote)
                 Spacer()
-                Text(comic.publishedDate)
+                Text("(\(comic.publishedDate))")
                     .frame(maxWidth: .infinity)
                     .font(.footnote)
                 Spacer()
