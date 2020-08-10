@@ -56,10 +56,8 @@ struct Comic: Codable {
     var publishedDate: String {
         guard let published = published else { return "" }
         let formatter = DateFormatter()
-        formatter.formatterBehavior = .behavior10_4
-        formatter.dateStyle = .medium
-        formatter.timeStyle = .none
-        return "(\(formatter.string(from: published)))"
+        formatter.dateFormat = "MMMM, YYY"
+        return formatter.string(from: published)
     }
 
 }

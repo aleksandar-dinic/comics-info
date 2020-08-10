@@ -20,12 +20,12 @@ public final class SeriesUseCase {
     }
 
     public func getAllSeries(
-        forCharacterID characterID: String,
+        forCharacters characters: [String],
         fromDataSource dataSource: DataSourceLayer,
         onComplete complete: @escaping (Result<[Domain.Series], Error>) -> Void
     ) {
         DispatchQueue.global(qos: .utility).async { [weak self] in
-            self?.seriesRepository.getAllSeries(forCharacterID: characterID, fromDataSource: dataSource) { result in
+            self?.seriesRepository.getAllSeries(forCharacters: characters, fromDataSource: dataSource) { result in
                 DispatchQueue.main.async {
                     complete(result)
                 }

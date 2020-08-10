@@ -26,6 +26,9 @@ struct Character {
     ///  A short bio or description of the character
     let description: String
 
+    /// A resource list containing series for this character.
+    var series: [Series]
+
     /// The representative system image for this character.
     var thumbnailSystemName: String {
         "person.crop.circle"
@@ -41,6 +44,15 @@ extension Character {
         name = character.name
         thumbnail = character.thumbnail ?? ""
         description = character.description ?? ""
+        series = [Series]()
+    }
+
+}
+
+extension Character: Hashable {
+
+    static func == (lhs: Character, rhs: Character) -> Bool {
+        lhs.identifier == rhs.identifier
     }
 
 }
@@ -53,7 +65,12 @@ extension Character {
         popularity: 0,
         name: "Flash",
         thumbnail: "Flash",
-        description: ""
+        description: "",
+        series: [
+            Series.theFlash,
+            Series.theFlashVol2,
+            Series.theFlashVol3
+        ]
     )
 
     static let spiderMan = Character(
@@ -66,7 +83,14 @@ extension Character {
             strength and powers of a spider. Adopting the name Spider-Man, Peter hoped to start a career using his \
             new abilities. Taught that with great power comes great responsibility, Spidey has vowed to use his powers \
             to help people.
-            """
+            """,
+        series: [
+            Series.amazingSpiderMan,
+            Series.peterParkerTheSpectacularSpiderMan,
+            Series.webOfSpiderMan,
+            Series.theSpectacularSpiderMan,
+            Series.amazingSpiderManVol5
+        ]
     )
 
     static let hulk = Character(
@@ -78,7 +102,8 @@ extension Character {
             Caught in a gamma bomb explosion while trying to save the life of a teenager, Dr. Bruce \
             Banner was transformed into the incredibly powerful creature called the Hulk. An all too often \
             misunderstood hero, the angrier the Hulk gets, the stronger the Hulk gets.
-            """
+            """,
+        series: []
     )
 
     static let ironMan = Character(
@@ -90,7 +115,8 @@ extension Character {
             Wounded, captured and forced to build a weapon by his enemies, billionaire industrialist \
             Tony Stark instead created an advanced suit of armor to save his life and escape captivity. Now with a new \
             outlook on life, Tony uses his money and intelligence to make the world a safer, better place as Iron Man.
-            """
+            """,
+        series: []
     )
 
     static let silverSurfer = Character(
@@ -103,7 +129,8 @@ extension Character {
             stood up for his home planet and offered to work for Galactus, finding him new planets to eat, in exchange \
             for saving his own. Years later, thse Surfer has protected Earth and many other planets, becoming one of \
             the greatest heroes in the universe.
-            """
+            """,
+        series: []
     )
 
     static let captainAmerica = Character(
@@ -115,7 +142,8 @@ extension Character {
             Vowing to serve his country any way he could, young Steve Rogers took the super soldier \
             serum to become America's one-man army. Fighting for the red, white and blue for over 60 years, Captain \
             America is the living, breathing symbol of freedom and liberty.
-            """
+            """,
+        series: []
     )
 
     static let unknown = Character(
@@ -123,7 +151,8 @@ extension Character {
         popularity: 6,
         name: "Unknown",
         thumbnail: "",
-        description: ""
+        description: "",
+        series: []
     )
 
 }

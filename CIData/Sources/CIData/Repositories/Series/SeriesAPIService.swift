@@ -11,7 +11,7 @@ import Foundation
 public protocol SeriesAPIService {
 
     func getAllSeries(
-        forCharacterID characterID: String,
+        forCharacters characters: String,
         onComplete complete: @escaping (Result<Data, Error>) -> Void
     )
 
