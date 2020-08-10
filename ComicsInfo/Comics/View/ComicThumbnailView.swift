@@ -17,12 +17,12 @@ struct ComicThumbnailView: View {
         thumbnailImage()
             .resizable()
             .aspectRatio(contentMode: .fit)
-            .frame(width: 100, height: 150)
             .cornerRadius(8)
             .padding(1)
             .background(Color.secondary)
             .cornerRadius(10)
             .shadow(radius: 8)
+            .accessibility(identifier: "ComicThumbnailView")
     }
 
     private func thumbnailImage() -> Image {

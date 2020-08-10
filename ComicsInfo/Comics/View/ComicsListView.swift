@@ -28,7 +28,7 @@ struct ComicsListView: View {
                     .font(.title)
             } else {
                 List(viewModel.comics, id: \.identifier) { comic in
-                    NavigationLink(destination: Text(comic.description)) {
+                    NavigationLink(destination: ComicInfoView(series: self.series, comic: comic)) {
                         ComicView(series: self.series, comic: comic)
                     }
                 }
