@@ -23,6 +23,7 @@ struct DescriptionView: View {
                 .font(.body)
         }
         .padding()
+        .accessibility(identifier: "DescriptionView")
     }
 
 }

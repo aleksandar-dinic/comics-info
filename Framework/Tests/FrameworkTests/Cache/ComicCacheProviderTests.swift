@@ -31,7 +31,8 @@ final class ComicCacheProviderTests: XCTestCase {
             collectedIssuesIdentifier: nil,
             images: nil,
             seriesID: ["1"],
-            charactersID: ["1"]
+            charactersID: ["1"],
+            published: nil
         )
         let comic2 = Comic(
             identifier: "2",
@@ -48,7 +49,8 @@ final class ComicCacheProviderTests: XCTestCase {
             collectedIssuesIdentifier: nil,
             images: nil,
             seriesID: ["1"],
-            charactersID: ["1"]
+            charactersID: ["1"],
+            published: nil
         )
         givenComics = ["1": comic1, "2": comic2]
     }

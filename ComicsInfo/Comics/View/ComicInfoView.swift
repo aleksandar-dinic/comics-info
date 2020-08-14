@@ -29,11 +29,13 @@ struct ComicInfoView: View {
                             .font(.subheadline)
                             .multilineTextAlignment(.center)
                             .frame(maxWidth: .infinity)
+                            .accessibility(identifier: "Title")
                         Spacer()
                         Text(comic.publishedDate)
                             .font(.caption)
                             .frame(maxWidth: .infinity)
                             .padding()
+                            .accessibility(identifier: "PublishedDate")
                     }
                     .frame(minWidth: 0, maxWidth: .infinity)
                 }

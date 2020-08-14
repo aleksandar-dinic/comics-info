@@ -23,14 +23,21 @@ final class ComicInfoUITests: XCTestCase {
     }
 
     func testComicInfoThumbnailExists() {
-        // Given
         let seriesList = app.tables.element
         seriesList.cells.buttons.firstMatch.tap()
         let comicsList = app.tables.element
         comicsList.cells.buttons.firstMatch.tap()
 
-        // Then
-        XCTAssertTrue(app.scrollViews.otherElements.images["ComicThumbnailView"].exists)
+        XCTAssertTrue(app.scrollViews.images["ComicThumbnailView"].exists)
+    }
+
+    func testComicInfoTitleExists() {
+        let seriesList = app.tables.element
+        seriesList.cells.buttons.firstMatch.tap()
+        let comicsList = app.tables.element
+        comicsList.cells.buttons.firstMatch.tap()
+
+        XCTAssertTrue(app.staticTexts["Title"].exists)
     }
 
 }

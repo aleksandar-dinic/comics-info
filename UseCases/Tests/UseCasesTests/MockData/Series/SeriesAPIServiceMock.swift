@@ -18,7 +18,7 @@ final class SeriesAPIServiceMock: SeriesAPIService {
     }
 
     func getAllSeries(
-        forCharacterID characterID: String,
+        forCharacters characterID: String,
         onComplete complete: @escaping (Result<Data, Error>) -> Void
     ) {
         guard let data = data else {

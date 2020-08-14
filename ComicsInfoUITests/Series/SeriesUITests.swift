@@ -12,35 +12,22 @@ final class SeriesUITests: XCTestCase {
 
     private var app: XCUIApplication!
 
-    override func setUp() {
-        super.setUp()
+    override func setUpWithError() throws {
+        continueAfterFailure = false
         app = XCUIApplication()
         app.launch()
-        continueAfterFailure = false
     }
 
-    override func tearDown() {
+    override func tearDownWithError() throws {
         app = nil
-        super.tearDown()
     }
 
     func testSeriesList() {
-        // Given
-        let seriesList = app.tables.element
-        XCTAssertTrue(seriesList.waitForExistence(timeout: 5))
-
-        // Then
-        XCTAssertTrue(seriesList.waitForExistence(timeout: 5))
+        XCTAssertTrue(app.tables.element.waitForExistence(timeout: 5))
     }
 
     func testTapOnSeries() {
-        // When
-        let seriesList = app.tables.element
-        XCTAssertTrue(seriesList.waitForExistence(timeout: 5))
-        seriesList.cells.buttons.firstMatch.tap()
-
-        // Then
-        XCTAssertTrue(app.navigationBars.buttons["Discover"].isHittable)
+        XCTAssertTrue(app.tables.cells.buttons.firstMatch.isHittable)
     }
 
 }

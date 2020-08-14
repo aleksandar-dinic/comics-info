@@ -27,7 +27,7 @@ final class SeriesAPIWrapperTests: XCTestCase {
         let promise = expectation(description: #function)
 
         // When
-        sut.getAllSeries(forCharacterID: "1") {
+        sut.getAllSeries(forCharacters: ["1"]) {
             result = $0
             promise.fulfill()
         }
@@ -50,7 +50,7 @@ final class SeriesAPIWrapperTests: XCTestCase {
         let promise = expectation(description: #function)
 
         // When
-        sut.getAllSeries(forCharacterID: "1") {
+        sut.getAllSeries(forCharacters: ["1"]) {
             result = $0
             promise.fulfill()
         }
@@ -72,7 +72,7 @@ final class SeriesAPIWrapperTests: XCTestCase {
         let promise = expectation(description: #function)
 
         // When
-        sut.getAllSeries(forCharacterID: "1") {
+        sut.getAllSeries(forCharacters: ["1"]) {
             result = $0
             promise.fulfill()
         }

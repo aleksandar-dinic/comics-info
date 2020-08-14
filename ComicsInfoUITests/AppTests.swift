@@ -22,8 +22,8 @@ class AppTests: XCTestCase {
     }
 
     func testLaunchPerformance() {
-        measure(metrics: [XCTOSSignpostMetric.applicationLaunch]) {
-          app.launch()
+        measure(metrics: [XCTApplicationLaunchMetric()]) {
+            app.launch()
         }
     }
 

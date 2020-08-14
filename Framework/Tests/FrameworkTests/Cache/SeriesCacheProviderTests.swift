@@ -52,7 +52,7 @@ final class SeriesCacheProviderTests: XCTestCase {
         let sut = SeriesCacheProvider(inMemoryCache)
 
         // When
-        let series = sut.getAllSeries(forCharacterID: "1")
+        let series = sut.getAllSeries(forCharacters: ["1"])
 
         // Then
         XCTAssertEqual(series?.count, givenSeries.count)
@@ -64,7 +64,7 @@ final class SeriesCacheProviderTests: XCTestCase {
         let sut = SeriesCacheProvider(inMemoryCache)
 
         // When
-        let series = sut.getAllSeries(forCharacterID: "-1")
+        let series = sut.getAllSeries(forCharacters: ["-1"])
 
         // Then
         XCTAssertNil(series)

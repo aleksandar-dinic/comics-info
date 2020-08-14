@@ -29,7 +29,7 @@ final class SeriesDataProviderTests: XCTestCase {
         let promise = expectation(description: #function)
 
         // When
-        sut.getAllSeries(forCharacterID: "1", fromDataSource: dataSourceLayer) {
+        sut.getAllSeries(forCharacters: ["1"], fromDataSource: dataSourceLayer) {
             result = $0
             promise.fulfill()
         }
@@ -54,7 +54,7 @@ final class SeriesDataProviderTests: XCTestCase {
         let promise = expectation(description: #function)
 
         // When
-        sut.getAllSeries(forCharacterID: "1", fromDataSource: dataSourceLayer) {
+        sut.getAllSeries(forCharacters: ["1"], fromDataSource: dataSourceLayer) {
             result = $0
             promise.fulfill()
         }
@@ -79,7 +79,7 @@ final class SeriesDataProviderTests: XCTestCase {
         let promise = expectation(description: #function)
 
         // When
-        sut.getAllSeries(forCharacterID: "1", fromDataSource: dataSourceLayer) {
+        sut.getAllSeries(forCharacters: ["1"], fromDataSource: dataSourceLayer) {
             result = $0
             promise.fulfill()
         }
@@ -104,7 +104,7 @@ final class SeriesDataProviderTests: XCTestCase {
         let promise = expectation(description: #function)
 
         // When
-        sut.getAllSeries(forCharacterID: "1", fromDataSource: dataSourceLayer) {
+        sut.getAllSeries(forCharacters: ["1"], fromDataSource: dataSourceLayer) {
             result = $0
             promise.fulfill()
         }

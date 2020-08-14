@@ -1,3 +1,3 @@
 # Domain
 
-Domain or business logic. 
+A description of this package.

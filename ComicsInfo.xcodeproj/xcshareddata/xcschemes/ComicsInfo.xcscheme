@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1140"
+   LastUpgradeVersion = "1200"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "64DCD68B2443527B004BF449"
+               BlueprintIdentifier = "649D5C7B24E1F18B004C6328"
                BuildableName = "ComicsInfo.app"
                BlueprintName = "ComicsInfo"
                ReferencedContainer = "container:ComicsInfo.xcodeproj">
@@ -27,14 +27,13 @@
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES"
-      enableThreadSanitizer = "YES"
       codeCoverageEnabled = "YES">
       <Testables>
          <TestableReference
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "64DCD6A12443527C004BF449"
+               BlueprintIdentifier = "649D5C8C24E1F18C004C6328"
                BuildableName = "ComicsInfoTests.xctest"
                BlueprintName = "ComicsInfoTests"
                ReferencedContainer = "container:ComicsInfo.xcodeproj">
@@ -44,7 +43,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "64DCD6AC2443527C004BF449"
+               BlueprintIdentifier = "649D5C9724E1F18C004C6328"
                BuildableName = "ComicsInfoUITests.xctest"
                BlueprintName = "ComicsInfoUITests"
                ReferencedContainer = "container:ComicsInfo.xcodeproj">
@@ -66,7 +65,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "64DCD68B2443527B004BF449"
+            BlueprintIdentifier = "649D5C7B24E1F18B004C6328"
             BuildableName = "ComicsInfo.app"
             BlueprintName = "ComicsInfo"
             ReferencedContainer = "container:ComicsInfo.xcodeproj">
@@ -83,7 +82,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "64DCD68B2443527B004BF449"
+            BlueprintIdentifier = "649D5C7B24E1F18B004C6328"
             BuildableName = "ComicsInfo.app"
             BlueprintName = "ComicsInfo"
             ReferencedContainer = "container:ComicsInfo.xcodeproj">
