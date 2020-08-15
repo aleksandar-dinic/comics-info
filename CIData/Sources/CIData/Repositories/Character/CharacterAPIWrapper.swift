@@ -21,7 +21,7 @@ public struct CharacterAPIWrapper: ResultDecoder {
         onComplete complete: @escaping (Result<[Domain.Character], Error>) -> Void
     ) {
         characterAPIService.getAllCharacters { result in
-            complete(self.decode(result))
+            complete(decode(result))
         }
     }
 
@@ -30,7 +30,7 @@ public struct CharacterAPIWrapper: ResultDecoder {
         onComplete complete: @escaping (Result<Domain.Character, Error>) -> Void
     ) {
         characterAPIService.getCharacter(withID: characterID) { result in
-            complete(self.decode(result))
+            complete(decode(result))
         }
     }
 

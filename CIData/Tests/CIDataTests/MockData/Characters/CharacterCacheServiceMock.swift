@@ -61,7 +61,7 @@ extension CharacterCacheServiceMock {
 
         do {
             let character = try JSONDecoder().decode(Domain.Character.self, from: data)
-            self.characters[character.identifier] = character
+            characters[character.identifier] = character
         } catch {
             print(error)
         }

@@ -54,7 +54,7 @@ public struct CharacterDataProvider {
         characterAPIWrapper.getAllCharacters { (result: Result<[Domain.Character], Error>) in
             switch result {
             case let .success(characters):
-                self.characterCacheService.save(characters: characters)
+                characterCacheService.save(characters: characters)
                 complete(.success(characters))
 
             case let .failure(error):
@@ -92,7 +92,7 @@ public struct CharacterDataProvider {
         characterAPIWrapper.getCharacter(withID: characterID) { (result: Result<Domain.Character, Error>) in
             switch result {
             case let .success(character):
-                self.characterCacheService.save(characters: [character])
+                characterCacheService.save(characters: [character])
                 complete(.success(character))
 
             case let .failure(error):

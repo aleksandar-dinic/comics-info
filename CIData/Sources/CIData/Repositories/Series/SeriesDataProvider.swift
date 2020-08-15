@@ -54,7 +54,7 @@ public struct SeriesDataProvider {
         seriesAPIWrapper.getAllSeries(forCharacters: characters) { (result: Result<[Domain.Series], Error>) in
             switch result {
             case let .success(series):
-                self.seriesCacheService.save(series: series)
+                seriesCacheService.save(series: series)
                 complete(.success(series))
 
             case let .failure(error):

@@ -22,7 +22,7 @@ public struct ComicAPIWrapper: ResultDecoder {
         onComplete complete: @escaping (Result<[Domain.Comic], Error>) -> Void
     ) {
         comicAPIService.getAllComics(forSeriesID: seriesID) { result in
-            complete(self.decode(result))
+            complete(decode(result))
         }
     }
 

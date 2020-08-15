@@ -11,7 +11,6 @@ import SwiftUI
 struct SeriesListView: View {
 
     @ObservedObject private var viewModel: CharactersWithSeriesViewModel
-     @State private var favoriteColor = 0
 
     init(_ viewModel: CharactersWithSeriesViewModel = CharactersWithSeriesViewModel()) {
         self.viewModel = viewModel
@@ -19,34 +18,34 @@ struct SeriesListView: View {
 
     var body: some View {
         NavigationView {
-            Group {
-                if viewModel.status == .loading {
+            if viewModel.status == .loading {
+                ProgressView() {
                     Text("Loading...")
                         .font(.title)
-                } else {
-                    List {
-                        ForEach(viewModel.characters, id: \.identifier) { character in
-                            Section(header: Text(character.name)) {
-                                ForEach(character.series, id: \.identifier) { series in
-                                    NavigationLink(
-                                        destination: ComicsListView(forSeries: series)
-                                    ) {
-                                        SeriesView(series: series)
-                                    }
-
+                }
+            } else {
+                List {
+                    ForEach(viewModel.characters, id: \.identifier) { character in
+                        Section(header: Text(character.name)) {
+                            ForEach(character.series, id: \.identifier) { series in
+                                NavigationLink(
+                                    destination: ComicsListView(forSeries: series)
+                                ) {
+                                    SeriesView(series: series)
                                 }
+
                             }
                         }
                     }
                 }
+                .navigationBarTitle("Discover")
             }
-            .onAppear {
-                self.viewModel.loadAllSeries()
-            }
-            .alert(isPresented: $viewModel.showError) {
-                Alert(title: Text(viewModel.errorMessage))
-            }
-            .navigationBarTitle("Discover")
+        }
+        .onAppear {
+            viewModel.loadAllSeries()
+        }
+        .alert(isPresented: $viewModel.showError) {
+            Alert(title: Text(viewModel.errorMessage))
         }
     }
 

@@ -54,7 +54,7 @@ public struct ComicDataProvider {
         comicAPIWrapper.getAllComics(forSeriesID: seriesID) { (result: Result<[Domain.Comic], Error>) in
             switch result {
             case let .success(comics):
-                self.comicCacheService.save(comics: comics)
+                comicCacheService.save(comics: comics)
                 complete(.success(comics))
 
             case let .failure(error):

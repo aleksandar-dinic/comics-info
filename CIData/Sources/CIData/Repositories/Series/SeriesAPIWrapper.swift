@@ -22,7 +22,7 @@ public struct SeriesAPIWrapper: ResultDecoder {
         onComplete complete: @escaping (Result<[Domain.Series], Error>) -> Void
     ) {
         seriesAPIService.getAllSeries(forCharacters: characters.joined(separator: ",")) { result in
-            complete(self.decode(result))
+            complete(decode(result))
         }
     }
 

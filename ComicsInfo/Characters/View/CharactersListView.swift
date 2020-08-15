@@ -18,27 +18,25 @@ struct CharactersListView: View {
 
     var body: some View {
         NavigationView {
-            Group {
-                if viewModel.status == .loading {
-                    Text("Loading...")
-                        .font(.title)
-                } else {
-                    List(viewModel.characters, id: \.identifier) { character in
-                        NavigationLink(
-                            destination: Text(character.name) // SeriesListView(forCharacter: character)
-                        ) {
-                            CharacterView(character: character)
-                        }
+            if viewModel.status == .loading {
+                Text("Loading...")
+                    .font(.title)
+            } else {
+                List(viewModel.characters, id: \.identifier) { character in
+                    NavigationLink(
+                        destination: Text(character.name) // SeriesListView(forCharacter: character)
+                    ) {
+                        CharacterView(character: character)
                     }
                 }
+                .navigationBarTitle("Characters")
             }
-            .onAppear {
-                self.viewModel.loadAllCharacters()
-            }
-            .alert(isPresented: $viewModel.showError) {
-                Alert(title: Text(viewModel.errorMessage))
-            }
-            .navigationBarTitle("Characters")
+        }
+        .onAppear {
+            viewModel.loadAllCharacters()
+        }
+        .alert(isPresented: $viewModel.showError) {
+            Alert(title: Text(viewModel.errorMessage))
         }
     }
 
