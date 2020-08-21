@@ -42,7 +42,8 @@ struct CharacterThumbnailView_Previews: PreviewProvider {
             imageName: "SpiderMan",
             systemName: "person.crop.circle"
         )
-            .previewLayout(.fixed(width: 80, height: 80))
+        .padding()
+        .previewLayout(.sizeThatFits)
     }
 
 }

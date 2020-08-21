@@ -43,7 +43,8 @@ struct DescriptionView_Previews: PreviewProvider {
 
     static var previews: some View {
         DescriptionView(description: description)
-            .previewLayout(.fixed(width: 320, height: 500))
+            .padding()
+            .previewLayout(.sizeThatFits)
     }
 
 }

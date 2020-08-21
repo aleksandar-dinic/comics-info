@@ -42,7 +42,8 @@ struct SeriesThumbnailView_Previews: PreviewProvider {
             imageName: "TheFlash",
             systemName: "photo.on.rectangle"
         )
-            .previewLayout(.fixed(width: 105, height: 155))
+        .padding()
+        .previewLayout(.sizeThatFits)
     }
 
 }

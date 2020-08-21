@@ -36,7 +36,8 @@ struct CharacterView_Previews: PreviewProvider {
     static var previews: some View {
         ForEach(ColorScheme.allCases, id: \.self) { color in
             CharacterView(character: Character.spiderMan)
-                .previewLayout(.fixed(width: 320, height: 79))
+                .padding()
+                .previewLayout(.sizeThatFits)
                 .previewDisplayName("\(color)")
                 .environment(\.colorScheme, color)
         }

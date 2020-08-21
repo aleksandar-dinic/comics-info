@@ -42,7 +42,8 @@ struct SeriesView_Previews: PreviewProvider {
     static var previews: some View {
         ForEach(ColorScheme.allCases, id: \.self) { color in
             SeriesView(series: Series.theFlash)
-                .previewLayout(.fixed(width: 320, height: 154))
+                .padding()
+                .previewLayout(.sizeThatFits)
                 .previewDisplayName("\(color)")
                 .environment(\.colorScheme, color)
         }
