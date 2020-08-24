@@ -11,6 +11,7 @@ import Foundation
 public protocol CharacterAPIWrapperFactory {
 
     var characterAPIService: CharacterAPIService { get }
+    var characterDecoderService: CharacterDecoderService { get }
 
     func makeCharacterAPIWrapper() -> CharacterAPIWrapper
 
@@ -19,7 +20,10 @@ public protocol CharacterAPIWrapperFactory {
 extension CharacterAPIWrapperFactory {
 
     public func makeCharacterAPIWrapper() -> CharacterAPIWrapper {
-        CharacterAPIWrapper(characterAPIService: characterAPIService)
+        CharacterAPIWrapper(
+            characterAPIService: characterAPIService,
+            characterDecoderService: characterDecoderService
+        )
     }
 
 }

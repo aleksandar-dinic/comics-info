@@ -6,7 +6,6 @@
 //  Copyright © 2020 Aleksandar Dinic. All rights reserved.
 //
 
-import struct Domain.Character
 import Foundation
 
 public protocol CharacterRepository {
@@ -22,7 +21,7 @@ public protocol CharacterRepository {
     ///   - complete: Result who contains Characters in Success, or Error in Failure
     func getAllCharacters(
         fromDataSource dataSource: DataSourceLayer,
-        onComplete complete: @escaping (Result<[Domain.Character], Error>) -> Void
+        onComplete complete: @escaping (Result<[Character], Error>) -> Void
     )
 
     /// Gets character
@@ -34,7 +33,7 @@ public protocol CharacterRepository {
     func getCharacter(
         withID characterID: String,
         fromDataSource dataSource: DataSourceLayer,
-        onComplete complete: @escaping (Result<Domain.Character, Error>) -> Void
+        onComplete complete: @escaping (Result<Character, Error>) -> Void
     )
 
 }

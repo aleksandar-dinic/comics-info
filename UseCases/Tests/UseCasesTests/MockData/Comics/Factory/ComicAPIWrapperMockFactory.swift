@@ -13,8 +13,12 @@ struct ComicAPIWrapperMockFactory {
 
     static func makeWithComics() -> ComicAPIWrapper {
         let comicAPIServiceMock = ComicAPIServiceMock(ComicsMock.comics)
+        let comicDecoderMock = ComicDecoderMock(ComicsMock.domainComics)
 
-        return ComicAPIWrapper(comicAPIService: comicAPIServiceMock)
+        return ComicAPIWrapper(
+            comicAPIService: comicAPIServiceMock,
+            comicDecoderService: comicDecoderMock
+        )
     }
 
 }

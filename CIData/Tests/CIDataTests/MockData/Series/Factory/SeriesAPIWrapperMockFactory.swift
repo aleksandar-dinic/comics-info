@@ -12,21 +12,33 @@ import Foundation
 struct SeriesAPIWrapperMockFactory {
 
     static func makeWithSeries() -> SeriesAPIWrapper {
-        let seriesAPIServiceMock = SeriesAPIServiceMock(SeriesMock.series)
+        let seriesAPIServiceMock = SeriesAPIServiceMock(SeriesMock.seriesData)
+        let seriesDecoderMock = SeriesDecoderMock(SeriesMock.domainSeries)
 
-        return SeriesAPIWrapper(seriesAPIService: seriesAPIServiceMock)
+        return SeriesAPIWrapper(
+            seriesAPIService: seriesAPIServiceMock,
+            seriesDecoderService: seriesDecoderMock
+        )
     }
 
     static func makeWithoutData() -> SeriesAPIWrapper {
         let seriesAPIServiceMock = SeriesAPIServiceMock()
+        let seriesDecoderMock = SeriesDecoderMock()
 
-        return SeriesAPIWrapper(seriesAPIService: seriesAPIServiceMock)
+        return SeriesAPIWrapper(
+            seriesAPIService: seriesAPIServiceMock,
+            seriesDecoderService: seriesDecoderMock
+        )
     }
 
     static func makeWithSeriesBadData() -> SeriesAPIWrapper {
         let seriesAPIServiceMock = SeriesAPIServiceMock(SeriesMock.seriesBadData)
+        let seriesDecoderMock = SeriesDecoderMock()
 
-        return SeriesAPIWrapper(seriesAPIService: seriesAPIServiceMock)
+        return SeriesAPIWrapper(
+            seriesAPIService: seriesAPIServiceMock,
+            seriesDecoderService: seriesDecoderMock
+        )
     }
 
 }

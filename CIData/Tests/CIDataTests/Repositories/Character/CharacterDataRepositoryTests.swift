@@ -6,7 +6,6 @@
 //  Copyright © 2020 Aleksandar Dinic. All rights reserved.
 //
 
-import struct Domain.Character
 @testable import CIData
 import XCTest
 
@@ -28,7 +27,7 @@ final class CharacterDataRepositoryTests: XCTestCase {
         let sut = CharacterDataRepository(characterDataProvider: characterDataProvider)
         let dataSourceLayer = DataSourceLayer.network
 
-        var result: Result<[Domain.Character], Error>?
+        var result: Result<[Character], Error>?
         let promise = expectation(description: #function)
 
         // When
@@ -61,7 +60,7 @@ final class CharacterDataRepositoryTests: XCTestCase {
         let characterID = "1"
         let dataSourceLayer = DataSourceLayer.network
 
-        var result: Result<Domain.Character, Error>?
+        var result: Result<Character, Error>?
         let promise = expectation(description: #function)
 
         // When

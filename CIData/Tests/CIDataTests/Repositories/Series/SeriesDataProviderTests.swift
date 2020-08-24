@@ -6,7 +6,6 @@
 //  Copyright © 2020 Aleksandar Dinic. All rights reserved.
 //
 
-import struct Domain.Series
 @testable import CIData
 import XCTest
 
@@ -25,7 +24,7 @@ final class SeriesDataProviderTests: XCTestCase {
         let sut = SeriesDataProviderMockFactory.makeWithSeriesFromNetwork()
         let dataSourceLayer = DataSourceLayer.network
 
-        var result: Result<[Domain.Series], Error>?
+        var result: Result<[Series], Error>?
         let promise = expectation(description: #function)
 
         // When
@@ -50,7 +49,7 @@ final class SeriesDataProviderTests: XCTestCase {
         let sut = SeriesDataProviderMockFactory.makeWithSeriesFromMemory()
         let dataSourceLayer = DataSourceLayer.memory
 
-        var result: Result<[Domain.Series], Error>?
+        var result: Result<[Series], Error>?
         let promise = expectation(description: #function)
 
         // When
@@ -75,7 +74,7 @@ final class SeriesDataProviderTests: XCTestCase {
         let sut = SeriesDataProviderMockFactory.makeWithSeriesFromNetwork()
         let dataSourceLayer = DataSourceLayer.memory
 
-        var result: Result<[Domain.Series], Error>?
+        var result: Result<[Series], Error>?
         let promise = expectation(description: #function)
 
         // When
@@ -100,7 +99,7 @@ final class SeriesDataProviderTests: XCTestCase {
         let sut = SeriesDataProviderMockFactory.makeWithoutData()
         let dataSourceLayer = DataSourceLayer.network
 
-        var result: Result<[Domain.Series], Error>?
+        var result: Result<[Series], Error>?
         let promise = expectation(description: #function)
 
         // When

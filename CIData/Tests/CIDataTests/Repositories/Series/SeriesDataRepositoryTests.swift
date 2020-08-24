@@ -6,7 +6,6 @@
 //  Copyright © 2020 Aleksandar Dinic. All rights reserved.
 //
 
-import struct Domain.Series
 @testable import CIData
 import XCTest
 
@@ -26,7 +25,7 @@ final class SeriesDataRepositoryTests: XCTestCase {
         let sut = SeriesDataRepository(seriesDataProvider: seriesDataProvider)
         let dataSourceLayer = DataSourceLayer.network
 
-        var result: Result<[Domain.Series], Error>?
+        var result: Result<[Series], Error>?
         let promise = expectation(description: #function)
 
         // When

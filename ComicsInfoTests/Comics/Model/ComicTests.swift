@@ -6,86 +6,81 @@
 //  Copyright © 2020 Aleksandar Dinic. All rights reserved.
 //
 
-@testable import struct Domain.Comic
+@testable import struct CIData.Comic
 @testable import ComicsInfo
 import XCTest
 
 class ComicTests: XCTestCase {
 
-    private var domainComic: Domain.Comic!
+    private var cidataComic: CIData.Comic!
 
     override func setUpWithError() throws {
-        domainComic = Domain.Comic(
+        cidataComic = CIData.Comic(
             identifier: "1",
             popularity: 0,
             title: "Title",
             thumbnail: "Thumbnail",
             issueNumber: nil,
             description: "Description",
-            variantDescription: nil,
             format: nil,
             pageCount: nil,
-            variantsIdentifier: nil,
-            collectionsIdentifier: nil,
-            collectedIssuesIdentifier: nil,
-            images: nil,
             seriesID: ["1"],
             charactersID: ["1"],
             published: nil)
     }
 
     override func tearDownWithError() throws {
-        domainComic = nil
+        cidataComic = nil
     }
 
     func testComicIdentifierMapper() {
         // Given
 
         // When
-        let sut = ComicsInfo.Comic(from: domainComic)
+        let sut = ComicsInfo.Comic(from: cidataComic)
 
         // Then
-        XCTAssertEqual(sut.identifier, domainComic.identifier)
+        XCTAssertEqual(sut.identifier, cidataComic.identifier)
     }
 
     func testComicPopularityMapper() {
         // Given
 
         // When
-        let sut = ComicsInfo.Comic(from: domainComic)
+        let sut = ComicsInfo.Comic(from: cidataComic)
 
         // Then
-        XCTAssertEqual(sut.popularity, domainComic.popularity)
+        XCTAssertEqual(sut.popularity, cidataComic.popularity)
     }
 
     func testComicTitleMapper() {
         // Given
 
         // When
-        let sut = ComicsInfo.Comic(from: domainComic)
+        let sut = ComicsInfo.Comic(from: cidataComic)
 
         // Then
-        XCTAssertEqual(sut.title, domainComic.title)
+        XCTAssertEqual(sut.title, cidataComic.title)
     }
 
     func testComicThumbnailMapper() {
         // Given
 
         // When
-        let sut = ComicsInfo.Comic(from: domainComic)
+        let sut = ComicsInfo.Comic(from: cidataComic)
 
         // Then
-        XCTAssertEqual(sut.thumbnail, domainComic.thumbnail)
+        XCTAssertEqual(sut.thumbnail, cidataComic.thumbnail)
     }
 
     func testComicDescriptionMapper() {
         // Given
 
         // When
-        let sut = ComicsInfo.Comic(from: domainComic)
+        let sut = ComicsInfo.Comic(from: cidataComic)
 
         // Then
-        XCTAssertEqual(sut.description, domainComic.description)
+        XCTAssertEqual(sut.description, cidataComic.description)
     }
 
 }

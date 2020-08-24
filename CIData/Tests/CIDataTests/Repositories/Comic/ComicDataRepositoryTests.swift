@@ -6,7 +6,6 @@
 //  Copyright © 2020 Aleksandar Dinic. All rights reserved.
 //
 
-import struct Domain.Comic
 @testable import CIData
 import XCTest
 
@@ -26,7 +25,7 @@ final class ComicDataRepositoryTests: XCTestCase {
         let sut = ComicDataRepository(comicDataProvider: comicDataProvider)
         let dataSourceLayer = DataSourceLayer.network
 
-        var result: Result<[Domain.Comic], Error>?
+        var result: Result<[Comic], Error>?
         let promise = expectation(description: #function)
 
         // When

@@ -6,30 +6,30 @@
 //  Copyright © 2020 Aleksandar Dinic. All rights reserved.
 //
 
-import struct Domain.Comic
+import struct CIData.Comic
 import protocol CIData.ComicCacheService
 import Foundation
 
 final class ComicCacheServiceMock: ComicCacheService {
 
-    private var comics: [String: Domain.Comic]
+    private var comics: [String: CIData.Comic]
 
-    init(_ comics: [String: Domain.Comic] = [:]) {
+    init(_ comics: [String: CIData.Comic] = [:]) {
         self.comics = comics
     }
 
-    func getAllComics(forSeriesID seriesID: String) -> [Domain.Comic]? {
+    func getAllComics(forSeriesID seriesID: String) -> [CIData.Comic]? {
         guard !comics.isEmpty else {
             return nil
         }
         return Array(comics.values.filter { $0.seriesID.contains(seriesID) })
     }
 
-    func getComic(withID comicID: String) -> Domain.Comic? {
+    func getComic(withID comicID: String) -> CIData.Comic? {
         comics[comicID]
     }
 
-    func save(comics: [Domain.Comic]) {
+    func save(comics: [CIData.Comic]) {
         for comic in comics {
             self.comics[comic.identifier] = comic
         }
@@ -39,18 +39,9 @@ final class ComicCacheServiceMock: ComicCacheService {
 
 extension ComicCacheServiceMock {
 
-    func setComics(_ data: Data?) {
-        guard let data = data else {
-            return
-        }
-
-        do {
-            let comics = try JSONDecoder().decode([Domain.Comic].self, from: data)
-            for comic in comics {
-                self.comics[comic.identifier] = comic
-            }
-        } catch {
-            print(error)
+    func setComics(_ comics: [CIData.Comic]) {
+        for comic in comics {
+            self.comics[comic.identifier] = comic
         }
     }
 

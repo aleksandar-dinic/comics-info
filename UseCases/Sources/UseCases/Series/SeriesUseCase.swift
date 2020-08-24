@@ -8,7 +8,7 @@
 
 import protocol CIData.SeriesRepository
 import enum CIData.DataSourceLayer
-import struct Domain.Series
+import struct CIData.Series
 import Foundation
 
 public final class SeriesUseCase {
@@ -22,7 +22,7 @@ public final class SeriesUseCase {
     public func getAllSeries(
         forCharacters characters: [String],
         fromDataSource dataSource: DataSourceLayer,
-        onComplete complete: @escaping (Result<[Domain.Series], Error>) -> Void
+        onComplete complete: @escaping (Result<[CIData.Series], Error>) -> Void
     ) {
         DispatchQueue.global(qos: .utility).async { [weak self] in
             self?.seriesRepository.getAllSeries(forCharacters: characters, fromDataSource: dataSource) { result in

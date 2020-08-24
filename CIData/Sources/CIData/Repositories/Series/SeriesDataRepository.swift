@@ -6,7 +6,6 @@
 //  Copyright © 2020 Aleksandar Dinic. All rights reserved.
 //
 
-import struct Domain.Series
 import Foundation
 
 final class SeriesDataRepository: SeriesRepository {
@@ -20,7 +19,7 @@ final class SeriesDataRepository: SeriesRepository {
     func getAllSeries(
         forCharacters characters: [String],
         fromDataSource dataSource: DataSourceLayer,
-        onComplete complete: @escaping (Result<[Domain.Series], Error>) -> Void
+        onComplete complete: @escaping (Result<[Series], Error>) -> Void
     ) {
         seriesDataProvider.getAllSeries(
             forCharacters: characters,

@@ -6,15 +6,14 @@
 //  Copyright © 2020 Aleksandar Dinic. All rights reserved.
 //
 
-import struct Domain.Character
 import Foundation
 
 public protocol CharacterCacheService {
 
-    func getAllCharacters() -> [Domain.Character]?
+    func getAllCharacters() -> [Character]?
 
-    func getCharacter(withID characterID: String) -> Domain.Character?
+    func getCharacter(withID characterID: String) -> Character?
 
-    func save(characters: [Domain.Character])
+    func save(characters: [Character])
 
 }

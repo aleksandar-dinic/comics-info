@@ -6,25 +6,24 @@
 //  Copyright © 2020 Aleksandar Dinic. All rights reserved.
 //
 
-@testable import struct Domain.Series
+@testable import struct CIData.Series
 @testable import ComicsInfo
 import XCTest
 
 class SeriesTests: XCTestCase {
 
-    private var domainSeries: Domain.Series!
+    private var domainSeries: CIData.Series!
 
     override func setUpWithError() throws {
-        domainSeries = Domain.Series(
+        domainSeries = CIData.Series(
             identifier: "1",
             popularity: 0,
             title: "Title",
+            thumbnail: "Thumbnail",
             description: "Description",
             startYear: nil,
             endYear: nil,
-            thumbnail: "Thumbnail",
-            charactersID: [],
-            nextIdentifier: nil
+            charactersID: []
         )
     }
 

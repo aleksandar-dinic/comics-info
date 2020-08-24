@@ -6,13 +6,27 @@
 //  Copyright © 2020 Aleksandar Dinic. All rights reserved.
 //
 
+@testable import struct Domain.Character
+@testable import struct CIData.Character
 import Foundation
 
 struct CharactersMock {
 
     // MARK: - Characters
 
-    static let characters = """
+    static let characters = [
+        CIData.Character(identifier: "1", popularity: 1, name: "Flash", thumbnail: nil, description: nil),
+        CIData.Character(identifier: "2", popularity: 2, name: "Batman", thumbnail: nil, description: nil),
+        CIData.Character(identifier: "3", popularity: 3, name: "Spider-Man", thumbnail: nil, description: nil)
+    ]
+
+    static let domainCharacters = [
+        Domain.Character(identifier: "1", popularity: 1, name: "Flash", thumbnail: nil, description: nil),
+        Domain.Character(identifier: "2", popularity: 2, name: "Batman", thumbnail: nil, description: nil),
+        Domain.Character(identifier: "3", popularity: 3, name: "Spider-Man", thumbnail: nil, description: nil)
+    ]
+
+    static let charactersData = """
         [
             {
                 "identifier": "1",
@@ -49,7 +63,23 @@ struct CharactersMock {
 
     // MARK: - Character
 
-    static let character = """
+    static let character = CIData.Character(
+        identifier: "1",
+        popularity: 1,
+        name: "Flash",
+        thumbnail: nil,
+        description: nil
+    )
+
+    static let domainCharacter = Domain.Character(
+        identifier: "1",
+        popularity: 1,
+        name: "Flash",
+        thumbnail: nil,
+        description: nil
+    )
+
+    static let characterData = """
         {
             "identifier": "1",
             "popularity": 1,

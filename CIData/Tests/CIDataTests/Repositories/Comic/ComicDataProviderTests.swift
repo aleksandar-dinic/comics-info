@@ -6,7 +6,6 @@
 //  Copyright © 2020 Aleksandar Dinic. All rights reserved.
 //
 
-import struct Domain.Comic
 @testable import CIData
 import XCTest
 
@@ -25,7 +24,7 @@ final class ComicDataProviderTests: XCTestCase {
         let sut = ComicDataProviderMockFactory.makeWithComicFromNetwork()
         let dataSourceLayer = DataSourceLayer.network
 
-        var result: Result<[Domain.Comic], Error>?
+        var result: Result<[Comic], Error>?
         let promise = expectation(description: #function)
 
         // When
@@ -50,7 +49,7 @@ final class ComicDataProviderTests: XCTestCase {
         let sut = ComicDataProviderMockFactory.makeWithComicFromMemory()
         let dataSourceLayer = DataSourceLayer.memory
 
-        var result: Result<[Domain.Comic], Error>?
+        var result: Result<[Comic], Error>?
         let promise = expectation(description: #function)
 
         // When
@@ -75,7 +74,7 @@ final class ComicDataProviderTests: XCTestCase {
         let sut = ComicDataProviderMockFactory.makeWithComicFromNetwork()
         let dataSourceLayer = DataSourceLayer.memory
 
-        var result: Result<[Domain.Comic], Error>?
+        var result: Result<[Comic], Error>?
         let promise = expectation(description: #function)
 
         // When
@@ -100,7 +99,7 @@ final class ComicDataProviderTests: XCTestCase {
         let sut = ComicDataProviderMockFactory.makeWithoutData()
         let dataSourceLayer = DataSourceLayer.network
 
-        var result: Result<[Domain.Comic], Error>?
+        var result: Result<[Comic], Error>?
         let promise = expectation(description: #function)
 
         // When

@@ -6,7 +6,7 @@
 //  Copyright © 2020 Aleksandar Dinic. All rights reserved.
 //
 
-import struct Domain.Comic
+import struct CIData.Comic
 import enum CIData.DataSourceLayer
 @testable import UseCases
 import XCTest
@@ -27,7 +27,7 @@ final class ComicUseCaseTests: XCTestCase {
         let sut = ComicUseCase(comicRepository: comicRepository)
         let dataSourceLayer = DataSourceLayer.network
 
-        var result: Result<[Domain.Comic], Error>?
+        var result: Result<[CIData.Comic], Error>?
         let promise = expectation(description: #function)
 
         // When

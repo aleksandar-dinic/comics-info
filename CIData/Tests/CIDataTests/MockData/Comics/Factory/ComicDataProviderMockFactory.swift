@@ -24,7 +24,7 @@ struct ComicDataProviderMockFactory {
     static func makeWithComicFromMemory() -> ComicDataProvider {
         let comicAPIWrapper = ComicAPIWrapperMockFactory.makeWithoutData()
         let comicCacheService = ComicCacheServiceMock()
-        comicCacheService.setComics(ComicMock.comics)
+        comicCacheService.setComics(ComicMock.cidataComics)
 
         return ComicDataProvider(
             comicAPIWrapper: comicAPIWrapper,

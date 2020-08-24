@@ -6,33 +6,33 @@
 //  Copyright © 2020 Aleksandar Dinic. All rights reserved.
 //
 
-import struct Domain.Series
+import struct CIData.Series
 import protocol CIData.SeriesCacheService
 import Foundation
 
 final class SeriesCacheServiceMock: SeriesCacheService {
 
-    private var series: [String: Domain.Series]
+    private var series: [String: CIData.Series]
 
-    init(_ series: [String: Domain.Series] = [:]) {
+    init(_ series: [String: CIData.Series] = [:]) {
         self.series = series
     }
 
-    func getAllSeries(forCharacters characters: [String]) -> [Domain.Series]? {
-        var cache = Set<Domain.Series>()
+    func getAllSeries(forCharacters characters: [String]) -> [CIData.Series]? {
+        var cache = [String: CIData.Series]()
         for character in characters {
             for series in series.values.filter({ $0.charactersID.contains(character) }) {
-                cache.insert(series)
+                cache[series.identifier] = series
             }
         }
-        return cache.isEmpty ? nil : Array(cache)
+        return cache.isEmpty ? nil : Array(cache.values)
     }
 
-    func getSeries(withID seriesID: String) -> Domain.Series? {
+    func getSeries(withID seriesID: String) -> CIData.Series? {
         series[seriesID]
     }
 
-    func save(series: [Domain.Series]) {
+    func save(series: [CIData.Series]) {
         for ser in series {
             self.series[ser.identifier] = ser
         }
@@ -42,18 +42,9 @@ final class SeriesCacheServiceMock: SeriesCacheService {
 
 extension SeriesCacheServiceMock {
 
-    func setSeries(_ data: Data?) {
-        guard let data = data else {
-            return
-        }
-
-        do {
-            let series = try JSONDecoder().decode([Domain.Series].self, from: data)
-            for ser in series {
-                self.series[ser.identifier] = ser
-            }
-        } catch {
-            print(error)
+    func setSeries(_ series: [Series]) {
+        series.forEach {
+            self.series[$0.identifier] = $0
         }
     }
 

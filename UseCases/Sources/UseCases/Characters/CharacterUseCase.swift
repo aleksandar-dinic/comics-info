@@ -6,9 +6,9 @@
 //  Copyright © 2020 Aleksandar Dinic. All rights reserved.
 //
 
+import struct CIData.Character
 import protocol CIData.CharacterRepository
 import enum CIData.DataSourceLayer
-import struct Domain.Character
 import Foundation
 
 public final class CharacterUseCase {
@@ -21,7 +21,7 @@ public final class CharacterUseCase {
 
     public func getAllCharacters(
         fromDataSource dataSource: CIData.DataSourceLayer,
-        onComplete complete: @escaping (Result<[Domain.Character], Error>) -> Void
+        onComplete complete: @escaping (Result<[CIData.Character], Error>) -> Void
     ) {
         DispatchQueue.global(qos: .utility).async { [weak self] in
             self?.characterRepository.getAllCharacters(fromDataSource: dataSource) { result in
@@ -35,7 +35,7 @@ public final class CharacterUseCase {
     public func getCharacter(
         withID characterID: String,
         fromDataSource dataSource: CIData.DataSourceLayer,
-        onComplete complete: @escaping (Result<Domain.Character, Error>) -> Void
+        onComplete complete: @escaping (Result<CIData.Character, Error>) -> Void
     ) {
         DispatchQueue.global(qos: .utility).async { [weak self] in
             self?.characterRepository.getCharacter(withID: characterID, fromDataSource: dataSource) { result in

@@ -6,7 +6,6 @@
 //  Copyright © 2020 Aleksandar Dinic. All rights reserved.
 //
 
-import struct Domain.Character
 @testable import CIData
 import XCTest
 
@@ -27,7 +26,7 @@ final class CharacterDataProviderTests: XCTestCase {
         let sut = CharacterDataProviderMockFactory.makeWithCharactersFromNetwork()
         let dataSourceLayer = DataSourceLayer.network
 
-        var result: Result<[Domain.Character], Error>?
+        var result: Result<[Character], Error>?
         let promise = expectation(description: #function)
 
         // When
@@ -56,7 +55,7 @@ final class CharacterDataProviderTests: XCTestCase {
         let sut = CharacterDataProviderMockFactory.makeWithCharactersFromMemory()
         let dataSourceLayer = DataSourceLayer.memory
 
-        var result: Result<[Domain.Character], Error>?
+        var result: Result<[Character], Error>?
         let promise = expectation(description: #function)
 
         // When
@@ -85,7 +84,7 @@ final class CharacterDataProviderTests: XCTestCase {
         let sut = CharacterDataProviderMockFactory.makeWithCharactersFromNetwork()
         let dataSourceLayer = DataSourceLayer.memory
 
-        var result: Result<[Domain.Character], Error>?
+        var result: Result<[Character], Error>?
         let promise = expectation(description: #function)
 
         // When
@@ -114,7 +113,7 @@ final class CharacterDataProviderTests: XCTestCase {
         let sut = CharacterDataProviderMockFactory.makeWithoutData()
         let dataSourceLayer = DataSourceLayer.network
 
-        var result: Result<[Domain.Character], Error>?
+        var result: Result<[Character], Error>?
         let promise = expectation(description: #function)
 
         // When
@@ -141,7 +140,7 @@ final class CharacterDataProviderTests: XCTestCase {
         let characterID = "1"
         let dataSourceLayer = DataSourceLayer.network
 
-        var result: Result<Domain.Character, Error>?
+        var result: Result<Character, Error>?
         let promise = expectation(description: #function)
 
         // When
@@ -171,7 +170,7 @@ final class CharacterDataProviderTests: XCTestCase {
         let characterID = "1"
         let dataSourceLayer = DataSourceLayer.memory
 
-        var result: Result<Domain.Character, Error>?
+        var result: Result<Character, Error>?
         let promise = expectation(description: #function)
 
         // When
@@ -201,7 +200,7 @@ final class CharacterDataProviderTests: XCTestCase {
         let characterID = "1"
         let dataSourceLayer = DataSourceLayer.memory
 
-        var result: Result<Domain.Character, Error>?
+        var result: Result<Character, Error>?
         let promise = expectation(description: #function)
 
         // When
@@ -231,7 +230,7 @@ final class CharacterDataProviderTests: XCTestCase {
         let characterID = "1"
         let dataSourceLayer = DataSourceLayer.network
 
-        var result: Result<Domain.Character, Error>?
+        var result: Result<Character, Error>?
         let promise = expectation(description: #function)
 
         // When

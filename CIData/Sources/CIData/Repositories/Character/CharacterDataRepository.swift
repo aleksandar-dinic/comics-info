@@ -6,7 +6,6 @@
 //  Copyright © 2020 Aleksandar Dinic. All rights reserved.
 //
 
-import struct Domain.Character
 import Foundation
 
 final class CharacterDataRepository: CharacterRepository {
@@ -19,7 +18,7 @@ final class CharacterDataRepository: CharacterRepository {
 
     func getAllCharacters(
         fromDataSource dataSource: DataSourceLayer,
-        onComplete complete: @escaping (Result<[Domain.Character], Error>) -> Void
+        onComplete complete: @escaping (Result<[Character], Error>) -> Void
     ) {
         characterDataProvider.getAllCharacters(fromDataSource: dataSource, onComplete: complete)
     }
@@ -27,7 +26,7 @@ final class CharacterDataRepository: CharacterRepository {
     func getCharacter(
         withID characterID: String,
         fromDataSource dataSource: DataSourceLayer,
-        onComplete complete: @escaping (Result<Domain.Character, Error>) -> Void
+        onComplete complete: @escaping (Result<Character, Error>) -> Void
     ) {
         characterDataProvider.getCharacter(
             withID: characterID,

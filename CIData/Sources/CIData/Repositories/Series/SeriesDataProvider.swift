@@ -6,7 +6,6 @@
 //  Copyright © 2020 Aleksandar Dinic. All rights reserved.
 //
 
-import struct Domain.Series
 import Foundation
 
 public struct SeriesDataProvider {
@@ -25,7 +24,7 @@ public struct SeriesDataProvider {
     func getAllSeries(
         forCharacters characters: [String],
         fromDataSource dataSource: DataSourceLayer,
-        onComplete complete: @escaping (Result<[Domain.Series], Error>) -> Void
+        onComplete complete: @escaping (Result<[Series], Error>) -> Void
     ) {
         switch dataSource {
         case .memory:
@@ -40,7 +39,7 @@ public struct SeriesDataProvider {
         getAllSeriesFromNetwork(forCharacters: characters, onComplete: complete)
     }
 
-    private func getAllSeriesFromMemory(forCharacters characters: [String]) -> [Domain.Series]? {
+    private func getAllSeriesFromMemory(forCharacters characters: [String]) -> [Series]? {
         guard let series = seriesCacheService.getAllSeries(forCharacters: characters) else {
             return nil
         }
@@ -49,9 +48,9 @@ public struct SeriesDataProvider {
 
     private func getAllSeriesFromNetwork(
         forCharacters characters: [String],
-        onComplete complete: @escaping (Result<[Domain.Series], Error>) -> Void
+        onComplete complete: @escaping (Result<[Series], Error>) -> Void
     ) {
-        seriesAPIWrapper.getAllSeries(forCharacters: characters) { (result: Result<[Domain.Series], Error>) in
+        seriesAPIWrapper.getAllSeries(forCharacters: characters) { (result: Result<[Series], Error>) in
             switch result {
             case let .success(series):
                 seriesCacheService.save(series: series)

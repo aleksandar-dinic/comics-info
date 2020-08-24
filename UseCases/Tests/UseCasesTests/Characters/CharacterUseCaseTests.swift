@@ -6,18 +6,22 @@
 //  Copyright © 2020 Aleksandar Dinic. All rights reserved.
 //
 
-import struct Domain.Character
+import struct CIData.Character
 import enum CIData.DataSourceLayer
 @testable import UseCases
 import XCTest
 
 final class CharacterUseCaseTests: XCTestCase {
 
+    private var dataSourceLayer: DataSourceLayer!
+
     override func setUp() {
         super.setUp()
+        dataSourceLayer = .network
     }
 
     override func tearDown() {
+        dataSourceLayer = nil
         super.tearDown()
     }
 
@@ -27,9 +31,8 @@ final class CharacterUseCaseTests: XCTestCase {
         // Given
         let characterRepository = CharacterRepositoryMockFactory.makeWithCharacters()
         let sut = CharacterUseCase(characterRepository: characterRepository)
-        let dataSourceLayer = DataSourceLayer.network
 
-        var result: Result<[Domain.Character], Error>?
+        var result: Result<[CIData.Character], Error>?
         let promise = expectation(description: #function)
 
         // When
@@ -60,9 +63,8 @@ final class CharacterUseCaseTests: XCTestCase {
         let characterRepository = CharacterRepositoryMockFactory.makeWithCharacter()
         let sut = CharacterUseCase(characterRepository: characterRepository)
         let characterID = "1"
-        let dataSourceLayer = DataSourceLayer.network
 
-        var result: Result<Domain.Character, Error>?
+        var result: Result<CIData.Character, Error>?
         let promise = expectation(description: #function)
 
         // When

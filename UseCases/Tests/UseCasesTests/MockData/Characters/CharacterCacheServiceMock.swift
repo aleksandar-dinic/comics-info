@@ -6,30 +6,30 @@
 //  Copyright © 2020 Aleksandar Dinic. All rights reserved.
 //
 
-import struct Domain.Character
+import struct CIData.Character
 import protocol CIData.CharacterCacheService
 import Foundation
 
 final class CharacterCacheServiceMock: CharacterCacheService {
 
-    private var characters: [String: Domain.Character]
+    private var characters: [String: CIData.Character]
 
-    init(_ characters: [String: Domain.Character] = [:]) {
+    init(_ characters: [String: CIData.Character] = [:]) {
         self.characters = characters
     }
 
-    func getAllCharacters() -> [Domain.Character]? {
+    func getAllCharacters() -> [CIData.Character]? {
         guard !characters.isEmpty else {
             return nil
         }
         return Array(characters.values)
     }
 
-    func getCharacter(withID characterID: String) -> Domain.Character? {
+    func getCharacter(withID characterID: String) -> CIData.Character? {
         characters[characterID]
     }
 
-    func save(characters: [Domain.Character]) {
+    func save(characters: [CIData.Character]) {
         for character in characters {
             self.characters[character.identifier] = character
         }
@@ -39,32 +39,14 @@ final class CharacterCacheServiceMock: CharacterCacheService {
 
 extension CharacterCacheServiceMock {
 
-    func setCharacters(_ data: Data?) {
-        guard let data = data else {
-            return
-        }
-
-        do {
-            let characters = try JSONDecoder().decode([Domain.Character].self, from: data)
-            for character in characters {
-                self.characters[character.identifier] = character
-            }
-        } catch {
-            print(error)
+    func setCharacters(_ characters: [CIData.Character]) {
+        for character in characters {
+            self.characters[character.identifier] = character
         }
     }
 
-    func setCharacter(_ data: Data?) {
-        guard let data = data else {
-            return
-        }
-
-        do {
-            let character = try JSONDecoder().decode(Domain.Character.self, from: data)
-            characters[character.identifier] = character
-        } catch {
-            print(error)
-        }
+    func setCharacter(_ character: CIData.Character) {
+        characters[character.identifier] = character
     }
 
 }

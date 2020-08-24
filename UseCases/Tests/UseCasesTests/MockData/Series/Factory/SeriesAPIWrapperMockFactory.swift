@@ -13,8 +13,12 @@ struct SeriesAPIWrapperMockFactory {
 
     static func makeWithSeries() -> SeriesAPIWrapper {
         let seriesAPIServiceMock = SeriesAPIServiceMock(SeriesMock.series)
+        let seriesDecoderMock = SeriesDecoderMock(SeriesMock.domainSeries)
 
-        return SeriesAPIWrapper(seriesAPIService: seriesAPIServiceMock)
+        return SeriesAPIWrapper(
+            seriesAPIService: seriesAPIServiceMock,
+            seriesDecoderService: seriesDecoderMock
+        )
     }
 
 }

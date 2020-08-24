@@ -7,11 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		648BD21A24F443040040CD75 /* ComicDecoderProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648BD21924F443040040CD75 /* ComicDecoderProvider.swift */; };
+		648BD21C24F443BE0040CD75 /* Comic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648BD21B24F443BE0040CD75 /* Comic.swift */; };
 		649D5C8024E1F18B004C6328 /* ComicsInfoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649D5C7F24E1F18B004C6328 /* ComicsInfoApp.swift */; };
 		649D5C8424E1F18C004C6328 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 649D5C8324E1F18C004C6328 /* Assets.xcassets */; };
 		649D5C8724E1F18C004C6328 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 649D5C8624E1F18C004C6328 /* Preview Assets.xcassets */; };
 		649D5D0024E5C97F004C6328 /* ComicViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649D5CD324E5C97F004C6328 /* ComicViewModel.swift */; };
-		649D5D0124E5C97F004C6328 /* Comic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649D5CD524E5C97F004C6328 /* Comic.swift */; };
+		649D5D0124E5C97F004C6328 /* ComicPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649D5CD524E5C97F004C6328 /* ComicPresenter.swift */; };
 		649D5D0224E5C97F004C6328 /* ComicThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649D5CD724E5C97F004C6328 /* ComicThumbnailView.swift */; };
 		649D5D0324E5C97F004C6328 /* ComicInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649D5CD824E5C97F004C6328 /* ComicInfoView.swift */; };
 		649D5D0424E5C97F004C6328 /* ComicsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649D5CD924E5C97F004C6328 /* ComicsListView.swift */; };
@@ -19,25 +21,19 @@
 		649D5D0624E5C97F004C6328 /* DescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649D5CDB24E5C97F004C6328 /* DescriptionView.swift */; };
 		649D5D0724E5C97F004C6328 /* ComicUseCaseAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649D5CDD24E5C97F004C6328 /* ComicUseCaseAdapter.swift */; };
 		649D5D0824E5C97F004C6328 /* CharacterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649D5CE024E5C97F004C6328 /* CharacterViewModel.swift */; };
-		649D5D0924E5C97F004C6328 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649D5CE224E5C97F004C6328 /* Character.swift */; };
+		649D5D0924E5C97F004C6328 /* CharacterPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649D5CE224E5C97F004C6328 /* CharacterPresenter.swift */; };
 		649D5D0A24E5C97F004C6328 /* CharactersListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649D5CE424E5C97F004C6328 /* CharactersListView.swift */; };
 		649D5D0B24E5C97F004C6328 /* CharacterThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649D5CE524E5C97F004C6328 /* CharacterThumbnailView.swift */; };
 		649D5D0C24E5C97F004C6328 /* CharacterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649D5CE624E5C97F004C6328 /* CharacterView.swift */; };
 		649D5D0D24E5C97F004C6328 /* CharacterUseCaseAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649D5CE824E5C97F004C6328 /* CharacterUseCaseAdapter.swift */; };
 		649D5D0E24E5C97F004C6328 /* SeriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649D5CEB24E5C97F004C6328 /* SeriesViewModel.swift */; };
 		649D5D0F24E5C97F004C6328 /* CharactersWithSeriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649D5CEC24E5C97F004C6328 /* CharactersWithSeriesViewModel.swift */; };
-		649D5D1024E5C97F004C6328 /* Series.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649D5CEE24E5C97F004C6328 /* Series.swift */; };
+		649D5D1024E5C97F004C6328 /* SeriesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649D5CEE24E5C97F004C6328 /* SeriesPresenter.swift */; };
 		649D5D1124E5C97F004C6328 /* SeriesThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649D5CF024E5C97F004C6328 /* SeriesThumbnailView.swift */; };
 		649D5D1224E5C97F004C6328 /* SeriesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649D5CF124E5C97F004C6328 /* SeriesListView.swift */; };
 		649D5D1324E5C97F004C6328 /* SeriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649D5CF224E5C97F004C6328 /* SeriesView.swift */; };
 		649D5D1424E5C97F004C6328 /* CharactersWithSeriesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649D5CF424E5C97F004C6328 /* CharactersWithSeriesUseCase.swift */; };
 		649D5D1524E5C97F004C6328 /* SeriesUseCaseAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649D5CF524E5C97F004C6328 /* SeriesUseCaseAdapter.swift */; };
-		649D5D1624E5C97F004C6328 /* SeriesAPIProviderFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649D5CF824E5C97F004C6328 /* SeriesAPIProviderFactory.swift */; };
-		649D5D1724E5C97F004C6328 /* SeriesCacheProviderFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649D5CF924E5C97F004C6328 /* SeriesCacheProviderFactory.swift */; };
-		649D5D1824E5C97F004C6328 /* CharacterAPIProviderFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649D5CFB24E5C97F004C6328 /* CharacterAPIProviderFactory.swift */; };
-		649D5D1924E5C97F004C6328 /* CharacterCacheProviderFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649D5CFC24E5C97F004C6328 /* CharacterCacheProviderFactory.swift */; };
-		649D5D1A24E5C97F004C6328 /* ComicAPIProviderFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649D5CFE24E5C97F004C6328 /* ComicAPIProviderFactory.swift */; };
-		649D5D1B24E5C97F004C6328 /* ComicCacheProviderFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649D5CFF24E5C97F004C6328 /* ComicCacheProviderFactory.swift */; };
 		649D5D2524E5C9B3004C6328 /* CharacterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649D5D1E24E5C9B3004C6328 /* CharacterTests.swift */; };
 		649D5D2624E5C9B3004C6328 /* ComicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649D5D2124E5C9B3004C6328 /* ComicTests.swift */; };
 		649D5D2724E5C9B3004C6328 /* SeriesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649D5D2424E5C9B3004C6328 /* SeriesTests.swift */; };
@@ -45,8 +41,46 @@
 		649D5D2F24E5C9C9004C6328 /* ComicsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649D5D2B24E5C9C9004C6328 /* ComicsUITests.swift */; };
 		649D5D3024E5C9C9004C6328 /* ComicInfoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649D5D2C24E5C9C9004C6328 /* ComicInfoUITests.swift */; };
 		649D5D3124E5C9C9004C6328 /* AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649D5D2D24E5C9C9004C6328 /* AppTests.swift */; };
-		649D5D3424E5C9F6004C6328 /* Framework in Frameworks */ = {isa = PBXBuildFile; productRef = 649D5D3324E5C9F6004C6328 /* Framework */; };
 		649D5D3624E5C9FC004C6328 /* UseCases in Frameworks */ = {isa = PBXBuildFile; productRef = 649D5D3524E5C9FC004C6328 /* UseCases */; };
+		64B434B224F3DF480054A20C /* CharacterCacheProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B434B124F3DF480054A20C /* CharacterCacheProvider.swift */; };
+		64B434B424F3DF680054A20C /* InMemoryCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B434B324F3DF680054A20C /* InMemoryCache.swift */; };
+		64B434B724F3E5270054A20C /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B434B624F3E5270054A20C /* Character.swift */; };
+		64B434BA24F3E5B70054A20C /* CharacterDecoderProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B434B924F3E5B70054A20C /* CharacterDecoderProvider.swift */; };
+		64B434C024F3E8500054A20C /* CharacterCacheProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B434BF24F3E8500054A20C /* CharacterCacheProviderTests.swift */; };
+		64B434C324F3E96B0054A20C /* CharactersMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B434C224F3E96B0054A20C /* CharactersMock.swift */; };
+		64B434C624F3F5AC0054A20C /* CharacterAPIProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B434C524F3F5AC0054A20C /* CharacterAPIProvider.swift */; };
+		64B434C924F3F5F00054A20C /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B434C824F3F5F00054A20C /* MockData.swift */; };
+		64B434CC24F3F6140054A20C /* CharactersMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B434CB24F3F6140054A20C /* CharactersMock.swift */; };
+		64B434CE24F3F62C0054A20C /* CaptainAmericaMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B434CD24F3F62C0054A20C /* CaptainAmericaMock.swift */; };
+		64B434D024F3F6420054A20C /* HulkMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B434CF24F3F6420054A20C /* HulkMock.swift */; };
+		64B434D224F3F6570054A20C /* IronManMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B434D124F3F6570054A20C /* IronManMock.swift */; };
+		64B434D424F3F66C0054A20C /* SilverSurferMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B434D324F3F66C0054A20C /* SilverSurferMock.swift */; };
+		64B434D624F3F6860054A20C /* SpiderManMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B434D524F3F6860054A20C /* SpiderManMock.swift */; };
+		64B434D824F3F6C20054A20C /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B434D724F3F6C20054A20C /* NetworkError.swift */; };
+		64B434DB24F3F7340054A20C /* CharacterAPIServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B434DA24F3F7340054A20C /* CharacterAPIServiceTests.swift */; };
+		64B434DE24F413DA0054A20C /* SeriesCacheProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B434DD24F413DA0054A20C /* SeriesCacheProvider.swift */; };
+		64B434E024F414DB0054A20C /* SeriesCacheProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B434DF24F414DB0054A20C /* SeriesCacheProviderTests.swift */; };
+		64B434E224F415130054A20C /* SeriesMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B434E124F415130054A20C /* SeriesMock.swift */; };
+		64B434E424F416190054A20C /* Series.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B434E324F416190054A20C /* Series.swift */; };
+		64B434E624F419020054A20C /* SeriesDecoderProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B434E524F419020054A20C /* SeriesDecoderProvider.swift */; };
+		64B434E824F41A0A0054A20C /* SeriesAPIProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B434E724F41A0A0054A20C /* SeriesAPIProvider.swift */; };
+		64B434EB24F41A460054A20C /* AmazingSpiderMan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B434EA24F41A460054A20C /* AmazingSpiderMan.swift */; };
+		64B434ED24F41A5F0054A20C /* AmazingSpiderManVol5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B434EC24F41A5F0054A20C /* AmazingSpiderManVol5.swift */; };
+		64B434EF24F41A780054A20C /* CaptainAmericaComics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B434EE24F41A780054A20C /* CaptainAmericaComics.swift */; };
+		64B434F124F41A8D0054A20C /* PeterParkerTheSpectacularSpiderMan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B434F024F41A8D0054A20C /* PeterParkerTheSpectacularSpiderMan.swift */; };
+		64B434F324F41AA80054A20C /* SeriesMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B434F224F41AA80054A20C /* SeriesMock.swift */; };
+		64B434F524F41ABD0054A20C /* WebOfSpiderMan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B434F424F41ABD0054A20C /* WebOfSpiderMan.swift */; };
+		64B434F724F41B2B0054A20C /* SeriesAPIServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B434F624F41B2B0054A20C /* SeriesAPIServiceTests.swift */; };
+		64B434FA24F43F650054A20C /* ComicCacheProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B434F824F43F3B0054A20C /* ComicCacheProvider.swift */; };
+		64B434FC24F43FE90054A20C /* ComicCacheProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B434FB24F43FE90054A20C /* ComicCacheProviderTests.swift */; };
+		64B434FE24F440570054A20C /* ComicAPIProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B434FD24F440570054A20C /* ComicAPIProvider.swift */; };
+		64B4350124F440B70054A20C /* AmazingSpiderMan1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B4350024F440B70054A20C /* AmazingSpiderMan1.swift */; };
+		64B4350324F440D70054A20C /* AmazingSpiderMan2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B4350224F440D70054A20C /* AmazingSpiderMan2.swift */; };
+		64B4350524F441400054A20C /* AmazingSpiderMan3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B4350424F441400054A20C /* AmazingSpiderMan3.swift */; };
+		64B4350724F4415D0054A20C /* AmazingSpiderMan4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B4350624F4415D0054A20C /* AmazingSpiderMan4.swift */; };
+		64B4350924F4417A0054A20C /* AmazingSpiderMan5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B4350824F4417A0054A20C /* AmazingSpiderMan5.swift */; };
+		64B4350B24F441940054A20C /* ComicsMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B4350A24F441940054A20C /* ComicsMock.swift */; };
+		64B4350D24F441CA0054A20C /* ComicAPIServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B4350C24F441CA0054A20C /* ComicAPIServiceTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +101,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		648BD21924F443040040CD75 /* ComicDecoderProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicDecoderProvider.swift; sourceTree = "<group>"; };
+		648BD21B24F443BE0040CD75 /* Comic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comic.swift; sourceTree = "<group>"; };
 		649D5C7C24E1F18B004C6328 /* ComicsInfo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ComicsInfo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		649D5C7F24E1F18B004C6328 /* ComicsInfoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicsInfoApp.swift; sourceTree = "<group>"; };
 		649D5C8324E1F18C004C6328 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -79,9 +115,8 @@
 		649D5CCB24E470A5004C6328 /* Domain */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Domain; sourceTree = "<group>"; };
 		649D5CCC24E4723B004C6328 /* CIData */ = {isa = PBXFileReference; lastKnownFileType = folder; path = CIData; sourceTree = "<group>"; };
 		649D5CCD24E48DFA004C6328 /* UseCases */ = {isa = PBXFileReference; lastKnownFileType = folder; path = UseCases; sourceTree = "<group>"; };
-		649D5CCE24E5C885004C6328 /* Framework */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Framework; sourceTree = "<group>"; };
 		649D5CD324E5C97F004C6328 /* ComicViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComicViewModel.swift; sourceTree = "<group>"; };
-		649D5CD524E5C97F004C6328 /* Comic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comic.swift; sourceTree = "<group>"; };
+		649D5CD524E5C97F004C6328 /* ComicPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComicPresenter.swift; sourceTree = "<group>"; };
 		649D5CD724E5C97F004C6328 /* ComicThumbnailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComicThumbnailView.swift; sourceTree = "<group>"; };
 		649D5CD824E5C97F004C6328 /* ComicInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComicInfoView.swift; sourceTree = "<group>"; };
 		649D5CD924E5C97F004C6328 /* ComicsListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComicsListView.swift; sourceTree = "<group>"; };
@@ -89,25 +124,19 @@
 		649D5CDB24E5C97F004C6328 /* DescriptionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DescriptionView.swift; sourceTree = "<group>"; };
 		649D5CDD24E5C97F004C6328 /* ComicUseCaseAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComicUseCaseAdapter.swift; sourceTree = "<group>"; };
 		649D5CE024E5C97F004C6328 /* CharacterViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterViewModel.swift; sourceTree = "<group>"; };
-		649D5CE224E5C97F004C6328 /* Character.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
+		649D5CE224E5C97F004C6328 /* CharacterPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterPresenter.swift; sourceTree = "<group>"; };
 		649D5CE424E5C97F004C6328 /* CharactersListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharactersListView.swift; sourceTree = "<group>"; };
 		649D5CE524E5C97F004C6328 /* CharacterThumbnailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterThumbnailView.swift; sourceTree = "<group>"; };
 		649D5CE624E5C97F004C6328 /* CharacterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterView.swift; sourceTree = "<group>"; };
 		649D5CE824E5C97F004C6328 /* CharacterUseCaseAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterUseCaseAdapter.swift; sourceTree = "<group>"; };
 		649D5CEB24E5C97F004C6328 /* SeriesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeriesViewModel.swift; sourceTree = "<group>"; };
 		649D5CEC24E5C97F004C6328 /* CharactersWithSeriesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharactersWithSeriesViewModel.swift; sourceTree = "<group>"; };
-		649D5CEE24E5C97F004C6328 /* Series.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Series.swift; sourceTree = "<group>"; };
+		649D5CEE24E5C97F004C6328 /* SeriesPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeriesPresenter.swift; sourceTree = "<group>"; };
 		649D5CF024E5C97F004C6328 /* SeriesThumbnailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeriesThumbnailView.swift; sourceTree = "<group>"; };
 		649D5CF124E5C97F004C6328 /* SeriesListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeriesListView.swift; sourceTree = "<group>"; };
 		649D5CF224E5C97F004C6328 /* SeriesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeriesView.swift; sourceTree = "<group>"; };
 		649D5CF424E5C97F004C6328 /* CharactersWithSeriesUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharactersWithSeriesUseCase.swift; sourceTree = "<group>"; };
 		649D5CF524E5C97F004C6328 /* SeriesUseCaseAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeriesUseCaseAdapter.swift; sourceTree = "<group>"; };
-		649D5CF824E5C97F004C6328 /* SeriesAPIProviderFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeriesAPIProviderFactory.swift; sourceTree = "<group>"; };
-		649D5CF924E5C97F004C6328 /* SeriesCacheProviderFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeriesCacheProviderFactory.swift; sourceTree = "<group>"; };
-		649D5CFB24E5C97F004C6328 /* CharacterAPIProviderFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterAPIProviderFactory.swift; sourceTree = "<group>"; };
-		649D5CFC24E5C97F004C6328 /* CharacterCacheProviderFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterCacheProviderFactory.swift; sourceTree = "<group>"; };
-		649D5CFE24E5C97F004C6328 /* ComicAPIProviderFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComicAPIProviderFactory.swift; sourceTree = "<group>"; };
-		649D5CFF24E5C97F004C6328 /* ComicCacheProviderFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComicCacheProviderFactory.swift; sourceTree = "<group>"; };
 		649D5D1E24E5C9B3004C6328 /* CharacterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterTests.swift; sourceTree = "<group>"; };
 		649D5D2124E5C9B3004C6328 /* ComicTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComicTests.swift; sourceTree = "<group>"; };
 		649D5D2424E5C9B3004C6328 /* SeriesTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeriesTests.swift; sourceTree = "<group>"; };
@@ -115,6 +144,45 @@
 		649D5D2B24E5C9C9004C6328 /* ComicsUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComicsUITests.swift; sourceTree = "<group>"; };
 		649D5D2C24E5C9C9004C6328 /* ComicInfoUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComicInfoUITests.swift; sourceTree = "<group>"; };
 		649D5D2D24E5C9C9004C6328 /* AppTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppTests.swift; sourceTree = "<group>"; };
+		64B434B124F3DF480054A20C /* CharacterCacheProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCacheProvider.swift; sourceTree = "<group>"; };
+		64B434B324F3DF680054A20C /* InMemoryCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InMemoryCache.swift; sourceTree = "<group>"; };
+		64B434B624F3E5270054A20C /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
+		64B434B924F3E5B70054A20C /* CharacterDecoderProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDecoderProvider.swift; sourceTree = "<group>"; };
+		64B434BF24F3E8500054A20C /* CharacterCacheProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCacheProviderTests.swift; sourceTree = "<group>"; };
+		64B434C224F3E96B0054A20C /* CharactersMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersMock.swift; sourceTree = "<group>"; };
+		64B434C524F3F5AC0054A20C /* CharacterAPIProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterAPIProvider.swift; sourceTree = "<group>"; };
+		64B434C824F3F5F00054A20C /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
+		64B434CB24F3F6140054A20C /* CharactersMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersMock.swift; sourceTree = "<group>"; };
+		64B434CD24F3F62C0054A20C /* CaptainAmericaMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptainAmericaMock.swift; sourceTree = "<group>"; };
+		64B434CF24F3F6420054A20C /* HulkMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HulkMock.swift; sourceTree = "<group>"; };
+		64B434D124F3F6570054A20C /* IronManMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IronManMock.swift; sourceTree = "<group>"; };
+		64B434D324F3F66C0054A20C /* SilverSurferMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SilverSurferMock.swift; sourceTree = "<group>"; };
+		64B434D524F3F6860054A20C /* SpiderManMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpiderManMock.swift; sourceTree = "<group>"; };
+		64B434D724F3F6C20054A20C /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		64B434DA24F3F7340054A20C /* CharacterAPIServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterAPIServiceTests.swift; sourceTree = "<group>"; };
+		64B434DD24F413DA0054A20C /* SeriesCacheProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesCacheProvider.swift; sourceTree = "<group>"; };
+		64B434DF24F414DB0054A20C /* SeriesCacheProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesCacheProviderTests.swift; sourceTree = "<group>"; };
+		64B434E124F415130054A20C /* SeriesMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesMock.swift; sourceTree = "<group>"; };
+		64B434E324F416190054A20C /* Series.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Series.swift; sourceTree = "<group>"; };
+		64B434E524F419020054A20C /* SeriesDecoderProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesDecoderProvider.swift; sourceTree = "<group>"; };
+		64B434E724F41A0A0054A20C /* SeriesAPIProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesAPIProvider.swift; sourceTree = "<group>"; };
+		64B434EA24F41A460054A20C /* AmazingSpiderMan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmazingSpiderMan.swift; sourceTree = "<group>"; };
+		64B434EC24F41A5F0054A20C /* AmazingSpiderManVol5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmazingSpiderManVol5.swift; sourceTree = "<group>"; };
+		64B434EE24F41A780054A20C /* CaptainAmericaComics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptainAmericaComics.swift; sourceTree = "<group>"; };
+		64B434F024F41A8D0054A20C /* PeterParkerTheSpectacularSpiderMan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeterParkerTheSpectacularSpiderMan.swift; sourceTree = "<group>"; };
+		64B434F224F41AA80054A20C /* SeriesMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesMock.swift; sourceTree = "<group>"; };
+		64B434F424F41ABD0054A20C /* WebOfSpiderMan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebOfSpiderMan.swift; sourceTree = "<group>"; };
+		64B434F624F41B2B0054A20C /* SeriesAPIServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesAPIServiceTests.swift; sourceTree = "<group>"; };
+		64B434F824F43F3B0054A20C /* ComicCacheProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicCacheProvider.swift; sourceTree = "<group>"; };
+		64B434FB24F43FE90054A20C /* ComicCacheProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicCacheProviderTests.swift; sourceTree = "<group>"; };
+		64B434FD24F440570054A20C /* ComicAPIProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicAPIProvider.swift; sourceTree = "<group>"; };
+		64B4350024F440B70054A20C /* AmazingSpiderMan1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmazingSpiderMan1.swift; sourceTree = "<group>"; };
+		64B4350224F440D70054A20C /* AmazingSpiderMan2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmazingSpiderMan2.swift; sourceTree = "<group>"; };
+		64B4350424F441400054A20C /* AmazingSpiderMan3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmazingSpiderMan3.swift; sourceTree = "<group>"; };
+		64B4350624F4415D0054A20C /* AmazingSpiderMan4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmazingSpiderMan4.swift; sourceTree = "<group>"; };
+		64B4350824F4417A0054A20C /* AmazingSpiderMan5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmazingSpiderMan5.swift; sourceTree = "<group>"; };
+		64B4350A24F441940054A20C /* ComicsMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicsMock.swift; sourceTree = "<group>"; };
+		64B4350C24F441CA0054A20C /* ComicAPIServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicAPIServiceTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,7 +191,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				649D5D3624E5C9FC004C6328 /* UseCases in Frameworks */,
-				649D5D3424E5C9F6004C6328 /* Framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -150,7 +217,6 @@
 				649D5CCB24E470A5004C6328 /* Domain */,
 				649D5CCC24E4723B004C6328 /* CIData */,
 				649D5CCD24E48DFA004C6328 /* UseCases */,
-				649D5CCE24E5C885004C6328 /* Framework */,
 				649D5C7E24E1F18B004C6328 /* ComicsInfo */,
 				649D5C9024E1F18C004C6328 /* ComicsInfoTests */,
 				649D5C9B24E1F18C004C6328 /* ComicsInfoUITests */,
@@ -175,11 +241,10 @@
 				649D5C8824E1F18C004C6328 /* Info.plist */,
 				649D5C8324E1F18C004C6328 /* Assets.xcassets */,
 				649D5D3724E5DE6B004C6328 /* App */,
-				649D5CDE24E5C97F004C6328 /* Characters */,
-				649D5CD124E5C97F004C6328 /* Comics */,
+				64B434AE24F3DF0E0054A20C /* Framework */,
+				64B434B524F3E5160054A20C /* Model */,
 				649D5C8524E1F18C004C6328 /* Preview Content */,
-				649D5CE924E5C97F004C6328 /* Series */,
-				649D5CF624E5C97F004C6328 /* ServicesFactories */,
+				64B434DC24F3F8890054A20C /* UI */,
 			);
 			path = ComicsInfo;
 			sourceTree = "<group>";
@@ -198,6 +263,8 @@
 				649D5C9324E1F18C004C6328 /* Info.plist */,
 				649D5D1C24E5C9B3004C6328 /* Characters */,
 				649D5D1F24E5C9B3004C6328 /* Comics */,
+				64B434BD24F3E7650054A20C /* Framework */,
+				64B434C124F3E9580054A20C /* MockData */,
 				649D5D2224E5C9B3004C6328 /* Series */,
 			);
 			path = ComicsInfoTests;
@@ -217,10 +284,10 @@
 		649D5CD124E5C97F004C6328 /* Comics */ = {
 			isa = PBXGroup;
 			children = (
-				649D5CD224E5C97F004C6328 /* ViewModel */,
-				649D5CD424E5C97F004C6328 /* Model */,
-				649D5CD624E5C97F004C6328 /* View */,
+				649D5CD424E5C97F004C6328 /* Presenter */,
 				649D5CDC24E5C97F004C6328 /* UseCase */,
+				649D5CD624E5C97F004C6328 /* View */,
+				649D5CD224E5C97F004C6328 /* ViewModel */,
 			);
 			path = Comics;
 			sourceTree = "<group>";
@@ -233,12 +300,12 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		649D5CD424E5C97F004C6328 /* Model */ = {
+		649D5CD424E5C97F004C6328 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
-				649D5CD524E5C97F004C6328 /* Comic.swift */,
+				649D5CD524E5C97F004C6328 /* ComicPresenter.swift */,
 			);
-			path = Model;
+			path = Presenter;
 			sourceTree = "<group>";
 		};
 		649D5CD624E5C97F004C6328 /* View */ = {
@@ -264,10 +331,10 @@
 		649D5CDE24E5C97F004C6328 /* Characters */ = {
 			isa = PBXGroup;
 			children = (
-				649D5CDF24E5C97F004C6328 /* ViewModel */,
-				649D5CE124E5C97F004C6328 /* Model */,
-				649D5CE324E5C97F004C6328 /* View */,
+				649D5CE124E5C97F004C6328 /* Presenter */,
 				649D5CE724E5C97F004C6328 /* UseCase */,
+				649D5CE324E5C97F004C6328 /* View */,
+				649D5CDF24E5C97F004C6328 /* ViewModel */,
 			);
 			path = Characters;
 			sourceTree = "<group>";
@@ -280,12 +347,12 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		649D5CE124E5C97F004C6328 /* Model */ = {
+		649D5CE124E5C97F004C6328 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
-				649D5CE224E5C97F004C6328 /* Character.swift */,
+				649D5CE224E5C97F004C6328 /* CharacterPresenter.swift */,
 			);
-			path = Model;
+			path = Presenter;
 			sourceTree = "<group>";
 		};
 		649D5CE324E5C97F004C6328 /* View */ = {
@@ -309,10 +376,10 @@
 		649D5CE924E5C97F004C6328 /* Series */ = {
 			isa = PBXGroup;
 			children = (
-				649D5CEA24E5C97F004C6328 /* ViewModel */,
-				649D5CED24E5C97F004C6328 /* Model */,
-				649D5CEF24E5C97F004C6328 /* View */,
+				649D5CED24E5C97F004C6328 /* Presenter */,
 				649D5CF324E5C97F004C6328 /* UseCase */,
+				649D5CEF24E5C97F004C6328 /* View */,
+				649D5CEA24E5C97F004C6328 /* ViewModel */,
 			);
 			path = Series;
 			sourceTree = "<group>";
@@ -326,12 +393,12 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		649D5CED24E5C97F004C6328 /* Model */ = {
+		649D5CED24E5C97F004C6328 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
-				649D5CEE24E5C97F004C6328 /* Series.swift */,
+				649D5CEE24E5C97F004C6328 /* SeriesPresenter.swift */,
 			);
-			path = Model;
+			path = Presenter;
 			sourceTree = "<group>";
 		};
 		649D5CEF24E5C97F004C6328 /* View */ = {
@@ -351,43 +418,6 @@
 				649D5CF524E5C97F004C6328 /* SeriesUseCaseAdapter.swift */,
 			);
 			path = UseCase;
-			sourceTree = "<group>";
-		};
-		649D5CF624E5C97F004C6328 /* ServicesFactories */ = {
-			isa = PBXGroup;
-			children = (
-				649D5CF724E5C97F004C6328 /* Series */,
-				649D5CFA24E5C97F004C6328 /* Character */,
-				649D5CFD24E5C97F004C6328 /* Comic */,
-			);
-			path = ServicesFactories;
-			sourceTree = "<group>";
-		};
-		649D5CF724E5C97F004C6328 /* Series */ = {
-			isa = PBXGroup;
-			children = (
-				649D5CF824E5C97F004C6328 /* SeriesAPIProviderFactory.swift */,
-				649D5CF924E5C97F004C6328 /* SeriesCacheProviderFactory.swift */,
-			);
-			path = Series;
-			sourceTree = "<group>";
-		};
-		649D5CFA24E5C97F004C6328 /* Character */ = {
-			isa = PBXGroup;
-			children = (
-				649D5CFB24E5C97F004C6328 /* CharacterAPIProviderFactory.swift */,
-				649D5CFC24E5C97F004C6328 /* CharacterCacheProviderFactory.swift */,
-			);
-			path = Character;
-			sourceTree = "<group>";
-		};
-		649D5CFD24E5C97F004C6328 /* Comic */ = {
-			isa = PBXGroup;
-			children = (
-				649D5CFE24E5C97F004C6328 /* ComicAPIProviderFactory.swift */,
-				649D5CFF24E5C97F004C6328 /* ComicCacheProviderFactory.swift */,
-			);
-			path = Comic;
 			sourceTree = "<group>";
 		};
 		649D5D1C24E5C9B3004C6328 /* Characters */ = {
@@ -470,6 +500,157 @@
 			path = App;
 			sourceTree = "<group>";
 		};
+		64B434AE24F3DF0E0054A20C /* Framework */ = {
+			isa = PBXGroup;
+			children = (
+				64B434AF24F3DF1E0054A20C /* Cache */,
+				64B434B824F3E5A20054A20C /* DataDecoder */,
+				64B434C424F3F58B0054A20C /* Network */,
+			);
+			path = Framework;
+			sourceTree = "<group>";
+		};
+		64B434AF24F3DF1E0054A20C /* Cache */ = {
+			isa = PBXGroup;
+			children = (
+				64B434B124F3DF480054A20C /* CharacterCacheProvider.swift */,
+				64B434F824F43F3B0054A20C /* ComicCacheProvider.swift */,
+				64B434B324F3DF680054A20C /* InMemoryCache.swift */,
+				64B434DD24F413DA0054A20C /* SeriesCacheProvider.swift */,
+			);
+			path = Cache;
+			sourceTree = "<group>";
+		};
+		64B434B524F3E5160054A20C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				64B434B624F3E5270054A20C /* Character.swift */,
+				648BD21B24F443BE0040CD75 /* Comic.swift */,
+				64B434E324F416190054A20C /* Series.swift */,
+				64B434C724F3F5E30054A20C /* MockData */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		64B434B824F3E5A20054A20C /* DataDecoder */ = {
+			isa = PBXGroup;
+			children = (
+				64B434B924F3E5B70054A20C /* CharacterDecoderProvider.swift */,
+				648BD21924F443040040CD75 /* ComicDecoderProvider.swift */,
+				64B434E524F419020054A20C /* SeriesDecoderProvider.swift */,
+			);
+			path = DataDecoder;
+			sourceTree = "<group>";
+		};
+		64B434BD24F3E7650054A20C /* Framework */ = {
+			isa = PBXGroup;
+			children = (
+				64B434BE24F3E8310054A20C /* Cache */,
+				64B434D924F3F7210054A20C /* Network */,
+			);
+			path = Framework;
+			sourceTree = "<group>";
+		};
+		64B434BE24F3E8310054A20C /* Cache */ = {
+			isa = PBXGroup;
+			children = (
+				64B434BF24F3E8500054A20C /* CharacterCacheProviderTests.swift */,
+				64B434FB24F43FE90054A20C /* ComicCacheProviderTests.swift */,
+				64B434DF24F414DB0054A20C /* SeriesCacheProviderTests.swift */,
+			);
+			path = Cache;
+			sourceTree = "<group>";
+		};
+		64B434C124F3E9580054A20C /* MockData */ = {
+			isa = PBXGroup;
+			children = (
+				64B434C224F3E96B0054A20C /* CharactersMock.swift */,
+				64B434E124F415130054A20C /* SeriesMock.swift */,
+			);
+			path = MockData;
+			sourceTree = "<group>";
+		};
+		64B434C424F3F58B0054A20C /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				64B434C524F3F5AC0054A20C /* CharacterAPIProvider.swift */,
+				64B434D724F3F6C20054A20C /* NetworkError.swift */,
+				64B434E724F41A0A0054A20C /* SeriesAPIProvider.swift */,
+				64B434FD24F440570054A20C /* ComicAPIProvider.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		64B434C724F3F5E30054A20C /* MockData */ = {
+			isa = PBXGroup;
+			children = (
+				64B434C824F3F5F00054A20C /* MockData.swift */,
+				64B434CA24F3F60B0054A20C /* Characters */,
+				64B434FF24F440A20054A20C /* Comics */,
+				64B434E924F41A300054A20C /* Series */,
+			);
+			path = MockData;
+			sourceTree = "<group>";
+		};
+		64B434CA24F3F60B0054A20C /* Characters */ = {
+			isa = PBXGroup;
+			children = (
+				64B434CD24F3F62C0054A20C /* CaptainAmericaMock.swift */,
+				64B434CB24F3F6140054A20C /* CharactersMock.swift */,
+				64B434CF24F3F6420054A20C /* HulkMock.swift */,
+				64B434D124F3F6570054A20C /* IronManMock.swift */,
+				64B434D324F3F66C0054A20C /* SilverSurferMock.swift */,
+				64B434D524F3F6860054A20C /* SpiderManMock.swift */,
+			);
+			path = Characters;
+			sourceTree = "<group>";
+		};
+		64B434D924F3F7210054A20C /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				64B434DA24F3F7340054A20C /* CharacterAPIServiceTests.swift */,
+				64B4350C24F441CA0054A20C /* ComicAPIServiceTests.swift */,
+				64B434F624F41B2B0054A20C /* SeriesAPIServiceTests.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		64B434DC24F3F8890054A20C /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				649D5CDE24E5C97F004C6328 /* Characters */,
+				649D5CD124E5C97F004C6328 /* Comics */,
+				649D5CE924E5C97F004C6328 /* Series */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		64B434E924F41A300054A20C /* Series */ = {
+			isa = PBXGroup;
+			children = (
+				64B434EA24F41A460054A20C /* AmazingSpiderMan.swift */,
+				64B434EC24F41A5F0054A20C /* AmazingSpiderManVol5.swift */,
+				64B434EE24F41A780054A20C /* CaptainAmericaComics.swift */,
+				64B434F024F41A8D0054A20C /* PeterParkerTheSpectacularSpiderMan.swift */,
+				64B434F224F41AA80054A20C /* SeriesMock.swift */,
+				64B434F424F41ABD0054A20C /* WebOfSpiderMan.swift */,
+			);
+			path = Series;
+			sourceTree = "<group>";
+		};
+		64B434FF24F440A20054A20C /* Comics */ = {
+			isa = PBXGroup;
+			children = (
+				64B4350024F440B70054A20C /* AmazingSpiderMan1.swift */,
+				64B4350224F440D70054A20C /* AmazingSpiderMan2.swift */,
+				64B4350424F441400054A20C /* AmazingSpiderMan3.swift */,
+				64B4350624F4415D0054A20C /* AmazingSpiderMan4.swift */,
+				64B4350824F4417A0054A20C /* AmazingSpiderMan5.swift */,
+				64B4350A24F441940054A20C /* ComicsMock.swift */,
+			);
+			path = Comics;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -487,7 +668,6 @@
 			);
 			name = ComicsInfo;
 			packageProductDependencies = (
-				649D5D3324E5C9F6004C6328 /* Framework */,
 				649D5D3524E5C9FC004C6328 /* UseCases */,
 			);
 			productName = ComicsInfo;
@@ -603,34 +783,61 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64B434D424F3F66C0054A20C /* SilverSurferMock.swift in Sources */,
+				64B434ED24F41A5F0054A20C /* AmazingSpiderManVol5.swift in Sources */,
+				64B434FA24F43F650054A20C /* ComicCacheProvider.swift in Sources */,
 				649D5D0524E5C97F004C6328 /* ComicView.swift in Sources */,
+				64B434C624F3F5AC0054A20C /* CharacterAPIProvider.swift in Sources */,
 				649D5D0024E5C97F004C6328 /* ComicViewModel.swift in Sources */,
+				64B434C924F3F5F00054A20C /* MockData.swift in Sources */,
 				649D5D1524E5C97F004C6328 /* SeriesUseCaseAdapter.swift in Sources */,
-				649D5D0124E5C97F004C6328 /* Comic.swift in Sources */,
-				649D5D1024E5C97F004C6328 /* Series.swift in Sources */,
+				64B434D024F3F6420054A20C /* HulkMock.swift in Sources */,
+				648BD21C24F443BE0040CD75 /* Comic.swift in Sources */,
+				649D5D0124E5C97F004C6328 /* ComicPresenter.swift in Sources */,
+				64B434B224F3DF480054A20C /* CharacterCacheProvider.swift in Sources */,
+				64B434D224F3F6570054A20C /* IronManMock.swift in Sources */,
+				64B4350924F4417A0054A20C /* AmazingSpiderMan5.swift in Sources */,
+				649D5D1024E5C97F004C6328 /* SeriesPresenter.swift in Sources */,
 				649D5D1224E5C97F004C6328 /* SeriesListView.swift in Sources */,
-				649D5D0924E5C97F004C6328 /* Character.swift in Sources */,
+				649D5D0924E5C97F004C6328 /* CharacterPresenter.swift in Sources */,
 				649D5D0724E5C97F004C6328 /* ComicUseCaseAdapter.swift in Sources */,
+				64B434EF24F41A780054A20C /* CaptainAmericaComics.swift in Sources */,
 				649D5D1124E5C97F004C6328 /* SeriesThumbnailView.swift in Sources */,
+				64B4350524F441400054A20C /* AmazingSpiderMan3.swift in Sources */,
+				64B434E624F419020054A20C /* SeriesDecoderProvider.swift in Sources */,
+				64B434F524F41ABD0054A20C /* WebOfSpiderMan.swift in Sources */,
+				64B434BA24F3E5B70054A20C /* CharacterDecoderProvider.swift in Sources */,
 				649D5D0624E5C97F004C6328 /* DescriptionView.swift in Sources */,
+				64B434D824F3F6C20054A20C /* NetworkError.swift in Sources */,
+				64B434DE24F413DA0054A20C /* SeriesCacheProvider.swift in Sources */,
 				649D5D0324E5C97F004C6328 /* ComicInfoView.swift in Sources */,
+				64B4350B24F441940054A20C /* ComicsMock.swift in Sources */,
+				64B434E424F416190054A20C /* Series.swift in Sources */,
 				649D5D0F24E5C97F004C6328 /* CharactersWithSeriesViewModel.swift in Sources */,
+				64B4350124F440B70054A20C /* AmazingSpiderMan1.swift in Sources */,
 				649D5D1324E5C97F004C6328 /* SeriesView.swift in Sources */,
+				64B434CC24F3F6140054A20C /* CharactersMock.swift in Sources */,
+				64B434FE24F440570054A20C /* ComicAPIProvider.swift in Sources */,
 				649D5D0824E5C97F004C6328 /* CharacterViewModel.swift in Sources */,
-				649D5D1624E5C97F004C6328 /* SeriesAPIProviderFactory.swift in Sources */,
+				64B434EB24F41A460054A20C /* AmazingSpiderMan.swift in Sources */,
 				649D5D0E24E5C97F004C6328 /* SeriesViewModel.swift in Sources */,
+				64B434B424F3DF680054A20C /* InMemoryCache.swift in Sources */,
+				64B4350724F4415D0054A20C /* AmazingSpiderMan4.swift in Sources */,
+				64B434F324F41AA80054A20C /* SeriesMock.swift in Sources */,
 				649D5D0224E5C97F004C6328 /* ComicThumbnailView.swift in Sources */,
+				64B434CE24F3F62C0054A20C /* CaptainAmericaMock.swift in Sources */,
+				64B434D624F3F6860054A20C /* SpiderManMock.swift in Sources */,
 				649D5D1424E5C97F004C6328 /* CharactersWithSeriesUseCase.swift in Sources */,
-				649D5D1924E5C97F004C6328 /* CharacterCacheProviderFactory.swift in Sources */,
+				64B434E824F41A0A0054A20C /* SeriesAPIProvider.swift in Sources */,
 				649D5D0B24E5C97F004C6328 /* CharacterThumbnailView.swift in Sources */,
 				649D5C8024E1F18B004C6328 /* ComicsInfoApp.swift in Sources */,
-				649D5D1B24E5C97F004C6328 /* ComicCacheProviderFactory.swift in Sources */,
-				649D5D1824E5C97F004C6328 /* CharacterAPIProviderFactory.swift in Sources */,
+				648BD21A24F443040040CD75 /* ComicDecoderProvider.swift in Sources */,
+				64B434B724F3E5270054A20C /* Character.swift in Sources */,
+				64B434F124F41A8D0054A20C /* PeterParkerTheSpectacularSpiderMan.swift in Sources */,
 				649D5D0C24E5C97F004C6328 /* CharacterView.swift in Sources */,
-				649D5D1A24E5C97F004C6328 /* ComicAPIProviderFactory.swift in Sources */,
-				649D5D1724E5C97F004C6328 /* SeriesCacheProviderFactory.swift in Sources */,
 				649D5D0424E5C97F004C6328 /* ComicsListView.swift in Sources */,
 				649D5D0A24E5C97F004C6328 /* CharactersListView.swift in Sources */,
+				64B4350324F440D70054A20C /* AmazingSpiderMan2.swift in Sources */,
 				649D5D0D24E5C97F004C6328 /* CharacterUseCaseAdapter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -639,8 +846,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64B434E224F415130054A20C /* SeriesMock.swift in Sources */,
 				649D5D2624E5C9B3004C6328 /* ComicTests.swift in Sources */,
+				64B434C024F3E8500054A20C /* CharacterCacheProviderTests.swift in Sources */,
+				64B434E024F414DB0054A20C /* SeriesCacheProviderTests.swift in Sources */,
+				64B434F724F41B2B0054A20C /* SeriesAPIServiceTests.swift in Sources */,
+				64B434FC24F43FE90054A20C /* ComicCacheProviderTests.swift in Sources */,
+				64B434C324F3E96B0054A20C /* CharactersMock.swift in Sources */,
+				64B4350D24F441CA0054A20C /* ComicAPIServiceTests.swift in Sources */,
 				649D5D2724E5C9B3004C6328 /* SeriesTests.swift in Sources */,
+				64B434DB24F3F7340054A20C /* CharacterAPIServiceTests.swift in Sources */,
 				649D5D2524E5C9B3004C6328 /* CharacterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -960,10 +1175,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		649D5D3324E5C9F6004C6328 /* Framework */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Framework;
-		};
 		649D5D3524E5C9FC004C6328 /* UseCases */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = UseCases;

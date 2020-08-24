@@ -6,7 +6,6 @@
 //  Copyright © 2020 Aleksandar Dinic. All rights reserved.
 //
 
-import struct Domain.Character
 @testable import CIData
 import XCTest
 
@@ -25,7 +24,7 @@ final class CharacterAPIWrapperTests: XCTestCase {
     func testGetAllCharactersSuccess() {
         // Given
         let sut = CharacterAPIWrapperMockFactory.makeWithCharacters()
-        var result: Result<[Domain.Character], Error>?
+        var result: Result<[Character], Error>?
         let promise = expectation(description: #function)
 
         // When
@@ -52,7 +51,7 @@ final class CharacterAPIWrapperTests: XCTestCase {
     func testGetAllCharactersFailure() {
         // Given
         let sut = CharacterAPIWrapperMockFactory.makeWithoutData()
-        var result: Result<[Domain.Character], Error>?
+        var result: Result<[Character], Error>?
         let promise = expectation(description: #function)
 
         // When
@@ -74,7 +73,7 @@ final class CharacterAPIWrapperTests: XCTestCase {
     func testGetAllCharactersFailureBadData() {
         // Given
         let sut = CharacterAPIWrapperMockFactory.makeWithCharactersBadData()
-        var result: Result<[Domain.Character], Error>?
+        var result: Result<[Character], Error>?
         let promise = expectation(description: #function)
 
         // When
@@ -99,7 +98,7 @@ final class CharacterAPIWrapperTests: XCTestCase {
         // Given
         let sut = CharacterAPIWrapperMockFactory.makeWithCharacter()
         let characterID = "1"
-        var result: Result<Domain.Character, Error>?
+        var result: Result<Character, Error>?
         let promise = expectation(description: #function)
 
         // When
@@ -127,7 +126,7 @@ final class CharacterAPIWrapperTests: XCTestCase {
         // Given
         let sut = CharacterAPIWrapperMockFactory.makeWithoutData()
         let characterID = "1"
-        var result: Result<Domain.Character, Error>?
+        var result: Result<Character, Error>?
         let promise = expectation(description: #function)
 
         // When
@@ -150,7 +149,7 @@ final class CharacterAPIWrapperTests: XCTestCase {
         // Given
         let sut = CharacterAPIWrapperMockFactory.makeWithCharacterBadData()
         let characterID = "1"
-        var result: Result<Domain.Character, Error>?
+        var result: Result<Character, Error>?
         let promise = expectation(description: #function)
 
         // When

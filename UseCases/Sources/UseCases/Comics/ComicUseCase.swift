@@ -8,7 +8,7 @@
 
 import protocol CIData.ComicRepository
 import enum CIData.DataSourceLayer
-import struct Domain.Comic
+import struct CIData.Comic
 import Foundation
 
 public final class ComicUseCase {
@@ -22,7 +22,7 @@ public final class ComicUseCase {
     public func getAllComics(
         forSeriesID seriesID: String,
         fromDataSource dataSource: DataSourceLayer,
-        onComplete complete: @escaping (Result<[Domain.Comic], Error>) -> Void
+        onComplete complete: @escaping (Result<[CIData.Comic], Error>) -> Void
     ) {
         DispatchQueue.global(qos: .utility).async { [weak self] in
             self?.comicRepository.getAllComics(forSeriesID: seriesID, fromDataSource: dataSource) { result in

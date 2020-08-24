@@ -6,7 +6,6 @@
 //  Copyright © 2020 Aleksandar Dinic. All rights reserved.
 //
 
-import struct Domain.Comic
 import Foundation
 
 public struct ComicDataProvider {
@@ -25,7 +24,7 @@ public struct ComicDataProvider {
     func getAllComics(
         forSeriesID seriesID: String,
         fromDataSource dataSource: DataSourceLayer,
-        onComplete complete: @escaping (Result<[Domain.Comic], Error>) -> Void
+        onComplete complete: @escaping (Result<[Comic], Error>) -> Void
     ) {
         switch dataSource {
         case .memory:
@@ -40,7 +39,7 @@ public struct ComicDataProvider {
         getAllComicsFromNetwork(forSeriesID: seriesID, onComplete: complete)
     }
 
-    private func getAllComicsFromMemory(forSeriesID seriesID: String) -> [Domain.Comic]? {
+    private func getAllComicsFromMemory(forSeriesID seriesID: String) -> [Comic]? {
         guard let comics = comicCacheService.getAllComics(forSeriesID: seriesID) else {
             return nil
         }
@@ -49,9 +48,9 @@ public struct ComicDataProvider {
 
     private func getAllComicsFromNetwork(
         forSeriesID seriesID: String,
-        onComplete complete: @escaping (Result<[Domain.Comic], Error>) -> Void
+        onComplete complete: @escaping (Result<[Comic], Error>) -> Void
     ) {
-        comicAPIWrapper.getAllComics(forSeriesID: seriesID) { (result: Result<[Domain.Comic], Error>) in
+        comicAPIWrapper.getAllComics(forSeriesID: seriesID) { (result: Result<[Comic], Error>) in
             switch result {
             case let .success(comics):
                 comicCacheService.save(comics: comics)

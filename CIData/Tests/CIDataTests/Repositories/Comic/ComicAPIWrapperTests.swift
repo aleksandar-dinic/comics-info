@@ -6,7 +6,6 @@
 //  Copyright © 2020 Aleksandar Dinic. All rights reserved.
 //
 
-import struct Domain.Comic
 @testable import CIData
 import XCTest
 
@@ -23,7 +22,7 @@ final class ComicAPIWrapperTests: XCTestCase {
     func testGetAllComicSuccess() throws {
         // Given
         let sut = ComicAPIWrapperMockFactory.makeWithComics()
-        var result: Result<[Domain.Comic], Error>?
+        var result: Result<[Comic], Error>?
         let promise = expectation(description: #function)
 
         // When
@@ -46,7 +45,7 @@ final class ComicAPIWrapperTests: XCTestCase {
     func testGetAllComicsFailure() {
         // Given
         let sut = ComicAPIWrapperMockFactory.makeWithoutData()
-        var result: Result<[Domain.Comic], Error>?
+        var result: Result<[Comic], Error>?
         let promise = expectation(description: #function)
 
         // When
@@ -68,7 +67,7 @@ final class ComicAPIWrapperTests: XCTestCase {
     func testGetAllComicsFailureBadData() {
         // Given
         let sut = ComicAPIWrapperMockFactory.makeWithComicBadData()
-        var result: Result<[Domain.Comic], Error>?
+        var result: Result<[Comic], Error>?
         let promise = expectation(description: #function)
 
         // When

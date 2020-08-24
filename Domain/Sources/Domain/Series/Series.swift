@@ -38,11 +38,3 @@ public struct Series: Codable {
     public let nextIdentifier: String?
 
 }
-
-extension Series: Hashable {
-
-    public static func == (lhs: Series, rhs: Series) -> Bool {
-        lhs.identifier == rhs.identifier
-    }
-
-}

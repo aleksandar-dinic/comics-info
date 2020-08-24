@@ -6,15 +6,14 @@
 //  Copyright © 2020 Aleksandar Dinic. All rights reserved.
 //
 
-import struct Domain.Series
 import Foundation
 
 public protocol SeriesCacheService {
 
-    func getAllSeries(forCharacters characters: [String]) -> [Domain.Series]?
+    func getAllSeries(forCharacters characters: [String]) -> [Series]?
 
-    func getSeries(withID seriesID: String) -> Domain.Series?
+    func getSeries(withID seriesID: String) -> Series?
 
-    func save(series: [Domain.Series])
+    func save(series: [Series])
 
 }

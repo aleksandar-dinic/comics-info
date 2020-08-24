@@ -6,7 +6,6 @@
 //  Copyright © 2020 Aleksandar Dinic. All rights reserved.
 //
 
-import struct Domain.Comic
 import Foundation
 
 final class ComicDataRepository: ComicRepository {
@@ -20,7 +19,7 @@ final class ComicDataRepository: ComicRepository {
     func getAllComics(
         forSeriesID seriesID: String,
         fromDataSource dataSource: DataSourceLayer,
-        onComplete complete: @escaping (Result<[Domain.Comic], Error>) -> Void
+        onComplete complete: @escaping (Result<[Comic], Error>) -> Void
     ) {
         comicDataProvider.getAllComics(
             forSeriesID: seriesID,

@@ -6,7 +6,6 @@
 //  Copyright © 2020 Aleksandar Dinic. All rights reserved.
 //
 
-import struct Domain.Character
 import Foundation
 
 public struct CharacterDataProvider {
@@ -26,7 +25,7 @@ public struct CharacterDataProvider {
 
     func getAllCharacters(
         fromDataSource dataSource: DataSourceLayer,
-        onComplete complete: @escaping (Result<[Domain.Character], Error>) -> Void
+        onComplete complete: @escaping (Result<[Character], Error>) -> Void
     ) {
         switch dataSource {
         case .memory:
@@ -41,7 +40,7 @@ public struct CharacterDataProvider {
         getAllCharactersFromNetwork(onComplete: complete)
     }
 
-    private func getAllCharactersFromMemory() -> [Domain.Character]? {
+    private func getAllCharactersFromMemory() -> [Character]? {
         guard let characters = characterCacheService.getAllCharacters() else {
             return nil
         }
@@ -49,9 +48,9 @@ public struct CharacterDataProvider {
     }
 
     private func getAllCharactersFromNetwork(
-        onComplete complete: @escaping (Result<[Domain.Character], Error>) -> Void
+        onComplete complete: @escaping (Result<[Character], Error>) -> Void
     ) {
-        characterAPIWrapper.getAllCharacters { (result: Result<[Domain.Character], Error>) in
+        characterAPIWrapper.getAllCharacters { (result: Result<[Character], Error>) in
             switch result {
             case let .success(characters):
                 characterCacheService.save(characters: characters)
@@ -68,7 +67,7 @@ public struct CharacterDataProvider {
     func getCharacter(
         withID characterID: String,
         fromDataSource dataSource: DataSourceLayer,
-        onComplete complete: @escaping (Result<Domain.Character, Error>) -> Void
+        onComplete complete: @escaping (Result<Character, Error>) -> Void
     ) {
         switch dataSource {
         case .memory:
@@ -81,15 +80,15 @@ public struct CharacterDataProvider {
         getCharacterFromNetwork(withID: characterID, onComplete: complete)
     }
 
-    private func getCharacterFromMemory(withID characterID: String) -> Domain.Character? {
+    private func getCharacterFromMemory(withID characterID: String) -> Character? {
         characterCacheService.getCharacter(withID: characterID)
     }
 
     private func getCharacterFromNetwork(
         withID characterID: String,
-        onComplete complete: @escaping (Result<Domain.Character, Error>) -> Void
+        onComplete complete: @escaping (Result<Character, Error>) -> Void
     ) {
-        characterAPIWrapper.getCharacter(withID: characterID) { (result: Result<Domain.Character, Error>) in
+        characterAPIWrapper.getCharacter(withID: characterID) { (result: Result<Character, Error>) in
             switch result {
             case let .success(character):
                 characterCacheService.save(characters: [character])

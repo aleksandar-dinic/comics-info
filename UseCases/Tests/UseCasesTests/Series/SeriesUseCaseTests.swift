@@ -6,7 +6,7 @@
 //  Copyright © 2020 Aleksandar Dinic. All rights reserved.
 //
 
-import struct Domain.Series
+import struct CIData.Series
 import enum CIData.DataSourceLayer
 @testable import UseCases
 import XCTest
@@ -27,7 +27,7 @@ final class SeriesUseCaseTests: XCTestCase {
         let sut = SeriesUseCase(seriesRepository: seriesRepository)
         let dataSourceLayer = DataSourceLayer.network
 
-        var result: Result<[Domain.Series], Error>?
+        var result: Result<[CIData.Series], Error>?
         let promise = expectation(description: #function)
 
         // When

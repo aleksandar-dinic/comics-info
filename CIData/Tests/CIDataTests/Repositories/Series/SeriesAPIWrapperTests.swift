@@ -6,7 +6,6 @@
 //  Copyright © 2020 Aleksandar Dinic. All rights reserved.
 //
 
-import struct Domain.Series
 @testable import CIData
 import XCTest
 
@@ -23,7 +22,7 @@ final class SeriesAPIWrapperTests: XCTestCase {
     func testGetAllSeriesSuccess() throws {
         // Given
         let sut = SeriesAPIWrapperMockFactory.makeWithSeries()
-        var result: Result<[Domain.Series], Error>?
+        var result: Result<[Series], Error>?
         let promise = expectation(description: #function)
 
         // When
@@ -46,7 +45,7 @@ final class SeriesAPIWrapperTests: XCTestCase {
     func testGetAllSeriesFailure() {
         // Given
         let sut = SeriesAPIWrapperMockFactory.makeWithoutData()
-        var result: Result<[Domain.Series], Error>?
+        var result: Result<[Series], Error>?
         let promise = expectation(description: #function)
 
         // When
@@ -68,7 +67,7 @@ final class SeriesAPIWrapperTests: XCTestCase {
     func testGetAllSeriesFailureBadData() {
         // Given
         let sut = SeriesAPIWrapperMockFactory.makeWithSeriesBadData()
-        var result: Result<[Domain.Series], Error>?
+        var result: Result<[Series], Error>?
         let promise = expectation(description: #function)
 
         // When
