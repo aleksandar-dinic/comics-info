@@ -7,6 +7,7 @@
 //
 
 import struct CIData.Character
+import struct CIData.Series
 import Foundation
 
 struct Character: Codable {
@@ -39,7 +40,7 @@ extension Character {
         name = character.name
         thumbnail = character.thumbnail
         description = character.description
-        series = [Series]()
+        series = character.series.map({ Series(from: $0) })
     }
 
 }
@@ -52,7 +53,8 @@ extension CIData.Character {
             popularity: character.popularity,
             name: character.name,
             thumbnail: character.thumbnail,
-            description: character.description
+            description: character.description,
+            series: character.series.map({ CIData.Series(from: $0) })
         )
     }
 

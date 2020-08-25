@@ -6,11 +6,11 @@
 //  Copyright © 2020 Aleksandar Dinic. All rights reserved.
 //
 
-import protocol UseCases.SeriesUseCaseFactory
 import enum CIData.DataSourceLayer
 import protocol CIData.SeriesAPIService
 import protocol CIData.SeriesCacheService
 import protocol CIData.SeriesDecoderService
+import protocol UseCases.SeriesUseCaseFactory
 import Foundation
 
 struct SeriesUseCaseAdapter: UseCases.SeriesUseCaseFactory {

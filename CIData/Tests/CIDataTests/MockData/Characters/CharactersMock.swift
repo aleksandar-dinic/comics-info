@@ -15,9 +15,12 @@ struct CharactersMock {
     // MARK: - Characters
 
     static let characters = [
-        CIData.Character(identifier: "1", popularity: 1, name: "Flash", thumbnail: nil, description: nil),
-        CIData.Character(identifier: "2", popularity: 2, name: "Batman", thumbnail: nil, description: nil),
-        CIData.Character(identifier: "3", popularity: 3, name: "Spider-Man", thumbnail: nil, description: nil)
+        CIData.Character(identifier: "1", popularity: 1, name: "Flash",
+                         thumbnail: nil, description: nil, series: []),
+        CIData.Character(identifier: "2", popularity: 2, name: "Batman",
+                         thumbnail: nil, description: nil, series: []),
+        CIData.Character(identifier: "3", popularity: 3, name: "Spider-Man",
+                         thumbnail: nil, description: nil, series: [])
     ]
 
     static let domainCharacters = [
@@ -68,7 +71,8 @@ struct CharactersMock {
         popularity: 1,
         name: "Flash",
         thumbnail: nil,
-        description: nil
+        description: nil,
+        series: []
     )
 
     static let domainCharacter = Domain.Character(

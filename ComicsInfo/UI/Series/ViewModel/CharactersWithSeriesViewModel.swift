@@ -17,7 +17,7 @@ final class CharactersWithSeriesViewModel: ObservableObject {
         case showSeries
     }
 
-    private var charactersWithSeriesUseCase: CharactersWithSeriesUseCase
+    private var charactersWithSeriesUseCase: CharactersWithSeriesUseCaseAdapter
     private(set) var characters: [Character]
 
     @Published private(set) var status: Status {
@@ -36,7 +36,7 @@ final class CharactersWithSeriesViewModel: ObservableObject {
     private(set) var errorMessage: String = ""
 
     init(
-        charactersWithSeriesUseCase: CharactersWithSeriesUseCase = CharactersWithSeriesUseCase(),
+        charactersWithSeriesUseCase: CharactersWithSeriesUseCaseAdapter = CharactersWithSeriesUseCaseAdapter(),
         characters: [Character] = [],
         status: Status = .loading
     ) {

@@ -32,7 +32,7 @@
 		649D5D1124E5C97F004C6328 /* SeriesThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649D5CF024E5C97F004C6328 /* SeriesThumbnailView.swift */; };
 		649D5D1224E5C97F004C6328 /* SeriesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649D5CF124E5C97F004C6328 /* SeriesListView.swift */; };
 		649D5D1324E5C97F004C6328 /* SeriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649D5CF224E5C97F004C6328 /* SeriesView.swift */; };
-		649D5D1424E5C97F004C6328 /* CharactersWithSeriesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649D5CF424E5C97F004C6328 /* CharactersWithSeriesUseCase.swift */; };
+		649D5D1424E5C97F004C6328 /* CharactersWithSeriesUseCaseAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649D5CF424E5C97F004C6328 /* CharactersWithSeriesUseCaseAdapter.swift */; };
 		649D5D1524E5C97F004C6328 /* SeriesUseCaseAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649D5CF524E5C97F004C6328 /* SeriesUseCaseAdapter.swift */; };
 		649D5D2524E5C9B3004C6328 /* CharacterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649D5D1E24E5C9B3004C6328 /* CharacterTests.swift */; };
 		649D5D2624E5C9B3004C6328 /* ComicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649D5D2124E5C9B3004C6328 /* ComicTests.swift */; };
@@ -135,7 +135,7 @@
 		649D5CF024E5C97F004C6328 /* SeriesThumbnailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeriesThumbnailView.swift; sourceTree = "<group>"; };
 		649D5CF124E5C97F004C6328 /* SeriesListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeriesListView.swift; sourceTree = "<group>"; };
 		649D5CF224E5C97F004C6328 /* SeriesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeriesView.swift; sourceTree = "<group>"; };
-		649D5CF424E5C97F004C6328 /* CharactersWithSeriesUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharactersWithSeriesUseCase.swift; sourceTree = "<group>"; };
+		649D5CF424E5C97F004C6328 /* CharactersWithSeriesUseCaseAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharactersWithSeriesUseCaseAdapter.swift; sourceTree = "<group>"; };
 		649D5CF524E5C97F004C6328 /* SeriesUseCaseAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeriesUseCaseAdapter.swift; sourceTree = "<group>"; };
 		649D5D1E24E5C9B3004C6328 /* CharacterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterTests.swift; sourceTree = "<group>"; };
 		649D5D2124E5C9B3004C6328 /* ComicTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComicTests.swift; sourceTree = "<group>"; };
@@ -387,8 +387,8 @@
 		649D5CEA24E5C97F004C6328 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				649D5CEB24E5C97F004C6328 /* SeriesViewModel.swift */,
 				649D5CEC24E5C97F004C6328 /* CharactersWithSeriesViewModel.swift */,
+				649D5CEB24E5C97F004C6328 /* SeriesViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -414,7 +414,7 @@
 		649D5CF324E5C97F004C6328 /* UseCase */ = {
 			isa = PBXGroup;
 			children = (
-				649D5CF424E5C97F004C6328 /* CharactersWithSeriesUseCase.swift */,
+				649D5CF424E5C97F004C6328 /* CharactersWithSeriesUseCaseAdapter.swift */,
 				649D5CF524E5C97F004C6328 /* SeriesUseCaseAdapter.swift */,
 			);
 			path = UseCase;
@@ -827,7 +827,7 @@
 				649D5D0224E5C97F004C6328 /* ComicThumbnailView.swift in Sources */,
 				64B434CE24F3F62C0054A20C /* CaptainAmericaMock.swift in Sources */,
 				64B434D624F3F6860054A20C /* SpiderManMock.swift in Sources */,
-				649D5D1424E5C97F004C6328 /* CharactersWithSeriesUseCase.swift in Sources */,
+				649D5D1424E5C97F004C6328 /* CharactersWithSeriesUseCaseAdapter.swift in Sources */,
 				64B434E824F41A0A0054A20C /* SeriesAPIProvider.swift in Sources */,
 				649D5D0B24E5C97F004C6328 /* CharacterThumbnailView.swift in Sources */,
 				649D5C8024E1F18B004C6328 /* ComicsInfoApp.swift in Sources */,

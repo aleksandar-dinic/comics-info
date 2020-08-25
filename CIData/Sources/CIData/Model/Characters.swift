@@ -26,18 +26,23 @@ public struct Character {
     ///  A short bio or description of the character
     public let description: String?
 
+    /// A resource list containing series for this character.
+    public var series: [Series]
+
     public init(
         identifier: String,
         popularity: Int,
         name: String,
         thumbnail: String?,
-        description: String?
+        description: String?,
+        series: [Series]
     ) {
         self.identifier = identifier
         self.popularity = popularity
         self.name = name
         self.thumbnail = thumbnail
         self.description = description
+        self.series = series
     }
 
 }
@@ -50,6 +55,7 @@ extension Character {
         name = character.name
         thumbnail = character.thumbnail
         description = character.description
+        series = [Series]()
     }
 
 }

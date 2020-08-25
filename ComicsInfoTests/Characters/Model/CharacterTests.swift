@@ -20,7 +20,8 @@ class CharacterTests: XCTestCase {
             popularity: 1,
             name: "Name",
             thumbnail: "Thumbnail",
-            description: "Description"
+            description: "Description",
+            series: []
         )
     }
 
