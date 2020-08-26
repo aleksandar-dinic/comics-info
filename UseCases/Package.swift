@@ -13,7 +13,11 @@ let package = Package(
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
-        .package(path: ".../Domain"),
+        .package(
+            name: "Domain",
+            url: "https://github.com/AleksandarDinic/comics-info-domain.git",
+            from: "0.0.1"
+        ),
         .package(path: ".../CIData")
     ],
     targets: [

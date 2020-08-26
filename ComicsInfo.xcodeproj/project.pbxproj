@@ -112,7 +112,6 @@
 		649D5C9324E1F18C004C6328 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		649D5C9824E1F18C004C6328 /* ComicsInfoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ComicsInfoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		649D5C9E24E1F18C004C6328 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		649D5CCB24E470A5004C6328 /* Domain */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Domain; sourceTree = "<group>"; };
 		649D5CCC24E4723B004C6328 /* CIData */ = {isa = PBXFileReference; lastKnownFileType = folder; path = CIData; sourceTree = "<group>"; };
 		649D5CCD24E48DFA004C6328 /* UseCases */ = {isa = PBXFileReference; lastKnownFileType = folder; path = UseCases; sourceTree = "<group>"; };
 		649D5CD324E5C97F004C6328 /* ComicViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComicViewModel.swift; sourceTree = "<group>"; };
@@ -214,7 +213,6 @@
 		649D5C7324E1F18B004C6328 = {
 			isa = PBXGroup;
 			children = (
-				649D5CCB24E470A5004C6328 /* Domain */,
 				649D5CCC24E4723B004C6328 /* CIData */,
 				649D5CCD24E48DFA004C6328 /* UseCases */,
 				649D5C7E24E1F18B004C6328 /* ComicsInfo */,
