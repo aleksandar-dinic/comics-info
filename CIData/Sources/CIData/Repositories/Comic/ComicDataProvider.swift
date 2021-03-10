@@ -32,12 +32,10 @@ public struct ComicDataProvider {
             if let comicsFromMemory = getAllComicsFromMemory() {
                 return complete(.success(comicsFromMemory))
             }
-
+            fallthrough
         case .network:
-            break
+            getAllComicsFromNetwork(onComplete: complete)
         }
-
-        getAllComicsFromNetwork(onComplete: complete)
     }
 
     private func getAllComicsFromMemory() -> [Comic]? {
@@ -74,12 +72,10 @@ public struct ComicDataProvider {
             if let comicsFromMemory = getComicFromMemory(withID: comicID) {
                 return complete(.success(comicsFromMemory))
             }
-
+            fallthrough
         case .network:
-            break
+            getComicFromNetwork(withID: comicID, onComplete: complete)
         }
-
-        getComicFromNetwork(withID: comicID, onComplete: complete)
     }
 
     private func getComicFromMemory(withID comicID: String) -> Comic? {

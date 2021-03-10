@@ -17,7 +17,7 @@ final class SeriesViewModel: ObservableObject {
         case showSeries
     }
 
-    private var seriesUseCaseAdapter: SeriesUseCaseAdapter
+    private var useCase: SeriesUseCase
     private(set) var series: [Series]
 
     @Published private(set) var status: Status {
@@ -36,11 +36,11 @@ final class SeriesViewModel: ObservableObject {
     private(set) var errorMessage: String = ""
 
     init(
-        seriesUseCaseAdapter: SeriesUseCaseAdapter = SeriesUseCaseAdapter(),
+        useCase: SeriesUseCase = SeriesUseCase(),
         series: [Series] = [],
         status: Status = .loading
     ) {
-        self.seriesUseCaseAdapter = seriesUseCaseAdapter
+        self.useCase = useCase
         self.series = series
         self.status = status
     }
@@ -48,7 +48,7 @@ final class SeriesViewModel: ObservableObject {
     func loadAllSeries(fromDataSource dataSource: CIData.DataSourceLayer = .memory) {
         guard dataSource == .network || series.isEmpty else { return }
 
-        seriesUseCaseAdapter.getAllSeries(fromDataSource: dataSource) { [weak self] result in
+        useCase.getAllSeries(fromDataSource: dataSource) { [weak self] result in
             guard let self = self else { return }
 
             switch result {

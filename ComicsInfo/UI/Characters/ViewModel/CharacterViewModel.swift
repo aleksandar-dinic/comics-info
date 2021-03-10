@@ -17,7 +17,7 @@ final class CharacterViewModel: ObservableObject {
         case showCharacters
     }
 
-    private var characterUseCaseAdapter: CharacterUseCaseAdapter
+    private var useCase: CharacterUseCase
     private(set) var characters: [Character]
 
     @Published private(set) var status: Status {
@@ -36,11 +36,11 @@ final class CharacterViewModel: ObservableObject {
     private(set) var errorMessage: String = ""
 
     init(
-        characterUseCaseAdapter: CharacterUseCaseAdapter = CharacterUseCaseAdapter(),
+        useCase: CharacterUseCase = CharacterUseCase(),
         characters: [Character] = [],
         status: Status = .loading
     ) {
-        self.characterUseCaseAdapter = characterUseCaseAdapter
+        self.useCase = useCase
         self.characters = characters
         self.status = status
     }
@@ -48,7 +48,7 @@ final class CharacterViewModel: ObservableObject {
     func loadAllCharacters(fromDataSource dataSource: CIData.DataSourceLayer = .memory) {
         guard dataSource == .network || characters.isEmpty else { return }
 
-        characterUseCaseAdapter.getAllCharacters(fromDataSource: dataSource) { [weak self] result in
+        useCase.getAllCharacters(fromDataSource: dataSource) { [weak self] result in
             guard let self = self else { return }
 
             switch result {
@@ -67,7 +67,7 @@ final class CharacterViewModel: ObservableObject {
     ) {
         guard dataSource == .network || !characters.contains(where: { $0.identifier == characterID }) else { return }
 
-        characterUseCaseAdapter.getCharacter(withID: characterID, fromDataSource: dataSource) { [weak self] result in
+        useCase.getCharacter(withID: characterID, fromDataSource: dataSource) { [weak self] result in
             guard let self = self else { return }
 
             switch result {

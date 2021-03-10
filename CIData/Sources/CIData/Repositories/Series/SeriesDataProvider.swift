@@ -32,12 +32,10 @@ public struct SeriesDataProvider {
             if let seriesFromMemory = getAllSeriesFromMemory() {
                 return complete(.success(seriesFromMemory))
             }
-
+            fallthrough
         case .network:
-            break
+            getAllSeriesFromNetwork(onComplete: complete)
         }
-
-        getAllSeriesFromNetwork(onComplete: complete)
     }
     
     private func getAllSeriesFromMemory() -> [Series]? {
@@ -74,12 +72,10 @@ public struct SeriesDataProvider {
             if let seriesFromMemory = getSeriesFromMemory(withID: seriesID) {
                 return complete(.success(seriesFromMemory))
             }
-
+            fallthrough
         case .network:
-            break
+            getSeriesFromNetwork(withID: seriesID, onComplete: complete)
         }
-
-        getSeriesFromNetwork(withID: seriesID, onComplete: complete)
     }
 
     private func getSeriesFromMemory(withID seriesID: String) -> Series? {

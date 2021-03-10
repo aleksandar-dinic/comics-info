@@ -32,12 +32,10 @@ public struct CharacterDataProvider {
             if let charactersFromMemory = getAllCharactersFromMemory() {
                 return complete(.success(charactersFromMemory))
             }
-
+            fallthrough
         case .network:
-            break
+            getAllCharactersFromNetwork(onComplete: complete)
         }
-
-        getAllCharactersFromNetwork(onComplete: complete)
     }
 
     private func getAllCharactersFromMemory() -> [Character]? {
@@ -74,10 +72,10 @@ public struct CharacterDataProvider {
             if let characterFromMemory = getCharacterFromMemory(withID: characterID) {
                 return complete(.success(characterFromMemory))
             }
+            fallthrough
         case .network:
-            break
+            getCharacterFromNetwork(withID: characterID, onComplete: complete)
         }
-        getCharacterFromNetwork(withID: characterID, onComplete: complete)
     }
 
     private func getCharacterFromMemory(withID characterID: String) -> Character? {

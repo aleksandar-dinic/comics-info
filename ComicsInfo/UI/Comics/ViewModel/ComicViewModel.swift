@@ -17,7 +17,7 @@ final class ComicViewModel: ObservableObject {
         case showComics
     }
 
-    private var comicUseCaseAdapter: ComicUseCaseAdapter
+    private var useCase: ComicUseCase
     private(set) var comics: [Comic]
 
     @Published private(set) var status: Status {
@@ -36,11 +36,11 @@ final class ComicViewModel: ObservableObject {
     private(set) var errorMessage: String = ""
 
     init(
-        comicUseCaseAdapter: ComicUseCaseAdapter = ComicUseCaseAdapter(),
+        useCase: ComicUseCase = ComicUseCase(),
         comics: [Comic] = [],
         status: Status = .loading
     ) {
-        self.comicUseCaseAdapter = comicUseCaseAdapter
+        self.useCase = useCase
         self.comics = comics
         self.status = status
     }
@@ -48,7 +48,7 @@ final class ComicViewModel: ObservableObject {
     func loadAllComics(fromDataSource dataSource: CIData.DataSourceLayer = .memory) {
         guard dataSource == .network || comics.isEmpty else { return }
 
-        comicUseCaseAdapter.getAllComics(fromDataSource: dataSource) { [weak self] result in
+        useCase.getAllComics(fromDataSource: dataSource) { [weak self] result in
             guard let self = self else { return }
 
             switch result {
@@ -67,7 +67,7 @@ final class ComicViewModel: ObservableObject {
     ) {
         guard dataSource == .network || !comics.contains(where: { $0.identifier == comicID }) else { return }
 
-        comicUseCaseAdapter.getComic(withID: comicID, fromDataSource: dataSource) { [weak self] result in
+        useCase.getComic(withID: comicID, fromDataSource: dataSource) { [weak self] result in
             guard let self = self else { return }
 
             switch result {
