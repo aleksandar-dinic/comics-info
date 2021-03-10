@@ -18,7 +18,7 @@ public protocol CharacterRepository {
     ///
     /// - Parameters:
     ///   - dataSource: Layer of data source
-    ///   - complete: Result who contains Characters in Success, or Error in Failure
+    ///   - complete: Result who contains list of Characters in Success, or Error in Failure
     func getAllCharacters(
         fromDataSource dataSource: DataSourceLayer,
         onComplete complete: @escaping (Result<[Character], Error>) -> Void

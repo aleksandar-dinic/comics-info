@@ -10,7 +10,7 @@ import Foundation
 
 public protocol SeriesCacheService {
 
-    func getAllSeries(forCharacters characters: [String]) -> [Series]?
+    func getAllSeries() -> [Series]?
 
     func getSeries(withID seriesID: String) -> Series?
 

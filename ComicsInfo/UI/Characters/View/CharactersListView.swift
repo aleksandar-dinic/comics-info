@@ -47,13 +47,10 @@ struct CharactersListView_Previews: PreviewProvider {
 
     static let viewModel = CharacterViewModel(
         characters: [
-            Character.flash,
-            Character.spiderMan,
-            Character.captainAmerica,
-            Character.hulk,
-            Character.ironMan,
-            Character.silverSurfer,
-            Character.unknown
+            Character.make(),
+            Character.make(),
+            Character.make(),
+            Character.make()
         ],
         status: .showCharacters
     )

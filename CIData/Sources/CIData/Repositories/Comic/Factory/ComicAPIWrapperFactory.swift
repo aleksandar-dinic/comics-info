@@ -11,7 +11,6 @@ import Foundation
 public protocol ComicAPIWrapperFactory {
 
     var comicAPIService: ComicAPIService { get }
-    var comicDecoderService: ComicDecoderService { get }
 
     func makeComicAPIWrapper() -> ComicAPIWrapper
 
@@ -20,10 +19,7 @@ public protocol ComicAPIWrapperFactory {
 extension ComicAPIWrapperFactory {
 
     public func makeComicAPIWrapper() -> ComicAPIWrapper {
-        ComicAPIWrapper(
-            comicAPIService: comicAPIService,
-            comicDecoderService: comicDecoderService
-        )
+        ComicAPIWrapper(comicAPIService: comicAPIService)
     }
 
 }

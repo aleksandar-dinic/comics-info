@@ -18,14 +18,8 @@ public struct SeriesCacheProvider: CIData.SeriesCacheService {
         self.inMemoryCache = inMemoryCache
     }
 
-    public func getAllSeries(forCharacters characters: [String]) -> [CIData.Series]? {
-        var cache = Set<Series>()
-        for character in characters {
-            for series in inMemoryCache.values.filter({ $0.charactersID.contains(character) }) {
-                cache.insert(series)
-            }
-        }
-        return cache.isEmpty ? nil : Array(cache.map({ CIData.Series(from: $0) }))
+    public func getAllSeries() -> [CIData.Series]? {
+        inMemoryCache.values.map({ CIData.Series(from: $0) })
     }
 
     public func getSeries(withID seriesID: String) -> CIData.Series? {

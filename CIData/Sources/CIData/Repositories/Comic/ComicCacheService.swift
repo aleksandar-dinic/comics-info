@@ -10,7 +10,7 @@ import Foundation
 
 public protocol ComicCacheService {
 
-    func getAllComics(forSeriesID seriesID: String) -> [Comic]?
+    func getAllComics() -> [Comic]?
 
     func getComic(withID comicID: String) -> Comic?
 

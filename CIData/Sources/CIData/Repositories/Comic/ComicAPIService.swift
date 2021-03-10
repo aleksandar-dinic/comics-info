@@ -11,7 +11,11 @@ import Foundation
 public protocol ComicAPIService {
 
     func getAllComics(
-        forSeriesID seriesID: String,
+        onComplete complete: @escaping (Result<Data, Error>) -> Void
+    )
+    
+    func getComic(
+        withID comicID: String,
         onComplete complete: @escaping (Result<Data, Error>) -> Void
     )
 

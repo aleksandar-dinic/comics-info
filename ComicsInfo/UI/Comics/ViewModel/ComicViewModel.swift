@@ -45,21 +45,34 @@ final class ComicViewModel: ObservableObject {
         self.status = status
     }
 
-    func loadAllComics(
-        forSeriesID seriesID: String,
-        fromDataSource dataSource: CIData.DataSourceLayer = .memory
-    ) {
-        guard dataSource == .network || comics.filter({ $0.seriesID.contains(seriesID) }).isEmpty else { return }
+    func loadAllComics(fromDataSource dataSource: CIData.DataSourceLayer = .memory) {
+        guard dataSource == .network || comics.isEmpty else { return }
 
-        comicUseCaseAdapter.getAllComics(
-            forSeriesID: seriesID,
-            fromDataSource: dataSource
-        ) { [weak self] result in
+        comicUseCaseAdapter.getAllComics(fromDataSource: dataSource) { [weak self] result in
             guard let self = self else { return }
 
             switch result {
             case let .success(comics):
                 self.comics = comics.sorted { $0.popularity < $1.popularity }
+                self.status = .showComics
+            case let .failure(error):
+                self.status = .error(message: error.localizedDescription)
+            }
+        }
+    }
+    
+    func loadComic(
+        withID comicID: String,
+        fromDataSource dataSource: CIData.DataSourceLayer = .memory
+    ) {
+        guard dataSource == .network || !comics.contains(where: { $0.identifier == comicID }) else { return }
+
+        comicUseCaseAdapter.getComic(withID: comicID, fromDataSource: dataSource) { [weak self] result in
+            guard let self = self else { return }
+
+            switch result {
+            case let .success(comic):
+                self.comics.append(comic)
                 self.status = .showComics
             case let .failure(error):
                 self.status = .error(message: error.localizedDescription)

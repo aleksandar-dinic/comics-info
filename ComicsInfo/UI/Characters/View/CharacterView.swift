@@ -33,9 +33,11 @@ struct CharacterView: View {
 #if DEBUG
 struct CharacterView_Previews: PreviewProvider {
 
+    static let character = Character.make()
+    
     static var previews: some View {
         ForEach(ColorScheme.allCases, id: \.self) { color in
-            CharacterView(character: CharacterPresenter(from: Character.spiderMan))
+            CharacterView(character: CharacterPresenter(from: character))
                 .padding()
                 .previewLayout(.sizeThatFits)
                 .previewDisplayName("\(color)")

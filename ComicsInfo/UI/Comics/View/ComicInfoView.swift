@@ -53,13 +53,16 @@ struct ComicInfoView: View {
 
 #if DEBUG
 struct ComicInfoView_Previews: PreviewProvider {
+    
+    static let series = Series.make()
+    static let comic = Comic.make()
 
     static var previews: some View {
         NavigationView {
             ForEach(ColorScheme.allCases, id: \.self) { color in
                 ComicInfoView(
-                    series: SeriesPresenter(from: Series.amazingSpiderMan),
-                    comic: ComicPresenter(from: Comic.amazingSpiderMan4)
+                    series: SeriesPresenter(from: series),
+                    comic: ComicPresenter(from: comic)
                 )
                     .previewDisplayName("\(color)")
                     .environment(\.colorScheme, color)

@@ -22,8 +22,8 @@ struct ComicPresenter: Codable {
     /// The representative image for this comics.
     let thumbnail: String
 
-    /// The number of the issue in the series.
-    let issueNumber: String
+    /// The number of the comic in the series.
+    let number: String
 
     /// The preferred description of the comic.
     let description: String
@@ -34,11 +34,11 @@ struct ComicPresenter: Codable {
     /// The Int of story pages in the comic.
     let pageCount: Int?
 
-    /// A resource list containing series ID to which this comic belongs.
-    let seriesID: Set<String>
-
-    /// A resource list containing characters ID which appear in this comic.
-    let charactersID: Set<String>
+//    /// A resource list containing series ID to which this comic belongs.
+//    let seriesID: Set<String>
+//
+//    /// A resource list containing characters ID which appear in this comic.
+//    let charactersID: Set<String>
 
     /// The date of publication for this comic.
     let published: Date?
@@ -49,7 +49,7 @@ struct ComicPresenter: Codable {
     }
 
     var issue: String {
-        "#\(issueNumber)"
+        "#\(number)"
     }
 
     var publishedDate: String {
@@ -68,12 +68,12 @@ extension ComicPresenter {
         popularity = comic.popularity
         title = comic.title
         thumbnail = comic.thumbnail ?? ""
-        issueNumber = comic.issueNumber ?? ""
+        number = comic.number ?? ""
         description = comic.description ?? ""
         format = comic.format
         pageCount = comic.pageCount
-        seriesID = comic.seriesID
-        charactersID = comic.charactersID
+//        series = comic.series
+//        characters = comic.characters
         published = comic.published
     }
 

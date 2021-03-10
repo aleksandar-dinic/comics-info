@@ -49,12 +49,15 @@ struct ComicView: View {
 
 #if DEBUG
 struct ComicView_Previews: PreviewProvider {
+    
+    static let series = Series.make()
+    static let comic = Comic.make()
 
     static var previews: some View {
         ForEach(ColorScheme.allCases, id: \.self) { color in
             ComicView(
-                series: SeriesPresenter(from: Series.amazingSpiderMan),
-                comic: ComicPresenter(from: Comic.amazingSpiderMan1)
+                series: SeriesPresenter(from: series),
+                comic: ComicPresenter(from: comic)
             )
                 .previewLayout(.fixed(width: 320, height: 154))
                 .previewDisplayName("\(color)")

@@ -20,15 +20,16 @@ public struct SeriesDataProvider {
         self.seriesAPIWrapper = seriesAPIWrapper
         self.seriesCacheService = seriesCacheService
     }
-
+    
+    // Get All Series
+    
     func getAllSeries(
-        forCharacters characters: [String],
         fromDataSource dataSource: DataSourceLayer,
         onComplete complete: @escaping (Result<[Series], Error>) -> Void
     ) {
         switch dataSource {
         case .memory:
-            if let seriesFromMemory = getAllSeriesFromMemory(forCharacters: characters) {
+            if let seriesFromMemory = getAllSeriesFromMemory() {
                 return complete(.success(seriesFromMemory))
             }
 
@@ -36,24 +37,63 @@ public struct SeriesDataProvider {
             break
         }
 
-        getAllSeriesFromNetwork(forCharacters: characters, onComplete: complete)
+        getAllSeriesFromNetwork(onComplete: complete)
     }
-
-    private func getAllSeriesFromMemory(forCharacters characters: [String]) -> [Series]? {
-        guard let series = seriesCacheService.getAllSeries(forCharacters: characters) else {
+    
+    private func getAllSeriesFromMemory() -> [Series]? {
+        guard let series = seriesCacheService.getAllSeries() else {
             return nil
         }
         return series.isEmpty ? nil : series
     }
-
+    
     private func getAllSeriesFromNetwork(
-        forCharacters characters: [String],
         onComplete complete: @escaping (Result<[Series], Error>) -> Void
     ) {
-        seriesAPIWrapper.getAllSeries(forCharacters: characters) { (result: Result<[Series], Error>) in
+        seriesAPIWrapper.getAllSeries() { (result: Result<[Series], Error>) in
             switch result {
             case let .success(series):
                 seriesCacheService.save(series: series)
+                complete(.success(series))
+
+            case let .failure(error):
+                complete(.failure(error))
+            }
+        }
+    }
+    
+    // Get Series
+
+    func getSeries(
+        withID seriesID: String,
+        fromDataSource dataSource: DataSourceLayer,
+        onComplete complete: @escaping (Result<Series, Error>) -> Void
+    ) {
+        switch dataSource {
+        case .memory:
+            if let seriesFromMemory = getSeriesFromMemory(withID: seriesID) {
+                return complete(.success(seriesFromMemory))
+            }
+
+        case .network:
+            break
+        }
+
+        getSeriesFromNetwork(withID: seriesID, onComplete: complete)
+    }
+
+    private func getSeriesFromMemory(withID seriesID: String) -> Series? {
+        seriesCacheService.getSeries(withID: seriesID)
+    }
+
+    private func getSeriesFromNetwork(
+        withID seriesID: String,
+        onComplete complete: @escaping (Result<Series, Error>) -> Void
+    ) {
+        seriesAPIWrapper.getSeries(withID: seriesID) { (result: Result<Series, Error>) in
+            switch result {
+            case let .success(series):
+                seriesCacheService.save(series: [series])
                 complete(.success(series))
 
             case let .failure(error):

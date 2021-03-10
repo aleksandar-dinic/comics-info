@@ -9,7 +9,6 @@
 import enum CIData.DataSourceLayer
 import protocol CIData.CharacterAPIService
 import protocol CIData.CharacterCacheService
-import protocol CIData.CharacterDecoderService
 import protocol UseCases.CharacterUseCaseFactory
 import Foundation
 
@@ -19,16 +18,13 @@ struct CharacterUseCaseAdapter: UseCases.CharacterUseCaseFactory {
 
     let characterAPIService: CharacterAPIService
     let characterCacheService: CharacterCacheService
-    let characterDecoderService: CharacterDecoderService
 
     init(
         characterAPIService: CharacterAPIService = CharacterAPIProvider(),
-        characterCacheService: CharacterCacheService = CharacterCacheProvider(),
-        characterDecoderService: CharacterDecoderService = CharacterDecoderProvider()
+        characterCacheService: CharacterCacheService = CharacterCacheProvider()
     ) {
         self.characterAPIService = characterAPIService
         self.characterCacheService = characterCacheService
-        self.characterDecoderService = characterDecoderService
     }
 
     mutating func getAllCharacters(

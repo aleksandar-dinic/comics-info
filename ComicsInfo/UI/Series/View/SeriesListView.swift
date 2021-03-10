@@ -10,9 +10,9 @@ import SwiftUI
 
 struct SeriesListView: View {
 
-    @ObservedObject private var viewModel: CharactersWithSeriesViewModel
+    @ObservedObject private var viewModel: SeriesViewModel
 
-    init(_ viewModel: CharactersWithSeriesViewModel = CharactersWithSeriesViewModel()) {
+    init(_ viewModel: SeriesViewModel = SeriesViewModel()) {
         self.viewModel = viewModel
     }
 
@@ -25,17 +25,16 @@ struct SeriesListView: View {
                 }
             } else {
                 List {
-                    ForEach(viewModel.characters, id: \.identifier) { character in
-                        Section(header: Text(character.name)) {
-                            ForEach(character.series, id: \.identifier) { series in
+//                    ForEach(viewModel.characters, id: \.identifier) { character in
+//                        Section(header: Text(character.name)) {
+                            ForEach(viewModel.series, id: \.identifier) { series in
                                 NavigationLink(
                                     destination: ComicsListView(forSeries: series)
                                 ) {
                                     SeriesView(series: SeriesPresenter(from: series))
                                 }
-
-                            }
-                        }
+//                            }
+//                        }
                     }
                 }
                 .navigationBarTitle("Discover")
@@ -54,15 +53,11 @@ struct SeriesListView: View {
 #if DEBUG
 struct SeriesListView_Previews: PreviewProvider {
 
-    static let viewModel = CharactersWithSeriesViewModel(
-        characters: [
-            Character.flash,
-            Character.spiderMan,
-            Character.captainAmerica,
-            Character.hulk,
-            Character.ironMan,
-            Character.silverSurfer,
-            Character.unknown
+    static let viewModel = SeriesViewModel(
+        series: [
+            Series.make(),
+            Series.make(),
+            Series.make()
         ],
         status: .showSeries
     )

@@ -15,14 +15,24 @@ final class SeriesDataRepository: SeriesRepository {
     init(seriesDataProvider: SeriesDataProvider) {
         self.seriesDataProvider = seriesDataProvider
     }
-
+    
     func getAllSeries(
-        forCharacters characters: [String],
         fromDataSource dataSource: DataSourceLayer,
         onComplete complete: @escaping (Result<[Series], Error>) -> Void
     ) {
         seriesDataProvider.getAllSeries(
-            forCharacters: characters,
+            fromDataSource: dataSource,
+            onComplete: complete
+        )
+    }
+
+    func getSeries(
+        withID seriesID: String,
+        fromDataSource dataSource: DataSourceLayer,
+        onComplete complete: @escaping (Result<Series, Error>) -> Void
+    ) {
+        seriesDataProvider.getSeries(
+            withID: seriesID,
             fromDataSource: dataSource,
             onComplete: complete
         )

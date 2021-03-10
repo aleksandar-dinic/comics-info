@@ -10,7 +10,6 @@ import protocol UseCases.ComicUseCaseFactory
 import enum CIData.DataSourceLayer
 import protocol CIData.ComicAPIService
 import protocol CIData.ComicCacheService
-import protocol CIData.ComicDecoderService
 import Foundation
 
 struct ComicUseCaseAdapter: UseCases.ComicUseCaseFactory {
@@ -19,28 +18,31 @@ struct ComicUseCaseAdapter: UseCases.ComicUseCaseFactory {
 
     let comicAPIService: ComicAPIService
     let comicCacheService: ComicCacheService
-    let comicDecoderService: ComicDecoderService
 
     init(
         comicAPIService: ComicAPIService = ComicAPIProvider(),
-        comicCacheService: ComicCacheService = ComicCacheProvider(),
-        comicDecoderService: ComicDecoderService = ComicDecoderProvider()
+        comicCacheService: ComicCacheService = ComicCacheProvider()
     ) {
         self.comicAPIService = comicAPIService
         self.comicCacheService = comicCacheService
-        self.comicDecoderService = comicDecoderService
     }
 
     mutating func getAllComics(
-        forSeriesID seriesID: String,
         fromDataSource dataSource: CIData.DataSourceLayer,
         onComplete complete: @escaping (Result<[Comic], Error>) -> Void
     ) {
-        useCase.getAllComics(
-            forSeriesID: seriesID,
-            fromDataSource: dataSource
-        ) { result in
+        useCase.getAllComics(fromDataSource: dataSource) { result in
             complete(result.map { $0.map { Comic(from: $0) } })
+        }
+    }
+    
+    mutating func getComic(
+        withID comicID: String,
+        fromDataSource dataSource: CIData.DataSourceLayer,
+        onComplete complete: @escaping (Result<Comic, Error>) -> Void
+    ) {
+        useCase.getComic(withID: comicID, fromDataSource: dataSource) { result in
+            complete(result.map { Comic(from: $0) })
         }
     }
 

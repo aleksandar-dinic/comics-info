@@ -6,30 +6,41 @@
 //  Copyright © 2020 Aleksandar Dinic. All rights reserved.
 //
 
+import struct Domain.Series
 import Foundation
 
-public struct SeriesAPIWrapper {
+public struct SeriesAPIWrapper: DecoderService {
 
     private let seriesAPIService: SeriesAPIService
-    private let seriesDecoderService: SeriesDecoderService
 
-    init(
-        seriesAPIService: SeriesAPIService,
-        seriesDecoderService: SeriesDecoderService
-    ) {
+    init(seriesAPIService: SeriesAPIService) {
         self.seriesAPIService = seriesAPIService
-        self.seriesDecoderService = seriesDecoderService
     }
-
+    
     func getAllSeries(
-        forCharacters characters: [String],
         onComplete complete: @escaping (Result<[Series], Error>) -> Void
     ) {
-        seriesAPIService.getAllSeries(forCharacters: characters.joined(separator: ",")) { result in
+        seriesAPIService.getAllSeries() { result in
             switch result {
             case let .success(data):
-                let decodedResult = seriesDecoderService.decodeAllSeries(from: data)
+                let decodedResult: Result<[Domain.Series], Error> = decode(from: data)
                 complete(decodedResult.map({ $0.map({ Series(from: $0) }) }))
+
+            case let .failure(error):
+                complete(.failure(error))
+            }
+        }
+    }
+
+    func getSeries(
+        withID seriesID: String,
+        onComplete complete: @escaping (Result<Series, Error>) -> Void
+    ) {
+        seriesAPIService.getSeries(withID: seriesID) { result in
+            switch result {
+            case let .success(data):
+                let decodedResult: Result<Domain.Series, Error> = decode(from: data)
+                complete(decodedResult.map({ Series(from: $0) }))
 
             case let .failure(error):
                 complete(.failure(error))

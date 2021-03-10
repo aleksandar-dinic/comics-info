@@ -14,7 +14,7 @@ public struct Character {
     /// The unique ID of the character resource.
     public let identifier: String
 
-    /// The value of character popularity
+    /// The value of character popularity.
     public let popularity: Int
 
     /// The name of the character.
@@ -23,11 +23,23 @@ public struct Character {
     /// The representative image for this character.
     public let thumbnail: String?
 
-    ///  A short bio or description of the character
+    /// A short bio or description of the character.
     public let description: String?
+    
+    /// Real name of the character.
+    public let realName: String?
+    
+    /// List of aliases the character is known by.
+    public let aliases: [String]?
+    
+    /// A date, that the character was born on. Not an origin date.
+    public let birth: Date?
 
-    /// A resource list containing series for this character.
-    public var series: [Series]
+    /// A resource list of series in which this character appears.
+    public let series: [SeriesSummary]?
+
+    /// A resource list containing comics which feature this character.
+    public let comics: [ComicSummary]?
 
     public init(
         identifier: String,
@@ -35,14 +47,22 @@ public struct Character {
         name: String,
         thumbnail: String?,
         description: String?,
-        series: [Series]
+        realName: String?,
+        aliases: [String]?,
+        birth: Date?,
+        series: [SeriesSummary]?,
+        comics: [ComicSummary]?
     ) {
         self.identifier = identifier
         self.popularity = popularity
         self.name = name
         self.thumbnail = thumbnail
         self.description = description
+        self.realName = realName
+        self.aliases = aliases
+        self.birth = birth
         self.series = series
+        self.comics = comics
     }
 
 }
@@ -55,7 +75,11 @@ extension Character {
         name = character.name
         thumbnail = character.thumbnail
         description = character.description
-        series = [Series]()
+        realName = character.realName
+        aliases = character.aliases
+        birth = character.birth
+        series = character.series?.map { SeriesSummary(from: $0) }
+        comics = character.comics?.map { ComicSummary(from: $0) }
     }
 
 }

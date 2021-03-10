@@ -13,7 +13,6 @@ struct ComicsMock {
     private let mockComics: [MockComic]
 
     init(
-        forSeriesID seriesID: String,
         _ mockComics: [MockComic] = [
             AmazingSpiderMan1(),
             AmazingSpiderMan2(),
@@ -22,7 +21,7 @@ struct ComicsMock {
             AmazingSpiderMan5()
         ]
     ) {
-        self.mockComics = mockComics.filter { $0.seriesID.contains(seriesID) }
+        self.mockComics = mockComics
     }
 
     var data: Data? {

@@ -20,15 +20,16 @@ public struct ComicDataProvider {
         self.comicAPIWrapper = comicAPIWrapper
         self.comicCacheService = comicCacheService
     }
+    
+    // Get all comics
 
     func getAllComics(
-        forSeriesID seriesID: String,
         fromDataSource dataSource: DataSourceLayer,
         onComplete complete: @escaping (Result<[Comic], Error>) -> Void
     ) {
         switch dataSource {
         case .memory:
-            if let comicsFromMemory = getAllComicsFromMemory(forSeriesID: seriesID) {
+            if let comicsFromMemory = getAllComicsFromMemory() {
                 return complete(.success(comicsFromMemory))
             }
 
@@ -36,25 +37,64 @@ public struct ComicDataProvider {
             break
         }
 
-        getAllComicsFromNetwork(forSeriesID: seriesID, onComplete: complete)
+        getAllComicsFromNetwork(onComplete: complete)
     }
 
-    private func getAllComicsFromMemory(forSeriesID seriesID: String) -> [Comic]? {
-        guard let comics = comicCacheService.getAllComics(forSeriesID: seriesID) else {
+    private func getAllComicsFromMemory() -> [Comic]? {
+        guard let comics = comicCacheService.getAllComics() else {
             return nil
         }
         return comics.isEmpty ? nil : comics
     }
 
     private func getAllComicsFromNetwork(
-        forSeriesID seriesID: String,
         onComplete complete: @escaping (Result<[Comic], Error>) -> Void
     ) {
-        comicAPIWrapper.getAllComics(forSeriesID: seriesID) { (result: Result<[Comic], Error>) in
+        comicAPIWrapper.getAllComics() { (result: Result<[Comic], Error>) in
             switch result {
             case let .success(comics):
                 comicCacheService.save(comics: comics)
                 complete(.success(comics))
+
+            case let .failure(error):
+                complete(.failure(error))
+            }
+        }
+    }
+    
+    // Get comic
+
+    func getComic(
+        withID comicID: String,
+        fromDataSource dataSource: DataSourceLayer,
+        onComplete complete: @escaping (Result<Comic, Error>) -> Void
+    ) {
+        switch dataSource {
+        case .memory:
+            if let comicsFromMemory = getComicFromMemory(withID: comicID) {
+                return complete(.success(comicsFromMemory))
+            }
+
+        case .network:
+            break
+        }
+
+        getComicFromNetwork(withID: comicID, onComplete: complete)
+    }
+
+    private func getComicFromMemory(withID comicID: String) -> Comic? {
+        comicCacheService.getComic(withID: comicID)
+    }
+
+    private func getComicFromNetwork(
+        withID comicID: String,
+        onComplete complete: @escaping (Result<Comic, Error>) -> Void
+    ) {
+        comicAPIWrapper.getComic(withID: comicID) { (result: Result<Comic, Error>) in
+            switch result {
+            case let .success(comic):
+                comicCacheService.save(comics: [comic])
+                complete(.success(comic))
 
             case let .failure(error):
                 complete(.failure(error))

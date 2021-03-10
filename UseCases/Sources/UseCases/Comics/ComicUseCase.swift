@@ -20,12 +20,25 @@ public final class ComicUseCase {
     }
 
     public func getAllComics(
-        forSeriesID seriesID: String,
         fromDataSource dataSource: DataSourceLayer,
         onComplete complete: @escaping (Result<[CIData.Comic], Error>) -> Void
     ) {
         DispatchQueue.global(qos: .utility).async { [weak self] in
-            self?.comicRepository.getAllComics(forSeriesID: seriesID, fromDataSource: dataSource) { result in
+            self?.comicRepository.getAllComics(fromDataSource: dataSource) { result in
+                DispatchQueue.main.async {
+                    complete(result)
+                }
+            }
+        }
+    }
+    
+    public func getComic(
+        withID comicID: String,
+        fromDataSource dataSource: DataSourceLayer,
+        onComplete complete: @escaping (Result<CIData.Comic, Error>) -> Void
+    ) {
+        DispatchQueue.global(qos: .utility).async { [weak self] in
+            self?.comicRepository.getComic(withID: comicID, fromDataSource: dataSource) { result in
                 DispatchQueue.main.async {
                     complete(result)
                 }

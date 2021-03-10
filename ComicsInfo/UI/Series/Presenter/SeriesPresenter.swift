@@ -31,8 +31,8 @@ struct SeriesPresenter: Codable {
     /// The last year of publication for the series (conventionally, nil for ongoing series) .
     let endYear: Int?
 
-    /// A resource list containing characters ID which appear in comics in this series.
-    let charactersID: Set<String>
+//    /// A resource list containing characters ID which appear in comics in this series.
+//    let charactersID: Set<String>
 
     /// The representative system image for this character.
     var thumbnailSystemName: String {
@@ -63,7 +63,7 @@ extension SeriesPresenter {
         description = series.description ?? ""
         startYear = series.startYear
         endYear = series.endYear
-        charactersID = series.charactersID
+//        charactersID = series.charactersID
     }
 
 }

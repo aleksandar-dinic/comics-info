@@ -12,11 +12,21 @@ import Foundation
 public struct ComicAPIProvider: CIData.ComicAPIService {
 
     public func getAllComics(
-        forSeriesID seriesID: String,
         onComplete complete: @escaping (Result<Data, Error>) -> Void
     ) {
         usleep(useconds_t(Int.random(in: 500_000...2_000_000)))
-        guard let data = ComicsMock(forSeriesID: seriesID).data else {
+        guard let data = ComicsMock().data else {
+            return complete(.failure(NetworkError.noData))
+        }
+        complete(.success(data))
+    }
+    
+    public func getComic(
+        withID comicID: String,
+        onComplete complete: @escaping (Result<Data, Error>) -> Void
+    ) {
+        usleep(useconds_t(Int.random(in: 500_000...2_000_000)))
+        guard let data = ComicsMock().data else {
             return complete(.failure(NetworkError.noData))
         }
         complete(.success(data))

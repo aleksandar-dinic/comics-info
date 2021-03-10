@@ -39,9 +39,11 @@ struct SeriesView: View {
 #if DEBUG
 struct SeriesView_Previews: PreviewProvider {
 
+    static let series = Series.make()
+    
     static var previews: some View {
         ForEach(ColorScheme.allCases, id: \.self) { color in
-            SeriesView(series: SeriesPresenter(from: Series.theFlash))
+            SeriesView(series: SeriesPresenter(from: series))
                 .padding()
                 .previewLayout(.sizeThatFits)
                 .previewDisplayName("\(color)")

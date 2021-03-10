@@ -14,7 +14,7 @@ public struct Series {
     /// The unique ID of the series resource.
     public let identifier: String
 
-    /// The value of Series popularity
+    /// The value of Series popularity.
     public let popularity: Int
 
     /// The canonical title of the series.
@@ -29,11 +29,17 @@ public struct Series {
     /// The first year of publication for the series.
     public let startYear: Int?
 
-    /// The last year of publication for the series (conventionally, nil for ongoing series) .
+    /// The last year of publication for the series (conventionally, nil for ongoing series).
     public let endYear: Int?
+    
+    /// List of aliases the series is known by.
+    public let aliases: [String]?
 
-    /// A resource list containing characters ID which appear in comics in this series.
-    public let charactersID: Set<String>
+    /// A resource list containing characters which appear in comics in this series.
+    public let characters: [CharacterSummary]?
+
+    /// A resource list containing comics in this series.
+    public let comics: [ComicSummary]?
 
     public init(
         identifier: String,
@@ -43,7 +49,9 @@ public struct Series {
         description: String?,
         startYear: Int?,
         endYear: Int?,
-        charactersID: Set<String>
+        aliases: [String]?,
+        characters: [CharacterSummary]?,
+        comics: [ComicSummary]?
     ) {
         self.identifier = identifier
         self.popularity = popularity
@@ -52,7 +60,9 @@ public struct Series {
         self.description = description
         self.startYear = startYear
         self.endYear = endYear
-        self.charactersID = charactersID
+        self.aliases = aliases
+        self.characters = characters
+        self.comics = comics
     }
 
 }
@@ -67,7 +77,9 @@ extension Series {
         description = series.description
         startYear = series.startYear
         endYear = series.endYear
-        charactersID = series.charactersID
+        aliases = series.aliases
+        characters = series.characters?.map { CharacterSummary(from: $0) }
+        comics = series.comics?.map { ComicSummary(from: $0) }
     }
 
 }

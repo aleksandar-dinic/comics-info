@@ -11,7 +11,6 @@ import Foundation
 public protocol SeriesAPIWrapperFactory {
 
     var seriesAPIService: SeriesAPIService { get }
-    var seriesDecoderService: SeriesDecoderService { get }
 
     func makeSeriesAPIWrapper() -> SeriesAPIWrapper
 
@@ -20,10 +19,7 @@ public protocol SeriesAPIWrapperFactory {
 extension SeriesAPIWrapperFactory {
 
     public func makeSeriesAPIWrapper() -> SeriesAPIWrapper {
-        SeriesAPIWrapper(
-            seriesAPIService: seriesAPIService,
-            seriesDecoderService: seriesDecoderService
-        )
+        SeriesAPIWrapper(seriesAPIService: seriesAPIService)
     }
 
 }
