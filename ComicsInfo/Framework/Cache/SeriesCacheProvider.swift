@@ -6,11 +6,9 @@
 //  Copyright © 2020 Aleksandar Dinic. All rights reserved.
 //
 
-import struct CIData.Series
-import protocol CIData.SeriesCacheService
 import Foundation
 
-public struct SeriesCacheProvider: CIData.SeriesCacheService {
+struct SeriesCacheProvider: SeriesCacheService {
 
     private let inMemoryCache: InMemoryCache<String, Series>
 
@@ -18,20 +16,17 @@ public struct SeriesCacheProvider: CIData.SeriesCacheService {
         self.inMemoryCache = inMemoryCache
     }
 
-    public func getAllSeries() -> [CIData.Series]? {
-        inMemoryCache.values.map({ CIData.Series(from: $0) })
+    func getAllSeries() -> [Series]? {
+        !inMemoryCache.isEmpty ? inMemoryCache.values : nil
     }
 
-    public func getSeries(withID seriesID: String) -> CIData.Series? {
-        guard let series = inMemoryCache[seriesID] else {
-            return nil
-        }
-        return CIData.Series(from: series)
+    func getSeries(withID seriesID: String) -> Series? {
+        inMemoryCache[seriesID]
     }
 
-    public func save(series: [CIData.Series]) {
+    func save(series: [Series]) {
         series.forEach {
-            inMemoryCache[$0.identifier] = Series(from: $0)
+            inMemoryCache[$0.identifier] = $0
         }
     }
 

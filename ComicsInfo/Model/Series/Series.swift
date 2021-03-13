@@ -6,9 +6,8 @@
 //  Copyright © 2020 Aleksandar Dinic. All rights reserved.
 //
 
-import struct CIData.Series
-import struct CIData.CharacterSummary
-import struct CIData.ComicSummary
+import struct Domain.Series
+import struct Domain.ItemSummary
 import Foundation
 
 struct Series: Codable {
@@ -47,7 +46,7 @@ struct Series: Codable {
 
 extension Series {
 
-    init(from series: CIData.Series) {
+    init(from series: Domain.Series) {
         identifier = series.identifier
         popularity = series.popularity
         title = series.title
@@ -62,7 +61,7 @@ extension Series {
 
 }
 
-extension CIData.Series {
+extension Domain.Series {
 
     init(from series: Series) {
         self.init(
@@ -74,8 +73,9 @@ extension CIData.Series {
             startYear: series.startYear,
             endYear: series.endYear,
             aliases: series.aliases,
-            characters: series.characters?.map { CIData.CharacterSummary(from: $0) },
-            comics: series.comics?.map { CIData.ComicSummary(from: $0) }
+            nextIdentifier: nil,
+            characters: series.characters?.map { Domain.ItemSummary(from: $0) },
+            comics: series.comics?.map { Domain.ItemSummary(from: $0) }
         )
     }
 

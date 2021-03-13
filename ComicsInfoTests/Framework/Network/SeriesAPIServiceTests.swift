@@ -25,7 +25,7 @@ final class SeriesAPIServiceTests: XCTestCase {
         let promise = expectation(description: #function)
 
         // When
-        sut.getAllSeries(forCharacters: "1") {
+        sut.getAllSeries() {
             result = $0
             promise.fulfill()
         }

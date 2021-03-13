@@ -6,7 +6,7 @@
 //  Copyright © 2020 Aleksandar Dinic. All rights reserved.
 //
 
-@testable import CIData
+@testable import Domain
 @testable import ComicsInfo
 import XCTest
 
@@ -78,7 +78,7 @@ final class CharacterCacheProviderTests: XCTestCase {
         let sut = CharacterCacheProvider(inMemoryCache)
 
         // When
-        sut.save(characters: Array(givenCharacters.values.map({ CIData.Character(from: $0) })))
+        sut.save(characters: Array(givenCharacters.values))
 
         // Then
         XCTAssertEqual(inMemoryCache.values.count, givenCharacters.count)

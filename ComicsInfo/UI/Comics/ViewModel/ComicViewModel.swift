@@ -6,7 +6,6 @@
 //  Copyright © 2020 Aleksandar Dinic. All rights reserved.
 //
 
-import enum CIData.DataSourceLayer
 import Foundation
 
 final class ComicViewModel: ObservableObject {
@@ -45,7 +44,7 @@ final class ComicViewModel: ObservableObject {
         self.status = status
     }
 
-    func loadAllComics(fromDataSource dataSource: CIData.DataSourceLayer = .memory) {
+    func loadAllComics(fromDataSource dataSource: DataSourceLayer = .memory) {
         guard dataSource == .network || comics.isEmpty else { return }
 
         useCase.getAllComics(fromDataSource: dataSource) { [weak self] result in
@@ -63,7 +62,7 @@ final class ComicViewModel: ObservableObject {
     
     func loadComic(
         withID comicID: String,
-        fromDataSource dataSource: CIData.DataSourceLayer = .memory
+        fromDataSource dataSource: DataSourceLayer = .memory
     ) {
         guard dataSource == .network || !comics.contains(where: { $0.identifier == comicID }) else { return }
 

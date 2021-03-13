@@ -6,7 +6,6 @@
 //  Copyright © 2020 Aleksandar Dinic. All rights reserved.
 //
 
-import enum CIData.DataSourceLayer
 import Foundation
 
 final class CharacterViewModel: ObservableObject {
@@ -45,7 +44,7 @@ final class CharacterViewModel: ObservableObject {
         self.status = status
     }
 
-    func loadAllCharacters(fromDataSource dataSource: CIData.DataSourceLayer = .memory) {
+    func loadAllCharacters(fromDataSource dataSource: DataSourceLayer = .memory) {
         guard dataSource == .network || characters.isEmpty else { return }
 
         useCase.getAllCharacters(fromDataSource: dataSource) { [weak self] result in
@@ -63,7 +62,7 @@ final class CharacterViewModel: ObservableObject {
 
     func loadCharacter(
         withID characterID: String,
-        fromDataSource dataSource: CIData.DataSourceLayer = .memory
+        fromDataSource dataSource: DataSourceLayer = .memory
     ) {
         guard dataSource == .network || !characters.contains(where: { $0.identifier == characterID }) else { return }
 

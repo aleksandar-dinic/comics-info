@@ -6,12 +6,11 @@
 //  Copyright © 2020 Aleksandar Dinic. All rights reserved.
 //
 
-import protocol CIData.CharacterAPIService
 import Foundation
 
-public struct CharacterAPIProvider: CIData.CharacterAPIService {
+struct CharacterAPIProvider: CharacterAPIService {
 
-    public func getAllCharacters(
+    func getAllCharacters(
         onComplete complete: @escaping (Result<Data, Error>) -> Void
     ) {
         usleep(useconds_t(Int.random(in: 500_000...2_000_000)))
@@ -21,7 +20,7 @@ public struct CharacterAPIProvider: CIData.CharacterAPIService {
         complete(.success(data))
     }
 
-    public func getCharacter(
+    func getCharacter(
         withID characterID: String,
         onComplete complete: @escaping (Result<Data, Error>) -> Void
     ) {

@@ -6,77 +6,81 @@
 //  Copyright © 2020 Aleksandar Dinic. All rights reserved.
 //
 
-@testable import struct CIData.Character
+@testable import struct Domain.Character
 @testable import ComicsInfo
 import XCTest
 
-class CharacterTests: XCTestCase {
+final class CharacterTests: XCTestCase {
 
-    private var cidataCharacter: CIData.Character!
+    private var domainCharacter: Domain.Character!
 
     override func setUpWithError() throws {
-        cidataCharacter = CIData.Character(
+        domainCharacter = Domain.Character(
             identifier: "1",
             popularity: 1,
             name: "Name",
             thumbnail: "Thumbnail",
             description: "Description",
-            series: []
+            realName: nil,
+            aliases: nil,
+            birth: nil,
+            series: nil,
+            comics: nil
         )
     }
 
     override func tearDownWithError() throws {
-        cidataCharacter = nil
+        domainCharacter = nil
     }
 
     func testCharacterIdentifierMapper() {
         // Given
 
         // When
-        let sut = ComicsInfo.Character(from: cidataCharacter)
+        let sut = ComicsInfo.Character(from: domainCharacter)
 
         // Then
-        XCTAssertEqual(sut.identifier, cidataCharacter.identifier)
+        XCTAssertEqual(sut.identifier, domainCharacter.identifier)
     }
 
     func testCharacterPopularityMapper() {
         // Given
 
         // When
-        let sut = ComicsInfo.Character(from: cidataCharacter)
+        let sut = ComicsInfo.Character(from: domainCharacter)
 
         // Then
-        XCTAssertEqual(sut.popularity, cidataCharacter.popularity)
+        XCTAssertEqual(sut.popularity, domainCharacter.popularity)
     }
 
     func testCharacterNameMapper() {
         // Given
 
         // When
-        let sut = ComicsInfo.Character(from: cidataCharacter)
+        let sut = ComicsInfo.Character(from: domainCharacter)
 
         // Then
-        XCTAssertEqual(sut.name, cidataCharacter.name)
+        XCTAssertEqual(sut.name, domainCharacter.name)
     }
 
     func testCharacterThumbnailMapper() {
         // Given
 
         // When
-        let sut = ComicsInfo.Character(from: cidataCharacter)
+        let sut = ComicsInfo.Character(from: domainCharacter)
 
         // Then
-        XCTAssertEqual(sut.thumbnail, cidataCharacter.thumbnail)
+        XCTAssertEqual(sut.thumbnail, domainCharacter.thumbnail)
     }
 
     func testCharacterDescriptionMapper() {
         // Given
 
         // When
-        let sut = ComicsInfo.Character(from: cidataCharacter)
+        let sut = ComicsInfo.Character(from: domainCharacter)
 
         // Then
-        XCTAssertEqual(sut.description, cidataCharacter.description)
+        XCTAssertEqual(sut.description, domainCharacter.description)
     }
 
 }

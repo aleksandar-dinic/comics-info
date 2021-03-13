@@ -6,10 +6,9 @@
 //  Copyright © 2020 Aleksandar Dinic. All rights reserved.
 //
 
-import struct CIData.Character
-import struct CIData.Series
-import struct CIData.SeriesSummary
-import struct CIData.ComicSummary
+import struct Domain.Character
+import struct Domain.Series
+import struct Domain.ItemSummary
 import Foundation
 
 struct Character: Codable {
@@ -48,7 +47,7 @@ struct Character: Codable {
 
 extension Character {
 
-    init(from character: CIData.Character) {
+    init(from character: Domain.Character) {
         identifier = character.identifier
         popularity = character.popularity
         name = character.name
@@ -63,7 +62,7 @@ extension Character {
 
 }
 
-extension CIData.Character {
+extension Domain.Character {
 
     init(from character: Character) {
         self.init(
@@ -75,8 +74,8 @@ extension CIData.Character {
             realName: character.realName,
             aliases: character.aliases,
             birth: character.birth,
-            series: character.series?.map { CIData.SeriesSummary(from: $0) },
-            comics: character.comics?.map { CIData.ComicSummary(from: $0) }
+            series: character.series?.map { Domain.ItemSummary(from: $0) },
+            comics: character.comics?.map { Domain.ItemSummary(from: $0) }
         )
     }
 

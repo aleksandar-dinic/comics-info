@@ -6,13 +6,9 @@
 //  Copyright © 2020 Aleksandar Dinic. All rights reserved.
 //
 
-import enum CIData.DataSourceLayer
-import protocol CIData.ComicAPIService
-import protocol CIData.ComicCacheService
-import protocol CIData.ComicRepositoryFactory
 import Foundation
 
-final class ComicUseCase: CIData.ComicRepositoryFactory {
+final class ComicUseCase: ComicRepositoryFactory {
 
     private lazy var repository = makeComicRepository()
 
@@ -34,7 +30,7 @@ final class ComicUseCase: CIData.ComicRepositoryFactory {
         DispatchQueue.global(qos: .utility).async { [weak self] in
             self?.repository.getAllComics(fromDataSource: dataSource) { result in
                 DispatchQueue.main.async {
-                    complete(result.map { $0.map { Comic(from: $0) } })
+                    complete(result)
                 }
             }
         }
@@ -48,7 +44,7 @@ final class ComicUseCase: CIData.ComicRepositoryFactory {
         DispatchQueue.global(qos: .utility).async { [weak self] in
             self?.repository.getComic(withID: comicID, fromDataSource: dataSource) { result in
                 DispatchQueue.main.async {
-                    complete(result.map { Comic(from: $0) })
+                    complete(result)
                 }
             }
         }

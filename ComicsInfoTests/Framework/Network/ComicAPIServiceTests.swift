@@ -27,7 +27,7 @@ final class ComicAPIServiceTests: XCTestCase {
         let promise = expectation(description: #function)
 
         // When
-        sut.getAllComics(forSeriesID: "1") {
+        sut.getAllComics() {
             result = $0
             promise.fulfill()
         }

@@ -6,7 +6,6 @@
 //  Copyright © 2020 Aleksandar Dinic. All rights reserved.
 //
 
-import enum CIData.DataSourceLayer
 import Foundation
 
 final class SeriesViewModel: ObservableObject {
@@ -45,7 +44,7 @@ final class SeriesViewModel: ObservableObject {
         self.status = status
     }
 
-    func loadAllSeries(fromDataSource dataSource: CIData.DataSourceLayer = .memory) {
+    func loadAllSeries(fromDataSource dataSource: DataSourceLayer = .memory) {
         guard dataSource == .network || series.isEmpty else { return }
 
         useCase.getAllSeries(fromDataSource: dataSource) { [weak self] result in

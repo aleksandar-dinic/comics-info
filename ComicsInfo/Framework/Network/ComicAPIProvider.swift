@@ -6,12 +6,11 @@
 //  Copyright © 2020 Aleksandar Dinic. All rights reserved.
 //
 
-import protocol CIData.ComicAPIService
 import Foundation
 
-public struct ComicAPIProvider: CIData.ComicAPIService {
+struct ComicAPIProvider: ComicAPIService {
 
-    public func getAllComics(
+    func getAllComics(
         onComplete complete: @escaping (Result<Data, Error>) -> Void
     ) {
         usleep(useconds_t(Int.random(in: 500_000...2_000_000)))
@@ -21,7 +20,7 @@ public struct ComicAPIProvider: CIData.ComicAPIService {
         complete(.success(data))
     }
     
-    public func getComic(
+    func getComic(
         withID comicID: String,
         onComplete complete: @escaping (Result<Data, Error>) -> Void
     ) {

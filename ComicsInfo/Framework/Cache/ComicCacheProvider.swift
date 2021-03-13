@@ -6,11 +6,9 @@
 //  Copyright © 2020 Aleksandar Dinic. All rights reserved.
 //
 
-import struct CIData.Comic
-import protocol CIData.ComicCacheService
 import Foundation
 
-public struct ComicCacheProvider: CIData.ComicCacheService {
+struct ComicCacheProvider: ComicCacheService {
 
     private let inMemoryCache: InMemoryCache<String, Comic>
 
@@ -18,20 +16,17 @@ public struct ComicCacheProvider: CIData.ComicCacheService {
         self.inMemoryCache = inMemoryCache
     }
 
-    public func getAllComics() -> [CIData.Comic]? {
-        inMemoryCache.values.map({ CIData.Comic(from: $0) })
+    func getAllComics() -> [Comic]? {
+        !inMemoryCache.isEmpty ? inMemoryCache.values : nil
     }
 
-    public func getComic(withID comicID: String) -> CIData.Comic? {
-        guard let comic = inMemoryCache[comicID] else {
-            return nil
-        }
-        return CIData.Comic(from: comic)
+    func getComic(withID comicID: String) -> Comic? {
+        inMemoryCache[comicID]
     }
 
-    public func save(comics: [CIData.Comic]) {
+    func save(comics: [Comic]) {
         for comic in comics {
-            inMemoryCache[comic.identifier] = Comic(from: comic)
+            inMemoryCache[comic.identifier] = comic
         }
     }
 

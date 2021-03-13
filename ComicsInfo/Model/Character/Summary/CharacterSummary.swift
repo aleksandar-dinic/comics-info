@@ -5,7 +5,7 @@
 //  Created by Aleksandar Dinic on 10/03/2021.
 //
 
-import struct CIData.CharacterSummary
+import struct Domain.ItemSummary
 import Foundation
 
 struct CharacterSummary: Codable, Hashable {
@@ -32,7 +32,7 @@ struct CharacterSummary: Codable, Hashable {
 
 extension CharacterSummary {
     
-    init(from summary: CIData.CharacterSummary) {
+    init(from summary: Domain.ItemSummary) {
         identifier = summary.identifier
         popularity = summary.popularity
         name = summary.name
@@ -43,7 +43,7 @@ extension CharacterSummary {
     
 }
 
-extension CIData.CharacterSummary {
+extension Domain.ItemSummary {
     
     init(from summary: CharacterSummary) {
         self.init(
@@ -52,7 +52,9 @@ extension CIData.CharacterSummary {
             name: summary.name,
             thumbnail: summary.thumbnail,
             description: summary.description,
-            count: summary.count
+            count: summary.count,
+            number: nil,
+            roles: nil
         )
     }
     

@@ -6,12 +6,11 @@
 //  Copyright © 2020 Aleksandar Dinic. All rights reserved.
 //
 
-import protocol CIData.SeriesAPIService
 import Foundation
 
-public struct SeriesAPIProvider: CIData.SeriesAPIService {
+struct SeriesAPIProvider: SeriesAPIService {
 
-    public func getAllSeries(onComplete complete: @escaping (Result<Data, Error>) -> Void) {
+    func getAllSeries(onComplete complete: @escaping (Result<Data, Error>) -> Void) {
         usleep(useconds_t(Int.random(in: 500_000...2_000_000)))
         guard let data = SeriesMock().data else {
             return complete(.failure(NetworkError.noData))
@@ -19,7 +18,7 @@ public struct SeriesAPIProvider: CIData.SeriesAPIService {
         complete(.success(data))
     }
     
-    public func getSeries(
+    func getSeries(
         withID seriesID: String,
         onComplete complete: @escaping (Result<Data, Error>) -> Void
     ) {

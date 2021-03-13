@@ -6,7 +6,7 @@
 //  Copyright © 2020 Aleksandar Dinic. All rights reserved.
 //
 
-@testable import CIData
+@testable import Domain
 @testable import ComicsInfo
 import XCTest
 
@@ -30,23 +30,23 @@ final class SeriesCacheProviderTests: XCTestCase {
         let sut = SeriesCacheProvider(inMemoryCache)
 
         // When
-        let series = sut.getAllSeries(forCharacters: ["1"])
+        let series = sut.getAllSeries()
 
         // Then
         XCTAssertEqual(series?.count, givenSeries.count)
     }
 
-    func testGetAllSeriesWithNonExistingCharacterID() {
-        // Give
-        let inMemoryCache = InMemoryCache(storage: givenSeries)
-        let sut = SeriesCacheProvider(inMemoryCache)
-
-        // When
-        let series = sut.getAllSeries(forCharacters: ["-1"])
-
-        // Then
-        XCTAssertNil(series)
-    }
+//    func testGetAllSeriesWithNonExistingCharacterID() {
+//        // Give
+//        let inMemoryCache = InMemoryCache(storage: givenSeries)
+//        let sut = SeriesCacheProvider(inMemoryCache)
+//
+//        // When
+//        let series = sut.getAllSeries()
+//
+//        // Then
+//        XCTAssertNil(series)
+//    }
 
     func testGetSeriesWithID() {
         // Give
@@ -77,7 +77,7 @@ final class SeriesCacheProviderTests: XCTestCase {
         let sut = SeriesCacheProvider(inMemoryCache)
 
         // When
-        sut.save(series: Array(givenSeries.values.map({ CIData.Series(from: $0) })))
+        sut.save(series: Array(givenSeries.values))
 
         // Then
         XCTAssertEqual(inMemoryCache.values.count, givenSeries.count)

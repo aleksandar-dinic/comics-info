@@ -6,7 +6,7 @@
 //  Copyright © 2020 Aleksandar Dinic. All rights reserved.
 //
 
-@testable import struct CIData.Comic
+@testable import struct Domain.Comic
 @testable import ComicsInfo
 import XCTest
 
@@ -15,32 +15,8 @@ final class ComicCacheProviderTests: XCTestCase {
     private var givenComics: [String: ComicsInfo.Comic]!
 
     override func setUpWithError() throws {
-        let comic1 = ComicsInfo.Comic(
-            identifier: "1",
-            popularity: 0,
-            title: "Title",
-            thumbnail: nil,
-            issueNumber: nil,
-            description: nil,
-            format: nil,
-            pageCount: nil,
-            seriesID: ["1"],
-            charactersID: ["1"],
-            published: nil
-        )
-        let comic2 = ComicsInfo.Comic(
-            identifier: "2",
-            popularity: 1,
-            title: "Title",
-            thumbnail: nil,
-            issueNumber: nil,
-            description: nil,
-            format: nil,
-            pageCount: nil,
-            seriesID: ["1"],
-            charactersID: ["1"],
-            published: nil
-        )
+        let comic1 = ComicsInfo.Comic.make(identifier: "1", popularity: 0, title: "Title")
+        let comic2 = ComicsInfo.Comic.make(identifier: "2", popularity: 1, title: "Title")
         givenComics = ["1": comic1, "2": comic2]
     }
 
@@ -54,23 +30,23 @@ final class ComicCacheProviderTests: XCTestCase {
         let sut = ComicCacheProvider(inMemoryCache)
 
         // When
-        let comics = sut.getAllComics(forSeriesID: "1")
+        let comics = sut.getAllComics()
 
         // Then
         XCTAssertEqual(comics?.count, givenComics.count)
     }
 
-    func testGetAllComicsWithNonExistingSeriesID() {
-        // Give
-        let inMemoryCache = InMemoryCache(storage: givenComics)
-        let sut = ComicCacheProvider(inMemoryCache)
-
-        // When
-        let comics = sut.getAllComics(forSeriesID: "-1")
-
-        // Then
-        XCTAssertNil(comics)
-    }
+//    func testGetAllComicsWithNonExistingSeriesID() {
+//        // Give
+//        let inMemoryCache = InMemoryCache(storage: givenComics)
+//        let sut = ComicCacheProvider(inMemoryCache)
+//
+//        // When
+//        let comics = sut.getAllComics()
+//
+//        // Then
+//        XCTAssertNil(comics)
+//    }
 
     func testGetComicWithID() {
         // Give
@@ -101,7 +77,7 @@ final class ComicCacheProviderTests: XCTestCase {
         let sut = ComicCacheProvider(inMemoryCache)
 
         // When
-        sut.save(comics: Array(givenComics.values.map({ CIData.Comic(from: $0) })))
+        sut.save(comics: Array(givenComics.values))
 
         // Then
         XCTAssertEqual(inMemoryCache.values.count, givenComics.count)

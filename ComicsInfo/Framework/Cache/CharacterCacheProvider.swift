@@ -6,11 +6,9 @@
 //  Copyright © 2020 Aleksandar Dinic. All rights reserved.
 //
 
-import struct CIData.Character
-import protocol CIData.CharacterCacheService
 import Foundation
 
-public struct CharacterCacheProvider: CIData.CharacterCacheService {
+struct CharacterCacheProvider: CharacterCacheService {
 
     private let inMemoryCache: InMemoryCache<String, Character>
 
@@ -18,20 +16,17 @@ public struct CharacterCacheProvider: CIData.CharacterCacheService {
         self.inMemoryCache = inMemoryCache
     }
 
-    public func getAllCharacters() -> [CIData.Character]? {
-        inMemoryCache.isEmpty ? nil : inMemoryCache.values.map({ CIData.Character(from: $0) })
+    func getAllCharacters() -> [Character]? {
+        !inMemoryCache.isEmpty ? inMemoryCache.values : nil
     }
 
-    public func getCharacter(withID characterID: String) -> CIData.Character? {
-        guard let character = inMemoryCache[characterID] else {
-            return nil
-        }
-        return CIData.Character(from: character)
+    func getCharacter(withID characterID: String) -> Character? {
+        inMemoryCache[characterID]
     }
 
-    public func save(characters: [CIData.Character]) {
+    func save(characters: [Character]) {
         for character in characters {
-            inMemoryCache[character.identifier] = Character(from: character)
+            inMemoryCache[character.identifier] = character
         }
     }
 
