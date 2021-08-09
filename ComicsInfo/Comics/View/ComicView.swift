@@ -11,7 +11,7 @@ import SwiftUI
 struct ComicView: View {
 
     @State var series: SeriesViewModel
-    @State var comic: ComicPresenter
+    @State var comic: ComicViewModel
 
     var body: some View {
         HStack {
@@ -57,7 +57,7 @@ struct ComicView_Previews: PreviewProvider {
         ForEach(ColorScheme.allCases, id: \.self) { color in
             ComicView(
                 series: SeriesViewModel(from: series),
-                comic: ComicPresenter(from: comic)
+                comic: ComicViewModel(from: comic)
             )
                 .previewLayout(.fixed(width: 320, height: 154))
                 .previewDisplayName("\(color)")

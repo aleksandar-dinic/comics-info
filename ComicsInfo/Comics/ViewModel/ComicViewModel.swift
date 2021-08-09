@@ -1,5 +1,5 @@
 //
-//  Comic.swift
+//  ComicViewModel.swift
 //  ComicsInfo
 //
 //  Created by Aleksandar Dinic on 22/07/2020.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct ComicPresenter: Codable {
+struct ComicViewModel: Codable {
 
     /// The unique ID of the comic resource.
     let identifier: String
@@ -61,7 +61,7 @@ struct ComicPresenter: Codable {
 
 }
 
-extension ComicPresenter {
+extension ComicViewModel {
 
     init(from comic: Comic) {
         identifier = comic.identifier

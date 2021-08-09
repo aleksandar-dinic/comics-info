@@ -11,11 +11,11 @@ import SwiftUI
 struct ComicsListView: View {
 
     private let series: SeriesViewModel
-    @ObservedObject private var viewModel: ComicViewModel
+    @ObservedObject private var viewModel: ComicsListViewModel
 
     init(
         forSeries series: Series,
-        viewModel: ComicViewModel = ComicViewModel()
+        viewModel: ComicsListViewModel = ComicsListViewModel()
     ) {
         self.series = SeriesViewModel(from: series)
         self.viewModel = viewModel
@@ -28,8 +28,8 @@ struct ComicsListView: View {
                     .font(.title)
             } else {
                 List(viewModel.comics, id: \.identifier) { comic in
-                    NavigationLink(destination: ComicInfoView(series: series, comic: ComicPresenter(from: comic))) {
-                        ComicView(series: series, comic: ComicPresenter(from: comic))
+                    NavigationLink(destination: ComicInfoView(series: series, comic: ComicViewModel(from: comic))) {
+                        ComicView(series: series, comic: ComicViewModel(from: comic))
                     }
                 }
             }
@@ -58,7 +58,7 @@ struct ComicsListView_Previews: PreviewProvider {
         endYear: nil
     )
 
-    static let viewModel = ComicViewModel(
+    static let viewModel = ComicsListViewModel(
         comics: [
             Comic.make(),
             Comic.make(),
