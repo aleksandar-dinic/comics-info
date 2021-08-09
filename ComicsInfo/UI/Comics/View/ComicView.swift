@@ -10,7 +10,7 @@ import SwiftUI
 
 struct ComicView: View {
 
-    @State var series: SeriesPresenter
+    @State var series: SeriesViewModel
     @State var comic: ComicPresenter
 
     var body: some View {
@@ -56,7 +56,7 @@ struct ComicView_Previews: PreviewProvider {
     static var previews: some View {
         ForEach(ColorScheme.allCases, id: \.self) { color in
             ComicView(
-                series: SeriesPresenter(from: series),
+                series: SeriesViewModel(from: series),
                 comic: ComicPresenter(from: comic)
             )
                 .previewLayout(.fixed(width: 320, height: 154))

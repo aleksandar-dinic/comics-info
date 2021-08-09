@@ -1,5 +1,5 @@
 //
-//  CharacterViewModel.swift
+//  CharacterListViewModel.swift
 //  ComicsInfo
 //
 //  Created by Aleksandar Dinic on 11/05/2020.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-final class CharacterViewModel: ObservableObject {
+final class CharacterListViewModel: ObservableObject {
 
     enum Status: Equatable {
         case loading

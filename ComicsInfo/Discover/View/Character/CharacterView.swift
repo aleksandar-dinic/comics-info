@@ -10,16 +10,16 @@ import SwiftUI
 
 struct CharacterView: View {
 
-    @State var character: CharacterPresenter
+    @State var viewModel: CharacterViewModel
 
     var body: some View {
         HStack {
             CharacterThumbnailView(
-                imageName: character.thumbnail,
-                systemName: character.thumbnailSystemName
+                imageName: viewModel.thumbnail,
+                systemName: viewModel.thumbnailSystemName
             )
 
-            Text(character.name)
+            Text(viewModel.name)
                 .frame(maxWidth: .infinity)
                 .font(.subheadline)
 
@@ -37,7 +37,7 @@ struct CharacterView_Previews: PreviewProvider {
     
     static var previews: some View {
         ForEach(ColorScheme.allCases, id: \.self) { color in
-            CharacterView(character: CharacterPresenter(from: character))
+            CharacterView(viewModel: CharacterViewModel(from: character))
                 .padding()
                 .previewLayout(.sizeThatFits)
                 .previewDisplayName("\(color)")

@@ -10,14 +10,14 @@ import SwiftUI
 
 struct ComicsListView: View {
 
-    private let series: SeriesPresenter
+    private let series: SeriesViewModel
     @ObservedObject private var viewModel: ComicViewModel
 
     init(
         forSeries series: Series,
         viewModel: ComicViewModel = ComicViewModel()
     ) {
-        self.series = SeriesPresenter(from: series)
+        self.series = SeriesViewModel(from: series)
         self.viewModel = viewModel
     }
 

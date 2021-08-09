@@ -10,7 +10,7 @@ import SwiftUI
 
 struct ComicInfoView: View {
 
-    let series: SeriesPresenter
+    let series: SeriesViewModel
     let comic: ComicPresenter
 
     var body: some View {
@@ -61,7 +61,7 @@ struct ComicInfoView_Previews: PreviewProvider {
         NavigationView {
             ForEach(ColorScheme.allCases, id: \.self) { color in
                 ComicInfoView(
-                    series: SeriesPresenter(from: series),
+                    series: SeriesViewModel(from: series),
                     comic: ComicPresenter(from: comic)
                 )
                     .previewDisplayName("\(color)")

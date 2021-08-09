@@ -1,5 +1,5 @@
 //
-//  CharactersListView.swift
+//  CharacterListView.swift
 //  ComicsInfo
 //
 //  Created by Aleksandar Dinic on 11/05/2020.
@@ -8,11 +8,11 @@
 
 import SwiftUI
 
-struct CharactersListView: View {
+struct CharacterListView: View {
 
-    @ObservedObject private var viewModel: CharacterViewModel
+    @ObservedObject private var viewModel: CharacterListViewModel
 
-    init(_ viewModel: CharacterViewModel = CharacterViewModel()) {
+    init(_ viewModel: CharacterListViewModel = CharacterListViewModel()) {
         self.viewModel = viewModel
     }
 
@@ -26,7 +26,7 @@ struct CharactersListView: View {
                     NavigationLink(
                         destination: Text(character.name) // SeriesListView(forCharacter: character)
                     ) {
-                        CharacterView(character: CharacterPresenter(from: character))
+                        CharacterView(viewModel: CharacterViewModel(from: character))
                     }
                 }
                 .navigationBarTitle("Characters")
@@ -43,9 +43,9 @@ struct CharactersListView: View {
 }
 
 #if DEBUG
-struct CharactersListView_Previews: PreviewProvider {
+struct CharacterListView_Previews: PreviewProvider {
 
-    static let viewModel = CharacterViewModel(
+    static let viewModel = CharacterListViewModel(
         characters: [
             Character.make(),
             Character.make(),
@@ -57,7 +57,7 @@ struct CharactersListView_Previews: PreviewProvider {
 
     static var previews: some View {
         ForEach(ColorScheme.allCases, id: \.self) { color in
-            CharactersListView(viewModel)
+            CharacterListView(viewModel)
                 .previewDisplayName("\(color)")
                 .environment(\.colorScheme, color)
         }

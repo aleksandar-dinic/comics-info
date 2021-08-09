@@ -1,5 +1,5 @@
 //
-//  CharacterPresenter.swift
+//  CharacterViewModel.swift
 //  ComicsInfo
 //
 //  Created by Aleksandar Dinic on 11/05/2020.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct CharacterPresenter {
+struct CharacterViewModel {
 
     /// The unique ID of the character resource.
     let identifier: String
@@ -35,7 +35,7 @@ struct CharacterPresenter {
 
 }
 
-extension CharacterPresenter {
+extension CharacterViewModel {
 
     init(from character: Character) {
         identifier = character.identifier

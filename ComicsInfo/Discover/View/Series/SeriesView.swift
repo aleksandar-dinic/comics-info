@@ -10,7 +10,7 @@ import SwiftUI
 
 struct SeriesView: View {
 
-    @State var series: SeriesPresenter
+    @State var series: SeriesViewModel
 
     var body: some View {
         HStack {
@@ -43,7 +43,7 @@ struct SeriesView_Previews: PreviewProvider {
     
     static var previews: some View {
         ForEach(ColorScheme.allCases, id: \.self) { color in
-            SeriesView(series: SeriesPresenter(from: series))
+            SeriesView(series: SeriesViewModel(from: series))
                 .padding()
                 .previewLayout(.sizeThatFits)
                 .previewDisplayName("\(color)")

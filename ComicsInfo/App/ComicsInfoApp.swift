@@ -11,7 +11,7 @@ import SwiftUI
 struct ComicsInfoApp: App {
     var body: some Scene {
         WindowGroup {
-            SeriesListView()
+            DiscoverView()
         }
     }
 }

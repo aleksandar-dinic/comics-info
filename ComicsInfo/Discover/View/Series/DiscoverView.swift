@@ -1,5 +1,5 @@
 //
-//  SeriesListView.swift
+//  DiscoverView.swift
 //  ComicsInfo
 //
 //  Created by Aleksandar Dinic on 20/07/2020.
@@ -8,11 +8,11 @@
 
 import SwiftUI
 
-struct SeriesListView: View {
+struct DiscoverView: View {
 
-    @ObservedObject private var viewModel: SeriesViewModel
+    @ObservedObject private var viewModel: DiscoverViewModel
 
-    init(_ viewModel: SeriesViewModel = SeriesViewModel()) {
+    init(_ viewModel: DiscoverViewModel = DiscoverViewModel()) {
         self.viewModel = viewModel
     }
 
@@ -31,7 +31,7 @@ struct SeriesListView: View {
                                 NavigationLink(
                                     destination: ComicsListView(forSeries: series)
                                 ) {
-                                    SeriesView(series: SeriesPresenter(from: series))
+                                    SeriesView(series: SeriesViewModel(from: series))
                                 }
 //                            }
 //                        }
@@ -51,9 +51,9 @@ struct SeriesListView: View {
 }
 
 #if DEBUG
-struct SeriesListView_Previews: PreviewProvider {
+struct DiscoverView_Previews: PreviewProvider {
 
-    static let viewModel = SeriesViewModel(
+    static let viewModel = DiscoverViewModel(
         series: [
             Series.make(),
             Series.make(),
@@ -64,7 +64,7 @@ struct SeriesListView_Previews: PreviewProvider {
 
     static var previews: some View {
         ForEach(ColorScheme.allCases, id: \.self) { color in
-            SeriesListView(viewModel)
+            DiscoverView(viewModel)
                 .previewDisplayName("\(color)")
                 .environment(\.colorScheme, color)
         }
