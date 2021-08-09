@@ -15,7 +15,7 @@ struct ComicAPIProvider: ComicAPIService {
     ) {
         usleep(useconds_t(Int.random(in: 500_000...2_000_000)))
         guard let data = ComicsMock().data else {
-            return complete(.failure(NetworkError.noData))
+            return complete(.failure(NetworkError.missingData))
         }
         complete(.success(data))
     }
@@ -26,7 +26,7 @@ struct ComicAPIProvider: ComicAPIService {
     ) {
         usleep(useconds_t(Int.random(in: 500_000...2_000_000)))
         guard let data = ComicsMock().data else {
-            return complete(.failure(NetworkError.noData))
+            return complete(.failure(NetworkError.missingData))
         }
         complete(.success(data))
     }

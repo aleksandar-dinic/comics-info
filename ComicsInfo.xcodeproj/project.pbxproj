@@ -132,6 +132,14 @@
 		64B4350924F4417A0054A20C /* AmazingSpiderMan5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B4350824F4417A0054A20C /* AmazingSpiderMan5.swift */; };
 		64B4350B24F441940054A20C /* ComicsMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B4350A24F441940054A20C /* ComicsMock.swift */; };
 		64B4350D24F441CA0054A20C /* ComicAPIServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B4350C24F441CA0054A20C /* ComicAPIServiceTests.swift */; };
+		64DB1DB926C1A114009492AA /* EndpointType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DB1DB826C1A114009492AA /* EndpointType.swift */; };
+		64DB1DBE26C1A161009492AA /* NetworkLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DB1DBD26C1A161009492AA /* NetworkLogger.swift */; };
+		64DB1DC326C1A175009492AA /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DB1DC226C1A175009492AA /* NetworkManager.swift */; };
+		64DB1DC926C1A1A7009492AA /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DB1DC826C1A1A7009492AA /* HTTPMethod.swift */; };
+		64DB1DCE26C1A1B8009492AA /* HTTPStatusCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DB1DCD26C1A1B8009492AA /* HTTPStatusCode.swift */; };
+		64DB1DD326C1A208009492AA /* NetworkResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DB1DD226C1A208009492AA /* NetworkResponse.swift */; };
+		64DB1DDB26C1A225009492AA /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DB1DDA26C1A225009492AA /* Response.swift */; };
+		64DB1DE326C1A245009492AA /* NetworkResponseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DB1DE226C1A245009492AA /* NetworkResponseHandler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -214,7 +222,7 @@
 		6469B01D25DD3BEF000148B8 /* Production.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Production.xcconfig; sourceTree = "<group>"; };
 		6469B06125DD4115000148B8 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		648BD21B24F443BE0040CD75 /* Comic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comic.swift; sourceTree = "<group>"; };
-		649D5C7C24E1F18B004C6328 /* ComicsInfo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = ComicsInfo.app; path = "ComicsInfo (Development).app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		649D5C7C24E1F18B004C6328 /* ComicsInfo (Development).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ComicsInfo (Development).app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		649D5C7F24E1F18B004C6328 /* ComicsInfoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicsInfoApp.swift; sourceTree = "<group>"; };
 		649D5C8324E1F18C004C6328 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		649D5C8624E1F18C004C6328 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -285,6 +293,14 @@
 		64B4350824F4417A0054A20C /* AmazingSpiderMan5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmazingSpiderMan5.swift; sourceTree = "<group>"; };
 		64B4350A24F441940054A20C /* ComicsMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicsMock.swift; sourceTree = "<group>"; };
 		64B4350C24F441CA0054A20C /* ComicAPIServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicAPIServiceTests.swift; sourceTree = "<group>"; };
+		64DB1DB826C1A114009492AA /* EndpointType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointType.swift; sourceTree = "<group>"; };
+		64DB1DBD26C1A161009492AA /* NetworkLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLogger.swift; sourceTree = "<group>"; };
+		64DB1DC226C1A175009492AA /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		64DB1DC826C1A1A7009492AA /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
+		64DB1DCD26C1A1B8009492AA /* HTTPStatusCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPStatusCode.swift; sourceTree = "<group>"; };
+		64DB1DD226C1A208009492AA /* NetworkResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResponse.swift; sourceTree = "<group>"; };
+		64DB1DDA26C1A225009492AA /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		64DB1DE226C1A245009492AA /* NetworkResponseHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResponseHandler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -501,7 +517,7 @@
 		649D5C7D24E1F18B004C6328 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				649D5C7C24E1F18B004C6328 /* ComicsInfo.app */,
+				649D5C7C24E1F18B004C6328 /* ComicsInfo (Development).app */,
 				649D5C8D24E1F18C004C6328 /* ComicsInfoTests.xctest */,
 				649D5C9824E1F18C004C6328 /* ComicsInfoUITests.xctest */,
 			);
@@ -748,10 +764,12 @@
 		64B434C424F3F58B0054A20C /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				64B434C524F3F5AC0054A20C /* CharacterAPIProvider.swift */,
-				64B434D724F3F6C20054A20C /* NetworkError.swift */,
-				64B434E724F41A0A0054A20C /* SeriesAPIProvider.swift */,
-				64B434FD24F440570054A20C /* ComicAPIProvider.swift */,
+				64DB1DB826C1A114009492AA /* EndpointType.swift */,
+				64DB1DBD26C1A161009492AA /* NetworkLogger.swift */,
+				64DB1DC226C1A175009492AA /* NetworkManager.swift */,
+				64DB1DE826C1A261009492AA /* Comics */,
+				64DB1DE726C1A258009492AA /* Discover */,
+				64DB1DC726C1A199009492AA /* Model */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -924,6 +942,36 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		64DB1DC726C1A199009492AA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				64DB1DC826C1A1A7009492AA /* HTTPMethod.swift */,
+				64DB1DCD26C1A1B8009492AA /* HTTPStatusCode.swift */,
+				64B434D724F3F6C20054A20C /* NetworkError.swift */,
+				64DB1DD226C1A208009492AA /* NetworkResponse.swift */,
+				64DB1DDA26C1A225009492AA /* Response.swift */,
+				64DB1DE226C1A245009492AA /* NetworkResponseHandler.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		64DB1DE726C1A258009492AA /* Discover */ = {
+			isa = PBXGroup;
+			children = (
+				64B434C524F3F5AC0054A20C /* CharacterAPIProvider.swift */,
+				64B434E724F41A0A0054A20C /* SeriesAPIProvider.swift */,
+			);
+			path = Discover;
+			sourceTree = "<group>";
+		};
+		64DB1DE826C1A261009492AA /* Comics */ = {
+			isa = PBXGroup;
+			children = (
+				64B434FD24F440570054A20C /* ComicAPIProvider.swift */,
+			);
+			path = Comics;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -944,7 +992,7 @@
 				6420EE4E25FA25CA00B7F47B /* Domain */,
 			);
 			productName = ComicsInfo;
-			productReference = 649D5C7C24E1F18B004C6328 /* ComicsInfo.app */;
+			productReference = 649D5C7C24E1F18B004C6328 /* ComicsInfo (Development).app */;
 			productType = "com.apple.product-type.application";
 		};
 		649D5C8C24E1F18C004C6328 /* ComicsInfoTests */ = {
@@ -1065,6 +1113,7 @@
 				649D5D0524E5C97F004C6328 /* ComicView.swift in Sources */,
 				6420EEEC25FAC2BF00B7F47B /* ComicDataProvider.swift in Sources */,
 				64B434C624F3F5AC0054A20C /* CharacterAPIProvider.swift in Sources */,
+				64DB1DE326C1A245009492AA /* NetworkResponseHandler.swift in Sources */,
 				649D5D0024E5C97F004C6328 /* ComicsListViewModel.swift in Sources */,
 				64B434C924F3F5F00054A20C /* MockData.swift in Sources */,
 				6420EF1C25FAC2DF00B7F47B /* SeriesAPIWrapperFactory.swift in Sources */,
@@ -1095,15 +1144,18 @@
 				6420EEDC25FAC2AF00B7F47B /* CharacterDataProviderFactory.swift in Sources */,
 				6420EEF825FAC2C600B7F47B /* ComicRepositoryFactory.swift in Sources */,
 				6420EF0025FAC2CB00B7F47B /* ComicAPIWrapperFactory.swift in Sources */,
+				64DB1DC926C1A1A7009492AA /* HTTPMethod.swift in Sources */,
 				64B4350524F441400054A20C /* AmazingSpiderMan3.swift in Sources */,
 				64B434F524F41ABD0054A20C /* WebOfSpiderMan.swift in Sources */,
 				6420EEE025FAC2B700B7F47B /* ComicAPIService.swift in Sources */,
 				6420EDCD25F920B900B7F47B /* SeriesSummary.swift in Sources */,
+				64DB1DD326C1A208009492AA /* NetworkResponse.swift in Sources */,
 				649D5D0624E5C97F004C6328 /* DescriptionView.swift in Sources */,
 				64B434D824F3F6C20054A20C /* NetworkError.swift in Sources */,
 				64B434DE24F413DA0054A20C /* SeriesCacheProvider.swift in Sources */,
 				6420EECC25FAC2A500B7F47B /* CharacterDataRepository.swift in Sources */,
 				649D5D0324E5C97F004C6328 /* ComicInfoView.swift in Sources */,
+				64DB1DB926C1A114009492AA /* EndpointType.swift in Sources */,
 				64B4350B24F441940054A20C /* ComicsMock.swift in Sources */,
 				64B434E424F416190054A20C /* Series.swift in Sources */,
 				6420EEE825FAC2BC00B7F47B /* ComicCacheService.swift in Sources */,
@@ -1114,6 +1166,7 @@
 				6420EEF425FAC2C300B7F47B /* ComicRepository.swift in Sources */,
 				6420EDE625FA250A00B7F47B /* DecoderService.swift in Sources */,
 				6420EEF025FAC2C100B7F47B /* ComicDataRepository.swift in Sources */,
+				64DB1DCE26C1A1B8009492AA /* HTTPStatusCode.swift in Sources */,
 				64B434FE24F440570054A20C /* ComicAPIProvider.swift in Sources */,
 				649D5D0824E5C97F004C6328 /* CharacterListViewModel.swift in Sources */,
 				64B434EB24F41A460054A20C /* AmazingSpiderMan.swift in Sources */,
@@ -1130,6 +1183,7 @@
 				6420EF0C25FAC2D400B7F47B /* SeriesCacheService.swift in Sources */,
 				649D5D0B24E5C97F004C6328 /* CharacterThumbnailView.swift in Sources */,
 				649D5C8024E1F18B004C6328 /* ComicsInfoApp.swift in Sources */,
+				64DB1DC326C1A175009492AA /* NetworkManager.swift in Sources */,
 				64B434B724F3E5270054A20C /* Character.swift in Sources */,
 				6420EDE525FA250A00B7F47B /* DataSourceLayer.swift in Sources */,
 				6420EED425FAC2AA00B7F47B /* CharacterAPIWrapperFactory.swift in Sources */,
@@ -1138,11 +1192,13 @@
 				649D5D0C24E5C97F004C6328 /* CharacterView.swift in Sources */,
 				649D5D0424E5C97F004C6328 /* ComicsListView.swift in Sources */,
 				6420EF1425FAC2DA00B7F47B /* SeriesDataRepository.swift in Sources */,
+				64DB1DBE26C1A161009492AA /* NetworkLogger.swift in Sources */,
 				649D5D0A24E5C97F004C6328 /* CharacterListView.swift in Sources */,
 				64B4350324F440D70054A20C /* AmazingSpiderMan2.swift in Sources */,
 				6420EDC825F9206900B7F47B /* ComicSummary.swift in Sources */,
 				6420EEC825FAC2A300B7F47B /* CharacterDataProvider.swift in Sources */,
 				649D5D0D24E5C97F004C6328 /* CharacterUseCase.swift in Sources */,
+				64DB1DDB26C1A225009492AA /* Response.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

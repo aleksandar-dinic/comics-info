@@ -13,7 +13,7 @@ struct SeriesAPIProvider: SeriesAPIService {
     func getAllSeries(onComplete complete: @escaping (Result<Data, Error>) -> Void) {
         usleep(useconds_t(Int.random(in: 500_000...2_000_000)))
         guard let data = SeriesMock().data else {
-            return complete(.failure(NetworkError.noData))
+            return complete(.failure(NetworkError.missingData))
         }
         complete(.success(data))
     }
@@ -24,7 +24,7 @@ struct SeriesAPIProvider: SeriesAPIService {
     ) {
         usleep(useconds_t(Int.random(in: 500_000...2_000_000)))
         guard let data = SeriesMock().data else {
-            return complete(.failure(NetworkError.noData))
+            return complete(.failure(NetworkError.missingData))
         }
         complete(.success(data))
     }

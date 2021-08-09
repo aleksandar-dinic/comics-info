@@ -15,7 +15,7 @@ struct CharacterAPIProvider: CharacterAPIService {
     ) {
         usleep(useconds_t(Int.random(in: 500_000...2_000_000)))
         guard let data = CharactersMock().data else {
-            return complete(.failure(NetworkError.noData))
+            return complete(.failure(NetworkError.missingData))
         }
         complete(.success(data))
     }
@@ -26,7 +26,7 @@ struct CharacterAPIProvider: CharacterAPIService {
     ) {
         usleep(useconds_t(Int.random(in: 500_000...2_000_000)))
         guard let characterData = CharactersMock().characters[characterID], let data = characterData else {
-            return complete(.failure(NetworkError.noData))
+            return complete(.failure(NetworkError.missingData))
         }
         complete(.success(data))
     }
