@@ -8,27 +8,36 @@
 
 import Foundation
 
-struct CharacterAPIProvider: CharacterAPIService {
+final class CharacterAPIProvider: CharacterAPIService, NetworkResponseHandler {
+    
+    private let session: URLSession
+    private let networkManager: NetworkManager<CharacterEndpoint>
+    
+    init(
+        session: URLSession = .shared,
+        networkManager: NetworkManager<CharacterEndpoint> = NetworkManager<CharacterEndpoint>()
+    ) {
+        self.session = session
+        self.networkManager = networkManager
+    }
 
     func getAllCharacters(
         onComplete complete: @escaping (Result<Data, Error>) -> Void
     ) {
-        usleep(useconds_t(Int.random(in: 500_000...2_000_000)))
-        guard let data = CharactersMock().data else {
-            return complete(.failure(NetworkError.missingData))
+        networkManager.request(.getAllCharacters) { [weak self] in
+            guard let self = self else { return }
+            complete(self.handle($0, successStatuses: [.ok]))
         }
-        complete(.success(data))
     }
 
     func getCharacter(
         withID characterID: String,
         onComplete complete: @escaping (Result<Data, Error>) -> Void
     ) {
-        usleep(useconds_t(Int.random(in: 500_000...2_000_000)))
-        guard let characterData = CharactersMock().characters[characterID], let data = characterData else {
-            return complete(.failure(NetworkError.missingData))
+        networkManager.request(.getCharacter(withID: characterID)) { [weak self] in
+            guard let self = self else { return }
+            complete(self.handle($0, successStatuses: [.ok]))
         }
-        complete(.success(data))
     }
 
 }

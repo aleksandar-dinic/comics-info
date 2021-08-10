@@ -8,27 +8,36 @@
 
 import Foundation
 
-struct ComicAPIProvider: ComicAPIService {
+final class ComicAPIProvider: ComicAPIService, NetworkResponseHandler {
 
+    private let session: URLSession
+    private let networkManager: NetworkManager<ComicEndpoint>
+    
+    init(
+        session: URLSession = .shared,
+        networkManager: NetworkManager<ComicEndpoint> = NetworkManager<ComicEndpoint>()
+    ) {
+        self.session = session
+        self.networkManager = networkManager
+    }
+    
     func getAllComics(
         onComplete complete: @escaping (Result<Data, Error>) -> Void
     ) {
-        usleep(useconds_t(Int.random(in: 500_000...2_000_000)))
-        guard let data = ComicsMock().data else {
-            return complete(.failure(NetworkError.missingData))
+        networkManager.request(.getAllComics) { [weak self] in
+            guard let self = self else { return }
+            complete(self.handle($0, successStatuses: [.ok]))
         }
-        complete(.success(data))
     }
     
     func getComic(
         withID comicID: String,
         onComplete complete: @escaping (Result<Data, Error>) -> Void
     ) {
-        usleep(useconds_t(Int.random(in: 500_000...2_000_000)))
-        guard let data = ComicsMock().data else {
-            return complete(.failure(NetworkError.missingData))
+        networkManager.request(.getComic(withID: comicID)) { [weak self] in
+            guard let self = self else { return }
+            complete(self.handle($0, successStatuses: [.ok]))
         }
-        complete(.success(data))
     }
 
 }

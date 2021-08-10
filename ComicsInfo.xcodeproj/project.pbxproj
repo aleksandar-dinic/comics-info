@@ -140,6 +140,9 @@
 		64DB1DD326C1A208009492AA /* NetworkResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DB1DD226C1A208009492AA /* NetworkResponse.swift */; };
 		64DB1DDB26C1A225009492AA /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DB1DDA26C1A225009492AA /* Response.swift */; };
 		64DB1DE326C1A245009492AA /* NetworkResponseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DB1DE226C1A245009492AA /* NetworkResponseHandler.swift */; };
+		64DB1DED26C1AB69009492AA /* CharacterEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DB1DEC26C1AB69009492AA /* CharacterEndpoint.swift */; };
+		64DB1DF226C1BD4F009492AA /* SeriesEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DB1DF126C1BD4F009492AA /* SeriesEndpoint.swift */; };
+		64DB1DF726C1BDCA009492AA /* ComicEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DB1DF626C1BDCA009492AA /* ComicEndpoint.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -301,6 +304,9 @@
 		64DB1DD226C1A208009492AA /* NetworkResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResponse.swift; sourceTree = "<group>"; };
 		64DB1DDA26C1A225009492AA /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		64DB1DE226C1A245009492AA /* NetworkResponseHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResponseHandler.swift; sourceTree = "<group>"; };
+		64DB1DEC26C1AB69009492AA /* CharacterEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterEndpoint.swift; sourceTree = "<group>"; };
+		64DB1DF126C1BD4F009492AA /* SeriesEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesEndpoint.swift; sourceTree = "<group>"; };
+		64DB1DF626C1BDCA009492AA /* ComicEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicEndpoint.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -960,6 +966,8 @@
 			children = (
 				64B434C524F3F5AC0054A20C /* CharacterAPIProvider.swift */,
 				64B434E724F41A0A0054A20C /* SeriesAPIProvider.swift */,
+				64DB1DEC26C1AB69009492AA /* CharacterEndpoint.swift */,
+				64DB1DF126C1BD4F009492AA /* SeriesEndpoint.swift */,
 			);
 			path = Discover;
 			sourceTree = "<group>";
@@ -968,6 +976,7 @@
 			isa = PBXGroup;
 			children = (
 				64B434FD24F440570054A20C /* ComicAPIProvider.swift */,
+				64DB1DF626C1BDCA009492AA /* ComicEndpoint.swift */,
 			);
 			path = Comics;
 			sourceTree = "<group>";
@@ -1128,6 +1137,7 @@
 				649D5D0124E5C97F004C6328 /* ComicViewModel.swift in Sources */,
 				64B434B224F3DF480054A20C /* CharacterCacheProvider.swift in Sources */,
 				64B434D224F3F6570054A20C /* IronManMock.swift in Sources */,
+				64DB1DF226C1BD4F009492AA /* SeriesEndpoint.swift in Sources */,
 				64B4350924F4417A0054A20C /* AmazingSpiderMan5.swift in Sources */,
 				6420EEBC25FAC29800B7F47B /* CharacterCacheService.swift in Sources */,
 				6420EED825FAC2AC00B7F47B /* CharacterRepositoryFactory.swift in Sources */,
@@ -1155,6 +1165,7 @@
 				64B434DE24F413DA0054A20C /* SeriesCacheProvider.swift in Sources */,
 				6420EECC25FAC2A500B7F47B /* CharacterDataRepository.swift in Sources */,
 				649D5D0324E5C97F004C6328 /* ComicInfoView.swift in Sources */,
+				64DB1DF726C1BDCA009492AA /* ComicEndpoint.swift in Sources */,
 				64DB1DB926C1A114009492AA /* EndpointType.swift in Sources */,
 				64B4350B24F441940054A20C /* ComicsMock.swift in Sources */,
 				64B434E424F416190054A20C /* Series.swift in Sources */,
@@ -1174,6 +1185,7 @@
 				64B434B424F3DF680054A20C /* InMemoryCache.swift in Sources */,
 				64B4350724F4415D0054A20C /* AmazingSpiderMan4.swift in Sources */,
 				64B434F324F41AA80054A20C /* SeriesMock.swift in Sources */,
+				64DB1DED26C1AB69009492AA /* CharacterEndpoint.swift in Sources */,
 				649D5D0224E5C97F004C6328 /* ComicThumbnailView.swift in Sources */,
 				6420EEE425FAC2BA00B7F47B /* ComicAPIWrapper.swift in Sources */,
 				64B434CE24F3F62C0054A20C /* CaptainAmericaMock.swift in Sources */,
