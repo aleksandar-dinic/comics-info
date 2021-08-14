@@ -77,4 +77,18 @@ extension ComicViewModel {
         published = comic.published
     }
 
+    init(from comic: ComicSummary) {
+        identifier = comic.identifier
+        popularity = comic.popularity
+        title = comic.title
+        thumbnail = comic.thumbnail ?? ""
+        number = comic.number ?? ""
+        description = comic.description ?? ""
+        format = nil
+        pageCount = nil
+//        series = comic.series
+//        characters = comic.characters
+        published = nil
+    }
+    
 }

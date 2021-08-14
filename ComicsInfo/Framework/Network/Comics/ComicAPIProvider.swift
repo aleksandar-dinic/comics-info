@@ -22,9 +22,10 @@ final class ComicAPIProvider: ComicAPIService, NetworkResponseHandler {
     }
     
     func getAllComics(
+        for seriesID: String,
         onComplete complete: @escaping (Result<Data, Error>) -> Void
     ) {
-        networkManager.request(.getAllComics) { [weak self] in
+        networkManager.request(.getAllComics(forSeriesID: seriesID)) { [weak self] in
             guard let self = self else { return }
             complete(self.handle($0, successStatuses: [.ok]))
         }

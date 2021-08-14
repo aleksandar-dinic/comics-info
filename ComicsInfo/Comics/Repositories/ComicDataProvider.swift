@@ -24,34 +24,36 @@ struct ComicDataProvider {
     // Get all comics
 
     func getAllComics(
+        for seriesID: String,
         fromDataSource dataSource: DataSourceLayer,
-        onComplete complete: @escaping (Result<[Comic], Error>) -> Void
+        onComplete complete: @escaping (Result<[ComicSummary], Error>) -> Void
     ) {
         switch dataSource {
         case .memory:
-            if let comicsFromMemory = getAllComicsFromMemory() {
+            if let comicsFromMemory = getAllComicsFromMemory(for: seriesID) {
                 return complete(.success(comicsFromMemory))
             }
             fallthrough
         case .network:
-            getAllComicsFromNetwork(onComplete: complete)
+            getAllComicsFromNetwork(for: seriesID, onComplete: complete)
         }
     }
 
-    private func getAllComicsFromMemory() -> [Comic]? {
-        guard let comics = comicCacheService.getAllComics() else {
+    private func getAllComicsFromMemory(for seriesID: String) -> [ComicSummary]? {
+        guard let comics = comicCacheService.getAllComics(for: seriesID) else {
             return nil
         }
         return comics.isEmpty ? nil : comics
     }
 
     private func getAllComicsFromNetwork(
-        onComplete complete: @escaping (Result<[Comic], Error>) -> Void
+        for seriesID: String,
+        onComplete complete: @escaping (Result<[ComicSummary], Error>) -> Void
     ) {
-        comicAPIWrapper.getAllComics() { (result: Result<[Comic], Error>) in
+        comicAPIWrapper.getAllComics(for: seriesID) { (result: Result<[ComicSummary], Error>) in
             switch result {
             case let .success(comics):
-                comicCacheService.save(comics: comics)
+                comicCacheService.save(comicSummaries: [seriesID: comics])
                 complete(.success(comics))
 
             case let .failure(error):

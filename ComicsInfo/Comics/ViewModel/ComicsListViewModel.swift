@@ -17,7 +17,7 @@ final class ComicsListViewModel: ObservableObject {
     }
 
     private var useCase: ComicUseCase
-    private(set) var comics: [Comic]
+    private(set) var comics: [ComicSummary]
 
     @Published private(set) var status: Status {
         didSet {
@@ -36,7 +36,7 @@ final class ComicsListViewModel: ObservableObject {
 
     init(
         useCase: ComicUseCase = ComicUseCase(),
-        comics: [Comic] = [],
+        comics: [ComicSummary] = [],
         status: Status = .loading
     ) {
         self.useCase = useCase
@@ -44,10 +44,13 @@ final class ComicsListViewModel: ObservableObject {
         self.status = status
     }
 
-    func loadAllComics(fromDataSource dataSource: DataSourceLayer = .memory) {
+    func loadAllComics(
+        for seriesID: String,
+        fromDataSource dataSource: DataSourceLayer = .memory
+    ) {
         guard dataSource == .network || comics.isEmpty else { return }
 
-        useCase.getAllComics(fromDataSource: dataSource) { [weak self] result in
+        useCase.getAllComics(for: seriesID, fromDataSource: dataSource) { [weak self] result in
             guard let self = self else { return }
 
             switch result {
@@ -60,23 +63,23 @@ final class ComicsListViewModel: ObservableObject {
         }
     }
     
-    func loadComic(
-        withID comicID: String,
-        fromDataSource dataSource: DataSourceLayer = .memory
-    ) {
-        guard dataSource == .network || !comics.contains(where: { $0.identifier == comicID }) else { return }
-
-        useCase.getComic(withID: comicID, fromDataSource: dataSource) { [weak self] result in
-            guard let self = self else { return }
-
-            switch result {
-            case let .success(comic):
-                self.comics.append(comic)
-                self.status = .showComics
-            case let .failure(error):
-                self.status = .error(message: error.localizedDescription)
-            }
-        }
-    }
+//    func loadComic(
+//        withID comicID: String,
+//        fromDataSource dataSource: DataSourceLayer = .memory
+//    ) {
+//        guard dataSource == .network || !comics.contains(where: { $0.identifier == comicID }) else { return }
+//
+//        useCase.getComic(withID: comicID, fromDataSource: dataSource) { [weak self] result in
+//            guard let self = self else { return }
+//
+//            switch result {
+//            case let .success(comic):
+//                self.comics.append(comic)
+//                self.status = .showComics
+//            case let .failure(error):
+//                self.status = .error(message: error.localizedDescription)
+//            }
+//        }
+//    }
 
 }

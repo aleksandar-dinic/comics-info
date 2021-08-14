@@ -17,10 +17,12 @@ final class ComicDataRepository: ComicRepository {
     }
 
     func getAllComics(
+        for seriesID: String,
         fromDataSource dataSource: DataSourceLayer,
-        onComplete complete: @escaping (Result<[Comic], Error>) -> Void
+        onComplete complete: @escaping (Result<[ComicSummary], Error>) -> Void
     ) {
         comicDataProvider.getAllComics(
+            for: seriesID,
             fromDataSource: dataSource,
             onComplete: complete
         )

@@ -35,7 +35,7 @@ struct ComicsListView: View {
             }
         }
         .onAppear {
-            viewModel.loadAllComics()
+            viewModel.loadAllComics(for: series.identifier)
         }
         .alert(isPresented: $viewModel.showError) {
             Alert(title: Text(viewModel.errorMessage))
@@ -60,9 +60,9 @@ struct ComicsListView_Previews: PreviewProvider {
 
     static let viewModel = ComicsListViewModel(
         comics: [
-            Comic.make(),
-            Comic.make(),
-            Comic.make()
+            ComicSummary.make(),
+            ComicSummary.make(),
+            ComicSummary.make()
         ],
         status: .showComics
     )

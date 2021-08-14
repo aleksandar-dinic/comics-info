@@ -7,6 +7,7 @@
 //
 
 import struct Domain.Comic
+import struct Domain.ItemSummary
 import Foundation
 
 struct ComicAPIWrapper: DecoderService {
@@ -18,13 +19,14 @@ struct ComicAPIWrapper: DecoderService {
     }
 
     func getAllComics(
-        onComplete complete: @escaping (Result<[Comic], Error>) -> Void
+        for seriesID: String,
+        onComplete complete: @escaping (Result<[ComicSummary], Error>) -> Void
     ) {
-        comicAPIService.getAllComics() { result in
+        comicAPIService.getAllComics(for: seriesID) { result in
             switch result {
             case let .success(data):
-                let decodedResult: Result<[Domain.Comic], Error> = decode(from: data)
-                complete(decodedResult.map({ $0.map({ Comic(from: $0) }) }))
+                let decodedResult: Result<[Domain.ItemSummary], Error> = decode(from: data)
+                complete(decodedResult.map({ $0.map({ ComicSummary(from: $0) }) }))
 
             case let .failure(error):
                 complete(.failure(error))

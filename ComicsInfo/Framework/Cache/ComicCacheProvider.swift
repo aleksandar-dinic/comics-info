@@ -11,13 +11,19 @@ import Foundation
 struct ComicCacheProvider: ComicCacheService {
 
     private let inMemoryCache: InMemoryCache<String, Comic>
+    private let inMemoryCacheSumaries: InMemoryCache<String, [ComicSummary]>
 
-    init(_ inMemoryCache: InMemoryCache<String, Comic> = InMemoryCache()) {
+    init(
+        inMemoryCache: InMemoryCache<String, Comic> = InMemoryCache(),
+        inMemoryCacheSumaries: InMemoryCache<String, [ComicSummary]> = InMemoryCache()
+    ) {
         self.inMemoryCache = inMemoryCache
+        self.inMemoryCacheSumaries = inMemoryCacheSumaries
     }
 
-    func getAllComics() -> [Comic]? {
-        !inMemoryCache.isEmpty ? inMemoryCache.values : nil
+    // TODO: - Get comics for seriesID
+    func getAllComics(for seriesID: String) -> [ComicSummary]? {
+        inMemoryCacheSumaries[seriesID]
     }
 
     func getComic(withID comicID: String) -> Comic? {
@@ -27,6 +33,12 @@ struct ComicCacheProvider: ComicCacheService {
     func save(comics: [Comic]) {
         for comic in comics {
             inMemoryCache[comic.identifier] = comic
+        }
+    }
+    
+    func save(comicSummaries: [String: [ComicSummary]]) {
+        for (_, el) in comicSummaries.enumerated() {
+            inMemoryCacheSumaries[el.key] = el.value
         }
     }
 
