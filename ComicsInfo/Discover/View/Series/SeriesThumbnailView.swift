@@ -12,12 +12,12 @@ struct SeriesThumbnailView: View {
 
     var imageName: String
     var systemName: String
+    let height: CGFloat
 
     var body: some View {
-        thumbnailImage()
-            .resizable()
+        thumbnailImage(for: URL(string: imageName))
             .aspectRatio(contentMode: .fit)
-            .frame(width: 100, height: 150)
+            .frame(width: height/1.5, height: height)
             .cornerRadius(8)
             .padding(1)
             .background(Color.secondary)
@@ -25,11 +25,18 @@ struct SeriesThumbnailView: View {
             .shadow(radius: 8)
     }
 
-    private func thumbnailImage() -> Image {
-        guard !imageName.isEmpty else {
-            return Image(systemName: systemName)
-        }
-        return Image(imageName)
+    private func thumbnailImage(for url: URL?) -> AsyncImage<Image> {
+        AsyncImage(
+            url: url,
+            placeholder: {
+                Image(systemName: systemName)
+                    .resizable()
+            },
+            image: {
+                Image(uiImage: $0)
+                    .resizable()
+            }
+        )
     }
 
 }
@@ -40,7 +47,8 @@ struct SeriesThumbnailView_Previews: PreviewProvider {
     static var previews: some View {
         SeriesThumbnailView(
             imageName: "TheFlash",
-            systemName: "photo.on.rectangle"
+            systemName: "photo.on.rectangle",
+            height: 150
         )
         .padding()
         .previewLayout(.sizeThatFits)

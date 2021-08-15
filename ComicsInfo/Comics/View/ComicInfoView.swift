@@ -18,9 +18,9 @@ struct ComicInfoView: View {
                 HStack {
                     ComicThumbnailView(
                         imageName: viewModel.thumbnail,
-                        systemName: viewModel.thumbnailSystemName
+                        systemName: viewModel.thumbnailSystemName,
+                        height: 250
                     )
-                    .frame(height: 250)
 
                     VStack(spacing: 4) {
                         Spacer()

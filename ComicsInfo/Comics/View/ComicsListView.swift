@@ -23,7 +23,7 @@ struct ComicsListView: View {
 
     var body: some View {
         ScrollView {
-            LazyVStack {
+            LazyVStack(spacing: 4) {
                 if viewModel.status == .loading {
                     Spacer()
                     ProgressView("Loading...")

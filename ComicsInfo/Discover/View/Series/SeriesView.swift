@@ -16,7 +16,8 @@ struct SeriesView: View {
         HStack {
             SeriesThumbnailView(
                 imageName: series.thumbnail,
-                systemName: series.thumbnailSystemName
+                systemName: series.thumbnailSystemName,
+                height: 150
             )
 
             VStack {
