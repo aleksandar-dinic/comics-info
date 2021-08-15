@@ -1,5 +1,5 @@
 //
-//  ComicView.swift
+//  ComicSummaryView.swift
 //  ComicsInfo
 //
 //  Created by Aleksandar Dinic on 22/07/2020.
@@ -8,32 +8,31 @@
 
 import SwiftUI
 
-struct ComicView: View {
-
-    @State var series: SeriesViewModel
-    @State var comic: ComicViewModel
+struct ComicSummaryView: View {
+    
+    @State var viewModel: ComicSummaryViewModel
 
     var body: some View {
         HStack {
             ComicThumbnailView(
-                imageName: comic.thumbnail,
-                systemName: comic.thumbnailSystemName
+                imageName: viewModel.thumbnail,
+                systemName: viewModel.thumbnailSystemName
             )
             .frame(width: 100, height: 150)
 
             VStack {
                 Spacer()
                 Spacer()
-                Text("\(series.title) \(comic.issue)")
+                Text(viewModel.issue)
                     .frame(maxWidth: .infinity)
                     .font(.subheadline)
                 Spacer()
-                Text("\"\(comic.title)\"")
+                Text(viewModel.title)
                     .multilineTextAlignment(.center)
                     .frame(maxWidth: .infinity)
                     .font(.footnote)
                 Spacer()
-                Text("(\(comic.publishedDate))")
+                Text(viewModel.publishedDate)
                     .frame(maxWidth: .infinity)
                     .font(.footnote)
                 Spacer()
@@ -50,14 +49,16 @@ struct ComicView: View {
 #if DEBUG
 struct ComicView_Previews: PreviewProvider {
     
-    static let series = Series.make()
-    static let comic = Comic.make()
+    static let comicSummary = ComicSummary.make()
+    static let seriesViewModel = SeriesViewModel(from: Series.make())
 
     static var previews: some View {
         ForEach(ColorScheme.allCases, id: \.self) { color in
-            ComicView(
-                series: SeriesViewModel(from: series),
-                comic: ComicViewModel(from: comic)
+            ComicSummaryView(
+                viewModel: ComicSummaryViewModel(
+                    for: comicSummary,
+                    seriesViewModel: seriesViewModel
+                )
             )
                 .previewLayout(.fixed(width: 320, height: 154))
                 .previewDisplayName("\(color)")

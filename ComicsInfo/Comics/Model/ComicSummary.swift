@@ -27,6 +27,9 @@ struct ComicSummary: Codable, Hashable {
     
     /// The number of this comic.
     let number: String?
+    
+    /// The date of publication for this comic.
+    let published: Date?
 
 }
 
@@ -39,6 +42,7 @@ extension ComicSummary {
         thumbnail = summary.thumbnail
         description = summary.description
         number = summary.number
+        published = nil //summary.published
     }
     
 }
@@ -77,7 +81,8 @@ extension ComicSummary {
             a courageous astronaut about to be launched into orbit in a space capsule. J. Jonah Jameson calls \
             his son a "real hero."
             """,
-        number: String? = "1"
+        number: String? = "1",
+        published: Date? = Date()
     ) -> ComicSummary {
         ComicSummary(
             identifier: identifier,
@@ -85,7 +90,8 @@ extension ComicSummary {
             title: title,
             thumbnail: thumbnail,
             description: description,
-            number: number
+            number: number,
+            published: published
         )
     }
 

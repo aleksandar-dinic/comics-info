@@ -18,10 +18,13 @@ protocol ComicRepository {
     ///
     /// - Parameters:
     ///   - seriesID: Series ID
+    ///   - limit: Limit
     ///   - dataSource: Layer of data source
     ///   - complete: Result who contains list of Comic Summaries in Success, or Error in Failure.
     func getAllComics(
         for seriesID: String,
+        afterID: String?,
+        limit: Int,
         fromDataSource dataSource: DataSourceLayer,
         onComplete complete: @escaping (Result<[ComicSummary], Error>) -> Void
     )

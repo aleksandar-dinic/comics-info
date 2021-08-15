@@ -16,8 +16,10 @@ final class ComicsListViewModel: ObservableObject {
         case showComics
     }
 
-    private var useCase: ComicUseCase
+    private(set) var useCase: ComicUseCase
     private(set) var comics: [ComicSummary]
+    @Published private(set) var canLoadMore = true
+    @Published private(set) var isLoading = false
 
     @Published private(set) var status: Status {
         didSet {
@@ -46,40 +48,33 @@ final class ComicsListViewModel: ObservableObject {
 
     func loadAllComics(
         for seriesID: String,
+        lastID: String? = nil,
+        limit: Int = 20,
         fromDataSource dataSource: DataSourceLayer = .memory
     ) {
-        guard dataSource == .network || comics.isEmpty else { return }
-
-        useCase.getAllComics(for: seriesID, fromDataSource: dataSource) { [weak self] result in
+        guard !isLoading, canLoadMore else { return }
+        
+        isLoading = true
+        useCase.getAllComics(for: seriesID, afterID: lastID, limit: limit, fromDataSource: dataSource) { [weak self] result in
             guard let self = self else { return }
 
             switch result {
             case let .success(comics):
-                self.comics = comics.sorted { $0.popularity < $1.popularity }
+                self.comics = comics
                 self.status = .showComics
+                self.canLoadMore = comics.count >= limit
             case let .failure(error):
+                self.canLoadMore = false
+                guard self.comics.isEmpty else { return }
                 self.status = .error(message: error.localizedDescription)
             }
+            
+            self.isLoading = false
         }
     }
     
-//    func loadComic(
-//        withID comicID: String,
-//        fromDataSource dataSource: DataSourceLayer = .memory
-//    ) {
-//        guard dataSource == .network || !comics.contains(where: { $0.identifier == comicID }) else { return }
-//
-//        useCase.getComic(withID: comicID, fromDataSource: dataSource) { [weak self] result in
-//            guard let self = self else { return }
-//
-//            switch result {
-//            case let .success(comic):
-//                self.comics.append(comic)
-//                self.status = .showComics
-//            case let .failure(error):
-//                self.status = .error(message: error.localizedDescription)
-//            }
-//        }
-//    }
-
+    var lastIdentifier: String? {
+        comics.last?.identifier
+    }
+    
 }

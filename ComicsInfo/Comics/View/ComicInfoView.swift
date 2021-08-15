@@ -10,28 +10,27 @@ import SwiftUI
 
 struct ComicInfoView: View {
 
-    let series: SeriesViewModel
-    let comic: ComicViewModel
+    let viewModel: ComicInfoViewModel
 
     var body: some View {
         ScrollView {
-            VStack {
+            LazyVStack {
                 HStack {
                     ComicThumbnailView(
-                        imageName: comic.thumbnail,
-                        systemName: comic.thumbnailSystemName
+                        imageName: viewModel.thumbnail,
+                        systemName: viewModel.thumbnailSystemName
                     )
                     .frame(height: 250)
 
                     VStack(spacing: 4) {
                         Spacer()
-                        Text(comic.title)
+                        Text(viewModel.title)
                             .font(.subheadline)
                             .multilineTextAlignment(.center)
                             .frame(maxWidth: .infinity)
                             .accessibility(identifier: "Title")
                         Spacer()
-                        Text(comic.publishedDate)
+                        Text(viewModel.publishedDate)
                             .font(.caption)
                             .frame(maxWidth: .infinity)
                             .padding()
@@ -42,11 +41,15 @@ struct ComicInfoView: View {
                 .frame(height: 250)
                 .padding()
 
-                DescriptionView(description: comic.description)
-                Spacer()
+                if !viewModel.description.isEmpty {
+                    DescriptionView(description: viewModel.description)
+                }
             }
         }
-        .navigationBarTitle("\(series.title) \(comic.issue)", displayMode: .inline)
+        .onAppear {
+            viewModel.loadComic(withID: viewModel.identifier)
+        }
+        .navigationBarTitle(viewModel.issue, displayMode: .inline)
     }
 
 }
@@ -54,15 +57,20 @@ struct ComicInfoView: View {
 #if DEBUG
 struct ComicInfoView_Previews: PreviewProvider {
     
+    static let useCase = ComicUseCase()
+    static let comicSummary = ComicSummary.make()
     static let series = Series.make()
-    static let comic = Comic.make()
 
     static var previews: some View {
         NavigationView {
             ForEach(ColorScheme.allCases, id: \.self) { color in
                 ComicInfoView(
-                    series: SeriesViewModel(from: series),
-                    comic: ComicViewModel(from: comic)
+                    viewModel:
+                        ComicInfoViewModel(
+                            useCase: useCase,
+                            comicSummary: comicSummary,
+                            seriesViewModel: SeriesViewModel(from: series)
+                        )
                 )
                     .previewDisplayName("\(color)")
                     .environment(\.colorScheme, color)

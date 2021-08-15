@@ -52,7 +52,7 @@ final class DiscoverViewModel: ObservableObject {
 
             switch result {
             case let .success(series):
-                self.series = series.sorted { $0.popularity < $1.popularity }
+                self.series = series
                 self.status = .showSeries
             case let .failure(error):
                 self.status = .error(message: error.localizedDescription)

@@ -9,7 +9,7 @@ import Foundation
 
 enum ComicEndpoint: EndpointType {
     
-    case getAllComics(forSeriesID: String)
+    case getAllComics(forSeriesID: String, afterID: String?, limit: Int)
     case getComic(withID: String)
     
     var baseURL: URL {
@@ -38,14 +38,23 @@ enum ComicEndpoint: EndpointType {
     
     var queryParameters: [String: String]? {
         switch self {
-        case let .getAllComics(seriesID):
-            return ["seriesID": seriesID]
+        case let .getAllComics(seriesID, afterID, limit):
+            var parameters = [
+                "seriesID": seriesID,
+                "limit": "\(limit)"
+            ]
+            
+            if let afterID = afterID {
+                parameters["afterID"] = afterID
+            }
+            
+            return parameters
         default:
             return nil
         }
     }
     
-    var headers: [String : String]? {
+    var headers: [String: String]? {
         nil
     }
     

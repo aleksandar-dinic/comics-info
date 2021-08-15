@@ -9,15 +9,14 @@
 import Foundation
 
 struct SeriesViewModel: Codable {
+    
+    private let series: Series
 
     /// The unique ID of the series resource.
     let identifier: String
 
     /// The value of Series popularity
     let popularity: Int
-
-    /// The canonical title of the series.
-    let title: String
 
     /// The representative image for this series.
     let thumbnail: String
@@ -31,10 +30,21 @@ struct SeriesViewModel: Codable {
     /// The last year of publication for the series (conventionally, nil for ongoing series) .
     let endYear: Int?
 
-//    /// A resource list containing characters ID which appear in comics in this series.
-//    let charactersID: Set<String>
+    init(from series: Series) {
+        self.series = series
+        identifier = series.identifier
+        popularity = series.popularity
+        thumbnail = series.thumbnail ?? ""
+        description = series.description ?? ""
+        startYear = series.startYear
+        endYear = series.endYear
+//        charactersID = series.charactersID
+    }
+    
+    var title: String {
+        "\(series.title)"
+    }
 
-    /// The representative system image for this character.
     var thumbnailSystemName: String {
         "photo.on.rectangle"
     }
@@ -49,21 +59,6 @@ struct SeriesViewModel: Codable {
         }
 
         return "(???? - ????)"
-    }
-
-}
-
-extension SeriesViewModel {
-
-    init(from series: Series) {
-        identifier = series.identifier
-        popularity = series.popularity
-        title = series.title
-        thumbnail = series.thumbnail ?? ""
-        description = series.description ?? ""
-        startYear = series.startYear
-        endYear = series.endYear
-//        charactersID = series.charactersID
     }
 
 }

@@ -21,7 +21,6 @@ struct ComicCacheProvider: ComicCacheService {
         self.inMemoryCacheSumaries = inMemoryCacheSumaries
     }
 
-    // TODO: - Get comics for seriesID
     func getAllComics(for seriesID: String) -> [ComicSummary]? {
         inMemoryCacheSumaries[seriesID]
     }

@@ -25,21 +25,23 @@ struct ComicDataProvider {
 
     func getAllComics(
         for seriesID: String,
+        afterID: String?,
+        limit: Int,
         fromDataSource dataSource: DataSourceLayer,
         onComplete complete: @escaping (Result<[ComicSummary], Error>) -> Void
     ) {
         switch dataSource {
         case .memory:
-            if let comicsFromMemory = getAllComicsFromMemory(for: seriesID) {
+            if let comicsFromMemory = getAllComicsFromMemory(for: seriesID, limit: limit) {
                 return complete(.success(comicsFromMemory))
             }
             fallthrough
         case .network:
-            getAllComicsFromNetwork(for: seriesID, onComplete: complete)
+            getAllComicsFromNetwork(for: seriesID, afterID: afterID, limit: limit, onComplete: complete)
         }
     }
 
-    private func getAllComicsFromMemory(for seriesID: String) -> [ComicSummary]? {
+    private func getAllComicsFromMemory(for seriesID: String, limit: Int) -> [ComicSummary]? {
         guard let comics = comicCacheService.getAllComics(for: seriesID) else {
             return nil
         }
@@ -48,9 +50,11 @@ struct ComicDataProvider {
 
     private func getAllComicsFromNetwork(
         for seriesID: String,
+        afterID: String?,
+        limit: Int,
         onComplete complete: @escaping (Result<[ComicSummary], Error>) -> Void
     ) {
-        comicAPIWrapper.getAllComics(for: seriesID) { (result: Result<[ComicSummary], Error>) in
+        comicAPIWrapper.getAllComics(for: seriesID, afterID: afterID, limit: limit) { (result: Result<[ComicSummary], Error>) in
             switch result {
             case let .success(comics):
                 comicCacheService.save(comicSummaries: [seriesID: comics])

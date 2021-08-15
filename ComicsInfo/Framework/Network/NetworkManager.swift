@@ -5,6 +5,7 @@
 //  Created by Aleksandar Dinic on 09/08/2021.
 //
 
+import Combine
 import Foundation
 
 final class NetworkManager<Endpoint: EndpointType> {
@@ -38,6 +39,20 @@ final class NetworkManager<Endpoint: EndpointType> {
         
         task?.resume()
     }
+    
+//    func request(_ route: Endpoint) -> AnyPublisher<(data: Data, response: HTTPURLResponse), Error> {
+//        let request = buildRequest(from: route)
+//        NetworkLogger.log(request: request)
+//
+//        return session.dataTaskPublisher(for: request)
+//            .tryMap { (data, response) in
+//                guard let httpResponse = response as? HTTPURLResponse else {
+//                    throw URLError(.badServerResponse)
+//                }
+//                return (data, httpResponse)
+//            }
+//            .eraseToAnyPublisher()
+//    }
     
     func cancel() {
         task?.cancel()

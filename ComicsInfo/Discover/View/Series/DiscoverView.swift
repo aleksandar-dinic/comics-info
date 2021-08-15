@@ -24,20 +24,7 @@ struct DiscoverView: View {
                         .font(.title)
                 }
             } else {
-                List {
-//                    ForEach(viewModel.characters, id: \.identifier) { character in
-//                        Section(header: Text(character.name)) {
-                            ForEach(viewModel.series, id: \.identifier) { series in
-                                NavigationLink(
-                                    destination: ComicsListView(forSeries: series)
-                                ) {
-                                    SeriesView(series: SeriesViewModel(from: series))
-                                }
-//                            }
-//                        }
-                    }
-                }
-                .navigationBarTitle("Discover")
+                discoverList
             }
         }
         .onAppear {
@@ -45,6 +32,33 @@ struct DiscoverView: View {
         }
         .alert(isPresented: $viewModel.showError) {
             Alert(title: Text(viewModel.errorMessage))
+        }
+    }
+    
+    private var discoverList: some View {
+        ScrollView {
+            LazyVStack {
+                characterList
+            }
+            .padding(.leading, 8)
+            .padding(.trailing, 8)
+        }
+        .navigationBarTitle("Discover")
+    }
+    
+    private var characterList: some View {
+//        ForEach(viewModel.characters, id: \.identifier) { character in
+//            Section(header: Text(character.name)) {
+                seriesList
+//            }
+//        }
+    }
+    
+    private var seriesList: some View {
+        ForEach(viewModel.series, id: \.identifier) { series in
+            NavigationLink(destination: ComicsListView(forSeries: series)) {
+                SeriesView(series: SeriesViewModel(from: series))
+            }
         }
     }
 

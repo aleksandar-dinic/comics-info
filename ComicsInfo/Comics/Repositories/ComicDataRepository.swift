@@ -18,11 +18,15 @@ final class ComicDataRepository: ComicRepository {
 
     func getAllComics(
         for seriesID: String,
+        afterID: String?,
+        limit: Int,
         fromDataSource dataSource: DataSourceLayer,
         onComplete complete: @escaping (Result<[ComicSummary], Error>) -> Void
     ) {
         comicDataProvider.getAllComics(
             for: seriesID,
+            afterID: afterID,
+            limit: limit,
             fromDataSource: dataSource,
             onComplete: complete
         )

@@ -22,17 +22,20 @@ struct ComicsListView: View {
     }
 
     var body: some View {
-        Group {
-            if viewModel.status == .loading {
-                Text("Loading...")
-                    .font(.title)
-            } else {
-                List(viewModel.comics, id: \.identifier) { comic in
-                    NavigationLink(destination: ComicInfoView(series: series, comic: ComicViewModel(from: comic))) {
-                        ComicView(series: series, comic: ComicViewModel(from: comic))
+        ScrollView {
+            LazyVStack {
+                if viewModel.status == .loading {
+                    Spacer()
+                    ProgressView("Loading...")
+                    Spacer()
+                } else {
+                    comicsList
+                    if viewModel.canLoadMore {
+                        loadingIndicator
                     }
                 }
             }
+            .padding()
         }
         .onAppear {
             viewModel.loadAllComics(for: series.identifier)
@@ -40,9 +43,44 @@ struct ComicsListView: View {
         .alert(isPresented: $viewModel.showError) {
             Alert(title: Text(viewModel.errorMessage))
         }
-        .navigationBarTitle("\(series.title)", displayMode: .inline)
+        .navigationBarTitle(series.title, displayMode: .inline)
+    }
+    
+    private var comicsList: some View {
+        ForEach(viewModel.comics, id: \.identifier) { comic in
+            NavigationLink(
+                destination: ComicInfoView(
+                    viewModel: ComicInfoViewModel(
+                        useCase: viewModel.useCase,
+                        comicSummary: comic,
+                        seriesViewModel: series
+                    )
+                )
+            ) {
+                ComicSummaryView(
+                    viewModel: ComicSummaryViewModel(
+                        for: comic,
+                        seriesViewModel: series
+                    )
+                )
+            }
+        }
     }
 
+    private var loadingIndicator: some View {
+        HStack {
+            Spacer()
+            ProgressView()
+                .onAppear {
+                    viewModel.loadAllComics(
+                        for: series.identifier,
+                        lastID: viewModel.lastIdentifier
+                    )
+                }
+            Spacer()
+        }
+    }
+    
 }
 
 #if DEBUG

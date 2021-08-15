@@ -12,6 +12,8 @@ protocol ComicAPIService {
 
     func getAllComics(
         for seriesID: String,
+        afterID: String?,
+        limit: Int,
         onComplete complete: @escaping (Result<Data, Error>) -> Void
     )
     

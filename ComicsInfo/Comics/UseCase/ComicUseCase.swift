@@ -25,11 +25,13 @@ final class ComicUseCase: ComicRepositoryFactory {
     
     func getAllComics(
         for seriesID: String,
+        afterID: String?,
+        limit: Int,
         fromDataSource dataSource: DataSourceLayer,
         onComplete complete: @escaping (Result<[ComicSummary], Error>) -> Void
     ) {
         DispatchQueue.global(qos: .utility).async { [weak self] in
-            self?.repository.getAllComics(for: seriesID, fromDataSource: dataSource) { result in
+            self?.repository.getAllComics(for: seriesID, afterID: afterID, limit: limit, fromDataSource: dataSource) { result in
                 DispatchQueue.main.async {
                     complete(result)
                 }

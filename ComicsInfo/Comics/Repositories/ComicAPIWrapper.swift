@@ -20,9 +20,11 @@ struct ComicAPIWrapper: DecoderService {
 
     func getAllComics(
         for seriesID: String,
+        afterID: String?,
+        limit: Int,
         onComplete complete: @escaping (Result<[ComicSummary], Error>) -> Void
     ) {
-        comicAPIService.getAllComics(for: seriesID) { result in
+        comicAPIService.getAllComics(for: seriesID, afterID: afterID, limit: limit) { result in
             switch result {
             case let .success(data):
                 let decodedResult: Result<[Domain.ItemSummary], Error> = decode(from: data)
