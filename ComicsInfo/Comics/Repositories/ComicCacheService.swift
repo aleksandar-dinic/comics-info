@@ -15,7 +15,7 @@ protocol ComicCacheService {
         afterID: String?,
         limit: Int
     ) -> [ComicSummary]?
-    func save(comicSummaries: [String: [ComicSummary]])
+    func save(comicSummaries: [ComicSummary], forSeriesID seriesID: String)
 
     func getComic(withID comicID: String) -> Comic?
     func save(comics: [Comic])

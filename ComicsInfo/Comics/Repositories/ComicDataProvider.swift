@@ -60,9 +60,9 @@ struct ComicDataProvider {
     ) {
         comicAPIWrapper.getAllComics(for: seriesID, afterID: afterID, limit: limit) { (result: Result<[ComicSummary], Error>) in
             switch result {
-            case let .success(comics):
-                comicCacheService.save(comicSummaries: [seriesID: comics])
-                complete(.success(comics))
+            case let .success(comicSummaries):
+                comicCacheService.save(comicSummaries: comicSummaries, forSeriesID: seriesID)
+                complete(.success(comicSummaries))
 
             case let .failure(error):
                 complete(.failure(error))

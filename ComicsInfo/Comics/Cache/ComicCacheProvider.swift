@@ -51,10 +51,20 @@ struct ComicCacheProvider: ComicCacheService {
         }
     }
     
-    func save(comicSummaries: [String: [ComicSummary]]) {
-        for (_, el) in comicSummaries.enumerated() {
-            inMemoryCacheSumaries[el.key] = el.value
+    func save(comicSummaries: [ComicSummary], forSeriesID seriesID: String) {
+        var value = [ComicSummary]()
+        var keys = Set<String>()
+        if let oldValue = inMemoryCacheSumaries[seriesID] {
+            value = oldValue
+            oldValue
+                .map { $0.identifier }
+                .forEach { keys.insert($0) }
         }
+        
+        for summary in comicSummaries where !keys.contains(summary.identifier) {
+            value.append(summary)
+        }
+        inMemoryCacheSumaries[seriesID] = value
     }
 
 }

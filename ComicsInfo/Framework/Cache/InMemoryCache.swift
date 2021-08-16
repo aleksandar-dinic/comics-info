@@ -35,7 +35,7 @@ final class InMemoryCache<Key: Hashable, Value: Codable> {
 
     subscript(key: Key) -> Value? {
         get {
-            return queue.sync {
+            queue.sync {
                 storage[key]
             }
         }
