@@ -7,7 +7,8 @@
 //
 
 import struct Domain.Comic
-import struct Domain.ItemSummary
+import struct Domain.CharacterSummary
+import struct Domain.SeriesSummary
 import Foundation
 
 struct Comic: Codable {
@@ -96,8 +97,8 @@ extension Domain.Comic {
             collectedIdentifiers: nil,
             images: nil,
             published: comic.published,
-            characters: comic.characters?.map { Domain.ItemSummary(from: $0) },
-            series: comic.series?.map { Domain.ItemSummary(from: $0) }
+            characters: comic.characters?.map { Domain.CharacterSummary(from: $0) },
+            series: comic.series?.map { Domain.SeriesSummary(from: $0) }
         )
     }
 

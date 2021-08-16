@@ -7,7 +7,7 @@
 //
 
 import struct Domain.Comic
-import struct Domain.ItemSummary
+import struct Domain.ComicSummary
 import Foundation
 
 struct ComicAPIWrapper: DecoderService {
@@ -27,7 +27,7 @@ struct ComicAPIWrapper: DecoderService {
         comicAPIService.getAllComics(for: seriesID, afterID: afterID, limit: limit) { result in
             switch result {
             case let .success(data):
-                let decodedResult: Result<[Domain.ItemSummary], Error> = decode(from: data)
+                let decodedResult: Result<[Domain.ComicSummary], Error> = decode(from: data)
                 complete(decodedResult.map({ $0.map({ ComicSummary(from: $0) }) }))
 
             case let .failure(error):

@@ -5,7 +5,7 @@
 //  Created by Aleksandar Dinic on 10/03/2021.
 //
 
-import struct Domain.ItemSummary
+import struct Domain.ComicSummary
 import Foundation
 
 struct ComicSummary: Codable, Hashable {
@@ -35,30 +35,29 @@ struct ComicSummary: Codable, Hashable {
 
 extension ComicSummary {
     
-    init(from summary: Domain.ItemSummary) {
+    init(from summary: Domain.ComicSummary) {
         identifier = summary.identifier
         popularity = summary.popularity
-        title = summary.name
+        title = summary.title
         thumbnail = summary.thumbnail
         description = summary.description
         number = summary.number
-        published = nil //summary.published
+        published = summary.published
     }
     
 }
 
-extension Domain.ItemSummary {
+extension Domain.ComicSummary {
     
     init(from summary: ComicSummary) {
         self.init(
             identifier: summary.identifier,
             popularity: summary.popularity,
-            name: summary.title,
+            title: summary.title,
             thumbnail: summary.thumbnail,
             description: summary.description,
-            count: nil,
             number: summary.number,
-            roles: nil
+            published: summary.published
         )
     }
     
