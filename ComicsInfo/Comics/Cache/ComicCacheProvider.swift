@@ -21,8 +21,24 @@ struct ComicCacheProvider: ComicCacheService {
         self.inMemoryCacheSumaries = inMemoryCacheSumaries
     }
 
-    func getAllComics(for seriesID: String) -> [ComicSummary]? {
-        inMemoryCacheSumaries[seriesID]
+    func getComicSummaries(
+        for seriesID: String,
+        afterID: String?,
+        limit: Int
+    ) -> [ComicSummary]? {
+        guard var items = inMemoryCacheSumaries[seriesID], !items.isEmpty else { return nil }
+        var start = 0
+        let count = items.count
+
+        if let afterID = afterID {
+            guard let firstIndex = items.firstIndex(where: { $0.identifier == afterID }) else {
+                return nil
+            }
+            start = firstIndex + 1
+        }
+
+        items = Array(items[start..<min(count, start+limit)])
+        return !items.isEmpty ? items : nil
     }
 
     func getComic(withID comicID: String) -> Comic? {

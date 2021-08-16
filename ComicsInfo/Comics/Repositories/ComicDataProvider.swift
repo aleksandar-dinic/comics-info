@@ -23,7 +23,7 @@ struct ComicDataProvider {
     
     // Get all comics
 
-    func getAllComics(
+    func getComicSummaries(
         for seriesID: String,
         afterID: String?,
         limit: Int,
@@ -32,23 +32,27 @@ struct ComicDataProvider {
     ) {
         switch dataSource {
         case .memory:
-            if let comicsFromMemory = getAllComicsFromMemory(for: seriesID, limit: limit) {
+            if let comicsFromMemory = getComicSummariesFromMemory(for: seriesID, afterID: afterID, limit: limit) {
                 return complete(.success(comicsFromMemory))
             }
             fallthrough
         case .network:
-            getAllComicsFromNetwork(for: seriesID, afterID: afterID, limit: limit, onComplete: complete)
+            getComicSummariesFromNetwork(for: seriesID, afterID: afterID, limit: limit, onComplete: complete)
         }
     }
 
-    private func getAllComicsFromMemory(for seriesID: String, limit: Int) -> [ComicSummary]? {
-        guard let comics = comicCacheService.getAllComics(for: seriesID) else {
+    private func getComicSummariesFromMemory(
+        for seriesID: String,
+        afterID: String?,
+        limit: Int
+    ) -> [ComicSummary]? {
+        guard let comics = comicCacheService.getComicSummaries(for: seriesID, afterID: afterID, limit: limit) else {
             return nil
         }
         return comics.isEmpty ? nil : comics
     }
 
-    private func getAllComicsFromNetwork(
+    private func getComicSummariesFromNetwork(
         for seriesID: String,
         afterID: String?,
         limit: Int,

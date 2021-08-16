@@ -16,14 +16,14 @@ final class ComicDataRepository: ComicRepository {
         self.comicDataProvider = comicDataProvider
     }
 
-    func getAllComics(
+    func getComicSummaries(
         for seriesID: String,
         afterID: String?,
         limit: Int,
         fromDataSource dataSource: DataSourceLayer,
         onComplete complete: @escaping (Result<[ComicSummary], Error>) -> Void
     ) {
-        comicDataProvider.getAllComics(
+        comicDataProvider.getComicSummaries(
             for: seriesID,
             afterID: afterID,
             limit: limit,

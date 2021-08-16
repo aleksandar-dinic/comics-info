@@ -23,7 +23,7 @@ final class ComicUseCase: ComicRepositoryFactory {
         self.comicCacheService = comicCacheService
     }
     
-    func getAllComics(
+    func getComicSummaries(
         for seriesID: String,
         afterID: String?,
         limit: Int,
@@ -31,7 +31,7 @@ final class ComicUseCase: ComicRepositoryFactory {
         onComplete complete: @escaping (Result<[ComicSummary], Error>) -> Void
     ) {
         DispatchQueue.global(qos: .utility).async { [weak self] in
-            self?.repository.getAllComics(for: seriesID, afterID: afterID, limit: limit, fromDataSource: dataSource) { result in
+            self?.repository.getComicSummaries(for: seriesID, afterID: afterID, limit: limit, fromDataSource: dataSource) { result in
                 DispatchQueue.main.async {
                     complete(result)
                 }

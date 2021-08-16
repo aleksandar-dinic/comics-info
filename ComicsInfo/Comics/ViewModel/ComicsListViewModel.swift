@@ -18,6 +18,7 @@ final class ComicsListViewModel: ObservableObject {
 
     private(set) var useCase: ComicUseCase
     private(set) var comics: [ComicSummary]
+    private var comicsIdentifier = Set<String>()
     @Published private(set) var canLoadMore = true
     @Published private(set) var isLoading = false
 
@@ -46,7 +47,7 @@ final class ComicsListViewModel: ObservableObject {
         self.status = status
     }
 
-    func loadAllComics(
+    func getComicSummaries(
         for seriesID: String,
         lastID: String? = nil,
         limit: Int = 20,
@@ -55,12 +56,14 @@ final class ComicsListViewModel: ObservableObject {
         guard !isLoading, canLoadMore else { return }
         
         isLoading = true
-        useCase.getAllComics(for: seriesID, afterID: lastID, limit: limit, fromDataSource: dataSource) { [weak self] result in
+        useCase.getComicSummaries(for: seriesID, afterID: lastID, limit: limit, fromDataSource: dataSource) { [weak self] result in
             guard let self = self else { return }
 
             switch result {
             case let .success(comics):
-                self.comics = comics
+                for comic in comics where !self.comicsIdentifier.contains(comic.identifier) {
+                    self.comics.append(comic)
+                }
                 self.status = .showComics
                 self.canLoadMore = comics.count >= limit
             case let .failure(error):

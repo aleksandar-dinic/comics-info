@@ -38,7 +38,7 @@ struct ComicsListView: View {
             .padding()
         }
         .onAppear {
-            viewModel.loadAllComics(for: series.identifier)
+            viewModel.getComicSummaries(for: series.identifier)
         }
         .alert(isPresented: $viewModel.showError) {
             Alert(title: Text(viewModel.errorMessage))
@@ -63,6 +63,13 @@ struct ComicsListView: View {
                         seriesViewModel: series
                     )
                 )
+                .onAppear {
+                    guard viewModel.lastIdentifier == comic.identifier else { return }
+                    viewModel.getComicSummaries(
+                        for: series.identifier,
+                        lastID: viewModel.lastIdentifier
+                    )
+                }
             }
         }
     }
@@ -71,12 +78,6 @@ struct ComicsListView: View {
         HStack {
             Spacer()
             ProgressView()
-                .onAppear {
-                    viewModel.loadAllComics(
-                        for: series.identifier,
-                        lastID: viewModel.lastIdentifier
-                    )
-                }
             Spacer()
         }
     }
