@@ -44,10 +44,13 @@ final class CharacterListViewModel: ObservableObject {
         self.status = status
     }
 
-    func loadAllCharacters(fromDataSource dataSource: DataSourceLayer = .memory) {
+    func loadAllCharacters(
+        fields: Set<String> = ["series"],
+        fromDataSource dataSource: DataSourceLayer = .memory
+    ) {
         guard dataSource == .network || characters.isEmpty else { return }
 
-        useCase.getAllCharacters(fromDataSource: dataSource) { [weak self] result in
+        useCase.getAllCharacters(fields: fields, fromDataSource: dataSource) { [weak self] result in
             guard let self = self else { return }
 
             switch result {

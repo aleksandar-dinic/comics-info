@@ -14,22 +14,12 @@ protocol CharacterRepository {
 
     init(characterDataProvider: CharacterDataProvider)
 
-    /// Gets all characters
-    ///
-    /// - Parameters:
-    ///   - dataSource: Layer of data source
-    ///   - complete: Result who contains list of Characters in Success, or Error in Failure
     func getAllCharacters(
+        fields: Set<String>,
         fromDataSource dataSource: DataSourceLayer,
         onComplete complete: @escaping (Result<[Character], Error>) -> Void
     )
 
-    /// Gets character
-    ///
-    /// - Parameters:
-    ///   - characterID: Character ID.
-    ///   - dataSource: Layer of data source
-    ///   - complete: Result who contains Character in Success, or Error in Failure
     func getCharacter(
         withID characterID: String,
         fromDataSource dataSource: DataSourceLayer,
