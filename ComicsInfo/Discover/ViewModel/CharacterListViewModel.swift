@@ -46,16 +46,16 @@ final class CharacterListViewModel: ObservableObject {
 
     func loadAllCharacters(
         fields: Set<String> = ["series"],
+        lastID: String? = nil,
+        limit: Int = 20,
         fromDataSource dataSource: DataSourceLayer = .memory
     ) {
-        guard dataSource == .network || characters.isEmpty else { return }
-
         useCase.getAllCharacters(fields: fields, fromDataSource: dataSource) { [weak self] result in
             guard let self = self else { return }
 
             switch result {
             case let .success(characters):
-                self.characters = characters.sorted { $0.popularity < $1.popularity }
+                self.characters = characters
                 self.status = .showCharacters
             case let .failure(error):
                 self.status = .error(message: error.localizedDescription)
@@ -67,8 +67,6 @@ final class CharacterListViewModel: ObservableObject {
         withID characterID: String,
         fromDataSource dataSource: DataSourceLayer = .memory
     ) {
-        guard dataSource == .network || !characters.contains(where: { $0.identifier == characterID }) else { return }
-
         useCase.getCharacter(withID: characterID, fromDataSource: dataSource) { [weak self] result in
             guard let self = self else { return }
 
