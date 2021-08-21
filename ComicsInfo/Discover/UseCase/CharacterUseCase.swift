@@ -24,12 +24,11 @@ final class CharacterUseCase: CharacterRepositoryFactory {
     }
 
     func getAllCharacters(
-        fields: Set<String>,
         fromDataSource dataSource: DataSourceLayer,
         onComplete complete: @escaping (Result<[Character], Error>) -> Void
     ) {
         DispatchQueue.global(qos: .utility).async { [weak self] in
-            self?.repository.getAllCharacters(fields: fields, fromDataSource: dataSource) { result in
+            self?.repository.getAllCharacters(fromDataSource: dataSource) { result in
                 DispatchQueue.main.async {
                     complete(result)
                 }

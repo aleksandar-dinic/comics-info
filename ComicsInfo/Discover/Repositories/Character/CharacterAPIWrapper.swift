@@ -18,10 +18,9 @@ struct CharacterAPIWrapper: DecoderService {
     }
 
     func getAllCharacters(
-        fields: Set<String>,
         onComplete complete: @escaping (Result<[Character], Error>) -> Void
     ) {
-        characterAPIService.getAllCharacters(fields: fields) { result in
+        characterAPIService.getAllCharacters() { result in
             switch result {
             case let .success(data):
                 let decodedResult: Result<[Domain.Character], Error> = decode(from: data)

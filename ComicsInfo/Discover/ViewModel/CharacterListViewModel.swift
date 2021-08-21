@@ -45,12 +45,11 @@ final class CharacterListViewModel: ObservableObject {
     }
 
     func loadAllCharacters(
-        fields: Set<String> = ["series"],
         lastID: String? = nil,
         limit: Int = 20,
         fromDataSource dataSource: DataSourceLayer = .memory
     ) {
-        useCase.getAllCharacters(fields: fields, fromDataSource: dataSource) { [weak self] result in
+        useCase.getAllCharacters(fromDataSource: dataSource) { [weak self] result in
             guard let self = self else { return }
 
             switch result {

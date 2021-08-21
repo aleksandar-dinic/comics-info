@@ -15,7 +15,6 @@ protocol CharacterRepository {
     init(characterDataProvider: CharacterDataProvider)
 
     func getAllCharacters(
-        fields: Set<String>,
         fromDataSource dataSource: DataSourceLayer,
         onComplete complete: @escaping (Result<[Character], Error>) -> Void
     )

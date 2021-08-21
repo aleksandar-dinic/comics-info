@@ -24,7 +24,6 @@ struct CharacterDataProvider {
     // Get all characters
 
     func getAllCharacters(
-        fields: Set<String>,
         fromDataSource dataSource: DataSourceLayer,
         onComplete complete: @escaping (Result<[Character], Error>) -> Void
     ) {
@@ -35,7 +34,7 @@ struct CharacterDataProvider {
             }
             fallthrough
         case .network:
-            getAllCharactersFromNetwork(fields: fields, onComplete: complete)
+            getAllCharactersFromNetwork(onComplete: complete)
         }
     }
 
@@ -47,10 +46,9 @@ struct CharacterDataProvider {
     }
 
     private func getAllCharactersFromNetwork(
-        fields: Set<String>,
         onComplete complete: @escaping (Result<[Character], Error>) -> Void
     ) {
-        characterAPIWrapper.getAllCharacters(fields: fields) { (result: Result<[Character], Error>) in
+        characterAPIWrapper.getAllCharacters() { (result: Result<[Character], Error>) in
             switch result {
             case let .success(characters):
                 characterCacheService.save(characters: characters)

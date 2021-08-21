@@ -11,7 +11,6 @@ import Foundation
 protocol CharacterAPIService {
 
     func getAllCharacters(
-        fields: Set<String>,
         onComplete complete: @escaping (Result<Data, Error>) -> Void
     )
 

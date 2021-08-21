@@ -17,11 +17,10 @@ final class CharacterDataRepository: CharacterRepository {
     }
 
     func getAllCharacters(
-        fields: Set<String>,
         fromDataSource dataSource: DataSourceLayer,
         onComplete complete: @escaping (Result<[Character], Error>) -> Void
     ) {
-        characterDataProvider.getAllCharacters(fields: fields, fromDataSource: dataSource, onComplete: complete)
+        characterDataProvider.getAllCharacters(fromDataSource: dataSource, onComplete: complete)
     }
 
     func getCharacter(
