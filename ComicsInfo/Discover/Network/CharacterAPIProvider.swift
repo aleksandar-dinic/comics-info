@@ -22,9 +22,12 @@ final class CharacterAPIProvider: CharacterAPIService, NetworkResponseHandler {
     }
 
     func getAllCharacters(
+        afterID: String?,
+        fields: Set<String>?,
+        limit: Int,
         onComplete complete: @escaping (Result<Data, Error>) -> Void
     ) {
-        networkManager.request(.getAllCharacters) { [weak self] in
+        networkManager.request(.getAllCharacters(afterID: afterID, fields: fields, limit: limit)) { [weak self] in
             guard let self = self else { return }
             complete(self.handle($0, successStatuses: [.ok]))
         }

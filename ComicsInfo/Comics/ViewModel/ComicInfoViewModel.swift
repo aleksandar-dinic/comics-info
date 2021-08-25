@@ -11,18 +11,18 @@ final class ComicInfoViewModel {
     
     private let useCase: ComicUseCase
     private let comicSummary: ComicSummary
-    private let seriesViewModel: SeriesViewModel
+    private let seriesSummaryViewModel: SeriesSummaryViewModel
     @Published private(set) var comicViewModel: ComicViewModel?
     
     init(
         useCase: ComicUseCase,
         comicSummary: ComicSummary,
-        seriesViewModel: SeriesViewModel,
+        seriesSummaryViewModel: SeriesSummaryViewModel,
         comicViewModel: ComicViewModel? = nil
     ) {
         self.useCase = useCase
         self.comicSummary = comicSummary
-        self.seriesViewModel = seriesViewModel
+        self.seriesSummaryViewModel = seriesSummaryViewModel
         self.comicViewModel = comicViewModel
     }
     
@@ -35,7 +35,7 @@ final class ComicInfoViewModel {
 
             switch result {
             case let .success(comic):
-                self.comicViewModel = ComicViewModel(from: comic, seriesViewModel: self.seriesViewModel)
+                self.comicViewModel = ComicViewModel(from: comic, seriesSummaryViewModel: self.seriesSummaryViewModel)
             case let .failure(error):
                 print(error)
             }
@@ -71,9 +71,9 @@ final class ComicInfoViewModel {
         }
 
         guard let number = comicSummary.number else {
-            return "\(seriesViewModel.title)"
+            return "\(seriesSummaryViewModel.title)"
         }
-        return "\(seriesViewModel.title) \"#\(number)\""
+        return "\(seriesSummaryViewModel.title) \"#\(number)\""
     }
     
     var publishedDate: String {

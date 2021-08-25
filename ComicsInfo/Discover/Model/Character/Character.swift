@@ -39,11 +39,23 @@ struct Character: Codable {
     let birth: Date?
 
     /// A resource list of series in which this character appears.
-    let series: [SeriesSummary]?
+    var series: [SeriesSummary]?
 
     /// A resource list containing comics which feature this character.
-    let comics: [ComicSummary]?
+    var comics: [ComicSummary]?
 
+}
+
+extension Character: Comparable {
+    
+    static func < (lhs: Character, rhs: Character) -> Bool {
+        guard lhs.popularity != rhs.popularity else {
+            return lhs.name < rhs.name
+        }
+        
+        return abs(lhs.popularity - 100) < abs(rhs.popularity - 100)
+    }
+    
 }
 
 extension Character {

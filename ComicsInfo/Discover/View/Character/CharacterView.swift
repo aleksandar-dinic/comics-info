@@ -16,13 +16,12 @@ struct CharacterView: View {
         HStack {
             CharacterThumbnailView(
                 imageName: viewModel.thumbnail,
-                systemName: viewModel.thumbnailSystemName
+                systemName: viewModel.thumbnailSystemName,
+                height: 16
             )
-
             Text(viewModel.name)
-                .frame(maxWidth: .infinity)
+                .frame(maxWidth: .infinity, alignment: .leading)
                 .font(.subheadline)
-
             Spacer()
         }
         .frame(maxWidth: .infinity, alignment: .topLeading)

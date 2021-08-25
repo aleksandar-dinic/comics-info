@@ -21,8 +21,13 @@ final class SeriesAPIProvider: SeriesAPIService, NetworkResponseHandler {
         self.networkManager = networkManager
     }
     
-    func getAllSeries(onComplete complete: @escaping (Result<Data, Error>) -> Void) {
-        networkManager.request(.getAllSeries) { [weak self] in
+    func getAllSeries(
+        for characterID: String,
+        afterID: String?,
+        limit: Int,
+        onComplete complete: @escaping (Result<Data, Error>) -> Void
+    ) {
+        networkManager.request(.getAllSeries(forCharacterID: characterID, afterID: afterID, limit: limit)) { [weak self] in
             guard let self = self else { return }
             complete(self.handle($0, successStatuses: [.ok]))
         }

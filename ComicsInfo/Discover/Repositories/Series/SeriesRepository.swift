@@ -14,22 +14,14 @@ protocol SeriesRepository {
 
     init(seriesDataProvider: SeriesDataProvider)
     
-    /// Gets all series
-    ///
-    /// - Parameters:
-    ///   - dataSource: Layer of data source
-    ///   - complete: Result who contains list of Series in Success, or Error in Failure.
     func getAllSeries(
+        for characterID: String,
+        afterID: String?,
+        limit: Int,
         fromDataSource dataSource: DataSourceLayer,
-        onComplete complete: @escaping (Result<[Series], Error>) -> Void
+        onComplete complete: @escaping (Result<[SeriesSummary], Error>) -> Void
     )
 
-    /// Gets series
-    ///
-    /// - Parameters:
-    ///   - seriesID: Series ID.
-    ///   - dataSource: Layer of data source
-    ///   - complete: Result who contains Series in Success, or Error in Failure.
     func getSeries(
         withID seriesID: String,
         fromDataSource dataSource: DataSourceLayer,

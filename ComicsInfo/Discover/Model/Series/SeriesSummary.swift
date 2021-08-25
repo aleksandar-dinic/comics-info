@@ -24,6 +24,12 @@ struct SeriesSummary: Codable, Hashable {
 
     /// A short bio or description of the series.
     let description: String?
+    
+    /// The first year of publication for the series.
+    let startYear: Int?
+
+    /// The last year of publication for the series (conventionally, nil for ongoing series).
+    let endYear: Int?
 
 }
 
@@ -35,6 +41,9 @@ extension SeriesSummary {
         title = summary.title
         thumbnail = summary.thumbnail
         description = summary.description
+        // TODO: -
+        startYear = nil //summary.startYear
+        endYear = nil //summary.endYear
     }
     
 }
@@ -52,3 +61,29 @@ extension Domain.SeriesSummary {
     }
     
 }
+
+#if DEBUG
+extension SeriesSummary {
+    
+    static func make(
+        identifier: String = "1",
+        popularity: Int = 0,
+        title: String = "Series Summary Title",
+        thumbnail: String? = nil,
+        description: String? = nil,
+        startYear: Int? = nil,
+        endYear: Int? = nil
+    ) -> SeriesSummary {
+        SeriesSummary(
+            identifier: identifier,
+            popularity: popularity,
+            title: title,
+            thumbnail: thumbnail,
+            description: description,
+            startYear: startYear,
+            endYear: endYear
+        )
+    }
+
+}
+#endif

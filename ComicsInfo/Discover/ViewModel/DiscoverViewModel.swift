@@ -13,11 +13,15 @@ final class DiscoverViewModel: ObservableObject {
     enum Status: Equatable {
         case loading
         case error(message: String)
-        case showSeries
+        case showCharacters
     }
 
-    private var useCase: SeriesUseCase
-    private(set) var series: [Series]
+    private var characterUseCase: CharacterUseCase
+    private var seriesUseCase: SeriesUseCase
+    private(set) var characters: [Character]
+    private var charactersIdentifier = Set<String>()
+    @Published private(set) var canLoadMore = true
+    @Published private(set) var isLoading = false
 
     @Published private(set) var status: Status {
         didSet {
@@ -35,29 +39,73 @@ final class DiscoverViewModel: ObservableObject {
     private(set) var errorMessage: String = ""
 
     init(
-        useCase: SeriesUseCase = SeriesUseCase(),
-        series: [Series] = [],
+        characterUseCase: CharacterUseCase = CharacterUseCase(),
+        seriesUseCase: SeriesUseCase = SeriesUseCase(),
+        characters: [Character] = [],
         status: Status = .loading
     ) {
-        self.useCase = useCase
-        self.series = series
+        self.characterUseCase = characterUseCase
+        self.seriesUseCase = seriesUseCase
+        self.characters = characters
         self.status = status
     }
 
-    func loadAllSeries(fromDataSource dataSource: DataSourceLayer = .memory) {
-        guard dataSource == .network || series.isEmpty else { return }
-
-        useCase.getAllSeries(fromDataSource: dataSource) { [weak self] result in
+    func getAllCharacters(
+        lastID: String? = nil,
+        fields: Set<String> = ["series"],
+        limit: Int = 20,
+        fromDataSource dataSource: DataSourceLayer = .memory
+    ) {
+        guard !isLoading, canLoadMore else { return }
+        
+        isLoading = true
+        characterUseCase.getAllCharacters(afterID: lastID, fields: fields, limit: limit, fromDataSource: dataSource) { [weak self] result in
             guard let self = self else { return }
+            self.isLoading = false
+            
+            switch result {
+            case let .success(characters):
+                for character in characters where !self.charactersIdentifier.contains(character.identifier) {
+                    self.characters.append(character)
+                    self.charactersIdentifier.insert(character.identifier)
+                }
+                self.status = .showCharacters
+                self.canLoadMore = characters.count >= limit
+            case let .failure(error):
+                self.canLoadMore = false
+                guard self.characters.isEmpty else { return }
+                self.status = .error(message: error.localizedDescription)
+            }
+        }
+    }
+    
+    func getAllSeries(
+        for characterID: String,
+        lastID: String? = nil,
+        limit: Int = 20,
+        fromDataSource dataSource: DataSourceLayer = .memory
+    ) {
+        guard !isLoading else { return }
+        
+        isLoading = true
+        seriesUseCase.getAllSeries(for: characterID, afterID: lastID, limit: limit, fromDataSource: dataSource) { [weak self] result in
+            guard let self = self else { return }
+            self.isLoading = false
 
             switch result {
-            case let .success(series):
-                self.series = series
-                self.status = .showSeries
+            case let .success(seriesSummaries):
+                if let index = self.characters.firstIndex(where: { $0.identifier == characterID }) {
+                    self.characters[index].series?.append(contentsOf: seriesSummaries)
+                }
+                self.status = .showCharacters
             case let .failure(error):
                 self.status = .error(message: error.localizedDescription)
             }
         }
+    }
+    
+    var lastIdentifier: String? {
+        characters.last?.identifier
     }
 
 }

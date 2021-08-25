@@ -50,14 +50,14 @@ struct ComicSummaryView: View {
 struct ComicView_Previews: PreviewProvider {
     
     static let comicSummary = ComicSummary.make()
-    static let seriesViewModel = SeriesViewModel(from: Series.make())
+    static let seriesSummaryViewModel = SeriesSummaryViewModel(from: SeriesSummary.make())
 
     static var previews: some View {
         ForEach(ColorScheme.allCases, id: \.self) { color in
             ComicSummaryView(
                 viewModel: ComicSummaryViewModel(
                     for: comicSummary,
-                    seriesViewModel: seriesViewModel
+                    seriesSummaryViewModel: seriesSummaryViewModel
                 )
             )
                 .previewLayout(.fixed(width: 320, height: 154))

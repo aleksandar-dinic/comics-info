@@ -24,31 +24,37 @@ struct CharacterDataProvider {
     // Get all characters
 
     func getAllCharacters(
+        afterID: String?,
+        fields: Set<String>?,
+        limit: Int,
         fromDataSource dataSource: DataSourceLayer,
         onComplete complete: @escaping (Result<[Character], Error>) -> Void
     ) {
         switch dataSource {
         case .memory:
-            if let charactersFromMemory = getAllCharactersFromMemory() {
+            if let charactersFromMemory = getAllCharactersFromMemory(afterID: afterID, limit: limit) {
                 return complete(.success(charactersFromMemory))
             }
             fallthrough
         case .network:
-            getAllCharactersFromNetwork(onComplete: complete)
+            getAllCharactersFromNetwork(afterID: afterID, fields: fields, limit: limit, onComplete: complete)
         }
     }
 
-    private func getAllCharactersFromMemory() -> [Character]? {
-        guard let characters = characterCacheService.getAllCharacters() else {
+    private func getAllCharactersFromMemory(afterID: String?, limit: Int) -> [Character]? {
+        guard let characters = characterCacheService.getAllCharacters(afterID: afterID, limit: limit) else {
             return nil
         }
         return characters.isEmpty ? nil : characters
     }
 
     private func getAllCharactersFromNetwork(
+        afterID: String?,
+        fields: Set<String>?,
+        limit: Int,
         onComplete complete: @escaping (Result<[Character], Error>) -> Void
     ) {
-        characterAPIWrapper.getAllCharacters() { (result: Result<[Character], Error>) in
+        characterAPIWrapper.getAllCharacters(afterID: afterID, fields: fields, limit: limit) { (result: Result<[Character], Error>) in
             switch result {
             case let .success(characters):
                 characterCacheService.save(characters: characters)

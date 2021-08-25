@@ -58,11 +58,13 @@ final class ComicsListViewModel: ObservableObject {
         isLoading = true
         useCase.getComicSummaries(for: seriesID, afterID: lastID, limit: limit, fromDataSource: dataSource) { [weak self] result in
             guard let self = self else { return }
-
+            self.isLoading = false
+            
             switch result {
             case let .success(comics):
                 for comic in comics where !self.comicsIdentifier.contains(comic.identifier) {
                     self.comics.append(comic)
+                    self.comicsIdentifier.insert(comic.identifier)
                 }
                 self.status = .showComics
                 self.canLoadMore = comics.count >= limit
@@ -71,8 +73,6 @@ final class ComicsListViewModel: ObservableObject {
                 guard self.comics.isEmpty else { return }
                 self.status = .error(message: error.localizedDescription)
             }
-            
-            self.isLoading = false
         }
     }
     

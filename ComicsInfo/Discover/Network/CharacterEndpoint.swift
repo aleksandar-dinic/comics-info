@@ -9,7 +9,7 @@ import Foundation
 
 enum CharacterEndpoint: EndpointType {
     
-    case getAllCharacters
+    case getAllCharacters(afterID: String?, fields: Set<String>?, limit: Int)
     case getCharacter(withID: String)
     
     var baseURL: URL {
@@ -37,10 +37,25 @@ enum CharacterEndpoint: EndpointType {
     }
     
     var queryParameters: [String: String]? {
-        return nil
+        switch self {
+        case let .getAllCharacters(afterID, fields, limit):
+            var parameters = ["limit": "\(limit)"]
+            
+            if let afterID = afterID {
+                parameters["afterID"] = afterID
+            }
+            
+            if let fields = fields {
+                parameters["fields"] = fields.joined(separator: ",")
+            }
+            
+            return parameters
+        default:
+            return nil
+        }
     }
     
-    var headers: [String : String]? {
+    var headers: [String: String]? {
         nil
     }
     

@@ -24,11 +24,14 @@ final class SeriesUseCase: SeriesRepositoryFactory {
     }
     
     func getAllSeries(
+        for characterID: String,
+        afterID: String?,
+        limit: Int,
         fromDataSource dataSource: DataSourceLayer,
-        onComplete complete: @escaping (Result<[Series], Error>) -> Void
+        onComplete complete: @escaping (Result<[SeriesSummary], Error>) -> Void
     ) {
         DispatchQueue.global(qos: .utility).async { [weak self] in
-            self?.repository.getAllSeries(fromDataSource: dataSource) { result in
+            self?.repository.getAllSeries(for: characterID, afterID: afterID, limit: limit, fromDataSource: dataSource) { result in
                 DispatchQueue.main.async {
                     complete(result)
                 }

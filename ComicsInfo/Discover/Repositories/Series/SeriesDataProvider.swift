@@ -24,35 +24,45 @@ struct SeriesDataProvider {
     // Get All Series
     
     func getAllSeries(
+        for characterID: String,
+        afterID: String?,
+        limit: Int,
         fromDataSource dataSource: DataSourceLayer,
-        onComplete complete: @escaping (Result<[Series], Error>) -> Void
+        onComplete complete: @escaping (Result<[SeriesSummary], Error>) -> Void
     ) {
         switch dataSource {
         case .memory:
-            if let seriesFromMemory = getAllSeriesFromMemory() {
+            if let seriesFromMemory = getAllSeriesFromMemory(for: characterID, afterID: afterID, limit: limit) {
                 return complete(.success(seriesFromMemory))
             }
             fallthrough
         case .network:
-            getAllSeriesFromNetwork(onComplete: complete)
+            getAllSeriesFromNetwork(for: characterID, afterID: afterID, limit: limit, onComplete: complete)
         }
     }
     
-    private func getAllSeriesFromMemory() -> [Series]? {
-        guard let series = seriesCacheService.getAllSeries() else {
+    private func getAllSeriesFromMemory(
+        for characterID: String,
+        afterID: String?,
+        limit: Int
+    ) -> [SeriesSummary]? {
+        guard let series = seriesCacheService.getAllSeries(for: characterID, afterID: afterID, limit: limit) else {
             return nil
         }
         return series.isEmpty ? nil : series
     }
     
     private func getAllSeriesFromNetwork(
-        onComplete complete: @escaping (Result<[Series], Error>) -> Void
+        for characterID: String,
+        afterID: String?,
+        limit: Int,
+        onComplete complete: @escaping (Result<[SeriesSummary], Error>) -> Void
     ) {
-        seriesAPIWrapper.getAllSeries() { (result: Result<[Series], Error>) in
+        seriesAPIWrapper.getAllSeries(for: characterID, afterID: afterID, limit: limit) { (result: Result<[SeriesSummary], Error>) in
             switch result {
-            case let .success(series):
-                seriesCacheService.save(series: series)
-                complete(.success(series))
+            case let .success(seriesSummaries):
+                seriesCacheService.save(seriesSummaries: seriesSummaries, forCharacterID: characterID)
+                complete(.success(seriesSummaries))
 
             case let .failure(error):
                 complete(.failure(error))

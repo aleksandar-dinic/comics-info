@@ -10,7 +10,10 @@ import Foundation
 
 protocol CharacterCacheService {
 
-    func getAllCharacters() -> [Character]?
+    func getAllCharacters(
+        afterID: String?,
+        limit: Int
+    ) -> [Character]?
 
     func getCharacter(withID characterID: String) -> Character?
 

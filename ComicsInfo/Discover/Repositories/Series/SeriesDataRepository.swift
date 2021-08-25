@@ -17,10 +17,16 @@ final class SeriesDataRepository: SeriesRepository {
     }
     
     func getAllSeries(
+        for characterID: String,
+        afterID: String?,
+        limit: Int,
         fromDataSource dataSource: DataSourceLayer,
-        onComplete complete: @escaping (Result<[Series], Error>) -> Void
+        onComplete complete: @escaping (Result<[SeriesSummary], Error>) -> Void
     ) {
         seriesDataProvider.getAllSeries(
+            for: characterID,
+            afterID: afterID,
+            limit: limit,
             fromDataSource: dataSource,
             onComplete: complete
         )

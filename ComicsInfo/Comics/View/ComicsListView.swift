@@ -10,14 +10,14 @@ import SwiftUI
 
 struct ComicsListView: View {
 
-    private let series: SeriesViewModel
+    private let seriesSummary: SeriesSummaryViewModel
     @ObservedObject private var viewModel: ComicsListViewModel
 
     init(
-        forSeries series: Series,
+        forSeriesSummary seriesSummary: SeriesSummary,
         viewModel: ComicsListViewModel = ComicsListViewModel()
     ) {
-        self.series = SeriesViewModel(from: series)
+        self.seriesSummary = SeriesSummaryViewModel(from: seriesSummary)
         self.viewModel = viewModel
     }
 
@@ -38,12 +38,12 @@ struct ComicsListView: View {
             .padding()
         }
         .onAppear {
-            viewModel.getComicSummaries(for: series.identifier)
+            viewModel.getComicSummaries(for: seriesSummary.identifier)
         }
         .alert(isPresented: $viewModel.showError) {
             Alert(title: Text(viewModel.errorMessage))
         }
-        .navigationBarTitle(series.title, displayMode: .inline)
+        .navigationBarTitle(seriesSummary.title, displayMode: .inline)
     }
     
     private var comicsList: some View {
@@ -53,20 +53,20 @@ struct ComicsListView: View {
                     viewModel: ComicInfoViewModel(
                         useCase: viewModel.useCase,
                         comicSummary: comic,
-                        seriesViewModel: series
+                        seriesSummaryViewModel: seriesSummary
                     )
                 )
             ) {
                 ComicSummaryView(
                     viewModel: ComicSummaryViewModel(
                         for: comic,
-                        seriesViewModel: series
+                        seriesSummaryViewModel: seriesSummary
                     )
                 )
                 .onAppear {
                     guard viewModel.lastIdentifier == comic.identifier else { return }
                     viewModel.getComicSummaries(
-                        for: series.identifier,
+                        for: seriesSummary.identifier,
                         lastID: viewModel.lastIdentifier
                     )
                 }
@@ -87,7 +87,7 @@ struct ComicsListView: View {
 #if DEBUG
 struct ComicsListView_Previews: PreviewProvider {
 
-    static let series = Series.make(
+    static let seriesSummary = SeriesSummary.make(
         identifier: "1",
         popularity: 0,
         title: "Spider-Man",
@@ -109,7 +109,7 @@ struct ComicsListView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
             ForEach(ColorScheme.allCases, id: \.self) { color in
-                ComicsListView(forSeries: series, viewModel: viewModel)
+                ComicsListView(forSeriesSummary: seriesSummary, viewModel: viewModel)
                     .previewDisplayName("\(color)")
                     .environment(\.colorScheme, color)
             }

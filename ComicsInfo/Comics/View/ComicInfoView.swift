@@ -59,7 +59,7 @@ struct ComicInfoView_Previews: PreviewProvider {
     
     static let useCase = ComicUseCase()
     static let comicSummary = ComicSummary.make()
-    static let series = Series.make()
+    static let seriesSummary = SeriesSummary.make()
 
     static var previews: some View {
         NavigationView {
@@ -69,7 +69,7 @@ struct ComicInfoView_Previews: PreviewProvider {
                         ComicInfoViewModel(
                             useCase: useCase,
                             comicSummary: comicSummary,
-                            seriesViewModel: SeriesViewModel(from: series)
+                            seriesSummaryViewModel: SeriesSummaryViewModel(from: seriesSummary)
                         )
                 )
                     .previewDisplayName("\(color)")

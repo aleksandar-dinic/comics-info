@@ -10,16 +10,14 @@ import Foundation
 struct ComicSummaryViewModel {
     
     private let comicSummary: ComicSummary
-    private let seriesViewModel: SeriesViewModel
+    private let seriesSummaryViewModel: SeriesSummaryViewModel
     
     init(
         for comicSummary: ComicSummary,
-        seriesViewModel: SeriesViewModel
+        seriesSummaryViewModel: SeriesSummaryViewModel
     ) {
         self.comicSummary = comicSummary
-        self.seriesViewModel = seriesViewModel
-//        popularity = comic.popularity
-//        description = comic.description ?? ""
+        self.seriesSummaryViewModel = seriesSummaryViewModel
     }
     
     var title: String {
@@ -47,9 +45,9 @@ struct ComicSummaryViewModel {
     
     var issue: String {
         guard let number = comicSummary.number else {
-            return "\(seriesViewModel.title)"
+            return "\(seriesSummaryViewModel.title)"
         }
-        return "\(seriesViewModel.title) \"#\(number)\""
+        return "\(seriesSummaryViewModel.title) \"#\(number)\""
     }
     
 }

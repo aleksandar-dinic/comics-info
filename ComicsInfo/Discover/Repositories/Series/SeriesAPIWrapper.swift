@@ -7,6 +7,7 @@
 //
 
 import struct Domain.Series
+import struct Domain.SeriesSummary
 import Foundation
 
 struct SeriesAPIWrapper: DecoderService {
@@ -18,13 +19,16 @@ struct SeriesAPIWrapper: DecoderService {
     }
     
     func getAllSeries(
-        onComplete complete: @escaping (Result<[Series], Error>) -> Void
+        for characterID: String,
+        afterID: String?,
+        limit: Int,
+        onComplete complete: @escaping (Result<[SeriesSummary], Error>) -> Void
     ) {
-        seriesAPIService.getAllSeries() { result in
+        seriesAPIService.getAllSeries(for: characterID, afterID: afterID, limit: limit) { result in
             switch result {
             case let .success(data):
-                let decodedResult: Result<[Domain.Series], Error> = decode(from: data)
-                complete(decodedResult.map({ $0.map({ Series(from: $0) }) }))
+                let decodedResult: Result<[Domain.SeriesSummary], Error> = decode(from: data)
+                complete(decodedResult.map({ $0.map({ SeriesSummary(from: $0) }) }))
 
             case let .failure(error):
                 complete(.failure(error))

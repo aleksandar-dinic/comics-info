@@ -10,22 +10,22 @@ import SwiftUI
 
 struct SeriesView: View {
 
-    @State var series: SeriesViewModel
+    @State var seriesSummary: SeriesSummaryViewModel
 
     var body: some View {
         HStack {
             SeriesThumbnailView(
-                imageName: series.thumbnail,
-                systemName: series.thumbnailSystemName,
+                imageName: seriesSummary.thumbnail,
+                systemName: seriesSummary.thumbnailSystemName,
                 height: 150
             )
 
             VStack {
-                Text(series.title)
+                Text(seriesSummary.title)
                     .multilineTextAlignment(.center)
                     .frame(maxWidth: .infinity)
                     .font(.subheadline)
-                Text(series.startAndEndYer)
+                Text(seriesSummary.startAndEndYer)
                     .frame(maxWidth: .infinity)
                     .font(.footnote)
             }
@@ -40,11 +40,11 @@ struct SeriesView: View {
 #if DEBUG
 struct SeriesView_Previews: PreviewProvider {
 
-    static let series = Series.make()
+    static let seriesSummary = SeriesSummary.make()
     
     static var previews: some View {
         ForEach(ColorScheme.allCases, id: \.self) { color in
-            SeriesView(series: SeriesViewModel(from: series))
+            SeriesView(seriesSummary: SeriesSummaryViewModel(from: seriesSummary))
                 .padding()
                 .previewLayout(.sizeThatFits)
                 .previewDisplayName("\(color)")

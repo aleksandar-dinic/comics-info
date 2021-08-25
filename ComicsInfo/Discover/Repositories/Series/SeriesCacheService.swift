@@ -10,10 +10,14 @@ import Foundation
 
 protocol SeriesCacheService {
 
-    func getAllSeries() -> [Series]?
+    func getAllSeries(
+        for characterID: String,
+        afterID: String?,
+        limit: Int
+    ) -> [SeriesSummary]?
+    func save(seriesSummaries: [SeriesSummary], forCharacterID characterID: String)
 
     func getSeries(withID seriesID: String) -> Series?
-
     func save(series: [Series])
 
 }
