@@ -41,9 +41,8 @@ extension SeriesSummary {
         title = summary.title
         thumbnail = summary.thumbnail
         description = summary.description
-        // TODO: -
-        startYear = nil //summary.startYear
-        endYear = nil //summary.endYear
+        startYear = summary.startYear
+        endYear = summary.endYear
     }
     
 }
@@ -56,7 +55,9 @@ extension Domain.SeriesSummary {
             popularity: summary.popularity,
             title: summary.title,
             thumbnail: summary.thumbnail,
-            description: summary.description
+            description: summary.description,
+            startYear: summary.startYear,
+            endYear: summary.endYear
         )
     }
     

@@ -25,12 +25,11 @@ struct SeriesThumbnailView: View {
             .shadow(radius: 8)
     }
 
-    private func thumbnailImage(for url: URL?) -> AsyncImage<Image> {
+    private func thumbnailImage(for url: URL?) -> AsyncImage {
         AsyncImage(
             url: url,
             placeholder: {
                 Image(systemName: systemName)
-                    .resizable()
             },
             image: {
                 Image(uiImage: $0)

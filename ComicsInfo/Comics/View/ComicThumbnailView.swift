@@ -26,12 +26,11 @@ struct ComicThumbnailView: View {
             .accessibility(identifier: "ComicThumbnailView")
     }
 
-    private func thumbnailImage(for url: URL?) -> AsyncImage<Image> {
+    private func thumbnailImage(for url: URL?) -> AsyncImage {
         AsyncImage(
             url: url,
             placeholder: {
                 Image(systemName: systemName)
-                    .resizable()
             },
             image: {
                 Image(uiImage: $0)

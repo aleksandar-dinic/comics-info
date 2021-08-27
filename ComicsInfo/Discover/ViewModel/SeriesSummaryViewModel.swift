@@ -33,24 +33,23 @@ struct SeriesSummaryViewModel: Codable {
     }
 
     var startYear: Int? {
-        nil //seriesSummary.startYear
+        seriesSummary.startYear
     }
 
     var endYear: Int? {
-        nil // seriesSummary.endYear
+        seriesSummary.endYear
     }
-
 
     var startAndEndYer: String {
         if let startYear = startYear, let endYear = endYear {
             return "(\(startYear) - \(endYear))"
         } else if let startYear = startYear {
-            return "(\(startYear) - ...)"
+            return "(\(startYear) - Present)"
         } else if let endYear = endYear {
             return "(???? - \(endYear))"
         }
 
-        return "(???? - ????)"
+        return "(???? - Present)"
     }
 
 }

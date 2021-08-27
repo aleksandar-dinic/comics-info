@@ -7,15 +7,15 @@
 
 import SwiftUI
 
-struct AsyncImage<Placeholder: View>: View {
+struct AsyncImage: View {
     
     @StateObject private var loader: ImageLoader
-    private let placeholder: Placeholder
+    private let placeholder: Image
     private let image: (UIImage) -> Image
 
     init(
        url: URL?,
-       @ViewBuilder placeholder: () -> Placeholder,
+       @ViewBuilder placeholder: () -> Image,
        @ViewBuilder image: @escaping (UIImage) -> Image = Image.init(uiImage:)
    ) {
         self.placeholder = placeholder()
@@ -34,6 +34,7 @@ struct AsyncImage<Placeholder: View>: View {
                 image(loader.image!)
             } else {
                 placeholder
+                    .font(.largeTitle)
             }
         }
     }

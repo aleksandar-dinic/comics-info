@@ -18,14 +18,12 @@ struct CharacterThumbnailView: View {
         thumbnailImage(for: URL(string: imageName))
             .aspectRatio(contentMode: .fit)
             .frame(width: height, height: height)
-            .cornerRadius(8)
-            .padding(1)
             .background(Color.secondary)
-            .cornerRadius(10)
+            .cornerRadius(2)
             .shadow(radius: 8)
     }
     
-    private func thumbnailImage(for url: URL?) -> AsyncImage<Image> {
+    private func thumbnailImage(for url: URL?) -> AsyncImage {
         AsyncImage(
             url: url,
             placeholder: {
