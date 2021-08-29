@@ -6,17 +6,19 @@
 //  Copyright © 2020 Aleksandar Dinic. All rights reserved.
 //
 
-@testable import ComicsInfo
+@testable import ComicsInfo__Development_
 import XCTest
 
 final class CharacterDataProviderTests: XCTestCase {
 
-    override func setUp() {
-        super.setUp()
+    private var limit: Int!
+    
+    override func setUpWithError() throws {
+        limit = 20
     }
 
-    override func tearDown() {
-        super.tearDown()
+    override func tearDownWithError() throws {
+        limit = nil
     }
 
     // MARK: - Characters
@@ -30,7 +32,7 @@ final class CharacterDataProviderTests: XCTestCase {
         let promise = expectation(description: #function)
 
         // When
-        sut.getAllCharacters(fromDataSource: dataSourceLayer) {
+        sut.getAllCharacters(afterID: nil, fields: nil, limit: limit, fromDataSource: dataSourceLayer) {
             result = $0
             promise.fulfill()
         }
@@ -59,7 +61,7 @@ final class CharacterDataProviderTests: XCTestCase {
         let promise = expectation(description: #function)
 
         // When
-        sut.getAllCharacters(fromDataSource: dataSourceLayer) {
+        sut.getAllCharacters(afterID: nil, fields: nil, limit: limit, fromDataSource: dataSourceLayer) {
             result = $0
             promise.fulfill()
         }
@@ -88,7 +90,7 @@ final class CharacterDataProviderTests: XCTestCase {
         let promise = expectation(description: #function)
 
         // When
-        sut.getAllCharacters(fromDataSource: dataSourceLayer) {
+        sut.getAllCharacters(afterID: nil, fields: nil, limit: limit, fromDataSource: dataSourceLayer) {
             result = $0
             promise.fulfill()
         }
@@ -117,7 +119,7 @@ final class CharacterDataProviderTests: XCTestCase {
         let promise = expectation(description: #function)
 
         // When
-        sut.getAllCharacters(fromDataSource: dataSourceLayer) {
+        sut.getAllCharacters(afterID: nil, fields: nil, limit: limit, fromDataSource: dataSourceLayer) {
             result = $0
             promise.fulfill()
         }

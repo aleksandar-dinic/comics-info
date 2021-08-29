@@ -6,7 +6,7 @@
 //  Copyright © 2020 Aleksandar Dinic. All rights reserved.
 //
 
-@testable import ComicsInfo
+@testable import ComicsInfo__Development_
 import Foundation
 
 struct SeriesDataProviderMockFactory {

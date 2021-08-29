@@ -6,8 +6,9 @@
 //  Copyright © 2020 Aleksandar Dinic. All rights reserved.
 //
 
-@testable import struct ComicsInfo.Comic
-@testable import protocol ComicsInfo.ComicCacheService
+@testable import struct ComicsInfo__Development_.Comic
+@testable import struct ComicsInfo__Development_.ComicSummary
+@testable import protocol ComicsInfo__Development_.ComicCacheService
 import Foundation
 
 final class ComicCacheServiceMock: ComicCacheService {
@@ -18,18 +19,19 @@ final class ComicCacheServiceMock: ComicCacheService {
         self.comics = comics
     }
 
-    func getAllComics() -> [Comic]? {
-        !comics.isEmpty ? Array(comics.values) : nil
+    func getComicSummaries(for seriesID: String, afterID: String?, limit: Int) -> [ComicSummary]? {
+        []
+    }
+    
+    func save(comicSummaries: [ComicSummary], forSeriesID seriesID: String) {
     }
 
     func getComic(withID comicID: String) -> Comic? {
         comics[comicID]
     }
 
-    func save(comics: [Comic]) {
-        for comic in comics {
-            self.comics[comic.identifier] = comic
-        }
+    func save(comic: Comic) {
+        comics[comic.identifier] = comic
     }
 
 }

@@ -6,17 +6,19 @@
 //  Copyright © 2020 Aleksandar Dinic. All rights reserved.
 //
 
-@testable import ComicsInfo
+@testable import ComicsInfo__Development_
 import XCTest
 
 final class SeriesDataRepositoryTests: XCTestCase {
 
-    override func setUp() {
-        super.setUp()
+    private var limit: Int!
+
+    override func setUpWithError() throws {
+        limit = 20
     }
 
-    override func tearDown() {
-        super.tearDown()
+    override func tearDownWithError() throws {
+        limit = nil
     }
 
     func testGetAllSeries() {
@@ -25,11 +27,11 @@ final class SeriesDataRepositoryTests: XCTestCase {
         let sut = SeriesDataRepository(seriesDataProvider: seriesDataProvider)
         let dataSourceLayer = DataSourceLayer.network
 
-        var result: Result<[Series], Error>?
+        var result: Result<[SeriesSummary], Error>?
         let promise = expectation(description: #function)
 
         // When
-        sut.getAllSeries(fromDataSource: dataSourceLayer) {
+        sut.getAllSeries(for: "", afterID: nil, limit: limit, fromDataSource: dataSourceLayer) {
             result = $0
             promise.fulfill()
         }

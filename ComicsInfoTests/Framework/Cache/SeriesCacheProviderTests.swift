@@ -6,34 +6,49 @@
 //  Copyright © 2020 Aleksandar Dinic. All rights reserved.
 //
 
-@testable import Domain
-@testable import ComicsInfo
+@testable import ComicsInfo__Development_
 import XCTest
 
 final class SeriesCacheProviderTests: XCTestCase {
-
-    private var givenSeries: [String: ComicsInfo.Series]!
-
-    override func setUp() {
-        super.setUp()
-        givenSeries = ["1": SeriesMock.series1, "2": SeriesMock.series2]
+    
+    private var cache: Cache<String, Series>!
+    private var cacheSummaries: Cache<String, [SeriesSummary]>!
+    
+    private var characterID: String!
+    private var limit: Int!
+    
+    override func setUpWithError() throws {
+        cache = Cache<String, Series>()
+        let series1 = Series.make(identifier: "Series1")
+        let series2 = Series.make(identifier: "Series2")
+        cache[series1.identifier] = series1
+        cache[series2.identifier] = series2
+        characterID = "CharacterID"
+        
+        let seriesSummary1 = SeriesSummary.make(identifier: "SeriesSummary1")
+        let seriesSummary2 = SeriesSummary.make(identifier: "SeriesSummary2")
+        
+        cacheSummaries = Cache<String, [SeriesSummary]>()
+        cacheSummaries[characterID] = [seriesSummary1, seriesSummary2]
+        limit = 20
     }
 
-    override func tearDown() {
-        givenSeries = nil
-        super.tearDown()
+    override func tearDownWithError() throws {
+        cache = nil
+        cacheSummaries = nil
+        characterID = nil
+        limit = nil
     }
 
     func testGetAllSeriesForCharacterID() {
         // Give
-        let inMemoryCache = InMemoryCache(storage: givenSeries)
-        let sut = SeriesCacheProvider(inMemoryCache)
+        let sut = SeriesCacheProvider(seriesSumariesCache: cacheSummaries)
 
         // When
-        let series = sut.getAllSeries()
+        let series = sut.getAllSeries(for: characterID, afterID: nil, limit: limit)
 
         // Then
-        XCTAssertEqual(series?.count, givenSeries.count)
+        XCTAssertEqual(series?.count, 2)
     }
 
 //    func testGetAllSeriesWithNonExistingCharacterID() {
@@ -50,8 +65,7 @@ final class SeriesCacheProviderTests: XCTestCase {
 
     func testGetSeriesWithID() {
         // Give
-        let inMemoryCache = InMemoryCache(storage: givenSeries)
-        let sut = SeriesCacheProvider(inMemoryCache)
+        let sut = SeriesCacheProvider(seriesCache: cache)
 
         // When
         let series = sut.getSeries(withID: "1")
@@ -73,14 +87,14 @@ final class SeriesCacheProviderTests: XCTestCase {
 
     func testSaveSeries() {
         // Given
-        let inMemoryCache = InMemoryCache<String, ComicsInfo.Series>()
-        let sut = SeriesCacheProvider(inMemoryCache)
+        let sut = SeriesCacheProvider()
 
         // When
-        sut.save(series: Array(givenSeries.values))
+        sut.save(series: SeriesMock.series1)
+        sut.save(series: SeriesMock.series2)
 
         // Then
-        XCTAssertEqual(inMemoryCache.values.count, givenSeries.count)
+        XCTAssertEqual(cache.values()?.count, 2)
     }
 
 }

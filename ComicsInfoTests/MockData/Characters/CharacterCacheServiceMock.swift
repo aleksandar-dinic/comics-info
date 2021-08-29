@@ -6,8 +6,8 @@
 //  Copyright © 2020 Aleksandar Dinic. All rights reserved.
 //
 
-@testable import struct ComicsInfo.Character
-@testable import protocol ComicsInfo.CharacterCacheService
+@testable import struct ComicsInfo__Development_.Character
+@testable import protocol ComicsInfo__Development_.CharacterCacheService
 import Foundation
 
 final class CharacterCacheServiceMock: CharacterCacheService {
@@ -18,7 +18,10 @@ final class CharacterCacheServiceMock: CharacterCacheService {
         self.characters = characters
     }
 
-    func getAllCharacters() -> [Character]? {
+    func getAllCharacters(
+        afterID: String?,
+        limit: Int
+    ) -> [Character]? {
         guard !characters.isEmpty else {
             return nil
         }

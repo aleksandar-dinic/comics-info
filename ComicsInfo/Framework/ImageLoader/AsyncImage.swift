@@ -20,7 +20,13 @@ struct AsyncImage: View {
    ) {
         self.placeholder = placeholder()
         self.image = image
-        _loader = StateObject(wrappedValue: ImageLoader(url: url, cache: SwiftUI.Environment(\.imageCache).wrappedValue))
+        _loader = StateObject(
+            wrappedValue:
+                ImageLoader(
+                    url: url,
+                    cache: SwiftUI.Environment(\.imageCache).wrappedValue
+                )
+        )
    }
 
     var body: some View {

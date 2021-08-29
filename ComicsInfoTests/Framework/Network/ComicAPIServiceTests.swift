@@ -6,17 +6,19 @@
 //  Copyright © 2020 Aleksandar Dinic. All rights reserved.
 //
 
-@testable import ComicsInfo
+@testable import ComicsInfo__Development_
 import XCTest
 
 final class ComicAPIServiceTests: XCTestCase {
+    
+    private var limit: Int!
 
-    override func setUp() {
-        super.setUp()
+    override func setUpWithError() throws {
+        limit = 20
     }
 
-    override func tearDown() {
-        super.tearDown()
+    override func tearDownWithError() throws {
+        limit = nil
     }
 
     func testGetAllComics() {
@@ -27,7 +29,7 @@ final class ComicAPIServiceTests: XCTestCase {
         let promise = expectation(description: #function)
 
         // When
-        sut.getAllComics() {
+        sut.getAllComics(for: "", afterID: nil, limit: limit) {
             result = $0
             promise.fulfill()
         }

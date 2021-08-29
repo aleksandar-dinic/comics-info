@@ -6,17 +6,19 @@
 //  Copyright © 2020 Aleksandar Dinic. All rights reserved.
 //
 
-@testable import ComicsInfo
+@testable import ComicsInfo__Development_
 import XCTest
 
 final class CharacterAPIWrapperTests: XCTestCase {
 
-    override func setUp() {
-        super.setUp()
+    private var limit: Int!
+    
+    override func setUpWithError() throws {
+        limit = 20
     }
 
-    override func tearDown() {
-        super.tearDown()
+    override func tearDownWithError() throws {
+        limit = nil
     }
 
     // MARK: - Characters
@@ -28,7 +30,7 @@ final class CharacterAPIWrapperTests: XCTestCase {
         let promise = expectation(description: #function)
 
         // When
-        sut.getAllCharacters {
+        sut.getAllCharacters(afterID: nil, fields: nil, limit: limit) {
             result = $0
             promise.fulfill()
         }
@@ -55,7 +57,7 @@ final class CharacterAPIWrapperTests: XCTestCase {
         let promise = expectation(description: #function)
 
         // When
-        sut.getAllCharacters {
+        sut.getAllCharacters(afterID: nil, fields: nil, limit: limit) {
             result = $0
             promise.fulfill()
         }
@@ -77,7 +79,7 @@ final class CharacterAPIWrapperTests: XCTestCase {
         let promise = expectation(description: #function)
 
         // When
-        sut.getAllCharacters {
+        sut.getAllCharacters(afterID: nil, fields: nil, limit: limit) {
             result = $0
             promise.fulfill()
         }

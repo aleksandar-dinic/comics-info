@@ -65,6 +65,8 @@
 		6420EF6825FAC4D900B7F47B /* SeriesMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6420EE4225FA256200B7F47B /* SeriesMock.swift */; };
 		6420EF6C25FAC4DC00B7F47B /* SeriesAPIWrapperMockFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6420EE4425FA256200B7F47B /* SeriesAPIWrapperMockFactory.swift */; };
 		6420EF7025FAC4DE00B7F47B /* SeriesDataProviderMockFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6420EE4525FA256200B7F47B /* SeriesDataProviderMockFactory.swift */; };
+		642CF2B726D921BC0054B881 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642CF2B626D921BC0054B881 /* Cache.swift */; };
+		642CF2BA26DB94A30054B881 /* EnvironmentValues+Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642CF2B926DB94A30054B881 /* EnvironmentValues+Cache.swift */; };
 		6469B06225DD4115000148B8 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6469B06125DD4115000148B8 /* Environment.swift */; };
 		647773D826D5370C00FED43E /* SeriesSummaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647773D726D5370C00FED43E /* SeriesSummaryViewModel.swift */; };
 		647A70DD26C912A70024426E /* ComicInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647A70DC26C912A70024426E /* ComicInfoViewModel.swift */; };
@@ -72,7 +74,7 @@
 		647A70F926C91EBE0024426E /* ComicViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647A70F826C91EBE0024426E /* ComicViewModel.swift */; };
 		647A710526C94D5D0024426E /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647A710426C94D5D0024426E /* ImageLoader.swift */; };
 		647A710D26C94D800024426E /* AsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647A710C26C94D800024426E /* AsyncImage.swift */; };
-		647A711226C94F540024426E /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647A711126C94F540024426E /* ImageCache.swift */; };
+		647A711226C94F540024426E /* CacheKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647A711126C94F540024426E /* CacheKey.swift */; };
 		648BD21C24F443BE0040CD75 /* Comic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648BD21B24F443BE0040CD75 /* Comic.swift */; };
 		649D5C8024E1F18B004C6328 /* ComicsInfoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649D5C7F24E1F18B004C6328 /* ComicsInfoApp.swift */; };
 		649D5C8424E1F18C004C6328 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 649D5C8324E1F18C004C6328 /* Assets.xcassets */; };
@@ -102,7 +104,6 @@
 		649D5D3024E5C9C9004C6328 /* ComicInfoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649D5D2C24E5C9C9004C6328 /* ComicInfoUITests.swift */; };
 		649D5D3124E5C9C9004C6328 /* AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649D5D2D24E5C9C9004C6328 /* AppTests.swift */; };
 		64B434B224F3DF480054A20C /* CharacterCacheProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B434B124F3DF480054A20C /* CharacterCacheProvider.swift */; };
-		64B434B424F3DF680054A20C /* InMemoryCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B434B324F3DF680054A20C /* InMemoryCache.swift */; };
 		64B434B724F3E5270054A20C /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B434B624F3E5270054A20C /* Character.swift */; };
 		64B434C024F3E8500054A20C /* CharacterCacheProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B434BF24F3E8500054A20C /* CharacterCacheProviderTests.swift */; };
 		64B434C624F3F5AC0054A20C /* CharacterAPIProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B434C524F3F5AC0054A20C /* CharacterAPIProvider.swift */; };
@@ -205,6 +206,8 @@
 		6420EE4225FA256200B7F47B /* SeriesMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesMock.swift; sourceTree = "<group>"; };
 		6420EE4425FA256200B7F47B /* SeriesAPIWrapperMockFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesAPIWrapperMockFactory.swift; sourceTree = "<group>"; };
 		6420EE4525FA256200B7F47B /* SeriesDataProviderMockFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesDataProviderMockFactory.swift; sourceTree = "<group>"; };
+		642CF2B626D921BC0054B881 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
+		642CF2B926DB94A30054B881 /* EnvironmentValues+Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EnvironmentValues+Cache.swift"; sourceTree = "<group>"; };
 		6469B01B25DD3BD1000148B8 /* Development.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Development.xcconfig; sourceTree = "<group>"; };
 		6469B01C25DD3BDE000148B8 /* Staging.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Staging.xcconfig; sourceTree = "<group>"; };
 		6469B01D25DD3BEF000148B8 /* Production.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Production.xcconfig; sourceTree = "<group>"; };
@@ -215,7 +218,7 @@
 		647A70F826C91EBE0024426E /* ComicViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComicViewModel.swift; sourceTree = "<group>"; };
 		647A710426C94D5D0024426E /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		647A710C26C94D800024426E /* AsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImage.swift; sourceTree = "<group>"; };
-		647A711126C94F540024426E /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
+		647A711126C94F540024426E /* CacheKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheKey.swift; sourceTree = "<group>"; };
 		648BD21B24F443BE0040CD75 /* Comic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comic.swift; sourceTree = "<group>"; };
 		649D5C7C24E1F18B004C6328 /* ComicsInfo (Development).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ComicsInfo (Development).app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		649D5C7F24E1F18B004C6328 /* ComicsInfoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicsInfoApp.swift; sourceTree = "<group>"; };
@@ -251,7 +254,6 @@
 		649D5D2C24E5C9C9004C6328 /* ComicInfoUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComicInfoUITests.swift; sourceTree = "<group>"; };
 		649D5D2D24E5C9C9004C6328 /* AppTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppTests.swift; sourceTree = "<group>"; };
 		64B434B124F3DF480054A20C /* CharacterCacheProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCacheProvider.swift; sourceTree = "<group>"; };
-		64B434B324F3DF680054A20C /* InMemoryCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InMemoryCache.swift; sourceTree = "<group>"; };
 		64B434B624F3E5270054A20C /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		64B434BF24F3E8500054A20C /* CharacterCacheProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCacheProviderTests.swift; sourceTree = "<group>"; };
 		64B434C524F3F5AC0054A20C /* CharacterAPIProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterAPIProvider.swift; sourceTree = "<group>"; };
@@ -465,6 +467,14 @@
 				6420EE4525FA256200B7F47B /* SeriesDataProviderMockFactory.swift */,
 			);
 			path = Factory;
+			sourceTree = "<group>";
+		};
+		642CF2B826DB947F0054B881 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				642CF2B926DB94A30054B881 /* EnvironmentValues+Cache.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		6469B01425DD3B65000148B8 /* Config */ = {
@@ -739,6 +749,7 @@
 			isa = PBXGroup;
 			children = (
 				64B434AF24F3DF1E0054A20C /* Cache */,
+				642CF2B826DB947F0054B881 /* Extensions */,
 				647A710326C94D4E0024426E /* ImageLoader */,
 				64B434C424F3F58B0054A20C /* Network */,
 			);
@@ -748,8 +759,8 @@
 		64B434AF24F3DF1E0054A20C /* Cache */ = {
 			isa = PBXGroup;
 			children = (
-				64B434B324F3DF680054A20C /* InMemoryCache.swift */,
-				647A711126C94F540024426E /* ImageCache.swift */,
+				647A711126C94F540024426E /* CacheKey.swift */,
+				642CF2B626D921BC0054B881 /* Cache.swift */,
 			);
 			path = Cache;
 			sourceTree = "<group>";
@@ -1064,6 +1075,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				64B434FA24F43F650054A20C /* ComicCacheProvider.swift in Sources */,
+				642CF2BA26DB94A30054B881 /* EnvironmentValues+Cache.swift in Sources */,
 				649D5D0524E5C97F004C6328 /* ComicSummaryView.swift in Sources */,
 				6420EEEC25FAC2BF00B7F47B /* ComicDataProvider.swift in Sources */,
 				64B434C624F3F5AC0054A20C /* CharacterAPIProvider.swift in Sources */,
@@ -1073,6 +1085,7 @@
 				649D5D1524E5C97F004C6328 /* SeriesUseCase.swift in Sources */,
 				6420EF1825FAC2DC00B7F47B /* SeriesRepository.swift in Sources */,
 				6420EEC025FAC29D00B7F47B /* CharacterAPIService.swift in Sources */,
+				642CF2B726D921BC0054B881 /* Cache.swift in Sources */,
 				6420EF0825FAC2D200B7F47B /* SeriesAPIWrapper.swift in Sources */,
 				6420EEFC25FAC2C900B7F47B /* ComicDataProviderFactory.swift in Sources */,
 				648BD21C24F443BE0040CD75 /* Comic.swift in Sources */,
@@ -1102,7 +1115,7 @@
 				64B434D824F3F6C20054A20C /* NetworkError.swift in Sources */,
 				64B434DE24F413DA0054A20C /* SeriesCacheProvider.swift in Sources */,
 				647A70E226C913E30024426E /* ComicSummaryViewModel.swift in Sources */,
-				647A711226C94F540024426E /* ImageCache.swift in Sources */,
+				647A711226C94F540024426E /* CacheKey.swift in Sources */,
 				6420EECC25FAC2A500B7F47B /* CharacterDataRepository.swift in Sources */,
 				649D5D0324E5C97F004C6328 /* ComicInfoView.swift in Sources */,
 				64DB1DF726C1BDCA009492AA /* ComicEndpoint.swift in Sources */,
@@ -1118,7 +1131,6 @@
 				64B434FE24F440570054A20C /* ComicAPIProvider.swift in Sources */,
 				649D5D0824E5C97F004C6328 /* CharacterListViewModel.swift in Sources */,
 				649D5D0E24E5C97F004C6328 /* DiscoverViewModel.swift in Sources */,
-				64B434B424F3DF680054A20C /* InMemoryCache.swift in Sources */,
 				64DB1DED26C1AB69009492AA /* CharacterEndpoint.swift in Sources */,
 				647A710526C94D5D0024426E /* ImageLoader.swift in Sources */,
 				649D5D0224E5C97F004C6328 /* ComicThumbnailView.swift in Sources */,
@@ -1319,7 +1331,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ComicsInfo.app/ComicsInfo";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ComicsInfo (Development).app/ComicsInfo (Development)";
 			};
 			name = "Debug (Production)";
 		};
@@ -1449,7 +1461,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ComicsInfo.app/ComicsInfo";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ComicsInfo (Development).app/ComicsInfo (Development)";
 			};
 			name = "Debug (Staging)";
 		};
@@ -1573,7 +1585,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ComicsInfo.app/ComicsInfo";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ComicsInfo (Development).app/ComicsInfo (Development)";
 			};
 			name = "Release (Staging)";
 		};
@@ -1697,7 +1709,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ComicsInfo.app/ComicsInfo";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ComicsInfo (Development).app/ComicsInfo (Development)";
 			};
 			name = "Release (Production)";
 		};
@@ -1909,7 +1921,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ComicsInfo.app/ComicsInfo";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ComicsInfo (Development).app/ComicsInfo (Development)";
 			};
 			name = "Debug (Development)";
 		};
@@ -1932,7 +1944,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ComicsInfo.app/ComicsInfo";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ComicsInfo (Development).app/ComicsInfo (Development)";
 			};
 			name = "Release (Development)";
 		};

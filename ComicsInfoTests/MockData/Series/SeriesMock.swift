@@ -7,12 +7,12 @@
 //
 
 @testable import struct Domain.Series
-@testable import struct ComicsInfo.Series
+@testable import struct ComicsInfo__Development_.Series
 import Foundation
 
 struct SeriesMock {
     
-    static let series1 = ComicsInfo.Series(
+    static let series1 = ComicsInfo__Development_.Series(
         identifier: "1",
         popularity: 0,
         title: "Title",
@@ -25,7 +25,7 @@ struct SeriesMock {
         comics: nil
     )
 
-    static let series2 = ComicsInfo.Series(
+    static let series2 = ComicsInfo__Development_.Series(
         identifier: "2",
         popularity: 0,
         title: "Title",
@@ -39,9 +39,9 @@ struct SeriesMock {
     )
 
     static let series = [
-        ComicsInfo.Series.make(identifier: "1", popularity: 1, title: "The Flash Vol 2"),
-        ComicsInfo.Series.make(identifier: "2", popularity: 2, title: "Batman and Robin"),
-        ComicsInfo.Series.make(identifier: "3", popularity: 3, title: "Spider-Man")
+        ComicsInfo__Development_.Series.make(identifier: "1", popularity: 1, title: "The Flash Vol 2"),
+        ComicsInfo__Development_.Series.make(identifier: "2", popularity: 2, title: "Batman and Robin"),
+        ComicsInfo__Development_.Series.make(identifier: "3", popularity: 3, title: "Spider-Man")
     ]
 
     static let domainSeries = [

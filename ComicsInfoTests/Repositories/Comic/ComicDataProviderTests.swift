@@ -6,17 +6,19 @@
 //  Copyright © 2020 Aleksandar Dinic. All rights reserved.
 //
 
-@testable import ComicsInfo
+@testable import ComicsInfo__Development_
 import XCTest
 
 final class ComicDataProviderTests: XCTestCase {
 
-    override func setUp() {
-        super.setUp()
+    private var limit: Int!
+
+    override func setUpWithError() throws {
+        limit = 20
     }
 
-    override func tearDown() {
-        super.tearDown()
+    override func tearDownWithError() throws {
+        limit = nil
     }
 
     func testGetAllComicsFromNetwork() throws {
@@ -24,11 +26,11 @@ final class ComicDataProviderTests: XCTestCase {
         let sut = ComicDataProviderMockFactory.makeWithComicFromNetwork()
         let dataSourceLayer = DataSourceLayer.network
 
-        var result: Result<[Comic], Error>?
+        var result: Result<[ComicSummary], Error>?
         let promise = expectation(description: #function)
 
         // When
-        sut.getAllComics(fromDataSource: dataSourceLayer) {
+        sut.getComicSummaries(for: "", afterID: nil, limit: limit, fromDataSource: dataSourceLayer) {
             result = $0
             promise.fulfill()
         }
@@ -49,11 +51,11 @@ final class ComicDataProviderTests: XCTestCase {
         let sut = ComicDataProviderMockFactory.makeWithComicFromMemory()
         let dataSourceLayer = DataSourceLayer.memory
 
-        var result: Result<[Comic], Error>?
+        var result: Result<[ComicSummary], Error>?
         let promise = expectation(description: #function)
 
         // When
-        sut.getAllComics(fromDataSource: dataSourceLayer) {
+        sut.getComicSummaries(for: "", afterID: nil, limit: limit, fromDataSource: dataSourceLayer) {
             result = $0
             promise.fulfill()
         }
@@ -74,11 +76,11 @@ final class ComicDataProviderTests: XCTestCase {
         let sut = ComicDataProviderMockFactory.makeWithComicFromNetwork()
         let dataSourceLayer = DataSourceLayer.memory
 
-        var result: Result<[Comic], Error>?
+        var result: Result<[ComicSummary], Error>?
         let promise = expectation(description: #function)
 
         // When
-        sut.getAllComics(fromDataSource: dataSourceLayer) {
+        sut.getComicSummaries(for: "", afterID: nil, limit: limit, fromDataSource: dataSourceLayer) {
             result = $0
             promise.fulfill()
         }
@@ -99,11 +101,11 @@ final class ComicDataProviderTests: XCTestCase {
         let sut = ComicDataProviderMockFactory.makeWithoutData()
         let dataSourceLayer = DataSourceLayer.network
 
-        var result: Result<[Comic], Error>?
+        var result: Result<[ComicSummary], Error>?
         let promise = expectation(description: #function)
 
         // When
-        sut.getAllComics(fromDataSource: dataSourceLayer) {
+        sut.getComicSummaries(for: "", afterID: nil, limit: limit, fromDataSource: dataSourceLayer) {
             result = $0
             promise.fulfill()
         }

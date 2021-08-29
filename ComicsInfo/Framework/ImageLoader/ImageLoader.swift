@@ -9,16 +9,16 @@ import SwiftUI
 import Combine
 import Foundation
 
-class ImageLoader: ObservableObject {
+final class ImageLoader: ObservableObject {
     
     @Published var image: UIImage?
     private let url: URL?
     private var cancellable: AnyCancellable?
-    private var cache: ImageCache?
+    private var cache: Cache<URL, Data>
     private(set) var isLoading = false
-    private static let imageProcessingQueue = DispatchQueue(label: "image-processing")
+    private static let queue = DispatchQueue(label: String(describing: ImageLoader.self))
 
-    init(url: URL?, cache: ImageCache? = nil) {
+    init(url: URL?, cache: Cache<URL, Data> = Cache<URL, Data>()) {
         self.url = url
         self.cache = cache
     }
@@ -30,14 +30,14 @@ class ImageLoader: ObservableObject {
     func load() {
         guard !isLoading, let url = url else { return }
 
-        if let image = cache?[url] {
+        if let data = cache[url], let image = UIImage(data: data) {
             self.image = image
             return
         }
         
         print("Downloading image from: \(url)")
         cancellable = URLSession.shared.dataTaskPublisher(for: url)
-            .subscribe(on: Self.imageProcessingQueue)
+            .subscribe(on: Self.queue)
             .map { UIImage(data: $0.data) }
             .replaceError(with: nil)
             .handleEvents(receiveSubscription: { [weak self] _ in self?.onStart() },
@@ -62,7 +62,8 @@ class ImageLoader: ObservableObject {
     
     private func cache(_ image: UIImage?) {
         guard let url = url else { return }
-        image.map { cache?[url] = $0 }
+        image.map { cache[url] = $0.pngData() }
+        try? cache.saveToDisc(.images)
     }
     
 }

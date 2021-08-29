@@ -6,17 +6,19 @@
 //  Copyright © 2020 Aleksandar Dinic. All rights reserved.
 //
 
-@testable import ComicsInfo
+@testable import ComicsInfo__Development_
 import XCTest
 
 final class SeriesDataProviderTests: XCTestCase {
 
-    override func setUp() {
-        super.setUp()
+    private var limit: Int!
+
+    override func setUpWithError() throws {
+        limit = 20
     }
 
-    override func tearDown() {
-        super.tearDown()
+    override func tearDownWithError() throws {
+        limit = nil
     }
 
     func testGetAllSeriesFromNetwork() throws {
@@ -24,11 +26,11 @@ final class SeriesDataProviderTests: XCTestCase {
         let sut = SeriesDataProviderMockFactory.makeWithSeriesFromNetwork()
         let dataSourceLayer = DataSourceLayer.network
 
-        var result: Result<[Series], Error>?
+        var result: Result<[SeriesSummary], Error>?
         let promise = expectation(description: #function)
 
         // When
-        sut.getAllSeries(fromDataSource: dataSourceLayer) {
+        sut.getAllSeries(for: "", afterID: nil, limit: limit, fromDataSource: dataSourceLayer) {
             result = $0
             promise.fulfill()
         }
@@ -49,11 +51,11 @@ final class SeriesDataProviderTests: XCTestCase {
         let sut = SeriesDataProviderMockFactory.makeWithSeriesFromMemory()
         let dataSourceLayer = DataSourceLayer.memory
 
-        var result: Result<[Series], Error>?
+        var result: Result<[SeriesSummary], Error>?
         let promise = expectation(description: #function)
 
         // When
-        sut.getAllSeries(fromDataSource: dataSourceLayer) {
+        sut.getAllSeries(for: "", afterID: nil, limit: limit, fromDataSource: dataSourceLayer) {
             result = $0
             promise.fulfill()
         }
@@ -74,11 +76,11 @@ final class SeriesDataProviderTests: XCTestCase {
         let sut = SeriesDataProviderMockFactory.makeWithSeriesFromNetwork()
         let dataSourceLayer = DataSourceLayer.memory
 
-        var result: Result<[Series], Error>?
+        var result: Result<[SeriesSummary], Error>?
         let promise = expectation(description: #function)
 
         // When
-        sut.getAllSeries(fromDataSource: dataSourceLayer) {
+        sut.getAllSeries(for: "", afterID: nil, limit: limit, fromDataSource: dataSourceLayer) {
             result = $0
             promise.fulfill()
         }
@@ -99,11 +101,11 @@ final class SeriesDataProviderTests: XCTestCase {
         let sut = SeriesDataProviderMockFactory.makeWithoutData()
         let dataSourceLayer = DataSourceLayer.network
 
-        var result: Result<[Series], Error>?
+        var result: Result<[SeriesSummary], Error>?
         let promise = expectation(description: #function)
 
         // When
-        sut.getAllSeries(fromDataSource: dataSourceLayer) {
+        sut.getAllSeries(for: "", afterID: nil, limit: limit, fromDataSource: dataSourceLayer) {
             result = $0
             promise.fulfill()
         }

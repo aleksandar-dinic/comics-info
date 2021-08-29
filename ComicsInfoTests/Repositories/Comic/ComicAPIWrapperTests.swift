@@ -6,27 +6,29 @@
 //  Copyright © 2020 Aleksandar Dinic. All rights reserved.
 //
 
-@testable import ComicsInfo
+@testable import ComicsInfo__Development_
 import XCTest
 
 final class ComicAPIWrapperTests: XCTestCase {
 
-    override func setUp() {
-        super.setUp()
+    private var limit: Int!
+
+    override func setUpWithError() throws {
+        limit = 20
     }
 
-    override func tearDown() {
-        super.tearDown()
+    override func tearDownWithError() throws {
+        limit = nil
     }
 
     func testGetAllComicSuccess() throws {
         // Given
         let sut = ComicAPIWrapperMockFactory.makeWithComics()
-        var result: Result<[Comic], Error>?
+        var result: Result<[ComicSummary], Error>?
         let promise = expectation(description: #function)
 
         // When
-        sut.getAllComics() {
+        sut.getAllComics(for: "", afterID: nil, limit: limit) {
             result = $0
             promise.fulfill()
         }
@@ -45,11 +47,11 @@ final class ComicAPIWrapperTests: XCTestCase {
     func testGetAllComicsFailure() {
         // Given
         let sut = ComicAPIWrapperMockFactory.makeWithoutData()
-        var result: Result<[Comic], Error>?
+        var result: Result<[ComicSummary], Error>?
         let promise = expectation(description: #function)
 
         // When
-        sut.getAllComics() {
+        sut.getAllComics(for: "", afterID: nil, limit: limit) {
             result = $0
             promise.fulfill()
         }
@@ -67,11 +69,11 @@ final class ComicAPIWrapperTests: XCTestCase {
     func testGetAllComicsFailureBadData() {
         // Given
         let sut = ComicAPIWrapperMockFactory.makeWithComicBadData()
-        var result: Result<[Comic], Error>?
+        var result: Result<[ComicSummary], Error>?
         let promise = expectation(description: #function)
 
         // When
-        sut.getAllComics() {
+        sut.getAllComics(for: "", afterID: nil, limit: limit) {
             result = $0
             promise.fulfill()
         }

@@ -5,19 +5,22 @@
 //  Created by Aleksandar Dinic on 24/08/2020.
 //
 
-@testable import ComicsInfo
+@testable import ComicsInfo__Development_
 import XCTest
 
 final class CharacterAPIServiceTests: XCTestCase {
 
     private var sut: CharacterAPIProvider!
+    private var limit: Int!
 
     override func setUpWithError() throws {
         sut = CharacterAPIProvider()
+        limit = 20
     }
 
     override func tearDownWithError() throws {
         sut = nil
+        limit = nil
     }
 
     // MARK: - Characters
@@ -28,7 +31,7 @@ final class CharacterAPIServiceTests: XCTestCase {
         let promise = expectation(description: #function)
 
         // When
-        sut.getAllCharacters {
+        sut.getAllCharacters(afterID: nil, fields: nil, limit: limit) {
             result = $0
             promise.fulfill()
         }

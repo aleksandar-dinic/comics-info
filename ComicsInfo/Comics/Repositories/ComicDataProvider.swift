@@ -99,7 +99,7 @@ struct ComicDataProvider {
         comicAPIWrapper.getComic(withID: comicID) { (result: Result<Comic, Error>) in
             switch result {
             case let .success(comic):
-                comicCacheService.save(comics: [comic])
+                comicCacheService.save(comic: comic)
                 complete(.success(comic))
 
             case let .failure(error):

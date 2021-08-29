@@ -6,7 +6,7 @@
 //  Copyright © 2020 Aleksandar Dinic. All rights reserved.
 //
 
-@testable import protocol ComicsInfo.SeriesAPIService
+@testable import protocol ComicsInfo__Development_.SeriesAPIService
 import Foundation
 
 final class SeriesAPIServiceMock: SeriesAPIService {
@@ -18,6 +18,9 @@ final class SeriesAPIServiceMock: SeriesAPIService {
     }
 
     func getAllSeries(
+        for characterID: String,
+        afterID: String?,
+        limit: Int,
         onComplete complete: @escaping (Result<Data, Error>) -> Void
     ) {
         guard let data = data else {

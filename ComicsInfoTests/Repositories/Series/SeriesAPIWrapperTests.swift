@@ -6,27 +6,29 @@
 //  Copyright © 2020 Aleksandar Dinic. All rights reserved.
 //
 
-@testable import ComicsInfo
+@testable import ComicsInfo__Development_
 import XCTest
 
 final class SeriesAPIWrapperTests: XCTestCase {
 
-    override func setUp() {
-        super.setUp()
+    private var limit: Int!
+
+    override func setUpWithError() throws {
+        limit = 20
     }
 
-    override func tearDown() {
-        super.tearDown()
+    override func tearDownWithError() throws {
+        limit = nil
     }
 
     func testGetAllSeriesSuccess() throws {
         // Given
         let sut = SeriesAPIWrapperMockFactory.makeWithSeries()
-        var result: Result<[Series], Error>?
+        var result: Result<[SeriesSummary], Error>?
         let promise = expectation(description: #function)
 
         // When
-        sut.getAllSeries() {
+        sut.getAllSeries(for: "", afterID: nil, limit: limit) {
             result = $0
             promise.fulfill()
         }
@@ -45,11 +47,11 @@ final class SeriesAPIWrapperTests: XCTestCase {
     func testGetAllSeriesFailure() {
         // Given
         let sut = SeriesAPIWrapperMockFactory.makeWithoutData()
-        var result: Result<[Series], Error>?
+        var result: Result<[SeriesSummary], Error>?
         let promise = expectation(description: #function)
 
         // When
-        sut.getAllSeries() {
+        sut.getAllSeries(for: "", afterID: nil, limit: limit) {
             result = $0
             promise.fulfill()
         }
@@ -67,11 +69,11 @@ final class SeriesAPIWrapperTests: XCTestCase {
     func testGetAllSeriesFailureBadData() {
         // Given
         let sut = SeriesAPIWrapperMockFactory.makeWithSeriesBadData()
-        var result: Result<[Series], Error>?
+        var result: Result<[SeriesSummary], Error>?
         let promise = expectation(description: #function)
 
         // When
-        sut.getAllSeries() {
+        sut.getAllSeries(for: "", afterID: nil, limit: limit) {
             result = $0
             promise.fulfill()
         }

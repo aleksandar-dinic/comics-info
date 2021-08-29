@@ -6,7 +6,7 @@
 //  Copyright © 2020 Aleksandar Dinic. All rights reserved.
 //
 
-@testable import protocol ComicsInfo.CharacterAPIService
+@testable import protocol ComicsInfo__Development_.CharacterAPIService
 import Foundation
 
 final class CharacterAPIServiceMock: CharacterAPIService {
@@ -18,6 +18,9 @@ final class CharacterAPIServiceMock: CharacterAPIService {
     }
 
     func getAllCharacters(
+        afterID: String?,
+        fields: Set<String>?,
+        limit: Int,
         onComplete complete: @escaping (Result<Data, Error>) -> Void
     ) {
         guard let data = data else {

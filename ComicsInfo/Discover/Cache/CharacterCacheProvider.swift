@@ -6,18 +6,21 @@
 //  Copyright © 2020 Aleksandar Dinic. All rights reserved.
 //
 
+import SwiftUI
 import Foundation
 
 struct CharacterCacheProvider: CharacterCacheService {
 
-    private let inMemoryCache: InMemoryCache<String, Character>
+    private let characterCache: Cache<String, Character>
 
-    init(_ inMemoryCache: InMemoryCache<String, Character> = InMemoryCache()) {
-        self.inMemoryCache = inMemoryCache
+    init(
+        _ characterCache: Cache<String, Character> = SwiftUI.Environment(\.characterCache).wrappedValue
+    ) {
+        self.characterCache = characterCache
     }
 
     func getAllCharacters(afterID: String?, limit: Int) -> [Character]? {
-        var items = inMemoryCache.values
+        guard var items = characterCache.values() else { return nil }
         items.sort()
         guard !items.isEmpty else { return nil }
         var start = 0
@@ -35,13 +38,14 @@ struct CharacterCacheProvider: CharacterCacheService {
     }
 
     func getCharacter(withID characterID: String) -> Character? {
-        inMemoryCache[characterID]
+        characterCache[characterID]
     }
 
     func save(characters: [Character]) {
         for character in characters {
-            inMemoryCache[character.identifier] = character
+            characterCache[character.identifier] = character
         }
+        try? characterCache.saveToDisc(.characters)
     }
 
 }

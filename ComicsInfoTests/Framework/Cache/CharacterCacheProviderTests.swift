@@ -6,33 +6,38 @@
 //  Copyright © 2020 Aleksandar Dinic. All rights reserved.
 //
 
-@testable import Domain
-@testable import ComicsInfo
+@testable import ComicsInfo__Development_
 import XCTest
 
 final class CharacterCacheProviderTests: XCTestCase {
 
-    private var givenCharacters: [String: ComicsInfo.Character]!
-    private var inMemoryCache: InMemoryCache<String, ComicsInfo.Character>!
+    private var givenCharacters: [String: Character]!
+    private var cache: Cache<String, Character>!
+    private var limit: Int!
 
     override func setUpWithError() throws {
         givenCharacters = ["1": CharactersMock.character1, "2": CharactersMock.character1]
-        inMemoryCache = InMemoryCache(storage: givenCharacters)
+        cache = Cache<String, Character>()
+        limit = 20
+        for (_, el) in givenCharacters.enumerated() {
+            cache[el.key] = el.value
+        }
     }
 
     override func tearDownWithError() throws {
-        inMemoryCache = nil
+        cache = nil
         givenCharacters = nil
+        limit = nil
     }
 
     // MARK: - Characters
 
     func testGetAllCharacters() {
         // Given
-        let sut = CharacterCacheProvider(inMemoryCache)
+        let sut = CharacterCacheProvider(cache)
 
         // When
-        let characters = sut.getAllCharacters()
+        let characters = sut.getAllCharacters(afterID: nil, limit: limit)
 
         // Then
         XCTAssertEqual(characters?.count, givenCharacters.count)
@@ -43,7 +48,7 @@ final class CharacterCacheProviderTests: XCTestCase {
         let sut = CharacterCacheProvider()
 
         // When
-        let characters = sut.getAllCharacters()
+        let characters = sut.getAllCharacters(afterID: nil, limit: limit)
 
         // Then
         XCTAssertNil(characters)
@@ -53,7 +58,7 @@ final class CharacterCacheProviderTests: XCTestCase {
 
     func testGetCharacterWithID() {
         // Give
-        let sut = CharacterCacheProvider(inMemoryCache)
+        let sut = CharacterCacheProvider(cache)
 
         // When
         let character = sut.getCharacter(withID: "1")
@@ -75,13 +80,13 @@ final class CharacterCacheProviderTests: XCTestCase {
 
     func testSaveCharacters() {
         // Given
-        let sut = CharacterCacheProvider(inMemoryCache)
+        let sut = CharacterCacheProvider(cache)
 
         // When
         sut.save(characters: Array(givenCharacters.values))
 
         // Then
-        XCTAssertEqual(inMemoryCache.values.count, givenCharacters.count)
+        XCTAssertEqual(cache.values()?.count, givenCharacters.count)
     }
 
 }

@@ -99,7 +99,7 @@ struct SeriesDataProvider {
         seriesAPIWrapper.getSeries(withID: seriesID) { (result: Result<Series, Error>) in
             switch result {
             case let .success(series):
-                seriesCacheService.save(series: [series])
+                seriesCacheService.save(series: series)
                 complete(.success(series))
 
             case let .failure(error):

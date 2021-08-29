@@ -18,6 +18,6 @@ protocol SeriesCacheService {
     func save(seriesSummaries: [SeriesSummary], forCharacterID characterID: String)
 
     func getSeries(withID seriesID: String) -> Series?
-    func save(series: [Series])
+    func save(series: Series)
 
 }

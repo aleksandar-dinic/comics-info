@@ -6,30 +6,42 @@
 //  Copyright © 2020 Aleksandar Dinic. All rights reserved.
 //
 
-@testable import struct ComicsInfo.Series
-@testable import protocol ComicsInfo.SeriesCacheService
+@testable import struct ComicsInfo__Development_.Series
+@testable import struct ComicsInfo__Development_.SeriesSummary
+@testable import protocol ComicsInfo__Development_.SeriesCacheService
 import Foundation
 
 final class SeriesCacheServiceMock: SeriesCacheService {
 
     private var series: [String: Series]
+    private var seriesSummaries: [String: SeriesSummary]
 
-    init(_ series: [String: Series] = [:]) {
+    init(
+        series: [String: Series] = [:],
+        seriesSummaries: [String: SeriesSummary] = [:]
+    ) {
         self.series = series
+        self.seriesSummaries = seriesSummaries
     }
 
-    func getAllSeries() -> [Series]? {
-        series.values.isEmpty ? nil : Array(series.values)
+    func getAllSeries(
+        for characterID: String,
+        afterID: String?,
+        limit: Int
+    ) -> [SeriesSummary]? {
+        seriesSummaries.values.isEmpty ? nil : Array(seriesSummaries.values)
+    }
+    
+    func save(seriesSummaries: [SeriesSummary], forCharacterID characterID: String) {
+        
     }
 
     func getSeries(withID seriesID: String) -> Series? {
         series[seriesID]
     }
 
-    func save(series: [Series]) {
-        for ser in series {
-            self.series[ser.identifier] = ser
-        }
+    func save(series: Series) {
+        self.series[series.identifier] = series
     }
 
 }

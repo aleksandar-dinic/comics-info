@@ -7,15 +7,15 @@
 //
 
 @testable import struct Domain.Comic
-@testable import struct ComicsInfo.Comic
+@testable import struct ComicsInfo__Development_.Comic
 import Foundation
 
 struct ComicMock {
 
     static let comicsInfoComics = [
-        ComicsInfo.Comic.make(identifier: "1", popularity: 1, title: "Spider-Man"),
-        ComicsInfo.Comic.make(identifier: "2", popularity: 2, title: "Duel to the Death with the Vulture!"),
-        ComicsInfo.Comic.make(identifier: "3", popularity: 3, title: "Spider-Man Versus Doctor Octopus")
+        ComicsInfo__Development_.Comic.make(identifier: "1", popularity: 1, title: "Spider-Man"),
+        ComicsInfo__Development_.Comic.make(identifier: "2", popularity: 2, title: "Duel to the Death with the Vulture!"),
+        ComicsInfo__Development_.Comic.make(identifier: "3", popularity: 3, title: "Spider-Man Versus Doctor Octopus")
     ]
 
     static let domainComics = [

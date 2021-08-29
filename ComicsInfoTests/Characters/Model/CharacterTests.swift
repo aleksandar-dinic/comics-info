@@ -7,7 +7,7 @@
 //
 
 @testable import struct Domain.Character
-@testable import ComicsInfo
+@testable import ComicsInfo__Development_
 import XCTest
 
 final class CharacterTests: XCTestCase {
@@ -37,7 +37,7 @@ final class CharacterTests: XCTestCase {
         // Given
 
         // When
-        let sut = ComicsInfo.Character(from: domainCharacter)
+        let sut = ComicsInfo__Development_.Character(from: domainCharacter)
 
         // Then
         XCTAssertEqual(sut.identifier, domainCharacter.identifier)
@@ -47,7 +47,7 @@ final class CharacterTests: XCTestCase {
         // Given
 
         // When
-        let sut = ComicsInfo.Character(from: domainCharacter)
+        let sut = ComicsInfo__Development_.Character(from: domainCharacter)
 
         // Then
         XCTAssertEqual(sut.popularity, domainCharacter.popularity)
@@ -57,7 +57,7 @@ final class CharacterTests: XCTestCase {
         // Given
 
         // When
-        let sut = ComicsInfo.Character(from: domainCharacter)
+        let sut = ComicsInfo__Development_.Character(from: domainCharacter)
 
         // Then
         XCTAssertEqual(sut.name, domainCharacter.name)
@@ -67,7 +67,7 @@ final class CharacterTests: XCTestCase {
         // Given
 
         // When
-        let sut = ComicsInfo.Character(from: domainCharacter)
+        let sut = ComicsInfo__Development_.Character(from: domainCharacter)
 
         // Then
         XCTAssertEqual(sut.thumbnail, domainCharacter.thumbnail)
@@ -77,7 +77,7 @@ final class CharacterTests: XCTestCase {
         // Given
 
         // When
-        let sut = ComicsInfo.Character(from: domainCharacter)
+        let sut = ComicsInfo__Development_.Character(from: domainCharacter)
 
         // Then
         XCTAssertEqual(sut.description, domainCharacter.description)
