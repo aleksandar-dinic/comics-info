@@ -76,6 +76,11 @@
 		647A710D26C94D800024426E /* AsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647A710C26C94D800024426E /* AsyncImage.swift */; };
 		647A711226C94F540024426E /* CacheKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647A711126C94F540024426E /* CacheKey.swift */; };
 		648BD21C24F443BE0040CD75 /* Comic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648BD21B24F443BE0040CD75 /* Comic.swift */; };
+		648C119726DD2BDC00F06910 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 648C119626DD2BDC00F06910 /* GoogleService-Info.plist */; };
+		648C119A26DD2CDB00F06910 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 648C119926DD2CDB00F06910 /* FirebaseAnalytics */; };
+		648C119C26DD2CDB00F06910 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 648C119B26DD2CDB00F06910 /* FirebaseCrashlytics */; };
+		648C11AC26DD39AC00F06910 /* GoogleMobileAds.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 648C11AB26DD39AC00F06910 /* GoogleMobileAds.xcframework */; };
+		648C11B626DD39C900F06910 /* UserMessagingPlatform.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 648C11B126DD39C900F06910 /* UserMessagingPlatform.xcframework */; };
 		649D5C8024E1F18B004C6328 /* ComicsInfoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649D5C7F24E1F18B004C6328 /* ComicsInfoApp.swift */; };
 		649D5C8424E1F18C004C6328 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 649D5C8324E1F18C004C6328 /* Assets.xcassets */; };
 		649D5C8724E1F18C004C6328 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 649D5C8624E1F18C004C6328 /* Preview Assets.xcassets */; };
@@ -220,6 +225,9 @@
 		647A710C26C94D800024426E /* AsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImage.swift; sourceTree = "<group>"; };
 		647A711126C94F540024426E /* CacheKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheKey.swift; sourceTree = "<group>"; };
 		648BD21B24F443BE0040CD75 /* Comic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comic.swift; sourceTree = "<group>"; };
+		648C119626DD2BDC00F06910 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		648C11AB26DD39AC00F06910 /* GoogleMobileAds.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = GoogleMobileAds.xcframework; sourceTree = "<group>"; };
+		648C11B126DD39C900F06910 /* UserMessagingPlatform.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = UserMessagingPlatform.xcframework; sourceTree = "<group>"; };
 		649D5C7C24E1F18B004C6328 /* ComicsInfo (Development).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ComicsInfo (Development).app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		649D5C7F24E1F18B004C6328 /* ComicsInfoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicsInfoApp.swift; sourceTree = "<group>"; };
 		649D5C8324E1F18C004C6328 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -286,7 +294,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				648C119C26DD2CDB00F06910 /* FirebaseCrashlytics in Frameworks */,
+				648C119A26DD2CDB00F06910 /* FirebaseAnalytics in Frameworks */,
 				6420EE4F25FA25CA00B7F47B /* Domain in Frameworks */,
+				648C11AC26DD39AC00F06910 /* GoogleMobileAds.xcframework in Frameworks */,
+				648C11B626DD39C900F06910 /* UserMessagingPlatform.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -480,6 +492,7 @@
 		6469B01425DD3B65000148B8 /* Config */ = {
 			isa = PBXGroup;
 			children = (
+				648C119626DD2BDC00F06910 /* GoogleService-Info.plist */,
 				649D5C8824E1F18C004C6328 /* Info.plist */,
 				6469B06125DD4115000148B8 /* Environment.swift */,
 				6469B01B25DD3BD1000148B8 /* Development.xcconfig */,
@@ -533,6 +546,15 @@
 				647A710C26C94D800024426E /* AsyncImage.swift */,
 			);
 			path = ImageLoader;
+			sourceTree = "<group>";
+		};
+		648C119E26DD391000F06910 /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				648C11AB26DD39AC00F06910 /* GoogleMobileAds.xcframework */,
+				648C11B126DD39C900F06910 /* UserMessagingPlatform.xcframework */,
+			);
+			path = Firebase;
 			sourceTree = "<group>";
 		};
 		649D5C7324E1F18B004C6328 = {
@@ -750,6 +772,7 @@
 			children = (
 				64B434AF24F3DF1E0054A20C /* Cache */,
 				642CF2B826DB947F0054B881 /* Extensions */,
+				648C119E26DD391000F06910 /* Firebase */,
 				647A710326C94D4E0024426E /* ImageLoader */,
 				64B434C424F3F58B0054A20C /* Network */,
 			);
@@ -949,6 +972,7 @@
 				649D5C7824E1F18B004C6328 /* Sources */,
 				649D5C7924E1F18B004C6328 /* Frameworks */,
 				649D5C7A24E1F18B004C6328 /* Resources */,
+				648C119D26DD2F1500F06910 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -957,6 +981,8 @@
 			name = ComicsInfo;
 			packageProductDependencies = (
 				6420EE4E25FA25CA00B7F47B /* Domain */,
+				648C119926DD2CDB00F06910 /* FirebaseAnalytics */,
+				648C119B26DD2CDB00F06910 /* FirebaseCrashlytics */,
 			);
 			productName = ComicsInfo;
 			productReference = 649D5C7C24E1F18B004C6328 /* ComicsInfo (Development).app */;
@@ -1031,6 +1057,7 @@
 			mainGroup = 649D5C7324E1F18B004C6328;
 			packageReferences = (
 				6420EE4D25FA25CA00B7F47B /* XCRemoteSwiftPackageReference "comics-info-domain" */,
+				648C119826DD2CDB00F06910 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 649D5C7D24E1F18B004C6328 /* Products */;
 			projectDirPath = "";
@@ -1050,6 +1077,7 @@
 			files = (
 				649D5C8724E1F18C004C6328 /* Preview Assets.xcassets in Resources */,
 				649D5C8424E1F18C004C6328 /* Assets.xcassets in Resources */,
+				648C119726DD2BDC00F06910 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1068,6 +1096,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		648C119D26DD2F1500F06910 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 8;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n${BUILD_DIR%Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		649D5C7824E1F18B004C6328 /* Sources */ = {
@@ -1282,6 +1330,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1297,7 +1346,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"ComicsInfo/Preview Content\"";
-				DEVELOPMENT_TEAM = HGJPBAF3DU;
+				DEVELOPMENT_TEAM = EFN9DUXPCQ;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = ComicsInfo/Config/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -1305,6 +1354,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_ID)";
 				PRODUCT_NAME = "$(APP_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -1412,6 +1462,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1427,7 +1478,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"ComicsInfo/Preview Content\"";
-				DEVELOPMENT_TEAM = HGJPBAF3DU;
+				DEVELOPMENT_TEAM = EFN9DUXPCQ;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = ComicsInfo/Config/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -1435,6 +1486,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_ID)";
 				PRODUCT_NAME = "$(APP_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -1535,6 +1587,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -1551,7 +1604,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"ComicsInfo/Preview Content\"";
-				DEVELOPMENT_TEAM = HGJPBAF3DU;
+				DEVELOPMENT_TEAM = EFN9DUXPCQ;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = ComicsInfo/Config/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -1559,6 +1612,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_ID)";
 				PRODUCT_NAME = "$(APP_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -1659,6 +1713,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -1675,7 +1730,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"ComicsInfo/Preview Content\"";
-				DEVELOPMENT_TEAM = HGJPBAF3DU;
+				DEVELOPMENT_TEAM = EFN9DUXPCQ;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = ComicsInfo/Config/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -1683,6 +1738,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_ID)";
 				PRODUCT_NAME = "$(APP_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -1790,6 +1846,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1848,6 +1905,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -1864,7 +1922,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"ComicsInfo/Preview Content\"";
-				DEVELOPMENT_TEAM = HGJPBAF3DU;
+				DEVELOPMENT_TEAM = EFN9DUXPCQ;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = ComicsInfo/Config/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -1872,6 +1930,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_ID)";
 				PRODUCT_NAME = "$(APP_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -1887,7 +1946,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"ComicsInfo/Preview Content\"";
-				DEVELOPMENT_TEAM = HGJPBAF3DU;
+				DEVELOPMENT_TEAM = EFN9DUXPCQ;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = ComicsInfo/Config/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -1895,6 +1954,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_ID)";
 				PRODUCT_NAME = "$(APP_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -2056,6 +2116,14 @@
 				minimumVersion = 0.2.0;
 			};
 		};
+		648C119826DD2CDB00F06910 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.6.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -2063,6 +2131,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 6420EE4D25FA25CA00B7F47B /* XCRemoteSwiftPackageReference "comics-info-domain" */;
 			productName = Domain;
+		};
+		648C119926DD2CDB00F06910 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 648C119826DD2CDB00F06910 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		648C119B26DD2CDB00F06910 /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 648C119826DD2CDB00F06910 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
