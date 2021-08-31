@@ -12,6 +12,7 @@ struct ComicsListView: View {
 
     private let seriesSummary: SeriesSummaryViewModel
     @ObservedObject private var viewModel: ComicsListViewModel
+    @State private var showBanner = true
 
     init(
         forSeriesSummary seriesSummary: SeriesSummary,
@@ -22,20 +23,25 @@ struct ComicsListView: View {
     }
 
     var body: some View {
-        ScrollView {
-            LazyVStack(spacing: 4) {
-                if viewModel.status == .loading {
-                    Spacer()
-                    ProgressView("Loading...")
-                    Spacer()
-                } else {
-                    comicsList
-                    if viewModel.canLoadMore {
-                        loadingIndicator
+        VStack(spacing: 4) {
+            ScrollView {
+                LazyVStack(spacing: 4) {
+                    if viewModel.status == .loading {
+                        Spacer()
+                        ProgressView("Loading...")
+                        Spacer()
+                    } else {
+                        comicsList
+                        if viewModel.canLoadMore {
+                            loadingIndicator
+                        }
                     }
                 }
+                .padding()
             }
-            .padding()
+            if showBanner {
+                BannerView(showBanner: $showBanner, adUnitID: Environment.comicsListADUnitID)
+            }
         }
         .onAppear {
             viewModel.getComicSummaries(for: seriesSummary.identifier)

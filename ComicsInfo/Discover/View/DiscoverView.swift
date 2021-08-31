@@ -11,6 +11,7 @@ import SwiftUI
 struct DiscoverView: View {
 
     @ObservedObject private var viewModel: DiscoverViewModel
+    @State private var showBanner = true
 
     init(_ viewModel: DiscoverViewModel = DiscoverViewModel()) {
         self.viewModel = viewModel
@@ -18,20 +19,26 @@ struct DiscoverView: View {
 
     var body: some View {
         NavigationView {
-            ScrollView {
-                LazyVStack(spacing: 4) {
-                    if viewModel.status == .loading {
-                        Spacer()
-                        ProgressView("Loading...")
-                        Spacer()
-                    } else {
-                        discoverList
-                        if viewModel.canLoadMore {
-                            loadingIndicator
+            VStack {
+                ScrollView {
+                    LazyVStack(spacing: 4) {
+                        if viewModel.status == .loading {
+                            Spacer()
+                            ProgressView("Loading...")
+                            Spacer()
+                        } else {
+                            discoverList
+                            if viewModel.canLoadMore {
+                                loadingIndicator
+                            }
                         }
                     }
                 }
+                if showBanner {
+                    BannerView(showBanner: $showBanner, adUnitID: Environment.adUnitID)
+                }
             }
+            
         }
         .onAppear {
             viewModel.getAllCharacters()

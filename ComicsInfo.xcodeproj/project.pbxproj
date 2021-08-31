@@ -76,11 +76,13 @@
 		647A710D26C94D800024426E /* AsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647A710C26C94D800024426E /* AsyncImage.swift */; };
 		647A711226C94F540024426E /* CacheKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647A711126C94F540024426E /* CacheKey.swift */; };
 		648BD21C24F443BE0040CD75 /* Comic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648BD21B24F443BE0040CD75 /* Comic.swift */; };
-		648C119726DD2BDC00F06910 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 648C119626DD2BDC00F06910 /* GoogleService-Info.plist */; };
 		648C119A26DD2CDB00F06910 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 648C119926DD2CDB00F06910 /* FirebaseAnalytics */; };
 		648C119C26DD2CDB00F06910 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 648C119B26DD2CDB00F06910 /* FirebaseCrashlytics */; };
 		648C11AC26DD39AC00F06910 /* GoogleMobileAds.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 648C11AB26DD39AC00F06910 /* GoogleMobileAds.xcframework */; };
 		648C11B626DD39C900F06910 /* UserMessagingPlatform.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 648C11B126DD39C900F06910 /* UserMessagingPlatform.xcframework */; };
+		648C11BA26DD640200F06910 /* BannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648C11B926DD640200F06910 /* BannerView.swift */; };
+		648C11BC26DD647A00F06910 /* GoogleBannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648C11BB26DD647A00F06910 /* GoogleBannerViewController.swift */; };
+		648C11C026DD6C8400F06910 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 648C11BF26DD6C8400F06910 /* GoogleService-Info.plist */; };
 		649D5C8024E1F18B004C6328 /* ComicsInfoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649D5C7F24E1F18B004C6328 /* ComicsInfoApp.swift */; };
 		649D5C8424E1F18C004C6328 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 649D5C8324E1F18C004C6328 /* Assets.xcassets */; };
 		649D5C8724E1F18C004C6328 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 649D5C8624E1F18C004C6328 /* Preview Assets.xcassets */; };
@@ -225,9 +227,11 @@
 		647A710C26C94D800024426E /* AsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImage.swift; sourceTree = "<group>"; };
 		647A711126C94F540024426E /* CacheKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheKey.swift; sourceTree = "<group>"; };
 		648BD21B24F443BE0040CD75 /* Comic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comic.swift; sourceTree = "<group>"; };
-		648C119626DD2BDC00F06910 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		648C11AB26DD39AC00F06910 /* GoogleMobileAds.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = GoogleMobileAds.xcframework; sourceTree = "<group>"; };
 		648C11B126DD39C900F06910 /* UserMessagingPlatform.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = UserMessagingPlatform.xcframework; sourceTree = "<group>"; };
+		648C11B926DD640200F06910 /* BannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerView.swift; sourceTree = "<group>"; };
+		648C11BB26DD647A00F06910 /* GoogleBannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleBannerViewController.swift; sourceTree = "<group>"; };
+		648C11BF26DD6C8400F06910 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		649D5C7C24E1F18B004C6328 /* ComicsInfo (Development).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ComicsInfo (Development).app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		649D5C7F24E1F18B004C6328 /* ComicsInfoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicsInfoApp.swift; sourceTree = "<group>"; };
 		649D5C8324E1F18C004C6328 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -492,7 +496,7 @@
 		6469B01425DD3B65000148B8 /* Config */ = {
 			isa = PBXGroup;
 			children = (
-				648C119626DD2BDC00F06910 /* GoogleService-Info.plist */,
+				648C11BF26DD6C8400F06910 /* GoogleService-Info.plist */,
 				649D5C8824E1F18C004C6328 /* Info.plist */,
 				6469B06125DD4115000148B8 /* Environment.swift */,
 				6469B01B25DD3BD1000148B8 /* Development.xcconfig */,
@@ -557,6 +561,23 @@
 			path = Firebase;
 			sourceTree = "<group>";
 		};
+		648C11B726DD63E100F06910 /* Banner */ = {
+			isa = PBXGroup;
+			children = (
+				648C11B826DD63F100F06910 /* View */,
+			);
+			path = Banner;
+			sourceTree = "<group>";
+		};
+		648C11B826DD63F100F06910 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				648C11B926DD640200F06910 /* BannerView.swift */,
+				648C11BB26DD647A00F06910 /* GoogleBannerViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		649D5C7324E1F18B004C6328 = {
 			isa = PBXGroup;
 			children = (
@@ -583,6 +604,7 @@
 			children = (
 				649D5C8324E1F18C004C6328 /* Assets.xcassets */,
 				649D5D3724E5DE6B004C6328 /* App */,
+				648C11B726DD63E100F06910 /* Banner */,
 				64DB1DA926C180E1009492AA /* Comics */,
 				6469B01425DD3B65000148B8 /* Config */,
 				64DB1D7826C16627009492AA /* Discover */,
@@ -1077,7 +1099,7 @@
 			files = (
 				649D5C8724E1F18C004C6328 /* Preview Assets.xcassets in Resources */,
 				649D5C8424E1F18C004C6328 /* Assets.xcassets in Resources */,
-				648C119726DD2BDC00F06910 /* GoogleService-Info.plist in Resources */,
+				648C11C026DD6C8400F06910 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1165,6 +1187,7 @@
 				647A70E226C913E30024426E /* ComicSummaryViewModel.swift in Sources */,
 				647A711226C94F540024426E /* CacheKey.swift in Sources */,
 				6420EECC25FAC2A500B7F47B /* CharacterDataRepository.swift in Sources */,
+				648C11BC26DD647A00F06910 /* GoogleBannerViewController.swift in Sources */,
 				649D5D0324E5C97F004C6328 /* ComicInfoView.swift in Sources */,
 				64DB1DF726C1BDCA009492AA /* ComicEndpoint.swift in Sources */,
 				64DB1DB926C1A114009492AA /* EndpointType.swift in Sources */,
@@ -1182,6 +1205,7 @@
 				64DB1DED26C1AB69009492AA /* CharacterEndpoint.swift in Sources */,
 				647A710526C94D5D0024426E /* ImageLoader.swift in Sources */,
 				649D5D0224E5C97F004C6328 /* ComicThumbnailView.swift in Sources */,
+				648C11BA26DD640200F06910 /* BannerView.swift in Sources */,
 				6420EEE425FAC2BA00B7F47B /* ComicAPIWrapper.swift in Sources */,
 				6420EF2025FAC2E200B7F47B /* SeriesDataProviderFactory.swift in Sources */,
 				647A710D26C94D800024426E /* AsyncImage.swift in Sources */,

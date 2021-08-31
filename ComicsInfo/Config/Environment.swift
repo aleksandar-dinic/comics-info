@@ -12,6 +12,9 @@ enum Environment {
     
     private enum Keys {
         static let rootURL = "ROOT_URL"
+        static let adUnitID = "AD_UNIT_ID"
+        static let comicsListADUnitID = "COMICS_LIST_AD_UNIT_ID"
+        static let comicInfoADUnitID = "COMIC_INFO_AD_UNIT_ID"
     }
     
     private static let infoDictionary: [String: Any] = {
@@ -29,6 +32,27 @@ enum Environment {
             fatalError("😱 Root URL is invalid")
         }
         return url
+    }()
+    
+    static let adUnitID: String = {
+        guard let adUnitID = Environment.infoDictionary[Keys.adUnitID] as? String else {
+            fatalError("😱 AD Unit ID is not set in plist for this environment")
+        }
+        return adUnitID
+    }()
+    
+    static let comicsListADUnitID: String = {
+        guard let comicsListADUnitID = Environment.infoDictionary[Keys.comicsListADUnitID] as? String else {
+            fatalError("😱 ComicsList AD Unit ID is not set in plist for this environment")
+        }
+        return comicsListADUnitID
+    }()
+    
+    static let comicInfoADUnitID: String = {
+        guard let comicInfoADUnitID = Environment.infoDictionary[Keys.comicInfoADUnitID] as? String else {
+            fatalError("😱 ComicsList AD Unit ID is not set in plist for this environment")
+        }
+        return comicInfoADUnitID
     }()
 
 }
