@@ -82,7 +82,7 @@
 		648C11B626DD39C900F06910 /* UserMessagingPlatform.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 648C11B126DD39C900F06910 /* UserMessagingPlatform.xcframework */; };
 		648C11BA26DD640200F06910 /* BannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648C11B926DD640200F06910 /* BannerView.swift */; };
 		648C11BC26DD647A00F06910 /* GoogleBannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648C11BB26DD647A00F06910 /* GoogleBannerViewController.swift */; };
-		648C11C026DD6C8400F06910 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 648C11BF26DD6C8400F06910 /* GoogleService-Info.plist */; };
+		648C11C226DE4B5F00F06910 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 648C11C126DE4B5F00F06910 /* GoogleService-Info.plist */; };
 		649D5C8024E1F18B004C6328 /* ComicsInfoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649D5C7F24E1F18B004C6328 /* ComicsInfoApp.swift */; };
 		649D5C8424E1F18C004C6328 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 649D5C8324E1F18C004C6328 /* Assets.xcassets */; };
 		649D5C8724E1F18C004C6328 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 649D5C8624E1F18C004C6328 /* Preview Assets.xcassets */; };
@@ -231,8 +231,8 @@
 		648C11B126DD39C900F06910 /* UserMessagingPlatform.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = UserMessagingPlatform.xcframework; sourceTree = "<group>"; };
 		648C11B926DD640200F06910 /* BannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerView.swift; sourceTree = "<group>"; };
 		648C11BB26DD647A00F06910 /* GoogleBannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleBannerViewController.swift; sourceTree = "<group>"; };
-		648C11BF26DD6C8400F06910 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
-		649D5C7C24E1F18B004C6328 /* ComicsInfo (Development).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ComicsInfo (Development).app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		648C11C126DE4B5F00F06910 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		649D5C7C24E1F18B004C6328 /* Comics Info (Development).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Comics Info (Development).app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		649D5C7F24E1F18B004C6328 /* ComicsInfoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicsInfoApp.swift; sourceTree = "<group>"; };
 		649D5C8324E1F18C004C6328 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		649D5C8624E1F18C004C6328 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -496,7 +496,7 @@
 		6469B01425DD3B65000148B8 /* Config */ = {
 			isa = PBXGroup;
 			children = (
-				648C11BF26DD6C8400F06910 /* GoogleService-Info.plist */,
+				648C11C126DE4B5F00F06910 /* GoogleService-Info.plist */,
 				649D5C8824E1F18C004C6328 /* Info.plist */,
 				6469B06125DD4115000148B8 /* Environment.swift */,
 				6469B01B25DD3BD1000148B8 /* Development.xcconfig */,
@@ -592,7 +592,7 @@
 		649D5C7D24E1F18B004C6328 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				649D5C7C24E1F18B004C6328 /* ComicsInfo (Development).app */,
+				649D5C7C24E1F18B004C6328 /* Comics Info (Development).app */,
 				649D5C8D24E1F18C004C6328 /* ComicsInfoTests.xctest */,
 				649D5C9824E1F18C004C6328 /* ComicsInfoUITests.xctest */,
 			);
@@ -1007,7 +1007,7 @@
 				648C119B26DD2CDB00F06910 /* FirebaseCrashlytics */,
 			);
 			productName = ComicsInfo;
-			productReference = 649D5C7C24E1F18B004C6328 /* ComicsInfo (Development).app */;
+			productReference = 649D5C7C24E1F18B004C6328 /* Comics Info (Development).app */;
 			productType = "com.apple.product-type.application";
 		};
 		649D5C8C24E1F18C004C6328 /* ComicsInfoTests */ = {
@@ -1099,7 +1099,7 @@
 			files = (
 				649D5C8724E1F18C004C6328 /* Preview Assets.xcassets in Resources */,
 				649D5C8424E1F18C004C6328 /* Assets.xcassets in Resources */,
-				648C11C026DD6C8400F06910 /* GoogleService-Info.plist in Resources */,
+				648C11C226DE4B5F00F06910 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
