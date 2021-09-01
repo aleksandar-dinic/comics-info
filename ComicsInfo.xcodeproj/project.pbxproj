@@ -98,9 +98,9 @@
 		649D5D0B24E5C97F004C6328 /* CharacterThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649D5CE524E5C97F004C6328 /* CharacterThumbnailView.swift */; };
 		649D5D0C24E5C97F004C6328 /* CharacterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649D5CE624E5C97F004C6328 /* CharacterView.swift */; };
 		649D5D0D24E5C97F004C6328 /* CharacterUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649D5CE824E5C97F004C6328 /* CharacterUseCase.swift */; };
-		649D5D0E24E5C97F004C6328 /* DiscoverViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649D5CEB24E5C97F004C6328 /* DiscoverViewModel.swift */; };
+		649D5D0E24E5C97F004C6328 /* ExploreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649D5CEB24E5C97F004C6328 /* ExploreViewModel.swift */; };
 		649D5D1124E5C97F004C6328 /* SeriesThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649D5CF024E5C97F004C6328 /* SeriesThumbnailView.swift */; };
-		649D5D1224E5C97F004C6328 /* DiscoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649D5CF124E5C97F004C6328 /* DiscoverView.swift */; };
+		649D5D1224E5C97F004C6328 /* ExploreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649D5CF124E5C97F004C6328 /* ExploreView.swift */; };
 		649D5D1324E5C97F004C6328 /* SeriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649D5CF224E5C97F004C6328 /* SeriesView.swift */; };
 		649D5D1524E5C97F004C6328 /* SeriesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649D5CF524E5C97F004C6328 /* SeriesUseCase.swift */; };
 		649D5D2524E5C9B3004C6328 /* CharacterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649D5D1E24E5C9B3004C6328 /* CharacterTests.swift */; };
@@ -253,9 +253,9 @@
 		649D5CE524E5C97F004C6328 /* CharacterThumbnailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterThumbnailView.swift; sourceTree = "<group>"; };
 		649D5CE624E5C97F004C6328 /* CharacterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterView.swift; sourceTree = "<group>"; };
 		649D5CE824E5C97F004C6328 /* CharacterUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterUseCase.swift; sourceTree = "<group>"; };
-		649D5CEB24E5C97F004C6328 /* DiscoverViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverViewModel.swift; sourceTree = "<group>"; };
+		649D5CEB24E5C97F004C6328 /* ExploreViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreViewModel.swift; sourceTree = "<group>"; };
 		649D5CF024E5C97F004C6328 /* SeriesThumbnailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeriesThumbnailView.swift; sourceTree = "<group>"; };
-		649D5CF124E5C97F004C6328 /* DiscoverView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverView.swift; sourceTree = "<group>"; };
+		649D5CF124E5C97F004C6328 /* ExploreView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreView.swift; sourceTree = "<group>"; };
 		649D5CF224E5C97F004C6328 /* SeriesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeriesView.swift; sourceTree = "<group>"; };
 		649D5CF524E5C97F004C6328 /* SeriesUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeriesUseCase.swift; sourceTree = "<group>"; };
 		649D5D1E24E5C9B3004C6328 /* CharacterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterTests.swift; sourceTree = "<group>"; };
@@ -607,7 +607,7 @@
 				648C11B726DD63E100F06910 /* Banner */,
 				64DB1DA926C180E1009492AA /* Comics */,
 				6469B01425DD3B65000148B8 /* Config */,
-				64DB1D7826C16627009492AA /* Discover */,
+				64DB1D7826C16627009492AA /* Explore */,
 				64B434AE24F3DF0E0054A20C /* Framework */,
 				649D5C8524E1F18C004C6328 /* Preview Content */,
 				6420EDE225FA24F400B7F47B /* Repositories */,
@@ -684,7 +684,7 @@
 			children = (
 				649D5CE024E5C97F004C6328 /* CharacterListViewModel.swift */,
 				649D5CE224E5C97F004C6328 /* CharacterViewModel.swift */,
-				649D5CEB24E5C97F004C6328 /* DiscoverViewModel.swift */,
+				649D5CEB24E5C97F004C6328 /* ExploreViewModel.swift */,
 				647773D726D5370C00FED43E /* SeriesSummaryViewModel.swift */,
 			);
 			path = ViewModel;
@@ -693,7 +693,7 @@
 		649D5CE324E5C97F004C6328 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				649D5CF124E5C97F004C6328 /* DiscoverView.swift */,
+				649D5CF124E5C97F004C6328 /* ExploreView.swift */,
 				64DB1D8F26C16F0E009492AA /* Character */,
 				64DB1D9026C16F19009492AA /* Series */,
 			);
@@ -861,7 +861,7 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
-		64DB1D7826C16627009492AA /* Discover */ = {
+		64DB1D7826C16627009492AA /* Explore */ = {
 			isa = PBXGroup;
 			children = (
 				647A70D826C902D50024426E /* Cache */,
@@ -872,7 +872,7 @@
 				649D5CE324E5C97F004C6328 /* View */,
 				649D5CDF24E5C97F004C6328 /* ViewModel */,
 			);
-			path = Discover;
+			path = Explore;
 			sourceTree = "<group>";
 		};
 		64DB1D7926C16637009492AA /* Model */ = {
@@ -1167,7 +1167,7 @@
 				6420EF1025FAC2D700B7F47B /* SeriesDataProvider.swift in Sources */,
 				647A70DD26C912A70024426E /* ComicInfoViewModel.swift in Sources */,
 				6420EDBC25F9172D00B7F47B /* CharacterSummary.swift in Sources */,
-				649D5D1224E5C97F004C6328 /* DiscoverView.swift in Sources */,
+				649D5D1224E5C97F004C6328 /* ExploreView.swift in Sources */,
 				6420EF2425FAC2E400B7F47B /* SeriesRepositoryFactory.swift in Sources */,
 				6420EF0425FAC2D000B7F47B /* SeriesAPIService.swift in Sources */,
 				649D5D0924E5C97F004C6328 /* CharacterViewModel.swift in Sources */,
@@ -1201,7 +1201,7 @@
 				64DB1DCE26C1A1B8009492AA /* HTTPStatusCode.swift in Sources */,
 				64B434FE24F440570054A20C /* ComicAPIProvider.swift in Sources */,
 				649D5D0824E5C97F004C6328 /* CharacterListViewModel.swift in Sources */,
-				649D5D0E24E5C97F004C6328 /* DiscoverViewModel.swift in Sources */,
+				649D5D0E24E5C97F004C6328 /* ExploreViewModel.swift in Sources */,
 				64DB1DED26C1AB69009492AA /* CharacterEndpoint.swift in Sources */,
 				647A710526C94D5D0024426E /* ImageLoader.swift in Sources */,
 				649D5D0224E5C97F004C6328 /* ComicThumbnailView.swift in Sources */,

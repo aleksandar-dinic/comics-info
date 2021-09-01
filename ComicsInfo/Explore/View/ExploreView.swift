@@ -1,5 +1,5 @@
 //
-//  DiscoverView.swift
+//  ExploreView.swift
 //  ComicsInfo
 //
 //  Created by Aleksandar Dinic on 20/07/2020.
@@ -8,12 +8,12 @@
 
 import SwiftUI
 
-struct DiscoverView: View {
+struct ExploreView: View {
 
-    @ObservedObject private var viewModel: DiscoverViewModel
+    @ObservedObject private var viewModel: ExploreViewModel
     @State private var showBanner = true
 
-    init(_ viewModel: DiscoverViewModel = DiscoverViewModel()) {
+    init(_ viewModel: ExploreViewModel = ExploreViewModel()) {
         self.viewModel = viewModel
     }
 
@@ -27,7 +27,7 @@ struct DiscoverView: View {
                             ProgressView("Loading...")
                             Spacer()
                         } else {
-                            discoverList
+                            exploreList
                             if viewModel.canLoadMore {
                                 loadingIndicator
                             }
@@ -48,7 +48,7 @@ struct DiscoverView: View {
         }
     }
     
-    private var discoverList: some View {
+    private var exploreList: some View {
         ScrollView {
             LazyVStack {
                 characterList
@@ -56,7 +56,7 @@ struct DiscoverView: View {
             .padding(.leading, 8)
             .padding(.trailing, 8)
         }
-        .navigationBarTitle("Discover")
+        .navigationBarTitle("Explore")
     }
     
     private var characterList: some View {
@@ -64,8 +64,6 @@ struct DiscoverView: View {
             Section(
                 header:
                     makeCharacterView(for: character)
-                        .padding(4)
-                    .frame(idealHeight: 16, maxHeight: 20)
             ) {
                 if let seriesSummaries = character.series {
                     seriesList(for: character.identifier, seriesSummaries: seriesSummaries)
@@ -78,8 +76,10 @@ struct DiscoverView: View {
         }
     }
     
-    private func makeCharacterView(for character: Character) -> CharacterView {
+    private func makeCharacterView(for character: Character) -> some View {
         CharacterView(viewModel: CharacterViewModel(from: character))
+            .padding(4)
+            .background(Color.accentColor.opacity(0.3))
     }
     
     private func seriesList(for characterID: String, seriesSummaries: [SeriesSummary]) -> some View {
@@ -88,6 +88,7 @@ struct DiscoverView: View {
                 SeriesView(seriesSummary: SeriesSummaryViewModel(from: seriesSummary))
             }
             .id("\(characterID)#\(seriesSummary.identifier)")
+            .buttonStyle(PlainButtonStyle())
         }
     }
     
@@ -102,9 +103,9 @@ struct DiscoverView: View {
 }
 
 #if DEBUG
-struct DiscoverView_Previews: PreviewProvider {
+struct ExploreView_Previews: PreviewProvider {
 
-    static let viewModel = DiscoverViewModel(
+    static let viewModel = ExploreViewModel(
         characterUseCase: CharacterUseCase(),
         seriesUseCase: SeriesUseCase(),
         characters: [
@@ -117,7 +118,7 @@ struct DiscoverView_Previews: PreviewProvider {
 
     static var previews: some View {
         ForEach(ColorScheme.allCases, id: \.self) { color in
-            DiscoverView(viewModel)
+            ExploreView(viewModel)
                 .previewDisplayName("\(color)")
                 .environment(\.colorScheme, color)
         }

@@ -1,5 +1,5 @@
 //
-//  DiscoverViewModel.swift
+//  ExploreViewModel.swift
 //  ComicsInfo
 //
 //  Created by Aleksandar Dinic on 20/07/2020.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-final class DiscoverViewModel: ObservableObject {
+final class ExploreViewModel: ObservableObject {
 
     enum Status: Equatable {
         case loading

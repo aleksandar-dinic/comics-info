@@ -77,6 +77,7 @@ struct ComicsListView: View {
                     )
                 }
             }
+            .buttonStyle(PlainButtonStyle())
         }
     }
 

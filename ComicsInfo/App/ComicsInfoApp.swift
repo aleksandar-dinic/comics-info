@@ -22,7 +22,7 @@ struct ComicsInfoApp: App {
     
     var body: some Scene {
         WindowGroup {
-            DiscoverView()
+            ExploreView()
         }
     }
     

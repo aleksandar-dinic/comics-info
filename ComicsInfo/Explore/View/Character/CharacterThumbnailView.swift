@@ -18,7 +18,6 @@ struct CharacterThumbnailView: View {
         thumbnailImage(for: URL(string: imageName))
             .aspectRatio(contentMode: .fit)
             .frame(width: height, height: height)
-            .background(Color.secondary)
             .cornerRadius(2)
             .shadow(radius: 8)
     }
