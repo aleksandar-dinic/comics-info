@@ -15,6 +15,8 @@ enum Environment {
         static let adUnitID = "AD_UNIT_ID"
         static let comicsListADUnitID = "COMICS_LIST_AD_UNIT_ID"
         static let comicInfoADUnitID = "COMIC_INFO_AD_UNIT_ID"
+        static let accountADUnitID = "ACCOUNT_AD_UNIT_ID"
+        static let exploreADUnitID = "EXPLORE_AD_UNIT_ID"
     }
     
     private static let infoDictionary: [String: Any] = {
@@ -50,9 +52,23 @@ enum Environment {
     
     static let comicInfoADUnitID: String = {
         guard let comicInfoADUnitID = Environment.infoDictionary[Keys.comicInfoADUnitID] as? String else {
-            fatalError("😱 ComicsList AD Unit ID is not set in plist for this environment")
+            fatalError("😱 Comic Info AD Unit ID is not set in plist for this environment")
         }
         return comicInfoADUnitID
     }()
+    
+    static let accountADUnitID: String = {
+        guard let accountADUnitID = Environment.infoDictionary[Keys.accountADUnitID] as? String else {
+            fatalError("😱 Account AD Unit ID is not set in plist for this environment")
+        }
+        return accountADUnitID
+    }()
 
+    static let exploreADUnitID: String = {
+        guard let exploreADUnitID = Environment.infoDictionary[Keys.exploreADUnitID] as? String else {
+            fatalError("😱 Explore AD Unit ID is not set in plist for this environment")
+        }
+        return exploreADUnitID
+    }()
+    
 }

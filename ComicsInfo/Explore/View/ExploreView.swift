@@ -12,6 +12,7 @@ struct ExploreView: View {
 
     @ObservedObject private var viewModel: ExploreViewModel
     @State private var showBanner = true
+    @State private var showAccount = false
 
     init(_ viewModel: ExploreViewModel = ExploreViewModel()) {
         self.viewModel = viewModel
@@ -35,16 +36,28 @@ struct ExploreView: View {
                     }
                 }
                 if showBanner {
-                    BannerView(showBanner: $showBanner, adUnitID: Environment.adUnitID)
+                    BannerView(
+                        showBanner: $showBanner,
+                        adUnitID: Environment.exploreADUnitID
+                    )
                 }
             }
-            
+            .toolbar {
+                Button(action: {
+                    showAccount.toggle()
+                }, label: {
+                    Image(systemName: "person.crop.circle.fill")
+                })
+            }
         }
         .onAppear {
             viewModel.getAllCharacters()
         }
         .alert(isPresented: $viewModel.showError) {
             Alert(title: Text(viewModel.errorMessage))
+        }
+        .sheet(isPresented: $showAccount) {
+            AccountView()
         }
     }
     

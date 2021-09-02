@@ -207,5 +207,9 @@
 	<string>$(COMICS_LIST_AD_UNIT_ID)</string>
 	<key>COMIC_INFO_AD_UNIT_ID</key>
 	<string>$(COMIC_INFO_AD_UNIT_ID)</string>
+	<key>ACCOUNT_AD_UNIT_ID</key>
+	<string>$(ACCOUNT_AD_UNIT_ID)</string>
+	<key>EXPLORE_AD_UNIT_ID</key>
+	<string>$(EXPLORE_AD_UNIT_ID)</string>
 </dict>
 </plist>

@@ -59,6 +59,7 @@ final class ExploreViewModel: ObservableObject {
         guard !isLoading, canLoadMore else { return }
         
         isLoading = true
+        status = .loading
         characterUseCase.getAllCharacters(afterID: lastID, fields: fields, limit: limit, fromDataSource: dataSource) { [weak self] result in
             guard let self = self else { return }
             self.isLoading = false
@@ -69,8 +70,8 @@ final class ExploreViewModel: ObservableObject {
                     self.characters.append(character)
                     self.charactersIdentifier.insert(character.identifier)
                 }
-                self.status = .showCharacters
                 self.canLoadMore = characters.count >= limit
+                self.status = .showCharacters
             case let .failure(error):
                 self.canLoadMore = false
                 guard self.characters.isEmpty else { return }

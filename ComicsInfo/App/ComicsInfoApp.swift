@@ -22,6 +22,7 @@ struct ComicsInfoApp: App {
     
     var body: some Scene {
         WindowGroup {
+//            HomeView()
             ExploreView()
         }
     }
