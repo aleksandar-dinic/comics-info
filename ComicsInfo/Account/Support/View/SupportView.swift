@@ -9,30 +9,45 @@ import SwiftUI
 
 struct SupportView: View {
     
+    @SwiftUI.Environment(\.presentationMode) var presentationMode
     @ObservedObject var viewModel = SupportViewModel()
     
     var body: some View {
-        VStack(spacing: 8) {
-            TextField("E-mail (optional)", text: $viewModel.email)
-                .padding(4)
-                .overlay(RoundedRectangle(cornerRadius: 4).stroke(Color.gray, lineWidth: 1))
-                .keyboardType(.emailAddress)
-            TextEditor(text: $viewModel.message)
-                .padding(4)
-                .overlay(RoundedRectangle(cornerRadius: 8).stroke(Color.gray, lineWidth: 1))
-                .foregroundColor(viewModel.textEditorForegroundColor)
-                    .onTapGesture {
-                        viewModel.onTapTextEditor()
-                    }
-            makeSendButton()
+        ZStack {
+            VStack(spacing: 8) {
+                TextField("E-mail (optional)", text: $viewModel.email)
+                    .padding(4)
+                    .overlay(RoundedRectangle(cornerRadius: 4).stroke(Color.gray, lineWidth: 1))
+                    .keyboardType(.emailAddress)
+                TextEditor(text: $viewModel.message)
+                    .padding(4)
+                    .overlay(RoundedRectangle(cornerRadius: 8).stroke(Color.gray, lineWidth: 1))
+                    .foregroundColor(viewModel.textEditorForegroundColor)
+                        .onTapGesture {
+                            viewModel.onTapTextEditor()
+                        }
+                makeSendButton()
+            }
+            .padding()
+            .opacity(viewModel.isLoading ? 0.3 : 1)
+            if viewModel.isLoading {
+                ProgressView("Please wait...")
+            }
         }
-        .padding()
+        .alert(isPresented: $viewModel.showAlert) {
+            Alert(
+                title: Text(viewModel.alertMessage),
+                dismissButton: .default(Text("OK")) {
+                    presentationMode.wrappedValue.dismiss()
+                }
+            )
+        }
         .navigationBarTitle("Support & Feedback", displayMode: .inline)
     }
     
     private func makeSendButton() -> some View {
         Button("Send") {
-            print("Send")
+            viewModel.createFeedback(message: viewModel.message, email: viewModel.email)
         }
         .frame(height: 40)
         .disabled(viewModel.sendButtonIsDisabled)
