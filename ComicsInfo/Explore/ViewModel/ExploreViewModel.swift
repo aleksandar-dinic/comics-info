@@ -96,7 +96,7 @@ final class ExploreViewModel: ObservableObject {
             switch result {
             case let .success(seriesSummaries):
                 if let index = self.characters.firstIndex(where: { $0.identifier == characterID }) {
-                    self.characters[index].series?.append(contentsOf: seriesSummaries)
+                    self.characters[index].mainSeries?.append(contentsOf: seriesSummaries)
                 }
                 self.status = .showCharacters
             case let .failure(error):

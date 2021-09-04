@@ -38,8 +38,11 @@ struct Character: Codable {
     /// A date, that the character was born on. Not an origin date.
     let birth: Date?
 
-    /// A resource list of series in which this character appears.
-    var series: [SeriesSummary]?
+    /// A resource list of the main series of this character.
+    var mainSeries: [SeriesSummary]?
+    
+//    /// A resource list of series in which this character appears.
+//    var series: [SeriesSummary]?
 
     /// A resource list containing comics which feature this character.
     var comics: [ComicSummary]?
@@ -69,7 +72,8 @@ extension Character {
         realName = character.realName
         aliases = character.aliases
         birth = character.birth
-        series = character.series?.map { SeriesSummary(from: $0) }
+        mainSeries = character.mainSeries?.map { SeriesSummary(from: $0) }
+//        series = character.series?.map { SeriesSummary(from: $0) }
         comics = character.comics?.map { ComicSummary(from: $0) }
     }
 
@@ -87,7 +91,8 @@ extension Domain.Character {
             realName: character.realName,
             aliases: character.aliases,
             birth: character.birth,
-            series: character.series?.map { Domain.SeriesSummary(from: $0) },
+            mainSeries: character.mainSeries?.map { Domain.SeriesSummary(from: $0) },
+            series: nil, // character.series?.map { Domain.SeriesSummary(from: $0) },
             comics: character.comics?.map { Domain.ComicSummary(from: $0) }
         )
     }
@@ -119,6 +124,7 @@ extension Character {
         realName: String? = "Peter Parker",
         aliases: [String]? = nil,
         birth: Date? = nil,
+        mainSeries: [SeriesSummary]? = nil,
         series: [SeriesSummary]? = nil,
         comics: [ComicSummary]? = nil
     ) -> Character {
@@ -131,7 +137,8 @@ extension Character {
             realName: realName,
             aliases: aliases,
             birth: birth,
-            series: series,
+            mainSeries: mainSeries,
+//            series: series,
             comics: comics
         )
     }

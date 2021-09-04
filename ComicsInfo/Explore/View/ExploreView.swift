@@ -21,20 +21,17 @@ struct ExploreView: View {
     var body: some View {
         NavigationView {
             VStack {
-                ScrollView {
-                    LazyVStack(spacing: 4) {
-                        if viewModel.status == .loading {
-                            Spacer()
-                            ProgressView("Loading...")
-                            Spacer()
-                        } else {
-                            exploreList
-                            if viewModel.canLoadMore {
-                                loadingIndicator
-                            }
-                        }
+                if viewModel.status == .loading {
+                    Spacer()
+                    ProgressView("Loading...")
+                    Spacer()
+                } else {
+                    exploreList
+                    if viewModel.canLoadMore {
+                        loadingIndicator
                     }
                 }
+                Spacer()
                 if showBanner {
                     BannerView(
                         showBanner: $showBanner,
@@ -42,6 +39,7 @@ struct ExploreView: View {
                     )
                 }
             }
+            .navigationBarTitle("Explore")
             .toolbar {
                 Button(action: {
                     showAccount.toggle()
@@ -63,13 +61,12 @@ struct ExploreView: View {
     
     private var exploreList: some View {
         ScrollView {
-            LazyVStack {
+            LazyVStack(spacing: 4, pinnedViews: [.sectionHeaders]) {
                 characterList
             }
             .padding(.leading, 8)
             .padding(.trailing, 8)
         }
-        .navigationBarTitle("Explore")
     }
     
     private var characterList: some View {
@@ -78,7 +75,7 @@ struct ExploreView: View {
                 header:
                     makeCharacterView(for: character)
             ) {
-                if let seriesSummaries = character.series {
+                if let seriesSummaries = character.mainSeries {
                     seriesList(for: character.identifier, seriesSummaries: seriesSummaries)
                 }
             }
@@ -92,7 +89,7 @@ struct ExploreView: View {
     private func makeCharacterView(for character: Character) -> some View {
         CharacterView(viewModel: CharacterViewModel(from: character))
             .padding(4)
-            .background(Color.accentColor.opacity(0.3))
+            .background(Color.accentColor)
     }
     
     private func seriesList(for characterID: String, seriesSummaries: [SeriesSummary]) -> some View {
@@ -100,6 +97,7 @@ struct ExploreView: View {
             NavigationLink(destination: ComicsListView(forSeriesSummary: seriesSummary)) {
                 SeriesView(seriesSummary: SeriesSummaryViewModel(from: seriesSummary))
             }
+            .padding(4)
             .id("\(characterID)#\(seriesSummary.identifier)")
             .buttonStyle(PlainButtonStyle())
         }

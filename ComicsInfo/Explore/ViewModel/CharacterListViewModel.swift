@@ -46,7 +46,7 @@ final class CharacterListViewModel: ObservableObject {
 
     func loadAllCharacters(
         lastID: String? = nil,
-        fields: Set<String> = ["series"],
+        fields: Set<String>? = nil,
         limit: Int = 20,
         fromDataSource dataSource: DataSourceLayer = .memory
     ) {

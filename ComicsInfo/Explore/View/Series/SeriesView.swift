@@ -20,12 +20,12 @@ struct SeriesView: View {
                 height: 150
             )
 
-            VStack {
+            VStack(spacing: 8) {
                 Text(seriesSummary.title)
                     .multilineTextAlignment(.center)
                     .frame(maxWidth: .infinity)
-                    .font(.subheadline)
-                Text(seriesSummary.startAndEndYer)
+                    .font(.headline)
+                Text(seriesSummary.startYearString)
                     .frame(maxWidth: .infinity)
                     .font(.footnote)
             }
