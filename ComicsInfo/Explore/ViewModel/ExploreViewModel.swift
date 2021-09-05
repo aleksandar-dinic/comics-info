@@ -17,7 +17,6 @@ final class ExploreViewModel: ObservableObject {
     }
 
     private var characterUseCase: CharacterUseCase
-    private var seriesUseCase: SeriesUseCase
     private(set) var characters: [Character]
     private var charactersIdentifier = Set<String>()
     @Published private(set) var canLoadMore = true
@@ -40,19 +39,17 @@ final class ExploreViewModel: ObservableObject {
 
     init(
         characterUseCase: CharacterUseCase = CharacterUseCase(),
-        seriesUseCase: SeriesUseCase = SeriesUseCase(),
         characters: [Character] = [],
         status: Status = .loading
     ) {
         self.characterUseCase = characterUseCase
-        self.seriesUseCase = seriesUseCase
         self.characters = characters
         self.status = status
     }
 
     func getAllCharacters(
         lastID: String? = nil,
-        fields: Set<String> = ["series"],
+        fields: Set<String>? = nil,
         limit: Int = 20,
         fromDataSource dataSource: DataSourceLayer = .memory
     ) {
@@ -79,32 +76,7 @@ final class ExploreViewModel: ObservableObject {
             }
         }
     }
-    
-    func getAllSeries(
-        for characterID: String,
-        lastID: String? = nil,
-        limit: Int = 20,
-        fromDataSource dataSource: DataSourceLayer = .memory
-    ) {
-        guard !isLoading else { return }
         
-        isLoading = true
-        seriesUseCase.getAllSeries(for: characterID, afterID: lastID, limit: limit, fromDataSource: dataSource) { [weak self] result in
-            guard let self = self else { return }
-            self.isLoading = false
-
-            switch result {
-            case let .success(seriesSummaries):
-                if let index = self.characters.firstIndex(where: { $0.identifier == characterID }) {
-                    self.characters[index].mainSeries?.append(contentsOf: seriesSummaries)
-                }
-                self.status = .showCharacters
-            case let .failure(error):
-                self.status = .error(message: error.localizedDescription)
-            }
-        }
-    }
-    
     var lastIdentifier: String? {
         characters.last?.identifier
     }

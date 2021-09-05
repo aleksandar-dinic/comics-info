@@ -71,10 +71,7 @@ struct ExploreView: View {
     
     private var characterList: some View {
         ForEach(viewModel.characters, id: \.identifier) { character in
-            Section(
-                header:
-                    makeCharacterView(for: character)
-            ) {
+            Section(header: makeCharacterView(for: character)) {
                 if let seriesSummaries = character.mainSeries {
                     seriesList(for: character.identifier, seriesSummaries: seriesSummaries)
                 }
@@ -118,7 +115,6 @@ struct ExploreView_Previews: PreviewProvider {
 
     static let viewModel = ExploreViewModel(
         characterUseCase: CharacterUseCase(),
-        seriesUseCase: SeriesUseCase(),
         characters: [
             Character.make(identifier: "1", name: "Spider-Man"),
             Character.make(identifier: "2", name: "Flash"),
