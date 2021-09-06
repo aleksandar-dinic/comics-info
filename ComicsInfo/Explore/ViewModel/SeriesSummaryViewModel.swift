@@ -40,12 +40,16 @@ struct SeriesSummaryViewModel: Codable {
         seriesSummary.endYear
     }
 
-    var startYearString: String {
-        guard let startYear = startYear else {
-            return ""
+    var startEndYear: String {
+        if let startYear = startYear, let endYear = endYear {
+            return "(\(startYear) - \(endYear))"
+        } else if let startYear = startYear {
+            return "(\(startYear) - Present)"
+        } else if let endYear = endYear {
+            return "(???? - \(endYear))"
         }
 
-        return "\(startYear)"
+        return ""
     }
 
 }

@@ -25,7 +25,7 @@ struct SeriesView: View {
                     .multilineTextAlignment(.center)
                     .frame(maxWidth: .infinity)
                     .font(.headline)
-                Text(seriesSummary.startYearString)
+                Text(seriesSummary.startEndYear)
                     .frame(maxWidth: .infinity)
                     .font(.footnote)
             }
