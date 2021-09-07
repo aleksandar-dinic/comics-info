@@ -102,6 +102,7 @@
 		648C13A726E28C6300F06910 /* FeedbackRepositoryFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648C13A626E28C6300F06910 /* FeedbackRepositoryFactory.swift */; };
 		648C13AA26E2973000F06910 /* FeedbackAPIProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648C13A926E2972F00F06910 /* FeedbackAPIProvider.swift */; };
 		648C13AC26E29A3400F06910 /* FeedbackEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648C13AB26E29A3400F06910 /* FeedbackEndpoint.swift */; };
+		648C152E26E7DF8B00F06910 /* CharacterInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648C152D26E7DF8B00F06910 /* CharacterInfoView.swift */; };
 		649D5C8024E1F18B004C6328 /* ComicsInfoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649D5C7F24E1F18B004C6328 /* ComicsInfoApp.swift */; };
 		649D5C8424E1F18C004C6328 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 649D5C8324E1F18C004C6328 /* Assets.xcassets */; };
 		649D5C8724E1F18C004C6328 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 649D5C8624E1F18C004C6328 /* Preview Assets.xcassets */; };
@@ -269,6 +270,7 @@
 		648C13A626E28C6300F06910 /* FeedbackRepositoryFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackRepositoryFactory.swift; sourceTree = "<group>"; };
 		648C13A926E2972F00F06910 /* FeedbackAPIProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackAPIProvider.swift; sourceTree = "<group>"; };
 		648C13AB26E29A3400F06910 /* FeedbackEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackEndpoint.swift; sourceTree = "<group>"; };
+		648C152D26E7DF8B00F06910 /* CharacterInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterInfoView.swift; sourceTree = "<group>"; };
 		649D5C7C24E1F18B004C6328 /* Comics Info (Development).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Comics Info (Development).app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		649D5C7F24E1F18B004C6328 /* ComicsInfoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicsInfoApp.swift; sourceTree = "<group>"; };
 		649D5C8324E1F18C004C6328 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -801,6 +803,22 @@
 			path = UseCase;
 			sourceTree = "<group>";
 		};
+		648C152B26E7DF6F00F06910 /* Character */ = {
+			isa = PBXGroup;
+			children = (
+				648C152C26E7DF7C00F06910 /* View */,
+			);
+			path = Character;
+			sourceTree = "<group>";
+		};
+		648C152C26E7DF7C00F06910 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				648C152D26E7DF8B00F06910 /* CharacterInfoView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		649D5C7324E1F18B004C6328 = {
 			isa = PBXGroup;
 			children = (
@@ -829,6 +847,7 @@
 				648C11C326DF7DB300F06910 /* Account */,
 				649D5D3724E5DE6B004C6328 /* App */,
 				648C11B726DD63E100F06910 /* Banner */,
+				648C152B26E7DF6F00F06910 /* Character */,
 				64DB1DA926C180E1009492AA /* Comics */,
 				6469B01425DD3B65000148B8 /* Config */,
 				64DB1D7826C16627009492AA /* Explore */,
@@ -1406,6 +1425,7 @@
 				648C13AA26E2973000F06910 /* FeedbackAPIProvider.swift in Sources */,
 				64B434FE24F440570054A20C /* ComicAPIProvider.swift in Sources */,
 				649D5D0E24E5C97F004C6328 /* ExploreViewModel.swift in Sources */,
+				648C152E26E7DF8B00F06910 /* CharacterInfoView.swift in Sources */,
 				64DB1DED26C1AB69009492AA /* CharacterEndpoint.swift in Sources */,
 				647A710526C94D5D0024426E /* ImageLoader.swift in Sources */,
 				649D5D0224E5C97F004C6328 /* ComicThumbnailView.swift in Sources */,
