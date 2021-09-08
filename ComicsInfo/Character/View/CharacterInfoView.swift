@@ -9,6 +9,8 @@ import SwiftUI
 
 struct CharacterInfoView: View {
     
+    private lazy var viewModel = CharacterInfoViewModel()
+    
     var body: some View {
         Text("Hello, World!")
     }
