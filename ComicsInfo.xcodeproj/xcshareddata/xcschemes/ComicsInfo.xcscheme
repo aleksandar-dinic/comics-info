@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "649D5C7B24E1F18B004C6328"
-               BuildableName = "ComicsInfo (Development).app"
+               BuildableName = "Comics Info (Development).app"
                BlueprintName = "ComicsInfo"
                ReferencedContainer = "container:ComicsInfo.xcodeproj">
             </BuildableReference>
@@ -66,7 +66,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "649D5C7B24E1F18B004C6328"
-            BuildableName = "ComicsInfo (Development).app"
+            BuildableName = "Comics Info (Development).app"
             BlueprintName = "ComicsInfo"
             ReferencedContainer = "container:ComicsInfo.xcodeproj">
          </BuildableReference>
@@ -83,7 +83,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "649D5C7B24E1F18B004C6328"
-            BuildableName = "ComicsInfo (Development).app"
+            BuildableName = "Comics Info (Development).app"
             BlueprintName = "ComicsInfo"
             ReferencedContainer = "container:ComicsInfo.xcodeproj">
          </BuildableReference>

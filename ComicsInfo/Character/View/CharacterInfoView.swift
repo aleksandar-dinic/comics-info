@@ -9,16 +9,31 @@ import SwiftUI
 
 struct CharacterInfoView: View {
     
-    private lazy var viewModel = CharacterInfoViewModel()
+    @State var viewModel: CharacterInfoViewModel
     
     var body: some View {
-        Text("Hello, World!")
+        VStack {
+            HStack {
+                CharacterInfoThumbnailView(
+                    imageName: viewModel.thumbnail,
+                    systemName: viewModel.thumbnailSystemName,
+                    height: 100
+                )
+                
+                Text(viewModel.name)
+            }
+        }
     }
     
 }
 
 struct CharacterInfoView_Previews: PreviewProvider {
+    
+    private static let character = Character.make()
+    private static let viewModel = CharacterInfoViewModel(from: character)
+    
     static var previews: some View {
-        CharacterInfoView()
+        CharacterInfoView(viewModel: viewModel)
     }
+    
 }
