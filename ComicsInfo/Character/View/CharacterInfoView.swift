@@ -22,6 +22,10 @@ struct CharacterInfoView: View {
                 
                 Text(viewModel.name)
             }
+            
+            if !viewModel.description.isEmpty {
+                DescriptionView(description: viewModel.description)
+            }
         }
     }
     

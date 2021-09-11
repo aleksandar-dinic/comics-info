@@ -19,6 +19,10 @@ struct CharacterInfoViewModel {
         character.name
     }
     
+    var description: String {
+        character.description ?? ""
+    }
+    
     var thumbnail: String {
         character.thumbnail ?? ""
     }
