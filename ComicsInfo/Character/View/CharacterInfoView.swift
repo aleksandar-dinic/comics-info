@@ -13,20 +13,26 @@ struct CharacterInfoView: View {
     
     var body: some View {
         VStack {
-            HStack {
-                CharacterInfoThumbnailView(
-                    imageName: viewModel.thumbnail,
-                    systemName: viewModel.thumbnailSystemName,
-                    height: 100
-                )
+            ScrollView {
+                LazyVStack {
+                    HStack {
+                        CharacterInfoThumbnailView(
+                            imageName: viewModel.thumbnail,
+                            systemName: viewModel.thumbnailSystemName,
+                            height: 100
+                        )
                 
-                Text(viewModel.name)
-            }
+                        Text(viewModel.name)
+                    }
+                    .padding()
             
-            if !viewModel.description.isEmpty {
-                DescriptionView(description: viewModel.description)
+                    if !viewModel.description.isEmpty {
+                        DescriptionView(description: viewModel.description)
+                    }
+                }
             }
         }
+        .navigationBarTitle(viewModel.name, displayMode: .inline)
     }
     
 }
