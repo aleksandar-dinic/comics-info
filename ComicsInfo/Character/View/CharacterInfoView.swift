@@ -10,6 +10,7 @@ import SwiftUI
 struct CharacterInfoView: View {
     
     @State var viewModel: CharacterInfoViewModel
+    @State private var showBanner = true
     
     var body: some View {
         VStack {
@@ -30,6 +31,9 @@ struct CharacterInfoView: View {
                         DescriptionView(description: viewModel.description)
                     }
                 }
+            }
+            if showBanner {
+                BannerView(showBanner: $showBanner, adUnitID: Environment.characterInfoADUnitID)
             }
         }
         .navigationBarTitle(viewModel.name, displayMode: .inline)

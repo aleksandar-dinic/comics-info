@@ -211,5 +211,7 @@
 	<string>$(ACCOUNT_AD_UNIT_ID)</string>
 	<key>EXPLORE_AD_UNIT_ID</key>
 	<string>$(EXPLORE_AD_UNIT_ID)</string>
+	<key>CHARACTER_INFO_AD_UNIT_ID</key>
+	<string>$(CHARACTER_INFO_AD_UNIT_ID)</string>
 </dict>
 </plist>
