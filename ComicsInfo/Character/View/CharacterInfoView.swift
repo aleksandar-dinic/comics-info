@@ -24,6 +24,7 @@ struct CharacterInfoView: View {
                         )
                 
                         Text(viewModel.name)
+                            .frame(minWidth: 0, maxWidth: .infinity)
                     }
                     .padding()
             
