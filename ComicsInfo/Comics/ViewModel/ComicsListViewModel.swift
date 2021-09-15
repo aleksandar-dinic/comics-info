@@ -68,10 +68,10 @@ final class ComicsListViewModel: ObservableObject {
                 }
                 self.status = .showComics
                 self.canLoadMore = comics.count >= limit
-            case let .failure(error):
+            case .failure:
                 self.canLoadMore = false
                 guard self.comics.isEmpty else { return }
-                self.status = .error(message: error.localizedDescription)
+                self.status = .error(message: "Something went wrong. Please try again later ❤️")
             }
         }
     }

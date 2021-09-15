@@ -76,7 +76,7 @@ extension NetworkError: LocalizedError {
              let .conflict(message):
             return message
         default:
-            return "somethingWentWrongLocalized"
+            return "Something went wrong. Please try again later ❤️"
         }
     }
     

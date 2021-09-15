@@ -69,10 +69,10 @@ final class ExploreViewModel: ObservableObject {
                 }
                 self.canLoadMore = characters.count >= limit
                 self.status = .showCharacters
-            case let .failure(error):
+            case .failure:
                 self.canLoadMore = false
                 guard self.characters.isEmpty else { return }
-                self.status = .error(message: error.localizedDescription)
+                self.status = .error(message: "Something went wrong. Please try again later ❤️")
             }
         }
     }
