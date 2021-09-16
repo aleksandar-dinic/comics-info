@@ -24,10 +24,22 @@ struct CharacterInfoView: View {
                         )
                 
                         Text(viewModel.name)
+                            .font(.subheadline)
                             .frame(minWidth: 0, maxWidth: .infinity)
                     }
                     .padding()
             
+                    if !viewModel.realName.isEmpty {
+                        HStack {
+                            Text("Real Name:")
+                                .font(.subheadline)
+                            Text(viewModel.realName)
+                                .font(.subheadline)
+                            Spacer()
+                        }
+                        .padding([.trailing, .leading])
+                    }
+                    
                     if !viewModel.description.isEmpty {
                         DescriptionView(description: viewModel.description)
                     }

@@ -19,6 +19,10 @@ struct CharacterInfoViewModel {
         character.name
     }
     
+    var realName: String {
+        character.realName ?? ""
+    }
+    
     var description: String {
         character.description ?? ""
     }
