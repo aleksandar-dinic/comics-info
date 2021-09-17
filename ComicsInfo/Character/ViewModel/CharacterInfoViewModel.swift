@@ -23,6 +23,10 @@ struct CharacterInfoViewModel {
         character.realName ?? ""
     }
     
+    var birth: String {
+        character.birth?.toString() ?? ""
+    }
+    
     var description: String {
         character.description ?? ""
     }

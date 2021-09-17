@@ -40,6 +40,17 @@ struct CharacterInfoView: View {
                         .padding([.trailing, .leading])
                     }
                     
+                    if !viewModel.birth.isEmpty {
+                        HStack {
+                            Text("Birth:")
+                                .font(.subheadline)
+                            Text(viewModel.birth)
+                                .font(.subheadline)
+                            Spacer()
+                        }
+                        .padding([.trailing, .leading])
+                    }
+                    
                     if !viewModel.description.isEmpty {
                         DescriptionView(description: viewModel.description)
                     }

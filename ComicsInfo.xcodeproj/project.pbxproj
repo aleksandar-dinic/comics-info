@@ -131,6 +131,7 @@
 		649D5D2F24E5C9C9004C6328 /* ComicsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649D5D2B24E5C9C9004C6328 /* ComicsUITests.swift */; };
 		649D5D3024E5C9C9004C6328 /* ComicInfoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649D5D2C24E5C9C9004C6328 /* ComicInfoUITests.swift */; };
 		649D5D3124E5C9C9004C6328 /* AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649D5D2D24E5C9C9004C6328 /* AppTests.swift */; };
+		64A1311626F5336100B24548 /* Date+StringFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A1311526F5336100B24548 /* Date+StringFormat.swift */; };
 		64B434B224F3DF480054A20C /* CharacterCacheProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B434B124F3DF480054A20C /* CharacterCacheProvider.swift */; };
 		64B434B724F3E5270054A20C /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B434B624F3E5270054A20C /* Character.swift */; };
 		64B434C024F3E8500054A20C /* CharacterCacheProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B434BF24F3E8500054A20C /* CharacterCacheProviderTests.swift */; };
@@ -307,6 +308,7 @@
 		649D5D2B24E5C9C9004C6328 /* ComicsUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComicsUITests.swift; sourceTree = "<group>"; };
 		649D5D2C24E5C9C9004C6328 /* ComicInfoUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComicInfoUITests.swift; sourceTree = "<group>"; };
 		649D5D2D24E5C9C9004C6328 /* AppTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppTests.swift; sourceTree = "<group>"; };
+		64A1311526F5336100B24548 /* Date+StringFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+StringFormat.swift"; sourceTree = "<group>"; };
 		64B434B124F3DF480054A20C /* CharacterCacheProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCacheProvider.swift; sourceTree = "<group>"; };
 		64B434B624F3E5270054A20C /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		64B434BF24F3E8500054A20C /* CharacterCacheProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCacheProviderTests.swift; sourceTree = "<group>"; };
@@ -508,6 +510,7 @@
 			isa = PBXGroup;
 			children = (
 				642CF2B926DB94A30054B881 /* EnvironmentValues+Cache.swift */,
+				64A1311526F5336100B24548 /* Date+StringFormat.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1464,6 +1467,7 @@
 				6420EED425FAC2AA00B7F47B /* CharacterAPIWrapperFactory.swift in Sources */,
 				6420EEC425FAC29F00B7F47B /* CharacterAPIWrapper.swift in Sources */,
 				649D5D0C24E5C97F004C6328 /* CharacterView.swift in Sources */,
+				64A1311626F5336100B24548 /* Date+StringFormat.swift in Sources */,
 				649D5D0424E5C97F004C6328 /* ComicsListView.swift in Sources */,
 				6420EF1425FAC2DA00B7F47B /* SeriesDataRepository.swift in Sources */,
 				64DB1DBE26C1A161009492AA /* NetworkLogger.swift in Sources */,
