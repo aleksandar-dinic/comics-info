@@ -23,7 +23,7 @@ struct CharacterInfoViewModel {
         character.realName ?? ""
     }
     
-    var birth: String {
+    var birthday: String {
         character.birth?.toString() ?? ""
     }
     

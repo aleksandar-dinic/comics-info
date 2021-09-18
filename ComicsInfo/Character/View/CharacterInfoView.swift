@@ -40,11 +40,11 @@ struct CharacterInfoView: View {
                         .padding([.trailing, .leading])
                     }
                     
-                    if !viewModel.birth.isEmpty {
+                    if !viewModel.birthday.isEmpty {
                         HStack {
-                            Text("Birth:")
+                            Text("Birthday:")
                                 .font(.subheadline)
-                            Text(viewModel.birth)
+                            Text(viewModel.birthday)
                                 .font(.subheadline)
                             Spacer()
                         }
