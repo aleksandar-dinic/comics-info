@@ -33,6 +33,18 @@ struct SeriesSummary: Codable, Hashable {
 
 }
 
+extension SeriesSummary: Comparable {
+    
+    static func < (lhs: SeriesSummary, rhs: SeriesSummary) -> Bool {
+        guard lhs.popularity != rhs.popularity else {
+            return lhs.title < rhs.title
+        }
+        
+        return abs(lhs.popularity - 100) < abs(rhs.popularity - 100)
+    }
+    
+}
+
 extension SeriesSummary {
     
     init(from summary: Domain.SeriesSummary) {

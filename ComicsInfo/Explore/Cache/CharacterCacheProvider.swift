@@ -22,6 +22,9 @@ struct CharacterCacheProvider: CharacterCacheService {
     func getAllCharacters(afterID: String?, limit: Int) -> [Character]? {
         guard var items = characterCache.values() else { return nil }
         items.sort()
+        for (i, _) in items.enumerated() {
+            items[i].mainSeries?.sort()
+        }
         guard !items.isEmpty else { return nil }
         var start = 0
         let count = items.count

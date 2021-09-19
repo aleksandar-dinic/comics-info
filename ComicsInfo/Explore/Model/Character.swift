@@ -72,7 +72,7 @@ extension Character {
         realName = character.realName
         aliases = character.aliases
         birth = character.birth
-        mainSeries = character.mainSeries?.map { SeriesSummary(from: $0) }
+        mainSeries = character.mainSeries?.map { SeriesSummary(from: $0) }.sorted()
 //        series = character.series?.map { SeriesSummary(from: $0) }
         comics = character.comics?.map { ComicSummary(from: $0) }
     }
