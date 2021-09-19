@@ -111,6 +111,36 @@ final class Cache<Key: Hashable, Value>: Codable where Key: Codable, Value: Coda
         return try? JSONDecoder().decode(Self.self, from: data)
     }
     
+    func saveImageToDisc(
+        _ data: Data,
+        withName name: String,
+        using fileManager: FileManager = .default
+    ) throws {
+        let folderURLs = fileManager.urls(
+            for: .cachesDirectory,
+            in: .userDomainMask
+        )
+        
+        let imagesURL = folderURLs[0].appendingPathComponent("Images")
+        try fileManager.createDirectory(atPath: imagesURL.path, withIntermediateDirectories: true)
+
+        let fileURL = folderURLs[0].appendingPathComponent("Images/\(name)")
+        try data.write(to: fileURL)
+    }
+    
+    func getImageFromDisc(
+        withName name: String,
+        using fileManager: FileManager = .default
+    ) -> Data? {
+        let folderURLs = fileManager.urls(
+            for: .cachesDirectory,
+            in: .userDomainMask
+        )
+        
+        let fileURL = folderURLs[0].appendingPathComponent("Images/\(name)")
+        return try? Data(contentsOf: fileURL)
+    }
+    
     subscript(key: Key) -> Value? {
         get {
             queue.sync {

@@ -18,7 +18,7 @@ final class ImageLoader: ObservableObject {
     private(set) var isLoading = false
     private static let queue = DispatchQueue(label: String(describing: ImageLoader.self))
 
-    init(url: URL?, cache: Cache<URL, Data> = Cache<URL, Data>()) {
+    init(url: URL?, cache: Cache<URL, Data> = Cache<URL, Data>(maximumEntryCount: 10_000)) {
         self.url = url
         self.cache = cache
     }
@@ -31,6 +31,12 @@ final class ImageLoader: ObservableObject {
         guard !isLoading, let url = url else { return }
 
         if let data = cache[url], let image = UIImage(data: data) {
+            self.image = image
+            return
+        }
+        
+        if let data = cache.getImageFromDisc(withName: url.lastPathComponent), let image = UIImage(data: data) {
+            cache[url] = data
             self.image = image
             return
         }
@@ -61,9 +67,9 @@ final class ImageLoader: ObservableObject {
     }
     
     private func cache(_ image: UIImage?) {
-        guard let url = url else { return }
-        image.map { cache[url] = $0.pngData() }
-        try? cache.saveToDisc(.images)
+        guard let url = url, let data = image?.pngData() else { return }
+        cache[url] = data
+        try? cache.saveImageToDisc(data, withName: url.lastPathComponent)
     }
     
 }

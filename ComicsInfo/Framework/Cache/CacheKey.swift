@@ -59,6 +59,6 @@ struct ComicSummaryCacheKey: EnvironmentKey {
 
 struct ImageCacheKey: EnvironmentKey {
     
-    static let defaultValue: Cache = Cache<URL, Data>.getFromDisc(.images) ?? Cache<URL, Data>()
+    static let defaultValue: Cache = Cache<URL, Data>(maximumEntryCount: 10_000)
     
 }
