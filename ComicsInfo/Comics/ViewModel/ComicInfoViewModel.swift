@@ -73,7 +73,7 @@ final class ComicInfoViewModel {
         guard let number = comicSummary.number else {
             return "\(seriesSummaryViewModel.title)"
         }
-        return "\(seriesSummaryViewModel.title) \"#\(number)\""
+        return "\(seriesSummaryViewModel.title) #\(number)"
     }
     
     var publishedDate: String {

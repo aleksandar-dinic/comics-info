@@ -47,7 +47,7 @@ struct ComicSummaryViewModel {
         guard let number = comicSummary.number else {
             return "\(seriesSummaryViewModel.title)"
         }
-        return "\(seriesSummaryViewModel.title) \"#\(number)\""
+        return "\(seriesSummaryViewModel.title) #\(number)"
     }
     
 }
