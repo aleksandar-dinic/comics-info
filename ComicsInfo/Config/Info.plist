@@ -2,8 +2,40 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>ACCOUNT_AD_UNIT_ID</key>
+	<string>$(ACCOUNT_AD_UNIT_ID)</string>
+	<key>AD_UNIT_ID</key>
+	<string>$(AD_UNIT_ID)</string>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>CFBundleExecutable</key>
+	<string>$(EXECUTABLE_NAME)</string>
+	<key>CFBundleIdentifier</key>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>$(APP_NAME)</string>
+	<key>CFBundlePackageType</key>
+	<string>$(PRODUCT_BUNDLE_PACKAGE_TYPE)</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.0</string>
+	<key>CFBundleVersion</key>
+	<string>1</string>
+	<key>CHARACTER_INFO_AD_UNIT_ID</key>
+	<string>$(CHARACTER_INFO_AD_UNIT_ID)</string>
+	<key>COMICS_LIST_AD_UNIT_ID</key>
+	<string>$(COMICS_LIST_AD_UNIT_ID)</string>
+	<key>COMIC_INFO_AD_UNIT_ID</key>
+	<string>$(COMIC_INFO_AD_UNIT_ID)</string>
+	<key>EXPLORE_AD_UNIT_ID</key>
+	<string>$(EXPLORE_AD_UNIT_ID)</string>
 	<key>GADApplicationIdentifier</key>
 	<string>ca-app-pub-1732905235955483~9401913650</string>
+	<key>LSRequiresIPhoneOS</key>
+	<true/>
+	<key>ROOT_URL</key>
+	<string>$(ROOT_URL)</string>
 	<key>SKAdNetworkItems</key>
 	<array>
 		<dict>
@@ -155,24 +187,6 @@
 			<string>3qcr597p9d.skadnetwork</string>
 		</dict>
 	</array>
-	<key>CFBundleDevelopmentRegion</key>
-	<string>$(DEVELOPMENT_LANGUAGE)</string>
-	<key>CFBundleExecutable</key>
-	<string>$(EXECUTABLE_NAME)</string>
-	<key>CFBundleIdentifier</key>
-	<string>$(APP_BUNDLE_ID)</string>
-	<key>CFBundleInfoDictionaryVersion</key>
-	<string>6.0</string>
-	<key>CFBundleName</key>
-	<string>$(APP_NAME)</string>
-	<key>CFBundlePackageType</key>
-	<string>$(PRODUCT_BUNDLE_PACKAGE_TYPE)</string>
-	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
-	<key>CFBundleVersion</key>
-	<string>1</string>
-	<key>LSRequiresIPhoneOS</key>
-	<true/>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -199,19 +213,5 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>ROOT_URL</key>
-	<string>$(ROOT_URL)</string>
-	<key>AD_UNIT_ID</key>
-	<string>$(AD_UNIT_ID)</string>
-	<key>COMICS_LIST_AD_UNIT_ID</key>
-	<string>$(COMICS_LIST_AD_UNIT_ID)</string>
-	<key>COMIC_INFO_AD_UNIT_ID</key>
-	<string>$(COMIC_INFO_AD_UNIT_ID)</string>
-	<key>ACCOUNT_AD_UNIT_ID</key>
-	<string>$(ACCOUNT_AD_UNIT_ID)</string>
-	<key>EXPLORE_AD_UNIT_ID</key>
-	<string>$(EXPLORE_AD_UNIT_ID)</string>
-	<key>CHARACTER_INFO_AD_UNIT_ID</key>
-	<string>$(CHARACTER_INFO_AD_UNIT_ID)</string>
 </dict>
 </plist>

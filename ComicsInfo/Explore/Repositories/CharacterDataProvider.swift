@@ -58,7 +58,7 @@ struct CharacterDataProvider {
             switch result {
             case let .success(characters):
                 characterCacheService.save(characters: characters)
-                complete(.success(characters))
+                complete(.success(characters.sorted()))
 
             case let .failure(error):
                 complete(.failure(error))

@@ -1876,7 +1876,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"ComicsInfo/Preview Content\"";
-				DEVELOPMENT_TEAM = EFN9DUXPCQ;
+				DEVELOPMENT_TEAM = 25K5FYN7Y9;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = ComicsInfo/Config/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -1885,7 +1885,7 @@
 					"@executable_path/Frameworks",
 				);
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_ID)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.InfoAboutComics.staging;
 				PRODUCT_NAME = "$(APP_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -2002,7 +2002,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"ComicsInfo/Preview Content\"";
-				DEVELOPMENT_TEAM = EFN9DUXPCQ;
+				DEVELOPMENT_TEAM = 25K5FYN7Y9;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = ComicsInfo/Config/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -2011,7 +2011,7 @@
 					"@executable_path/Frameworks",
 				);
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_ID)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.InfoAboutComics;
 				PRODUCT_NAME = "$(APP_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -2218,7 +2218,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"ComicsInfo/Preview Content\"";
-				DEVELOPMENT_TEAM = EFN9DUXPCQ;
+				DEVELOPMENT_TEAM = 25K5FYN7Y9;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = ComicsInfo/Config/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -2227,7 +2227,7 @@
 					"@executable_path/Frameworks",
 				);
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_ID)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.InfoAboutComics.dev;
 				PRODUCT_NAME = "$(APP_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
