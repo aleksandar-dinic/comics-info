@@ -24,6 +24,7 @@ struct ComicSummaryView: View {
                 Spacer()
                 Spacer()
                 Text(viewModel.issue)
+                    .multilineTextAlignment(.center)
                     .frame(maxWidth: .infinity)
                     .font(.subheadline)
                 Spacer()
