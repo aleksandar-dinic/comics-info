@@ -46,16 +46,16 @@ struct SupportView: View {
     }
     
     private func makeSendButton() -> some View {
-        Button("Send") {
+        Button(action: {
             viewModel.createFeedback(message: viewModel.message, email: viewModel.email)
+        }) {
+            Text("Send")
+                .frame(maxWidth: .infinity, minHeight: 40, maxHeight: 40, alignment: .center)
+                .foregroundColor(Color.white)
+                .background(Color("AccentColor"))
+                .cornerRadius(4)
         }
-        .frame(height: 40)
         .disabled(viewModel.sendButtonIsDisabled)
-        .frame(maxWidth: .infinity)
-        .padding(4)
-        .foregroundColor(Color.white)
-        .background(Color("AccentColor"))
-        .cornerRadius(4)
         .opacity(viewModel.sendButtonIsDisabled ? 0.3 : 1)
     }
     
