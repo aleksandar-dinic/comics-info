@@ -11,7 +11,7 @@ import SwiftUI
 struct ComicInfoView: View {
 
     let viewModel: ComicInfoViewModel
-    @State private var showBanner = true
+    @State private var showBanner = AppTrackingManager.authorization
 
     var body: some View {
         VStack {

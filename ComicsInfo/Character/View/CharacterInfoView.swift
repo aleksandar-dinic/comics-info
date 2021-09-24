@@ -10,7 +10,7 @@ import SwiftUI
 struct CharacterInfoView: View {
     
     @State var viewModel: CharacterInfoViewModel
-    @State private var showBanner = true
+    @State private var showBanner = AppTrackingManager.authorization
     
     var body: some View {
         VStack {

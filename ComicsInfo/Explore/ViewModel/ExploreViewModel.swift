@@ -21,6 +21,7 @@ final class ExploreViewModel: ObservableObject {
     private var charactersIdentifier = Set<String>()
     @Published private(set) var canLoadMore = true
     @Published private(set) var isLoading = false
+    @Published var showBanner = false
 
     @Published private(set) var status: Status {
         didSet {
@@ -40,11 +41,13 @@ final class ExploreViewModel: ObservableObject {
     init(
         characterUseCase: CharacterUseCase = CharacterUseCase(),
         characters: [Character] = [],
-        status: Status = .loading
+        status: Status = .loading,
+        showBanner: Bool = AppTrackingManager.authorization
     ) {
         self.characterUseCase = characterUseCase
         self.characters = characters
         self.status = status
+        self.showBanner = showBanner
     }
 
     func getAllCharacters(

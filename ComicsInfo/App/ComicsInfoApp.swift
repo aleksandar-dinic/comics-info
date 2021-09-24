@@ -8,7 +8,6 @@
 import SwiftUI
 import Firebase
 import GoogleMobileAds
-import AppTrackingTransparency
 
 @main
 struct ComicsInfoApp: App {
@@ -25,8 +24,12 @@ struct ComicsInfoApp: App {
         WindowGroup {
 //            HomeView()
             ExploreView()
-                .onAppear {
-                    ATTrackingManager.requestTrackingAuthorization() { _ in }
+                .onReceive(
+                    NotificationCenter.default.publisher(
+                        for: UIApplication.didBecomeActiveNotification
+                    )
+                ) { _ in
+                    AppTrackingManager.askForPermission()
                 }
         }
     }

@@ -147,6 +147,7 @@
 		64B434FC24F43FE90054A20C /* ComicCacheProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B434FB24F43FE90054A20C /* ComicCacheProviderTests.swift */; };
 		64B434FE24F440570054A20C /* ComicAPIProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B434FD24F440570054A20C /* ComicAPIProvider.swift */; };
 		64B4350D24F441CA0054A20C /* ComicAPIServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B4350C24F441CA0054A20C /* ComicAPIServiceTests.swift */; };
+		64D4EC3E26FE4A3E001BB4D6 /* AppTrackingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D4EC3D26FE4A3E001BB4D6 /* AppTrackingManager.swift */; };
 		64DB1DB926C1A114009492AA /* EndpointType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DB1DB826C1A114009492AA /* EndpointType.swift */; };
 		64DB1DBE26C1A161009492AA /* NetworkLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DB1DBD26C1A161009492AA /* NetworkLogger.swift */; };
 		64DB1DC326C1A175009492AA /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DB1DC226C1A175009492AA /* NetworkManager.swift */; };
@@ -324,6 +325,7 @@
 		64B434FB24F43FE90054A20C /* ComicCacheProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicCacheProviderTests.swift; sourceTree = "<group>"; };
 		64B434FD24F440570054A20C /* ComicAPIProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicAPIProvider.swift; sourceTree = "<group>"; };
 		64B4350C24F441CA0054A20C /* ComicAPIServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicAPIServiceTests.swift; sourceTree = "<group>"; };
+		64D4EC3D26FE4A3E001BB4D6 /* AppTrackingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTrackingManager.swift; sourceTree = "<group>"; };
 		64DB1DB826C1A114009492AA /* EndpointType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointType.swift; sourceTree = "<group>"; };
 		64DB1DBD26C1A161009492AA /* NetworkLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLogger.swift; sourceTree = "<group>"; };
 		64DB1DC226C1A175009492AA /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
@@ -1054,6 +1056,7 @@
 		64B434AE24F3DF0E0054A20C /* Framework */ = {
 			isa = PBXGroup;
 			children = (
+				64D4EC3C26FE4A12001BB4D6 /* AppTracking */,
 				64B434AF24F3DF1E0054A20C /* Cache */,
 				642CF2B826DB947F0054B881 /* Extensions */,
 				648C119E26DD391000F06910 /* Firebase */,
@@ -1121,6 +1124,14 @@
 				64B434F624F41B2B0054A20C /* SeriesAPIServiceTests.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		64D4EC3C26FE4A12001BB4D6 /* AppTracking */ = {
+			isa = PBXGroup;
+			children = (
+				64D4EC3D26FE4A3E001BB4D6 /* AppTrackingManager.swift */,
+			);
+			path = AppTracking;
 			sourceTree = "<group>";
 		};
 		64DB1D7826C16627009492AA /* Explore */ = {
@@ -1474,6 +1485,7 @@
 				6420EDC825F9206900B7F47B /* ComicSummary.swift in Sources */,
 				6420EEC825FAC2A300B7F47B /* CharacterDataProvider.swift in Sources */,
 				649D5D0D24E5C97F004C6328 /* CharacterUseCase.swift in Sources */,
+				64D4EC3E26FE4A3E001BB4D6 /* AppTrackingManager.swift in Sources */,
 				64DB1DDB26C1A225009492AA /* Response.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

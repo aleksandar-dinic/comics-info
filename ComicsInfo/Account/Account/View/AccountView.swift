@@ -10,7 +10,7 @@ import SwiftUI
 struct AccountView: View {
     
     @SwiftUI.Environment(\.presentationMode) var presentationMode
-    @State private var showBanner = true
+    @State private var showBanner = AppTrackingManager.authorization
     
     var body: some View {
         NavigationView {

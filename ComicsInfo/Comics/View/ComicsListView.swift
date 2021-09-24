@@ -12,7 +12,7 @@ struct ComicsListView: View {
 
     private let seriesSummary: SeriesSummaryViewModel
     @ObservedObject private var viewModel: ComicsListViewModel
-    @State private var showBanner = true
+    @State private var showBanner = AppTrackingManager.authorization
 
     init(
         forSeriesSummary seriesSummary: SeriesSummary,

@@ -11,7 +11,6 @@ import SwiftUI
 struct ExploreView: View {
 
     @ObservedObject private var viewModel: ExploreViewModel
-    @State private var showBanner = true
     @State private var showAccount = false
 
     init(_ viewModel: ExploreViewModel = ExploreViewModel()) {
@@ -31,10 +30,10 @@ struct ExploreView: View {
                         loadingIndicator
                     }
                 }
-                Spacer()
-                if showBanner {
+
+                if viewModel.showBanner {
                     BannerView(
-                        showBanner: $showBanner,
+                        showBanner: $viewModel.showBanner,
                         adUnitID: Environment.exploreADUnitID
                     )
                 }
