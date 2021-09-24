@@ -16,7 +16,7 @@ struct ComicThumbnailView: View {
 
     var body: some View {
         thumbnailImage(for: URL(string: imageName))
-            .aspectRatio(contentMode: .fit)
+            .aspectRatio(contentMode: .fill)
             .frame(width: height/1.5, height: height)
             .cornerRadius(8)
             .padding(1)
