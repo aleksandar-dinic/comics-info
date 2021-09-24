@@ -39,6 +39,7 @@ struct AccountView: View {
                 }
             }
         }
+        .accentColor(Color("AccentColor"))
     }
     
 }

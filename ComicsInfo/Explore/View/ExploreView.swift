@@ -57,6 +57,7 @@ struct ExploreView: View {
         .sheet(isPresented: $showAccount) {
             AccountView()
         }
+        .accentColor(Color("AccentColor"))
     }
     
     private var exploreList: some View {
@@ -93,7 +94,7 @@ struct ExploreView: View {
     private func makeCharacterView(for character: Character) -> some View {
         CharacterView(viewModel: CharacterViewModel(from: character))
             .padding(4)
-            .background(Color.accentColor)
+            .background(Color("AccentColor"))
     }
     
     private func seriesList(for characterID: String, seriesSummaries: [SeriesSummary]) -> some View {

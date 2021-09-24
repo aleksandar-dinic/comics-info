@@ -1551,6 +1551,7 @@
 			baseConfigurationReference = 6469B01D25DD3BEF000148B8 /* Production.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -1641,7 +1642,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = HGJPBAF3DU;
+				DEVELOPMENT_TEAM = 25K5FYN7Y9;
 				INFOPLIST_FILE = ComicsInfoTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1653,7 +1654,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ComicsInfo (Development).app/ComicsInfo (Development)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Comics Info (Development).app/Comics Info (Development)";
 			};
 			name = "Debug (Production)";
 		};
@@ -1663,7 +1664,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = HGJPBAF3DU;
+				DEVELOPMENT_TEAM = 25K5FYN7Y9;
 				INFOPLIST_FILE = ComicsInfoUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1683,6 +1684,7 @@
 			baseConfigurationReference = 6469B01C25DD3BDE000148B8 /* Staging.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -1773,7 +1775,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = HGJPBAF3DU;
+				DEVELOPMENT_TEAM = 25K5FYN7Y9;
 				INFOPLIST_FILE = ComicsInfoTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1785,7 +1787,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ComicsInfo (Development).app/ComicsInfo (Development)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Comics Info (Development).app/Comics Info (Development)";
 			};
 			name = "Debug (Staging)";
 		};
@@ -1795,7 +1797,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = HGJPBAF3DU;
+				DEVELOPMENT_TEAM = 25K5FYN7Y9;
 				INFOPLIST_FILE = ComicsInfoUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1815,6 +1817,7 @@
 			baseConfigurationReference = 6469B01C25DD3BDE000148B8 /* Staging.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -1899,7 +1902,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = HGJPBAF3DU;
+				DEVELOPMENT_TEAM = 25K5FYN7Y9;
 				INFOPLIST_FILE = ComicsInfoTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1911,7 +1914,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ComicsInfo (Development).app/ComicsInfo (Development)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Comics Info (Development).app/Comics Info (Development)";
 			};
 			name = "Release (Staging)";
 		};
@@ -1921,7 +1924,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = HGJPBAF3DU;
+				DEVELOPMENT_TEAM = 25K5FYN7Y9;
 				INFOPLIST_FILE = ComicsInfoUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1941,6 +1944,7 @@
 			baseConfigurationReference = 6469B01D25DD3BEF000148B8 /* Production.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -2025,7 +2029,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = HGJPBAF3DU;
+				DEVELOPMENT_TEAM = 25K5FYN7Y9;
 				INFOPLIST_FILE = ComicsInfoTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -2037,7 +2041,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ComicsInfo (Development).app/ComicsInfo (Development)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Comics Info (Development).app/Comics Info (Development)";
 			};
 			name = "Release (Production)";
 		};
@@ -2047,7 +2051,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = HGJPBAF3DU;
+				DEVELOPMENT_TEAM = 25K5FYN7Y9;
 				INFOPLIST_FILE = ComicsInfoUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2067,6 +2071,7 @@
 			baseConfigurationReference = 6469B01B25DD3BD1000148B8 /* Development.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -2131,6 +2136,7 @@
 			baseConfigurationReference = 6469B01B25DD3BD1000148B8 /* Development.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -2241,7 +2247,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = HGJPBAF3DU;
+				DEVELOPMENT_TEAM = 25K5FYN7Y9;
 				INFOPLIST_FILE = ComicsInfoTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -2253,7 +2259,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ComicsInfo (Development).app/ComicsInfo (Development)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Comics Info (Development).app/Comics Info (Development)";
 			};
 			name = "Debug (Development)";
 		};
@@ -2264,7 +2270,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = HGJPBAF3DU;
+				DEVELOPMENT_TEAM = 25K5FYN7Y9;
 				INFOPLIST_FILE = ComicsInfoTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -2276,7 +2282,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ComicsInfo (Development).app/ComicsInfo (Development)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Comics Info (Development).app/Comics Info (Development)";
 			};
 			name = "Release (Development)";
 		};
@@ -2286,7 +2292,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = HGJPBAF3DU;
+				DEVELOPMENT_TEAM = 25K5FYN7Y9;
 				INFOPLIST_FILE = ComicsInfoUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2307,7 +2313,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = HGJPBAF3DU;
+				DEVELOPMENT_TEAM = 25K5FYN7Y9;
 				INFOPLIST_FILE = ComicsInfoUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

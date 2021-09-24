@@ -54,7 +54,7 @@ struct SupportView: View {
         .frame(maxWidth: .infinity)
         .padding(4)
         .foregroundColor(Color.white)
-        .background(Color.accentColor)
+        .background(Color("AccentColor"))
         .cornerRadius(4)
         .opacity(viewModel.sendButtonIsDisabled ? 0.3 : 1)
     }
