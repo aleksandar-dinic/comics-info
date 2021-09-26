@@ -47,6 +47,7 @@ struct ExploreView: View {
                 })
             }
         }
+        .navigationViewStyle(StackNavigationViewStyle())
         .onAppear {
             viewModel.getAllCharacters()
         }
