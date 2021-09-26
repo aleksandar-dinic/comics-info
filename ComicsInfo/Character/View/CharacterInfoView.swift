@@ -65,6 +65,7 @@ struct CharacterInfoView: View {
     
 }
 
+#if DEBUG
 struct CharacterInfoView_Previews: PreviewProvider {
     
     private static let character = Character.make()
@@ -75,3 +76,4 @@ struct CharacterInfoView_Previews: PreviewProvider {
     }
     
 }
+#endif
