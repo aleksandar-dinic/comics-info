@@ -7,10 +7,10 @@
 //
 
 @testable import struct Domain.Character
-@testable import ComicsInfo
+@testable import ComicsInfo__Development_
 import XCTest
 
-class CharacterTests: XCTestCase {
+final class CharacterTests: XCTestCase {
 
     private var domainCharacter: Domain.Character!
 
@@ -20,7 +20,12 @@ class CharacterTests: XCTestCase {
             popularity: 1,
             name: "Name",
             thumbnail: "Thumbnail",
-            description: "Description"
+            description: "Description",
+            realName: nil,
+            aliases: nil,
+            birth: nil,
+            series: nil,
+            comics: nil
         )
     }
 
@@ -32,7 +37,7 @@ class CharacterTests: XCTestCase {
         // Given
 
         // When
-        let sut = ComicsInfo.Character(from: domainCharacter)
+        let sut = ComicsInfo__Development_.Character(from: domainCharacter)
 
         // Then
         XCTAssertEqual(sut.identifier, domainCharacter.identifier)
@@ -42,7 +47,7 @@ class CharacterTests: XCTestCase {
         // Given
 
         // When
-        let sut = ComicsInfo.Character(from: domainCharacter)
+        let sut = ComicsInfo__Development_.Character(from: domainCharacter)
 
         // Then
         XCTAssertEqual(sut.popularity, domainCharacter.popularity)
@@ -52,7 +57,7 @@ class CharacterTests: XCTestCase {
         // Given
 
         // When
-        let sut = ComicsInfo.Character(from: domainCharacter)
+        let sut = ComicsInfo__Development_.Character(from: domainCharacter)
 
         // Then
         XCTAssertEqual(sut.name, domainCharacter.name)
@@ -62,7 +67,7 @@ class CharacterTests: XCTestCase {
         // Given
 
         // When
-        let sut = ComicsInfo.Character(from: domainCharacter)
+        let sut = ComicsInfo__Development_.Character(from: domainCharacter)
 
         // Then
         XCTAssertEqual(sut.thumbnail, domainCharacter.thumbnail)
@@ -72,7 +77,7 @@ class CharacterTests: XCTestCase {
         // Given
 
         // When
-        let sut = ComicsInfo.Character(from: domainCharacter)
+        let sut = ComicsInfo__Development_.Character(from: domainCharacter)
 
         // Then
         XCTAssertEqual(sut.description, domainCharacter.description)

@@ -10,54 +10,73 @@ import SwiftUI
 
 struct ComicInfoView: View {
 
-    let series: Series
-    let comic: Comic
+    let viewModel: ComicInfoViewModel
+    @State private var showBanner = AppTrackingManager.authorization
 
     var body: some View {
-        ScrollView {
-            VStack {
-                HStack {
-                    ComicThumbnailView(
-                        imageName: comic.thumbnail,
-                        systemName: comic.thumbnailSystemName
-                    )
-                    .frame(height: 250)
+        VStack {
+            ScrollView {
+                LazyVStack {
+                    HStack {
+                        ComicThumbnailView(
+                            imageName: viewModel.thumbnail,
+                            systemName: viewModel.thumbnailSystemName,
+                            height: 250
+                        )
 
-                    VStack(spacing: 4) {
-                        Spacer()
-                        Text(comic.title)
-                            .font(.subheadline)
-                            .multilineTextAlignment(.center)
-                            .frame(maxWidth: .infinity)
-                        Spacer()
-                        Text(comic.publishedDate)
-                            .font(.caption)
-                            .frame(maxWidth: .infinity)
-                            .padding()
+                        VStack(spacing: 4) {
+                            Spacer()
+                            Text(viewModel.title)
+                                .font(.subheadline)
+                                .multilineTextAlignment(.center)
+                                .frame(maxWidth: .infinity)
+                                .accessibility(identifier: "Title")
+                            Spacer()
+                            Text(viewModel.publishedDate)
+                                .font(.caption)
+                                .frame(maxWidth: .infinity)
+                                .padding()
+                                .accessibility(identifier: "PublishedDate")
+                        }
+                        .frame(minWidth: 0, maxWidth: .infinity)
                     }
-                    .frame(minWidth: 0, maxWidth: .infinity)
-                }
-                .frame(height: 250)
-                .padding()
+                    .frame(height: 250)
+                    .padding()
 
-                DescriptionView(description: comic.description)
-                Spacer()
+                    if !viewModel.description.isEmpty {
+                        DescriptionView(description: viewModel.description)
+                    }
+                }
+            }
+            if showBanner {
+                BannerView(showBanner: $showBanner, adUnitID: Environment.comicInfoADUnitID)
             }
         }
-        .navigationBarTitle("\(series.title) \(comic.issue)", displayMode: .inline)
+        .onAppear {
+            viewModel.loadComic(withID: viewModel.identifier)
+        }
+        .navigationBarTitle(viewModel.issue, displayMode: .inline)
     }
 
 }
 
 #if DEBUG
 struct ComicInfoView_Previews: PreviewProvider {
+    
+    static let useCase = ComicUseCase()
+    static let comicSummary = ComicSummary.make()
+    static let seriesSummary = SeriesSummary.make()
 
     static var previews: some View {
         NavigationView {
             ForEach(ColorScheme.allCases, id: \.self) { color in
                 ComicInfoView(
-                    series: Series.amazingSpiderMan,
-                    comic: Comic.amazingSpiderMan4
+                    viewModel:
+                        ComicInfoViewModel(
+                            useCase: useCase,
+                            comicSummary: comicSummary,
+                            seriesSummaryViewModel: SeriesSummaryViewModel(from: seriesSummary)
+                        )
                 )
                     .previewDisplayName("\(color)")
                     .environment(\.colorScheme, color)

@@ -37,3 +37,7 @@ Package.resolved
 
 .build/
 
+## Config files
+*.xcconfig
+GoogleService-Info.plist
+

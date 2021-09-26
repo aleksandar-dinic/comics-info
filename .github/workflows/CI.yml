@@ -1,0 +1,94 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+    name: Build
+    runs-on: macOS-latest
+    strategy:
+      matrix:
+        device: ['iPhone 11 Pro']
+        os: ['14.0']
+    steps:
+    - name: Checkout project
+      uses: actions/checkout@v2
+    - name: Select Xcode
+      run: sudo xcode-select -switch /Applications/Xcode_12.app
+    - name: Xcode version
+      run: /usr/bin/xcodebuild -version
+    - name: Build application
+      run: |
+        set -o pipefail && xcodebuild clean -scheme $SCHEME -destination "platform=iOS Simulator,OS=${OS},name=${DEVICE}" -derivedDataPath $DERIVED_DATA_PATH build-for-testing | xcpretty --color --simple
+      env:
+        SCHEME: "ComicsInfo"
+        DERIVED_DATA_PATH: "DerivedData"
+        OS: ${{ matrix.os }}
+        DEVICE: ${{ matrix.device }}
+    - name: Upload products
+      uses: actions/upload-artifact@v1
+      with:
+        name: Products
+        path: DerivedData/Build/Products
+
+  unit_test:
+    name: Unit test
+    runs-on: macOS-latest
+    strategy:
+      matrix:
+        device: ['iPhone 11 Pro']
+        os: ['14.0']
+    needs: build
+    steps:
+    - name: Checkout project
+      uses: actions/checkout@v2
+    - name: Select Xcode
+      run: sudo xcode-select -switch /Applications/Xcode_12.app
+    - name: Xcode version
+      run: /usr/bin/xcodebuild -version
+    - name: Download products
+      uses: actions/download-artifact@v1
+      with:
+        name: Products
+    - name: Run unit tests
+      run: |
+        set -o pipefail && xcodebuild test-without-building -xctestrun $(find . -type f -name "*.xctestrun") -destination "platform=iOS Simulator,OS=${OS},name=${DEVICE}" -derivedDataPath $DERIVED_DATA_PATH -enableCodeCoverage YES -only-testing:$UNIT_TEST_TARGET | xcpretty --color --simple
+      env:
+        DERIVED_DATA_PATH: "DerivedData"
+        UNIT_TEST_TARGET: "ComicsInfoTests"
+        OS: ${{ matrix.os }}
+        DEVICE: ${{ matrix.device }}
+    - name: Upload test logs
+      uses: actions/upload-artifact@v1
+      with:
+        name: TestLogs
+        path: DerivedData/Logs/Test
+
+  ui_test:
+    name: UI test
+    runs-on: macOS-latest
+    strategy:
+      matrix:
+        device: ['iPhone 11 Pro']
+        os: ['14.0']
+    needs: build
+    steps:
+    - name: Checkout project
+      uses: actions/checkout@v2
+    - name: Select Xcode
+      run: sudo xcode-select -switch /Applications/Xcode_12.app
+    - name: Xcode version
+      run: /usr/bin/xcodebuild -version
+    - name: Download products
+      uses: actions/download-artifact@v1
+      with:
+        name: Products
+    - name: Run UI tests
+      run: |
+        set -o pipefail && xcodebuild test-without-building -xctestrun $(find . -type f -name "*.xctestrun") -destination "platform=iOS Simulator,OS=${OS},name=${DEVICE}" -derivedDataPath $DERIVED_DATA_PATH -enableCodeCoverage YES -only-testing:$UI_TEST_TARGET | xcpretty --color --simple
+      env:
+        DERIVED_DATA_PATH: "DerivedData"
+        UI_TEST_TARGET: "ComicsInfoUITests"
+        OS: ${{ matrix.os }}
+        DEVICE: ${{ matrix.device }}
+

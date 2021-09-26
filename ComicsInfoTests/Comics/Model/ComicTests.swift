@@ -7,7 +7,7 @@
 //
 
 @testable import struct Domain.Comic
-@testable import ComicsInfo
+@testable import ComicsInfo__Development_
 import XCTest
 
 class ComicTests: XCTestCase {
@@ -20,18 +20,20 @@ class ComicTests: XCTestCase {
             popularity: 0,
             title: "Title",
             thumbnail: "Thumbnail",
-            issueNumber: nil,
             description: "Description",
+            number: nil,
+            aliases: nil,
             variantDescription: nil,
             format: nil,
             pageCount: nil,
             variantsIdentifier: nil,
             collectionsIdentifier: nil,
-            collectedIssuesIdentifier: nil,
+            collectedIdentifiers: nil,
             images: nil,
-            seriesID: ["1"],
-            charactersID: ["1"],
-            published: nil)
+            published: nil,
+            characters: nil,
+            series: nil
+        )
     }
 
     override func tearDownWithError() throws {
@@ -42,7 +44,7 @@ class ComicTests: XCTestCase {
         // Given
 
         // When
-        let sut = ComicsInfo.Comic(from: domainComic)
+        let sut = ComicsInfo__Development_.Comic(from: domainComic)
 
         // Then
         XCTAssertEqual(sut.identifier, domainComic.identifier)
@@ -52,7 +54,7 @@ class ComicTests: XCTestCase {
         // Given
 
         // When
-        let sut = ComicsInfo.Comic(from: domainComic)
+        let sut = ComicsInfo__Development_.Comic(from: domainComic)
 
         // Then
         XCTAssertEqual(sut.popularity, domainComic.popularity)
@@ -62,7 +64,7 @@ class ComicTests: XCTestCase {
         // Given
 
         // When
-        let sut = ComicsInfo.Comic(from: domainComic)
+        let sut = ComicsInfo__Development_.Comic(from: domainComic)
 
         // Then
         XCTAssertEqual(sut.title, domainComic.title)
@@ -72,7 +74,7 @@ class ComicTests: XCTestCase {
         // Given
 
         // When
-        let sut = ComicsInfo.Comic(from: domainComic)
+        let sut = ComicsInfo__Development_.Comic(from: domainComic)
 
         // Then
         XCTAssertEqual(sut.thumbnail, domainComic.thumbnail)
@@ -82,7 +84,7 @@ class ComicTests: XCTestCase {
         // Given
 
         // When
-        let sut = ComicsInfo.Comic(from: domainComic)
+        let sut = ComicsInfo__Development_.Comic(from: domainComic)
 
         // Then
         XCTAssertEqual(sut.description, domainComic.description)

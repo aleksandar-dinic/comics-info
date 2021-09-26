@@ -10,62 +10,105 @@ import SwiftUI
 
 struct ComicsListView: View {
 
-    private let series: Series
-    @ObservedObject private var viewModel: ComicViewModel
+    private let seriesSummary: SeriesSummaryViewModel
+    @ObservedObject private var viewModel: ComicsListViewModel
+    @State private var showBanner = AppTrackingManager.authorization
 
     init(
-        forSeries series: Series,
-        viewModel: ComicViewModel = ComicViewModel()
+        forSeriesSummary seriesSummary: SeriesSummary,
+        viewModel: ComicsListViewModel = ComicsListViewModel()
     ) {
-        self.series = series
+        self.seriesSummary = SeriesSummaryViewModel(from: seriesSummary)
         self.viewModel = viewModel
     }
 
     var body: some View {
-        Group {
-            if viewModel.status == .loading {
-                Text("Loading...")
-                    .font(.title)
-            } else {
-                List(viewModel.comics, id: \.identifier) { comic in
-                    NavigationLink(destination: ComicInfoView(series: self.series, comic: comic)) {
-                        ComicView(series: self.series, comic: comic)
+        VStack(spacing: 4) {
+            ScrollView {
+                LazyVStack(spacing: 4) {
+                    if viewModel.status == .loading {
+                        Spacer()
+                        ProgressView("Loading...")
+                        Spacer()
+                    } else {
+                        comicsList
+                        if viewModel.canLoadMore {
+                            loadingIndicator
+                        }
                     }
                 }
+                .padding()
+            }
+            if showBanner {
+                BannerView(showBanner: $showBanner, adUnitID: Environment.comicsListADUnitID)
             }
         }
         .onAppear {
-            self.viewModel.loadAllComics(forSeriesID: self.series.identifier)
+            viewModel.getComicSummaries(for: seriesSummary.identifier)
         }
         .alert(isPresented: $viewModel.showError) {
             Alert(title: Text(viewModel.errorMessage))
         }
-        .navigationBarTitle("\(series.title)", displayMode: .inline)
+        .navigationBarTitle(seriesSummary.title, displayMode: .inline)
+    }
+    
+    private var comicsList: some View {
+        ForEach(viewModel.comics, id: \.identifier) { comic in
+            NavigationLink(
+                destination: ComicInfoView(
+                    viewModel: ComicInfoViewModel(
+                        useCase: viewModel.useCase,
+                        comicSummary: comic,
+                        seriesSummaryViewModel: seriesSummary
+                    )
+                )
+            ) {
+                ComicSummaryView(
+                    viewModel: ComicSummaryViewModel(
+                        for: comic,
+                        seriesSummaryViewModel: seriesSummary
+                    )
+                )
+                .onAppear {
+                    guard viewModel.lastIdentifier == comic.identifier else { return }
+                    viewModel.getComicSummaries(
+                        for: seriesSummary.identifier,
+                        lastID: viewModel.lastIdentifier
+                    )
+                }
+            }
+            .buttonStyle(PlainButtonStyle())
+        }
     }
 
+    private var loadingIndicator: some View {
+        HStack {
+            Spacer()
+            ProgressView()
+            Spacer()
+        }
+    }
+    
 }
 
 #if DEBUG
 struct ComicsListView_Previews: PreviewProvider {
 
-    static let series = Series(
+    static let seriesSummary = SeriesSummary.make(
         identifier: "1",
         popularity: 0,
         title: "Spider-Man",
         thumbnail: "",
         description: "",
         startYear: nil,
-        endYear: nil,
-        charactersID: ["1"]
+        endYear: nil
     )
 
-    static let viewModel = ComicViewModel(
+    static let viewModel = ComicsListViewModel(
         comics: [
-            Comic.amazingSpiderMan1,
-            Comic.amazingSpiderMan2,
-            Comic.amazingSpiderMan3,
-            Comic.amazingSpiderMan4,
-            Comic.amazingSpiderMan5
+            ComicSummary.make(),
+            ComicSummary.make(),
+            ComicSummary.make()
         ],
         status: .showComics
     )
@@ -73,7 +116,7 @@ struct ComicsListView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
             ForEach(ColorScheme.allCases, id: \.self) { color in
-                ComicsListView(forSeries: series, viewModel: viewModel)
+                ComicsListView(forSeriesSummary: seriesSummary, viewModel: viewModel)
                     .previewDisplayName("\(color)")
                     .environment(\.colorScheme, color)
             }

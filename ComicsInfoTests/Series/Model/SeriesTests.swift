@@ -7,7 +7,7 @@
 //
 
 @testable import struct Domain.Series
-@testable import ComicsInfo
+@testable import ComicsInfo__Development_
 import XCTest
 
 class SeriesTests: XCTestCase {
@@ -19,12 +19,14 @@ class SeriesTests: XCTestCase {
             identifier: "1",
             popularity: 0,
             title: "Title",
+            thumbnail: "Thumbnail",
             description: "Description",
             startYear: nil,
             endYear: nil,
-            thumbnail: "Thumbnail",
-            charactersID: [],
-            nextIdentifier: nil
+            aliases: nil,
+            nextIdentifier: nil,
+            characters: nil,
+            comics: nil
         )
     }
 
@@ -36,7 +38,7 @@ class SeriesTests: XCTestCase {
         // Given
 
         // When
-        let sut = ComicsInfo.Series(from: domainSeries)
+        let sut = ComicsInfo__Development_.Series(from: domainSeries)
 
         // Then
         XCTAssertEqual(sut.identifier, domainSeries.identifier)
@@ -46,7 +48,7 @@ class SeriesTests: XCTestCase {
         // Given
 
         // When
-        let sut = ComicsInfo.Series(from: domainSeries)
+        let sut = ComicsInfo__Development_.Series(from: domainSeries)
 
         // Then
         XCTAssertEqual(sut.popularity, domainSeries.popularity)
@@ -56,7 +58,7 @@ class SeriesTests: XCTestCase {
         // Given
 
         // When
-        let sut = ComicsInfo.Series(from: domainSeries)
+        let sut = ComicsInfo__Development_.Series(from: domainSeries)
 
         // Then
         XCTAssertEqual(sut.title, domainSeries.title)
@@ -66,7 +68,7 @@ class SeriesTests: XCTestCase {
         // Given
 
         // When
-        let sut = ComicsInfo.Series(from: domainSeries)
+        let sut = ComicsInfo__Development_.Series(from: domainSeries)
 
         // Then
         XCTAssertEqual(sut.thumbnail, domainSeries.thumbnail)
@@ -76,7 +78,7 @@ class SeriesTests: XCTestCase {
         // Given
 
         // When
-        let sut = ComicsInfo.Series(from: domainSeries)
+        let sut = ComicsInfo__Development_.Series(from: domainSeries)
 
         // Then
         XCTAssertEqual(sut.description, domainSeries.description)
