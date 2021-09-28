@@ -12,8 +12,6 @@
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
-	<key>NSUserTrackingUsageDescription</key>
-	<string>Your data will be used to deliver personalized ads to you.</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -23,7 +21,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>CHARACTER_INFO_AD_UNIT_ID</key>
 	<string>$(CHARACTER_INFO_AD_UNIT_ID)</string>
 	<key>COMICS_LIST_AD_UNIT_ID</key>
@@ -36,6 +34,8 @@
 	<string>ca-app-pub-1732905235955483~9401913650</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSUserTrackingUsageDescription</key>
+	<string>Your data will be used to deliver personalized ads to you.</string>
 	<key>ROOT_URL</key>
 	<string>$(ROOT_URL)</string>
 	<key>SKAdNetworkItems</key>

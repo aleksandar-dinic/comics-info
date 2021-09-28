@@ -38,6 +38,7 @@ struct CharacterView: View {
     
 }
 
+#if DEBUG
 struct CharacterView_Previews: PreviewProvider {
     
     static let character = Character.make()
@@ -47,3 +48,4 @@ struct CharacterView_Previews: PreviewProvider {
     }
 
 }
+#endif
