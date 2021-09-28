@@ -10,8 +10,18 @@ import SwiftUI
 
 struct ComicSummaryView: View {
     
-    @State var viewModel: ComicSummaryViewModel
+    private let viewModel: ComicSummaryViewModel
 
+    init(
+        for comicSummary: ComicSummary,
+        seriesTitle: String
+    ) {
+        viewModel = ComicSummaryViewModel(
+            for: comicSummary,
+            seriesTitle: seriesTitle
+        )
+    }
+    
     var body: some View {
         HStack {
             ComicThumbnailView(
@@ -56,10 +66,8 @@ struct ComicView_Previews: PreviewProvider {
     static var previews: some View {
         ForEach(ColorScheme.allCases, id: \.self) { color in
             ComicSummaryView(
-                viewModel: ComicSummaryViewModel(
-                    for: comicSummary,
-                    seriesSummaryViewModel: seriesSummaryViewModel
-                )
+                for: comicSummary,
+                seriesTitle: seriesSummaryViewModel.title
             )
                 .previewLayout(.fixed(width: 320, height: 154))
                 .previewDisplayName("\(color)")

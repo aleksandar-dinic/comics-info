@@ -43,5 +43,21 @@ final class ComicDataRepository: ComicRepository {
             onComplete: complete
         )
     }
+    
+    func getBookmarkComics() -> [Comic]? {
+        comicDataProvider.getBookmarkComics()
+    }
+    
+    func addToBookmark(_ comicID: String) {
+        comicDataProvider.addToBookmark(comicID)
+    }
+    
+    func removeFromBookmark(_ comicID: String) {
+        comicDataProvider.removeFromBookmark(comicID)
+    }
+    
+    func isBookmarked(withID comicID: String) -> Bool {
+        comicDataProvider.isBookmarked(withID: comicID)
+    }
 
 }

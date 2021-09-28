@@ -52,5 +52,21 @@ final class CharacterUseCase: CharacterRepositoryFactory {
             }
         }
     }
+    
+    func getBookmarkCharacters() -> [Character]? {
+        repository.getBookmarkCharacters()
+    }
+    
+    func addToBookmark(_ character: Character) {
+        repository.addToBookmark(character)
+    }
+    
+    func removeFromBookmark(_ character: Character) {
+        repository.removeFromBookmark(character)
+    }
+    
+    func isBookmarked(withID characterID: String) -> Bool {
+        repository.isBookmarked(withID: characterID)
+    }
 
 }

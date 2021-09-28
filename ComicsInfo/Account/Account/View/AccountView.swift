@@ -21,10 +21,21 @@ struct AccountView: View {
                     }
                     
                     Section() {
-                        NavigationLink("Support & Feedback", destination: SupportView())
+                        HStack {
+                            Image(systemName: "bookmark")
+                            NavigationLink("Bookmarks", destination: BookmarkView())
+                        }
+                    }
+                    
+                    Section() {
+                        HStack {
+                            Image(systemName: "envelope")
+                            NavigationLink("Support & Feedback", destination: SupportView())
+                        }
                     }
                 }
                 .listStyle(GroupedListStyle())
+
                 if showBanner {
                     BannerView(
                         showBanner: $showBanner,

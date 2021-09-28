@@ -73,12 +73,10 @@ struct ExploreView: View {
     private var characterList: some View {
         ForEach(viewModel.characters, id: \.identifier) { character in
             Section(
-                header: NavigationLink(
-                    destination: CharacterInfoView(viewModel: CharacterInfoViewModel(from: character))
-                ) {
+                header: NavigationLink(destination: CharacterInfoView(for: character)) {
                     makeCharacterView(for: character)
                 }
-                .buttonStyle(PlainButtonStyle())
+                    .buttonStyle(PlainButtonStyle())
             ) {
                 if let seriesSummaries = character.mainSeries {
                     seriesList(for: character.identifier, seriesSummaries: seriesSummaries)
@@ -92,7 +90,7 @@ struct ExploreView: View {
     }
     
     private func makeCharacterView(for character: Character) -> some View {
-        CharacterView(viewModel: CharacterViewModel(from: character))
+        CharacterHeaderView(viewModel: CharacterViewModel(from: character))
             .padding(4)
             .background(Color("AccentColor"))
     }

@@ -7,21 +7,21 @@
 //
 
 @testable import struct Domain.Character
-@testable import struct ComicsInfo__Development_.Character
+@testable import struct Comics_Info__Development_.Character
 import Foundation
 
 struct CharactersMock {
     
-    static let character1 = ComicsInfo__Development_.Character.make(identifier: "1", popularity: 0, name: "Name")
+    static let character1 = Comics_Info__Development_.Character.make(identifier: "1", popularity: 0, name: "Name")
 
-    static let character2 = ComicsInfo__Development_.Character.make(identifier: "2", popularity: 0, name: "Name")
+    static let character2 = Comics_Info__Development_.Character.make(identifier: "2", popularity: 0, name: "Name")
 
     // MARK: - Characters
 
     static let characters = [
-        ComicsInfo__Development_.Character.make(identifier: "1", popularity: 1, name: "Flash"),
-        ComicsInfo__Development_.Character.make(identifier: "2", popularity: 2, name: "Batman"),
-        ComicsInfo__Development_.Character.make(identifier: "3", popularity: 3, name: "Spider-Man")
+        Comics_Info__Development_.Character.make(identifier: "1", popularity: 1, name: "Flash"),
+        Comics_Info__Development_.Character.make(identifier: "2", popularity: 2, name: "Batman"),
+        Comics_Info__Development_.Character.make(identifier: "3", popularity: 3, name: "Spider-Man")
     ]
 
     static let domainCharacters = [
@@ -34,6 +34,7 @@ struct CharactersMock {
             realName: nil,
             aliases: nil,
             birth: nil,
+            mainSeries: nil,
             series: nil,
             comics: nil
         ),
@@ -46,6 +47,7 @@ struct CharactersMock {
             realName: nil,
             aliases: nil,
             birth: nil,
+            mainSeries: nil,
             series: nil,
             comics: nil
         ),
@@ -58,6 +60,7 @@ struct CharactersMock {
             realName: nil,
             aliases: nil,
             birth: nil,
+            mainSeries: nil,
             series: nil,
             comics: nil
         )
@@ -100,7 +103,7 @@ struct CharactersMock {
 
     // MARK: - Character
 
-    static let character = ComicsInfo__Development_.Character.make(
+    static let character = Comics_Info__Development_.Character.make(
         identifier: "1",
         popularity: 1,
         name: "Flash"
@@ -115,6 +118,7 @@ struct CharactersMock {
         realName: nil,
         aliases: nil,
         birth: nil,
+        mainSeries: nil,
         series: nil,
         comics: nil
     )

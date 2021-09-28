@@ -64,10 +64,8 @@ struct ComicsListView: View {
                 )
             ) {
                 ComicSummaryView(
-                    viewModel: ComicSummaryViewModel(
-                        for: comic,
-                        seriesSummaryViewModel: seriesSummary
-                    )
+                    for: comic,
+                    seriesTitle: seriesSummary.title
                 )
                 .onAppear {
                     guard viewModel.lastIdentifier == comic.identifier else { return }

@@ -10,16 +10,21 @@ import SwiftUI
 import Foundation
 
 struct ComicCacheProvider: ComicCacheService {
+    
+    static private var bookmarkKey = "BookmarkComicsKey"
 
     private let comicCache: Cache<String, Comic>
     private let comicSummaryCache: Cache<String, [ComicSummary]>
+    private var defaults: UserDefaults
 
     init(
         comicCache: Cache<String, Comic> = SwiftUI.Environment(\.comicCache).wrappedValue,
-        comicSummaryCache: Cache<String, [ComicSummary]> = SwiftUI.Environment(\.comicSummariesCache).wrappedValue
+        comicSummaryCache: Cache<String, [ComicSummary]> = SwiftUI.Environment(\.comicSummariesCache).wrappedValue,
+        defaults: UserDefaults = .standard
     ) {
         self.comicCache = comicCache
         self.comicSummaryCache = comicSummaryCache
+        self.defaults = defaults
     }
 
     func getComicSummaries(
@@ -66,6 +71,36 @@ struct ComicCacheProvider: ComicCacheService {
     func save(comic: Comic) {
         comicCache[comic.identifier] = comic
         try? comicCache.saveToDisc(.comics)
+    }
+    
+    func getBookmarkComics() -> [Comic]? {
+        var comics = [Comic]()
+        for id in getBookmarkedComics() {
+            guard let comic = getComic(withID: id) else { continue }
+            comics.append(comic)
+        }
+//        comics.sort()
+        return !comics.isEmpty ? comics : nil
+    }
+    
+    func addToBookmark(_ comicID: String) {
+        var comics = getBookmarkedComics()
+        comics.insert(comicID)
+        defaults.set(Array(comics), forKey: Self.bookmarkKey)
+    }
+    
+    func removeFromBookmark(_ comicID: String) {
+        var comics = getBookmarkedComics()
+        comics.remove(comicID)
+        defaults.set(Array(comics), forKey: Self.bookmarkKey)
+    }
+    
+    func isBookmarked(withID comicID: String) -> Bool {
+        getBookmarkedComics().contains(comicID)
+    }
+    
+    private func getBookmarkedComics() -> Set<String> {
+        Set(defaults.object(forKey: Self.bookmarkKey) as? [String] ?? [String]())
     }
 
 }

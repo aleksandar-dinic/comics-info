@@ -18,5 +18,10 @@ protocol CharacterCacheService {
     func getCharacter(withID characterID: String) -> Character?
 
     func save(characters: [Character])
+    
+    func getBookmarkCharacters() -> [Character]?
+    func addToBookmark(_ character: Character)
+    func removeFromBookmark(_ character: Character)
+    func isBookmarked(withID characterID: String) -> Bool
 
 }

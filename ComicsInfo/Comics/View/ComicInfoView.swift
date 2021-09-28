@@ -42,6 +42,13 @@ struct ComicInfoView: View {
                     }
                     .frame(height: 250)
                     .padding()
+                    
+                    ReactionsView(
+                        isBookmarked: viewModel.isBookmarked(),
+                        shereMessage: viewModel.shereMessage
+                    ) {
+                        viewModel.onTapBookmark()
+                    }
 
                     if !viewModel.description.isEmpty {
                         DescriptionView(description: viewModel.description)

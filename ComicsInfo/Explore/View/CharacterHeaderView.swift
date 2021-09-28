@@ -1,5 +1,5 @@
 //
-//  CharacterView.swift
+//  CharacterHeaderView.swift
 //  ComicsInfo
 //
 //  Created by Aleksandar Dinic on 11/05/2020.
@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct CharacterView: View {
+struct CharacterHeaderView: View {
 
     @State var viewModel: CharacterViewModel
 
@@ -30,13 +30,13 @@ struct CharacterView: View {
 }
 
 #if DEBUG
-struct CharacterView_Previews: PreviewProvider {
+struct CharacterHeaderView_Previews: PreviewProvider {
 
     static let character = Character.make()
     
     static var previews: some View {
         ForEach(ColorScheme.allCases, id: \.self) { color in
-            CharacterView(viewModel: CharacterViewModel(from: character))
+            CharacterHeaderView(viewModel: CharacterViewModel(from: character))
                 .padding()
                 .previewLayout(.sizeThatFits)
                 .previewDisplayName("\(color)")

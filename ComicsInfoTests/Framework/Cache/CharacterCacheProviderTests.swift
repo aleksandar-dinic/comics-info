@@ -6,7 +6,7 @@
 //  Copyright © 2020 Aleksandar Dinic. All rights reserved.
 //
 
-@testable import ComicsInfo__Development_
+@testable import Comics_Info__Development_
 import XCTest
 
 final class CharacterCacheProviderTests: XCTestCase {

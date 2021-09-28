@@ -108,4 +108,22 @@ struct ComicDataProvider {
         }
     }
 
+    
+    // Add to bookmark
+    
+    func getBookmarkComics() -> [Comic]? {
+        comicCacheService.getBookmarkComics()
+    }
+    
+    func addToBookmark(_ comicID: String) {
+        comicCacheService.addToBookmark(comicID)
+    }
+    
+    func removeFromBookmark(_ comicID: String) {
+        comicCacheService.removeFromBookmark(comicID)
+    }
+    
+    func isBookmarked(withID comicID: String) -> Bool {
+        comicCacheService.isBookmarked(withID: comicID)
+    }
 }

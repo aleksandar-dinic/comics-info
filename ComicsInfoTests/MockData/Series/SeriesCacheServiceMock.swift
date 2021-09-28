@@ -6,9 +6,9 @@
 //  Copyright © 2020 Aleksandar Dinic. All rights reserved.
 //
 
-@testable import struct ComicsInfo__Development_.Series
-@testable import struct ComicsInfo__Development_.SeriesSummary
-@testable import protocol ComicsInfo__Development_.SeriesCacheService
+@testable import struct Comics_Info__Development_.Series
+@testable import struct Comics_Info__Development_.SeriesSummary
+@testable import protocol Comics_Info__Development_.SeriesCacheService
 import Foundation
 
 final class SeriesCacheServiceMock: SeriesCacheService {

@@ -9,8 +9,12 @@ import SwiftUI
 
 struct CharacterInfoView: View {
     
-    @State var viewModel: CharacterInfoViewModel
+    private let viewModel: CharacterInfoViewModel
     @State private var showBanner = AppTrackingManager.authorization
+    
+    init(for character: Character) {
+        viewModel = CharacterInfoViewModel(from: character)
+    }
     
     var body: some View {
         VStack {
@@ -28,6 +32,13 @@ struct CharacterInfoView: View {
                             .frame(minWidth: 0, maxWidth: .infinity)
                     }
                     .padding()
+                    
+                    ReactionsView(
+                        isBookmarked: viewModel.isBookmarked(),
+                        shereMessage: viewModel.shereMessage
+                    ) {
+                        viewModel.onTapBookmark()
+                    }
             
                     if !viewModel.realName.isEmpty {
                         HStack {
@@ -69,10 +80,9 @@ struct CharacterInfoView: View {
 struct CharacterInfoView_Previews: PreviewProvider {
     
     private static let character = Character.make()
-    private static let viewModel = CharacterInfoViewModel(from: character)
     
     static var previews: some View {
-        CharacterInfoView(viewModel: viewModel)
+        CharacterInfoView(for: character)
     }
     
 }

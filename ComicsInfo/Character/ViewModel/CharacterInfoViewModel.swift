@@ -10,9 +10,14 @@ import Foundation
 struct CharacterInfoViewModel {
 
     private let character: Character
+    private let characterUseCase: CharacterUseCase
     
-    init(from character: Character) {
+    init(
+        from character: Character,
+        characterUseCase: CharacterUseCase = CharacterUseCase()
+    ) {
         self.character = character
+        self.characterUseCase = characterUseCase
     }
     
     var name: String {
@@ -37,6 +42,22 @@ struct CharacterInfoViewModel {
     
     var thumbnailSystemName: String {
         "person.crop.circle"
+    }
+    
+    func onTapBookmark() {
+        if !isBookmarked() {
+            characterUseCase.addToBookmark(character)
+        } else {
+            characterUseCase.removeFromBookmark(character)
+        }
+    }
+    
+    func isBookmarked() -> Bool {
+        characterUseCase.isBookmarked(withID: character.identifier)
+    }
+    
+    var shereMessage: String {
+        "Find more information about \(name) in the \"Comics Info\" app."
     }
     
 }

@@ -7,7 +7,7 @@
 //
 
 @testable import struct Domain.Character
-@testable import ComicsInfo__Development_
+@testable import Comics_Info__Development_
 import XCTest
 
 final class CharacterTests: XCTestCase {
@@ -24,6 +24,7 @@ final class CharacterTests: XCTestCase {
             realName: nil,
             aliases: nil,
             birth: nil,
+            mainSeries: nil,
             series: nil,
             comics: nil
         )
@@ -37,7 +38,7 @@ final class CharacterTests: XCTestCase {
         // Given
 
         // When
-        let sut = ComicsInfo__Development_.Character(from: domainCharacter)
+        let sut = Comics_Info__Development_.Character(from: domainCharacter)
 
         // Then
         XCTAssertEqual(sut.identifier, domainCharacter.identifier)
@@ -47,7 +48,7 @@ final class CharacterTests: XCTestCase {
         // Given
 
         // When
-        let sut = ComicsInfo__Development_.Character(from: domainCharacter)
+        let sut = Comics_Info__Development_.Character(from: domainCharacter)
 
         // Then
         XCTAssertEqual(sut.popularity, domainCharacter.popularity)
@@ -57,7 +58,7 @@ final class CharacterTests: XCTestCase {
         // Given
 
         // When
-        let sut = ComicsInfo__Development_.Character(from: domainCharacter)
+        let sut = Comics_Info__Development_.Character(from: domainCharacter)
 
         // Then
         XCTAssertEqual(sut.name, domainCharacter.name)
@@ -67,7 +68,7 @@ final class CharacterTests: XCTestCase {
         // Given
 
         // When
-        let sut = ComicsInfo__Development_.Character(from: domainCharacter)
+        let sut = Comics_Info__Development_.Character(from: domainCharacter)
 
         // Then
         XCTAssertEqual(sut.thumbnail, domainCharacter.thumbnail)
@@ -77,7 +78,7 @@ final class CharacterTests: XCTestCase {
         // Given
 
         // When
-        let sut = ComicsInfo__Development_.Character(from: domainCharacter)
+        let sut = Comics_Info__Development_.Character(from: domainCharacter)
 
         // Then
         XCTAssertEqual(sut.description, domainCharacter.description)

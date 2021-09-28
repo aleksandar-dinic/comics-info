@@ -35,7 +35,10 @@ final class ComicInfoViewModel {
 
             switch result {
             case let .success(comic):
-                self.comicViewModel = ComicViewModel(from: comic, seriesSummaryViewModel: self.seriesSummaryViewModel)
+                self.comicViewModel = ComicViewModel(
+                    from: comic,
+                    seriesSummaryViewModel: self.seriesSummaryViewModel
+                )
             case let .failure(error):
                 print(error)
             }
@@ -85,6 +88,22 @@ final class ComicInfoViewModel {
         let formatter = DateFormatter()
         formatter.dateFormat = "MMMM, YYY"
         return "(\(formatter.string(from: published)))"
+    }
+    
+    func onTapBookmark() {
+        if !isBookmarked() {
+            useCase.addToBookmark(comicSummary.identifier)
+        } else {
+            useCase.removeFromBookmark(comicSummary.identifier)
+        }
+    }
+    
+    func isBookmarked() -> Bool {
+        useCase.isBookmarked(withID: comicSummary.identifier)
+    }
+    
+    var shereMessage: String {
+        "Find more information about \(title) in the \"Comics Info\" app."
     }
     
 }

@@ -27,5 +27,10 @@ protocol CharacterRepository {
         fromDataSource dataSource: DataSourceLayer,
         onComplete complete: @escaping (Result<Character, Error>) -> Void
     )
+    
+    func getBookmarkCharacters() -> [Character]?
+    func addToBookmark(_ character: Character)
+    func removeFromBookmark(_ character: Character)
+    func isBookmarked(withID characterID: String) -> Bool
 
 }

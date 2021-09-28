@@ -16,7 +16,7 @@ final class ExploreViewModel: ObservableObject {
         case showCharacters
     }
 
-    private var characterUseCase: CharacterUseCase
+    private let characterUseCase: CharacterUseCase
     private(set) var characters: [Character]
     private var charactersIdentifier = Set<String>()
     @Published private(set) var canLoadMore = true
@@ -84,4 +84,8 @@ final class ExploreViewModel: ObservableObject {
         characters.last?.identifier
     }
 
+    func makeCharacterInfoViewModel(for character: Character) -> CharacterInfoViewModel {
+        CharacterInfoViewModel(from: character, characterUseCase: characterUseCase)
+    }
+    
 }

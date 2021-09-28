@@ -5,7 +5,7 @@
 //  Created by Aleksandar Dinic on 24/08/2020.
 //
 
-@testable import ComicsInfo__Development_
+@testable import Comics_Info__Development_
 import XCTest
 
 final class CharacterAPIServiceTests: XCTestCase {

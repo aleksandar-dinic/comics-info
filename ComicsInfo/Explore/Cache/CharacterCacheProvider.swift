@@ -10,13 +10,18 @@ import SwiftUI
 import Foundation
 
 struct CharacterCacheProvider: CharacterCacheService {
+    
+    static private var bookmarkKey = "BookmarkCharactersKey"
 
     private let characterCache: Cache<String, Character>
+    private var defaults: UserDefaults
 
     init(
-        _ characterCache: Cache<String, Character> = SwiftUI.Environment(\.characterCache).wrappedValue
+        _ characterCache: Cache<String, Character> = SwiftUI.Environment(\.characterCache).wrappedValue,
+        defaults: UserDefaults = .standard
     ) {
         self.characterCache = characterCache
+        self.defaults = defaults
     }
 
     func getAllCharacters(afterID: String?, limit: Int) -> [Character]? {
@@ -49,6 +54,36 @@ struct CharacterCacheProvider: CharacterCacheService {
             characterCache[character.identifier] = character
         }
         try? characterCache.saveToDisc(.characters)
+    }
+    
+    func getBookmarkCharacters() -> [Character]? {
+        var characters = [Character]()
+        for id in getBookmarkedCharacters() {
+            guard let character = getCharacter(withID: id) else { continue }
+            characters.append(character)
+        }
+        characters.sort()
+        return !characters.isEmpty ? characters : nil
+    }
+    
+    func addToBookmark(_ character: Character) {
+        var characters = getBookmarkedCharacters()
+        characters.insert(character.identifier)
+        defaults.set(Array(characters), forKey: Self.bookmarkKey)
+    }
+    
+    func removeFromBookmark(_ character: Character) {
+        var characters = getBookmarkedCharacters()
+        characters.remove(character.identifier)
+        defaults.set(Array(characters), forKey: Self.bookmarkKey)
+    }
+    
+    func isBookmarked(withID characterID: String) -> Bool {
+        getBookmarkedCharacters().contains(characterID)
+    }
+    
+    private func getBookmarkedCharacters() -> Set<String> {
+        Set(defaults.object(forKey: Self.bookmarkKey) as? [String] ?? [String]())
     }
 
 }

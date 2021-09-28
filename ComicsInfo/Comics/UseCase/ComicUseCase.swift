@@ -52,5 +52,21 @@ final class ComicUseCase: ComicRepositoryFactory {
             }
         }
     }
+    
+    func getBookmarkComics() -> [Comic]? {
+        repository.getBookmarkComics()
+    }
+    
+    func addToBookmark(_ comicID: String) {
+        repository.addToBookmark(comicID)
+    }
+    
+    func removeFromBookmark(_ comicID: String) {
+        repository.removeFromBookmark(comicID)
+    }
+    
+    func isBookmarked(withID comicID: String) -> Bool {
+        repository.isBookmarked(withID: comicID)
+    }
 
 }

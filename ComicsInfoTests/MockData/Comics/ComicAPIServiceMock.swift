@@ -6,7 +6,7 @@
 //  Copyright © 2020 Aleksandar Dinic. All rights reserved.
 //
 
-@testable import protocol ComicsInfo__Development_.ComicAPIService
+@testable import protocol Comics_Info__Development_.ComicAPIService
 import Foundation
 
 final class ComicAPIServiceMock: ComicAPIService {

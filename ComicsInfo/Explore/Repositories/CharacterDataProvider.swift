@@ -103,5 +103,23 @@ struct CharacterDataProvider {
             }
         }
     }
+    
+    // Add to bookmark
+    
+    func getBookmarkCharacters() -> [Character]? {
+        characterCacheService.getBookmarkCharacters()
+    }
+    
+    func addToBookmark(_ character: Character) {
+        characterCacheService.addToBookmark(character)
+    }
+    
+    func removeFromBookmark(_ character: Character) {
+        characterCacheService.removeFromBookmark(character)
+    }
+    
+    func isBookmarked(withID characterID: String) -> Bool {
+        characterCacheService.isBookmarked(withID: characterID)
+    }
 
 }

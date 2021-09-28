@@ -45,6 +45,16 @@ extension ComicSummary {
         published = summary.published
     }
     
+    init(from comic: Comic) {
+        identifier = comic.identifier
+        popularity = comic.popularity
+        title = comic.title
+        thumbnail = comic.thumbnail
+        description = comic.description
+        number = comic.number
+        published = comic.published
+    }
+    
 }
 
 extension Domain.ComicSummary {
