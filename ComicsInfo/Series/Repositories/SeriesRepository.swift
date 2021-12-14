@@ -27,5 +27,9 @@ protocol SeriesRepository {
         fromDataSource dataSource: DataSourceLayer,
         onComplete complete: @escaping (Result<Series, Error>) -> Void
     )
+    
+    func addInMySeries(_ seriesSeries: SeriesSummary, forCharacterID characterID: String)
+    func getMySeries(for characterID: String) -> [SeriesSummary]?
+    func isInMySeries(_ seriesID: String, forCharacterID characterID: String) -> Bool
 
 }

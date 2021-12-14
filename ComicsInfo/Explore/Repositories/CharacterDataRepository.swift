@@ -44,6 +44,26 @@ final class CharacterDataRepository: CharacterRepository {
         )
     }
     
+    // My Characters
+    
+    func getMyCharacters() -> [Character]? {
+        characterDataProvider.getMyCharacters()
+    }
+    
+    func addToMyCharacters(_ character: Character) {
+        characterDataProvider.addToMyCharacters(character)
+    }
+    
+    func removeFromMyCharacters(_ character: Character) {
+        characterDataProvider.removeFromMyCharacters(character)
+    }
+    
+    func isInMyCharacters(withID characterID: String) -> Bool {
+        characterDataProvider.isInMyCharacters(withID: characterID)
+    }
+    
+    // Bookmark
+    
     func getBookmarkCharacters() -> [Character]? {
         characterDataProvider.getBookmarkCharacters()
     }

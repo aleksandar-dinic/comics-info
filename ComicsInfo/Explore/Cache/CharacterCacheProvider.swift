@@ -14,13 +14,16 @@ struct CharacterCacheProvider: CharacterCacheService {
     static private var bookmarkKey = "BookmarkCharactersKey"
 
     private let characterCache: Cache<String, Character>
+    private let myCharacterCache: Cache<String, Character>
     private var defaults: UserDefaults
 
     init(
         _ characterCache: Cache<String, Character> = SwiftUI.Environment(\.characterCache).wrappedValue,
+        _ myCharacterCache: Cache<String, Character>  = SwiftUI.Environment(\.myCharacterCache).wrappedValue,
         defaults: UserDefaults = .standard
     ) {
         self.characterCache = characterCache
+        self.myCharacterCache = myCharacterCache
         self.defaults = defaults
     }
 
@@ -55,6 +58,37 @@ struct CharacterCacheProvider: CharacterCacheService {
         }
         try? characterCache.saveToDisc(.characters)
     }
+    
+    // My Characters
+    
+    func getMyCharacters() -> [Character]? {
+        myCharacterCache.values()?.sorted()
+    }
+    
+    func addToMyCharacters(_ character: Character) {
+        var character = character
+        if var mySeries = myCharacterCache[character.identifier]?.mySeries {
+            for series in character.mySeries ?? [] {
+                guard !mySeries.contains(where: { $0.identifier == series.identifier }) else { continue }
+                mySeries.append(series)
+            }
+            character.mySeries = mySeries.sorted()
+        }
+        
+        myCharacterCache[character.identifier] = character
+        try? myCharacterCache.saveToDisc(.myCharacters)
+    }
+    
+    func removeFromMyCharacters(_ character: Character) {
+        myCharacterCache.removeValue(forKey: character.identifier)
+        try? myCharacterCache.saveToDisc(.myCharacters)
+    }
+    
+    func isInMyCharacters(withID characterID: String) -> Bool {
+        myCharacterCache[characterID] != nil
+    }
+    
+    // Bookmark
     
     func getBookmarkCharacters() -> [Character]? {
         var characters = [Character]()

@@ -22,8 +22,7 @@ struct ComicsInfoApp: App {
     
     var body: some Scene {
         WindowGroup {
-//            HomeView()
-            ExploreView()
+            HomeView()
                 .onReceive(
                     NotificationCenter.default.publisher(
                         for: UIApplication.didBecomeActiveNotification

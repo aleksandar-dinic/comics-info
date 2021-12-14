@@ -7,13 +7,17 @@
 
 import Foundation
 
-final class BookmarkUseCase: CharacterRepositoryFactory, ComicRepositoryFactory {
+final class BookmarkUseCase: CharacterRepositoryFactory, SeriesRepositoryFactory, ComicRepositoryFactory {
     
-    private lazy var characterRepository = makeCharacterRepository()
     private lazy var comicRepository = makeComicRepository()
+    lazy var characterRepository = makeCharacterRepository()
+    lazy var seriesRepository = makeSeriesRepository()
 
     let characterAPIService: CharacterAPIService
     let characterCacheService: CharacterCacheService
+    
+    let seriesAPIService: SeriesAPIService
+    let seriesCacheService: SeriesCacheService
     
     let comicAPIService: ComicAPIService
     let comicCacheService: ComicCacheService
@@ -21,21 +25,25 @@ final class BookmarkUseCase: CharacterRepositoryFactory, ComicRepositoryFactory 
     init(
         characterAPIService: CharacterAPIService = CharacterAPIProvider(),
         characterCacheService: CharacterCacheService = CharacterCacheProvider(),
+        seriesAPIService: SeriesAPIService = SeriesAPIProvider(),
+        seriesCacheService: SeriesCacheService = SeriesCacheProvider(),
         comicAPIService: ComicAPIService = ComicAPIProvider(),
         comicCacheService: ComicCacheService = ComicCacheProvider()
     ) {
         self.characterAPIService = characterAPIService
         self.characterCacheService = characterCacheService
+        self.seriesAPIService = seriesAPIService
+        self.seriesCacheService = seriesCacheService
         self.comicAPIService = comicAPIService
         self.comicCacheService = comicCacheService
     }
     
     func getBookmarkCharacters() -> [Character]? {
-        characterCacheService.getBookmarkCharacters()
+        characterRepository.getBookmarkCharacters()
     }
     
     func getBookmarkComics() -> [Comic]? {
-        comicCacheService.getBookmarkComics()
+        comicRepository.getBookmarkComics()
     }
     
 }

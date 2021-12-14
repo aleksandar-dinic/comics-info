@@ -10,21 +10,33 @@ import SwiftUI
 struct HomeView: View {
     
     @ObservedObject private var viewModel = HomeViewModel()
+    private let exploreViewModel = ExploreViewModel()
+    private let myComicsViewModel = MyComicsViewModel()
     
     var body: some View {
         TabView(selection: $viewModel.selectedItem) {
             makeExploreView()
+            makeMyComicsView()
             makeAccountView()
         }
     }
     
     private func makeExploreView() -> some View {
-        ExploreView()
+        ExploreView(viewModel: exploreViewModel)
             .navigationViewStyle(StackNavigationViewStyle())
             .tabItem {
                 Label("Explore", systemImage: "bubble.left")
             }
             .tag(viewModel.exploreTag)
+    }
+    
+    private func makeMyComicsView() -> some View {
+        MyComicsView(viewModel: myComicsViewModel)
+            .navigationViewStyle(StackNavigationViewStyle())
+            .tabItem {
+                Label("My Comics", systemImage: "bubble.left.and.bubble.right")
+            }
+            .tag(viewModel.myComicsTag)
     }
     
     private func makeAccountView() -> some View {

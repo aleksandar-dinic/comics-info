@@ -11,14 +11,14 @@ import Foundation
 struct ComicViewModel: Codable {
     
     private let comic: Comic
-    private let seriesSummaryViewModel: SeriesSummaryViewModel
+    private let seriesSummary: SeriesSummary
 
     init(
         from comic: Comic,
-        seriesSummaryViewModel: SeriesSummaryViewModel
+        seriesSummary: SeriesSummary
     ) {
         self.comic = comic
-        self.seriesSummaryViewModel = seriesSummaryViewModel
+        self.seriesSummary = seriesSummary
     }
     
     var identifier: String {
@@ -43,9 +43,13 @@ struct ComicViewModel: Codable {
     
     var issue: String {
         guard let number = comic.number else {
-            return "\(seriesSummaryViewModel.title)"
+            return seriesSummaryTitle
         }
-        return "\(seriesSummaryViewModel.title) #\(number)"
+        return "\(seriesSummaryTitle) #\(number)"
+    }
+    
+    private var seriesSummaryTitle: String {
+        "\(seriesSummary.title)"
     }
 
     var publishedDate: String {

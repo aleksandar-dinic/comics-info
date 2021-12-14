@@ -35,6 +35,7 @@ final class BookmarkViewModel: ObservableObject {
     private func getCharacters() {
         guard let characters = useCase.getBookmarkCharacters() else {
             self.characters.removeAll()
+            isBookmarkEmpty = comics.isEmpty
             return
         }
         isBookmarkEmpty = false
@@ -44,6 +45,7 @@ final class BookmarkViewModel: ObservableObject {
     private func getComics() {
         guard let comics = useCase.getBookmarkComics() else {
             self.comics.removeAll()
+            isBookmarkEmpty = characters.isEmpty
             return
         }
         isBookmarkEmpty = false

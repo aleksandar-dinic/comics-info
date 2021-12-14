@@ -34,11 +34,13 @@ struct CharacterInfoView: View {
                     .padding()
                     
                     ReactionsView(
+                        types: [.share, .bookmark],
+                        isInMyComics: viewModel.isInMyCharacters(),
                         isBookmarked: viewModel.isBookmarked(),
-                        shereMessage: viewModel.shereMessage
-                    ) {
-                        viewModel.onTapBookmark()
-                    }
+                        shereMessage: viewModel.shereMessage,
+                        onTapAdd: viewModel.onTapAdd,
+                        onTapBookmark: viewModel.onTapBookmark
+                    )
             
                     if !viewModel.realName.isEmpty {
                         HStack {

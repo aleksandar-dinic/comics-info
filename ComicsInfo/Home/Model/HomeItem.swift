@@ -10,6 +10,7 @@ import Foundation
 enum HomeItem: Int {
     
     case explore
+    case myComics
     case account
     
 }

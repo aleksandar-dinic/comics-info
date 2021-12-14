@@ -12,13 +12,19 @@ struct ComicDataProvider {
 
     private let comicAPIWrapper: ComicAPIWrapper
     private let comicCacheService: ComicCacheService
+    private let characterRepository: CharacterRepository
+    private let seriesRepository: SeriesRepository
 
     init(
         comicAPIWrapper: ComicAPIWrapper,
-        comicCacheService: ComicCacheService
+        comicCacheService: ComicCacheService,
+        characterRepository: CharacterRepository,
+        seriesRepository: SeriesRepository
     ) {
         self.comicAPIWrapper = comicAPIWrapper
         self.comicCacheService = comicCacheService
+        self.characterRepository = characterRepository
+        self.seriesRepository = seriesRepository
     }
     
     // Get all comics
@@ -108,6 +114,26 @@ struct ComicDataProvider {
         }
     }
 
+    // My Comics
+    
+    func getMyComics(forSeriesID seriesID: String) -> [ComicSummary]? {
+        comicCacheService.getMyComics(forSeriesID: seriesID)
+    }
+    
+    func addInMyComics(
+        _ comicSummary: ComicSummary,
+        character: Character,
+        seriesSummary: SeriesSummary
+    ) {
+        comicCacheService.addInMyComics(comicSummaries: [comicSummary], forSeriesID: seriesSummary.identifier)
+        var character = character
+        character.addInMySeries(seriesSummary)
+        characterRepository.addToMyCharacters(character)
+    }
+    
+    func isInMyComics(_ comicID: String, forSeriesID seriesID: String) -> Bool {
+        comicCacheService.isInMyComics(comicID, forSeriesID: seriesID)
+    }
     
     // Add to bookmark
     
@@ -126,4 +152,5 @@ struct ComicDataProvider {
     func isBookmarked(withID comicID: String) -> Bool {
         comicCacheService.isBookmarked(withID: comicID)
     }
+
 }

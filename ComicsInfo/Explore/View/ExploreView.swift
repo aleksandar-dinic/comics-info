@@ -11,9 +11,8 @@ import SwiftUI
 struct ExploreView: View {
 
     @ObservedObject private var viewModel: ExploreViewModel
-    @State private var showAccount = false
 
-    init(_ viewModel: ExploreViewModel = ExploreViewModel()) {
+    init(viewModel: ExploreViewModel = ExploreViewModel()) {
         self.viewModel = viewModel
     }
 
@@ -39,13 +38,6 @@ struct ExploreView: View {
                 }
             }
             .navigationBarTitle("Explore")
-            .toolbar {
-                Button(action: {
-                    showAccount.toggle()
-                }, label: {
-                    Image(systemName: "person.crop.circle.fill")
-                })
-            }
         }
         .navigationViewStyle(StackNavigationViewStyle())
         .onAppear {
@@ -53,9 +45,6 @@ struct ExploreView: View {
         }
         .alert(isPresented: $viewModel.showError) {
             Alert(title: Text(viewModel.errorMessage))
-        }
-        .sheet(isPresented: $showAccount) {
-            AccountView()
         }
         .accentColor(Color("AccentColor"))
     }
@@ -79,7 +68,7 @@ struct ExploreView: View {
                     .buttonStyle(PlainButtonStyle())
             ) {
                 if let seriesSummaries = character.mainSeries {
-                    seriesList(for: character.identifier, seriesSummaries: seriesSummaries)
+                    seriesList(for: character, seriesSummaries: seriesSummaries)
                 }
             }
             .onAppear {
@@ -95,13 +84,13 @@ struct ExploreView: View {
             .background(Color("AccentColor"))
     }
     
-    private func seriesList(for characterID: String, seriesSummaries: [SeriesSummary]) -> some View {
+    private func seriesList(for character: Character, seriesSummaries: [SeriesSummary]) -> some View {
         ForEach(seriesSummaries, id: \.identifier) { seriesSummary in
-            NavigationLink(destination: ComicsListView(forSeriesSummary: seriesSummary)) {
+            NavigationLink(destination: ComicsListView(character: character, seriesSummary: seriesSummary)) {
                 SeriesView(seriesSummary: SeriesSummaryViewModel(from: seriesSummary))
             }
             .padding(4)
-            .id("\(characterID)#\(seriesSummary.identifier)")
+            .id("\(character.identifier)#\(seriesSummary.identifier)")
             .buttonStyle(PlainButtonStyle())
         }
     }
@@ -131,7 +120,7 @@ struct ExploreView_Previews: PreviewProvider {
 
     static var previews: some View {
         ForEach(ColorScheme.allCases, id: \.self) { color in
-            ExploreView(viewModel)
+            ExploreView(viewModel: viewModel)
                 .previewDisplayName("\(color)")
                 .environment(\.colorScheme, color)
         }

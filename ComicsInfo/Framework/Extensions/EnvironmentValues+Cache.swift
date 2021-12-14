@@ -20,6 +20,15 @@ extension EnvironmentValues {
         }
     }
     
+    var myCharacterCache: Cache<String, Character> {
+        get {
+            self[MyCharacterCacheKey.self]
+        }
+        set {
+            self[MyCharacterCacheKey.self] = newValue
+        }
+    }
+    
     var characterSummariesCache: Cache<String, [CharacterSummary]> {
         get {
             self[CharacterSummaryCacheKey.self]
@@ -38,6 +47,15 @@ extension EnvironmentValues {
         }
     }
     
+    var mySeriesSummariesCache: Cache<String, [SeriesSummary]> {
+        get {
+            self[MySeriesSummaryCacheKey.self]
+        }
+        set {
+            self[MySeriesSummaryCacheKey.self] = newValue
+        }
+    }
+    
     var seriesSummariesCache: Cache<String, [SeriesSummary]> {
         get {
             self[SeriesSummaryCacheKey.self]
@@ -53,6 +71,15 @@ extension EnvironmentValues {
         }
         set {
             self[ComicCacheKey.self] = newValue
+        }
+    }
+    
+    var myComicCache: Cache<String, [ComicSummary]> {
+        get {
+            self[MyComicCacheKey.self]
+        }
+        set {
+            self[MyComicCacheKey.self] = newValue
         }
     }
     

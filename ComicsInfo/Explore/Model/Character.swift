@@ -41,11 +41,22 @@ struct Character: Codable {
     /// A resource list of the main series of this character.
     var mainSeries: [SeriesSummary]?
     
+    /// A resource list of the users series of this character.
+    var mySeries: [SeriesSummary]?
+    
 //    /// A resource list of series in which this character appears.
 //    var series: [SeriesSummary]?
 
     /// A resource list containing comics which feature this character.
     var comics: [ComicSummary]?
+    
+    mutating func addInMySeries(_ seriesSummary: SeriesSummary) {
+        if mySeries != nil {
+            mySeries?.append(seriesSummary)
+        } else {
+            mySeries = [seriesSummary]
+        }
+    }
 
 }
 

@@ -12,6 +12,7 @@ final class HomeViewModel: ObservableObject {
     @Published var selectedItem = HomeItem.explore
     
     let exploreTag = HomeItem.explore
+    let myComicsTag = HomeItem.myComics
     let accountTag = HomeItem.account
     
 }

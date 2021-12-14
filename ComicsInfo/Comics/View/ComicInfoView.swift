@@ -44,11 +44,12 @@ struct ComicInfoView: View {
                     .padding()
                     
                     ReactionsView(
+                        isInMyComics: viewModel.isInMyComics(),
                         isBookmarked: viewModel.isBookmarked(),
-                        shereMessage: viewModel.shereMessage
-                    ) {
-                        viewModel.onTapBookmark()
-                    }
+                        shereMessage: viewModel.shereMessage,
+                        onTapAdd: viewModel.onTapAdd,
+                        onTapBookmark: viewModel.onTapBookmark
+                    )
 
                     if !viewModel.description.isEmpty {
                         DescriptionView(description: viewModel.description)
@@ -70,9 +71,10 @@ struct ComicInfoView: View {
 #if DEBUG
 struct ComicInfoView_Previews: PreviewProvider {
     
-    static let useCase = ComicUseCase()
-    static let comicSummary = ComicSummary.make()
-    static let seriesSummary = SeriesSummary.make()
+    private static let character = Character.make()
+    private static let seriesSummary = SeriesSummary.make()
+    private static let comicSummary = ComicSummary.make()
+    private static let useCase = ComicUseCase()
 
     static var previews: some View {
         NavigationView {
@@ -80,9 +82,10 @@ struct ComicInfoView_Previews: PreviewProvider {
                 ComicInfoView(
                     viewModel:
                         ComicInfoViewModel(
-                            useCase: useCase,
+                            character: character,
+                            seriesSummary: seriesSummary,
                             comicSummary: comicSummary,
-                            seriesSummaryViewModel: SeriesSummaryViewModel(from: seriesSummary)
+                            useCase: useCase
                         )
                 )
                     .previewDisplayName("\(color)")

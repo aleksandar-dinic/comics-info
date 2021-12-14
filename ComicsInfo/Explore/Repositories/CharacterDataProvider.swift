@@ -104,7 +104,25 @@ struct CharacterDataProvider {
         }
     }
     
-    // Add to bookmark
+    // My Characters
+    
+    func getMyCharacters() -> [Character]? {
+        characterCacheService.getMyCharacters()
+    }
+    
+    func addToMyCharacters(_ character: Character) {
+        characterCacheService.addToMyCharacters(character)
+    }
+    
+    func removeFromMyCharacters(_ character: Character) {
+        characterCacheService.removeFromMyCharacters(character)
+    }
+    
+    func isInMyCharacters(withID characterID: String) -> Bool {
+        characterCacheService.isInMyCharacters(withID: characterID)
+    }
+    
+    // Bookmark
     
     func getBookmarkCharacters() -> [Character]? {
         characterCacheService.getBookmarkCharacters()

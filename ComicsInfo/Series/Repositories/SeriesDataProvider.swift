@@ -107,5 +107,19 @@ struct SeriesDataProvider {
             }
         }
     }
+    
+    // My Series
+    
+    func addInMySeries(_ seriesSeries: SeriesSummary, forCharacterID characterID: String) {
+        seriesCacheService.addInMySeries(seriesSeries, forCharacterID: characterID)
+    }
+    
+    func getMySeries(for characterID: String) -> [SeriesSummary]? {
+        seriesCacheService.getMySeries(for: characterID)
+    }
+    
+    func isInMySeries(_ seriesID: String, forCharacterID characterID: String) -> Bool {
+        seriesCacheService.isInMySeries(seriesID, forCharacterID: characterID)
+    }
 
 }

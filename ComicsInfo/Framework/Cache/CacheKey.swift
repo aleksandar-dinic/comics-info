@@ -12,11 +12,14 @@ import SwiftUI
 enum CacheKey: String {
     
     case characters = "Characters"
+    case myCharacters = "MyCharacters"
     case characterSummaries = "CharacterSummaries"
     case series = "Series"
     case seriesSummaries = "SeriesSummaries"
+    case mySeriesSummaries = "MySeriesSummaries"
     case comics = "Comics"
     case comicSummaries = "ComicSummaries"
+    case myComics = "MyComics"
     case images = "Images"
     
 }
@@ -24,6 +27,12 @@ enum CacheKey: String {
 struct CharacterCacheKey: EnvironmentKey {
     
     static let defaultValue: Cache = Cache<String, Character>.getFromDisc(.characters) ?? Cache<String, Character>()
+
+}
+
+struct MyCharacterCacheKey: EnvironmentKey {
+    
+    static let defaultValue: Cache = Cache<String, Character>.getFromDisc(.myCharacters) ?? Cache<String, Character>()
 
 }
 
@@ -45,9 +54,21 @@ struct SeriesSummaryCacheKey: EnvironmentKey {
 
 }
 
+struct MySeriesSummaryCacheKey: EnvironmentKey {
+    
+    static let defaultValue: Cache = Cache<String, [SeriesSummary]>.getFromDisc(.mySeriesSummaries) ?? Cache<String, [SeriesSummary]>()
+
+}
+
 struct ComicCacheKey: EnvironmentKey {
     
     static let defaultValue: Cache = Cache<String, Comic>.getFromDisc(.comics) ?? Cache<String, Comic>()
+
+}
+
+struct MyComicCacheKey: EnvironmentKey {
+    
+    static let defaultValue: Cache = Cache<String, [ComicSummary]>.getFromDisc(.myComics) ?? Cache<String, [ComicSummary]>()
 
 }
 

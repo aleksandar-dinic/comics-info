@@ -43,5 +43,19 @@ final class SeriesDataRepository: SeriesRepository {
             onComplete: complete
         )
     }
+    
+    // My Series
+    
+    func addInMySeries(_ seriesSeries: SeriesSummary, forCharacterID characterID: String) {
+        seriesDataProvider.addInMySeries(seriesSeries, forCharacterID: characterID)
+    }
+    
+    func getMySeries(for characterID: String) -> [SeriesSummary]? {
+        seriesDataProvider.getMySeries(for: characterID)
+    }
+    
+    func isInMySeries(_ seriesID: String, forCharacterID characterID: String) -> Bool {
+        seriesDataProvider.isInMySeries(seriesID, forCharacterID: characterID)
+    }
 
 }

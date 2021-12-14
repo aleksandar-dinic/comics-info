@@ -20,4 +20,8 @@ protocol SeriesCacheService {
     func getSeries(withID seriesID: String) -> Series?
     func save(series: Series)
 
+    func addInMySeries(_ seriesSeries: SeriesSummary, forCharacterID characterID: String)
+    func getMySeries(for characterID: String) -> [SeriesSummary]?
+    func isInMySeries(_ seriesID: String, forCharacterID characterID: String) -> Bool
+    
 }

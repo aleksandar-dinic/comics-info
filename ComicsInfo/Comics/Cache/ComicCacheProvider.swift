@@ -15,15 +15,18 @@ struct ComicCacheProvider: ComicCacheService {
 
     private let comicCache: Cache<String, Comic>
     private let comicSummaryCache: Cache<String, [ComicSummary]>
+    private let myComicCache: Cache<String, [ComicSummary]>
     private var defaults: UserDefaults
 
     init(
         comicCache: Cache<String, Comic> = SwiftUI.Environment(\.comicCache).wrappedValue,
         comicSummaryCache: Cache<String, [ComicSummary]> = SwiftUI.Environment(\.comicSummariesCache).wrappedValue,
+        myComicCache: Cache<String, [ComicSummary]> = SwiftUI.Environment(\.myComicCache).wrappedValue,
         defaults: UserDefaults = .standard
     ) {
         self.comicCache = comicCache
         self.comicSummaryCache = comicSummaryCache
+        self.myComicCache = myComicCache
         self.defaults = defaults
     }
 
@@ -72,6 +75,36 @@ struct ComicCacheProvider: ComicCacheService {
         comicCache[comic.identifier] = comic
         try? comicCache.saveToDisc(.comics)
     }
+    
+    // My Comics
+    
+    func getMyComics(forSeriesID seriesID: String) -> [ComicSummary]? {
+        myComicCache[seriesID]
+    }
+    
+    func addInMyComics(comicSummaries: [ComicSummary], forSeriesID seriesID: String) {
+        var value = [ComicSummary]()
+        var keys = Set<String>()
+        if let oldValue = myComicCache[seriesID] {
+            value = oldValue
+            oldValue
+                .map { $0.identifier }
+                .forEach { keys.insert($0) }
+        }
+        
+        for summary in comicSummaries where !keys.contains(summary.identifier) {
+            value.append(summary)
+        }
+        
+        myComicCache[seriesID] = value
+        try? myComicCache.saveToDisc(.myComics)
+    }
+    
+    func isInMyComics(_ comicID: String, forSeriesID seriesID: String) -> Bool {
+        myComicCache[seriesID]?.contains(where: { $0.identifier == comicID }) ?? false
+    }
+    
+    // Bookmark
     
     func getBookmarkComics() -> [Comic]? {
         var comics = [Comic]()

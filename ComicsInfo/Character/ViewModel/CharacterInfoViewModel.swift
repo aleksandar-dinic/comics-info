@@ -44,6 +44,22 @@ struct CharacterInfoViewModel {
         "person.crop.circle"
     }
     
+    // My Characters
+    
+    func onTapAdd() {
+        if !isInMyCharacters() {
+            characterUseCase.addToMyCharacters(character)
+        } else {
+            characterUseCase.removeFromMyCharacters(character)
+        }
+    }
+    
+    func isInMyCharacters() -> Bool {
+        characterUseCase.isInMyCharacters(withID: character.identifier)
+    }
+    
+    // Bookmark
+    
     func onTapBookmark() {
         if !isBookmarked() {
             characterUseCase.addToBookmark(character)

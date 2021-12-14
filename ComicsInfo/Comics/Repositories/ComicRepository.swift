@@ -28,6 +28,17 @@ protocol ComicRepository {
         onComplete complete: @escaping (Result<Comic, Error>) -> Void
     )
     
+    func getMyComics(forSeriesID seriesID: String) -> [ComicSummary]?
+    func addToMyComics(
+        _ comicSummary: ComicSummary,
+        character: Character,
+        seriesSummary: SeriesSummary
+    )
+    func isInMyComics(
+        _ comicID: String,
+        forSeriesID seriesID: String
+    ) -> Bool
+    
     func getBookmarkComics() -> [Comic]?
     func addToBookmark(_ comicID: String)
     func removeFromBookmark(_ comicID: String)

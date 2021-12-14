@@ -9,20 +9,23 @@ import Foundation
 
 final class ComicInfoViewModel {
     
-    private let useCase: ComicUseCase
+    private let character: Character
+    private let seriesSummary: SeriesSummary
     private let comicSummary: ComicSummary
-    private let seriesSummaryViewModel: SeriesSummaryViewModel
+    private let useCase: ComicUseCase
     @Published private(set) var comicViewModel: ComicViewModel?
     
     init(
-        useCase: ComicUseCase,
+        character: Character,
+        seriesSummary: SeriesSummary,
         comicSummary: ComicSummary,
-        seriesSummaryViewModel: SeriesSummaryViewModel,
+        useCase: ComicUseCase,
         comicViewModel: ComicViewModel? = nil
     ) {
-        self.useCase = useCase
+        self.character = character
+        self.seriesSummary = seriesSummary
         self.comicSummary = comicSummary
-        self.seriesSummaryViewModel = seriesSummaryViewModel
+        self.useCase = useCase
         self.comicViewModel = comicViewModel
     }
     
@@ -37,7 +40,7 @@ final class ComicInfoViewModel {
             case let .success(comic):
                 self.comicViewModel = ComicViewModel(
                     from: comic,
-                    seriesSummaryViewModel: self.seriesSummaryViewModel
+                    seriesSummary: self.seriesSummary
                 )
             case let .failure(error):
                 print(error)
@@ -74,9 +77,13 @@ final class ComicInfoViewModel {
         }
 
         guard let number = comicSummary.number else {
-            return "\(seriesSummaryViewModel.title)"
+            return seriesSummaryTitle
         }
-        return "\(seriesSummaryViewModel.title) #\(number)"
+        return "\(seriesSummaryTitle) #\(number)"
+    }
+    
+    private var seriesSummaryTitle: String {
+        "\(seriesSummary.title)"
     }
     
     var publishedDate: String {
@@ -88,6 +95,21 @@ final class ComicInfoViewModel {
         let formatter = DateFormatter()
         formatter.dateFormat = "MMMM, YYY"
         return "(\(formatter.string(from: published)))"
+    }
+    
+    func onTapAdd() {
+        useCase.addToMyComics(
+            comicSummary,
+            character: character,
+            seriesSummary: seriesSummary
+        )
+    }
+    
+    func isInMyComics() -> Bool {
+        useCase.isInMyComics(
+            comicSummary.identifier,
+            forSeriesID: seriesSummary.identifier
+        )
     }
     
     func onTapBookmark() {

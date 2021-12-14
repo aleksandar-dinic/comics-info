@@ -1,24 +1,23 @@
 //
-//  ComicsListView.swift
+//  MyComicsListView.swift
 //  ComicsInfo
 //
-//  Created by Aleksandar Dinic on 22/07/2020.
-//  Copyright © 2020 Aleksandar Dinic. All rights reserved.
+//  Created by Aleksandar Dinic on 14/12/2021.
 //
 
 import SwiftUI
 
-struct ComicsListView: View {
+struct MyComicsListView: View {
 
     private let character: Character
     private let seriesSummary: SeriesSummary
-    @ObservedObject private var viewModel: ComicsListViewModel
+    @ObservedObject private var viewModel: MyComicsListViewModel
     @State private var showBanner = AppTrackingManager.authorization
 
     init(
         character: Character,
         seriesSummary: SeriesSummary,
-        viewModel: ComicsListViewModel = ComicsListViewModel()
+        viewModel: MyComicsListViewModel = MyComicsListViewModel()
     ) {
         self.character = character
         self.seriesSummary = seriesSummary
@@ -94,7 +93,7 @@ struct ComicsListView: View {
 }
 
 #if DEBUG
-struct ComicsListView_Previews: PreviewProvider {
+struct MyComicsListView_Previews: PreviewProvider {
 
     private static let character = Character.make()
     
@@ -108,7 +107,7 @@ struct ComicsListView_Previews: PreviewProvider {
         endYear: nil
     )
 
-    static let viewModel = ComicsListViewModel(
+    static let viewModel = MyComicsListViewModel(
         comics: [
             ComicSummary.make(),
             ComicSummary.make(),
@@ -120,7 +119,7 @@ struct ComicsListView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
             ForEach(ColorScheme.allCases, id: \.self) { color in
-                ComicsListView(
+                MyComicsListView(
                     character: character,
                     seriesSummary: seriesSummary,
                     viewModel: viewModel

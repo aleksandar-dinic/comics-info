@@ -53,6 +53,26 @@ final class CharacterUseCase: CharacterRepositoryFactory {
         }
     }
     
+    // MyCharacters
+    
+    func getMyCharacters() -> [Character]? {
+        repository.getMyCharacters()
+    }
+    
+    func addToMyCharacters(_ character: Character) {
+        repository.addToMyCharacters(character)
+    }
+    
+    func removeFromMyCharacters(_ character: Character) {
+        repository.removeFromMyCharacters(character)
+    }
+    
+    func isInMyCharacters(withID characterID: String) -> Bool {
+        repository.isInMyCharacters(withID: characterID)
+    }
+    
+    // Bookmark
+    
     func getBookmarkCharacters() -> [Character]? {
         repository.getBookmarkCharacters()
     }

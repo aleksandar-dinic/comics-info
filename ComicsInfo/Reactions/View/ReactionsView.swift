@@ -11,26 +11,38 @@ struct ReactionsView: View {
     
     @ObservedObject private var viewModel: ReactionsViewModel
     private let shereMessage: String
+    private let onTapAdd: () -> Void
     private let onTapBookmark: () -> Void
     
     init(
+        types: [ReactionType] = ReactionType.allCases,
+        isInMyComics: Bool,
         isBookmarked: Bool,
         shereMessage: String,
+        onTapAdd: @escaping () -> Void,
         onTapBookmark: @escaping () -> Void
     ) {
-        self.viewModel = ReactionsViewModel(isBookmarked: isBookmarked)
+        self.viewModel = ReactionsViewModel(
+            types: types,
+            isInMyComics: isInMyComics,
+            isBookmarked: isBookmarked
+        )
         self.shereMessage = shereMessage
+        self.onTapAdd = onTapAdd
         self.onTapBookmark = onTapBookmark
     }
     
     var body: some View {
         HStack(spacing: 16) {
-            Image(systemName: "square.and.arrow.up")
-                .font(.title2)
-                .onTapGesture {
-                    viewModel.actionSheet(shereMessage)
-                    successFeedback()
-                }
+            if viewModel.isAvailable(.share) {
+                Image(systemName: "square.and.arrow.up")
+                    .font(.title2)
+                    .onTapGesture {
+                        viewModel.actionSheet(shereMessage)
+                        successFeedback()
+                    }
+            }
+            
 //            viewModel.heartImage
 //                .font(.title2)
 //                .onTapGesture {
@@ -39,12 +51,23 @@ struct ReactionsView: View {
 //                }
 //                .foregroundColor(.red)
             Spacer()
-            viewModel.bookmarkImage
-                .font(.title2)
-                .onTapGesture {
-                    viewModel.onTapBookmark()
-                    onTapBookmark()
-                    successFeedback()
+            if viewModel.isAvailable(.add) {
+                viewModel.addImage
+                    .font(.title2)
+                    .onTapGesture {
+                        viewModel.onTapAdd()
+                        onTapAdd()
+                        successFeedback()
+                    }
+            }
+            if viewModel.isAvailable(.bookmark) {
+                viewModel.bookmarkImage
+                    .font(.title2)
+                    .onTapGesture {
+                        viewModel.onTapBookmark()
+                        onTapBookmark()
+                        successFeedback()
+                    }
                 }
         }
         .foregroundColor(Color("AccentColor"))
@@ -63,11 +86,12 @@ struct ReactionsView_Previews: PreviewProvider {
     
     static var previews: some View {
         ReactionsView(
+            isInMyComics: false,
             isBookmarked: false,
-            shereMessage: "Hello from preview"
-        ) {
-            print("Bookmark tapped")
-        }
+            shereMessage: "Hello from preview",
+            onTapAdd: { print("Add tapped") },
+            onTapBookmark: { print("Bookmark tapped") }
+        )
     }
     
 }
