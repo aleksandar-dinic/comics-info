@@ -16,7 +16,7 @@ struct AccountView: View {
             VStack {
                 List {
                     Section() {
-                        UserProfileView()
+                        AuthView()
                     }
                     
                     Section() {

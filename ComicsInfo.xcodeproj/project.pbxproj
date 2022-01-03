@@ -67,7 +67,19 @@
 		6420EF7025FAC4DE00B7F47B /* SeriesDataProviderMockFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6420EE4525FA256200B7F47B /* SeriesDataProviderMockFactory.swift */; };
 		642CF2B726D921BC0054B881 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642CF2B626D921BC0054B881 /* Cache.swift */; };
 		642CF2BA26DB94A30054B881 /* EnvironmentValues+Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642CF2B926DB94A30054B881 /* EnvironmentValues+Cache.swift */; };
+		64431457276F560A0038FD4B /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64431456276F560A0038FD4B /* Auth.swift */; };
+		6443145A276F605D0038FD4B /* AuthError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64431459276F605D0038FD4B /* AuthError.swift */; };
+		6443145B276F60C70038FD4B /* AuthAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6475FCE9276E592A00B643AE /* AuthAPIService.swift */; };
 		6469B06225DD4115000148B8 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6469B06125DD4115000148B8 /* Environment.swift */; };
+		6475FCDD276E547500B643AE /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6475FCDC276E547500B643AE /* SignInView.swift */; };
+		6475FCE2276E559A00B643AE /* AuthUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6475FCE1276E559A00B643AE /* AuthUseCase.swift */; };
+		6475FCE4276E55AF00B643AE /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6475FCE3276E55AF00B643AE /* SignInViewModel.swift */; };
+		6475FCE6276E585A00B643AE /* AuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6475FCE5276E585A00B643AE /* AuthRepository.swift */; };
+		6475FCED276E603C00B643AE /* AuthRepositoryFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6475FCEC276E603C00B643AE /* AuthRepositoryFactory.swift */; };
+		6475FCF2276E61CE00B643AE /* AuthAPIProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6475FCF1276E61CD00B643AE /* AuthAPIProvider.swift */; };
+		6475FCF4276E8F6900B643AE /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6475FCF3276E8F6900B643AE /* SignUpView.swift */; };
+		6475FCF6276E900B00B643AE /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6475FCF5276E900B00B643AE /* SignUpViewModel.swift */; };
+		647640FB27834EA40092FFF5 /* AuthenticationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 647640FA27834EA40092FFF5 /* AuthenticationServices.framework */; };
 		647773D826D5370C00FED43E /* SeriesSummaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647773D726D5370C00FED43E /* SeriesSummaryViewModel.swift */; };
 		647A4AAD270329DC00FACC6D /* ReactionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647A4AAC270329DC00FACC6D /* ReactionsView.swift */; };
 		647A4AB0270330EF00FACC6D /* ReactionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647A4AAF270330EF00FACC6D /* ReactionsViewModel.swift */; };
@@ -157,10 +169,32 @@
 		64B434FC24F43FE90054A20C /* ComicCacheProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B434FB24F43FE90054A20C /* ComicCacheProviderTests.swift */; };
 		64B434FE24F440570054A20C /* ComicAPIProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B434FD24F440570054A20C /* ComicAPIProvider.swift */; };
 		64B4350D24F441CA0054A20C /* ComicAPIServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B4350C24F441CA0054A20C /* ComicAPIServiceTests.swift */; };
+		64B759872772006E0085C19E /* UserProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B759862772006E0085C19E /* UserProfileViewModel.swift */; };
+		64B7598A27720B6F0085C19E /* UserProfileUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B7598927720B6F0085C19E /* UserProfileUseCase.swift */; };
+		64B7598D277210000085C19E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B7598C277210000085C19E /* User.swift */; };
+		64B7598F27721D310085C19E /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B7598E27721D310085C19E /* AuthView.swift */; };
+		64B7599127721D8C0085C19E /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B7599027721D8C0085C19E /* AuthViewModel.swift */; };
+		64B7599327734C120085C19E /* ResetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B7599227734C120085C19E /* ResetPasswordView.swift */; };
+		64B7599527734FE40085C19E /* ResetPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B7599427734FE40085C19E /* ResetPasswordViewModel.swift */; };
+		64B75997277381730085C19E /* UserAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B75996277381730085C19E /* UserAttribute.swift */; };
+		64B75999277492EC0085C19E /* ChangePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B75998277492EB0085C19E /* ChangePasswordView.swift */; };
+		64B7599B2774931B0085C19E /* ChangePasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B7599A2774931B0085C19E /* ChangePasswordViewModel.swift */; };
+		64BD8C50277606D300D12C19 /* SignInOrSignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BD8C4F277606D300D12C19 /* SignInOrSignUpView.swift */; };
+		64BD8C532778E80900D12C19 /* amplifyconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 64BD8C512778E80900D12C19 /* amplifyconfiguration.json */; };
+		64BD8C542778E80900D12C19 /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 64BD8C522778E80900D12C19 /* awsconfiguration.json */; };
+		64BD8C562778F76D00D12C19 /* VerificationCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BD8C552778F76D00D12C19 /* VerificationCodeView.swift */; };
+		64BD8C592778F78000D12C19 /* VerificationCodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BD8C582778F78000D12C19 /* VerificationCodeViewModel.swift */; };
+		64BD8C5C277A086200D12C19 /* LoadingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BD8C5B277A086200D12C19 /* LoadingState.swift */; };
+		64BD8C5F277A14C200D12C19 /* MainProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BD8C5E277A14C200D12C19 /* MainProgressView.swift */; };
+		64BD8C61277A48B500D12C19 /* String+Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BD8C60277A48B500D12C19 /* String+Localized.swift */; };
+		64BD8C63277B4BCD00D12C19 /* LoadableObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BD8C62277B4BCD00D12C19 /* LoadableObject.swift */; };
 		64D4EC3E26FE4A3E001BB4D6 /* AppTrackingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D4EC3D26FE4A3E001BB4D6 /* AppTrackingManager.swift */; };
 		64DACF132764E7EF00FFD285 /* ReactionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DACF122764E7EF00FFD285 /* ReactionType.swift */; };
 		64DACF152768F07000FFD285 /* MyComicsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DACF142768F07000FFD285 /* MyComicsListView.swift */; };
 		64DACF172768F8C700FFD285 /* MyComicsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DACF162768F8C700FFD285 /* MyComicsListViewModel.swift */; };
+		64DACF1A276A20AF00FFD285 /* AWSAPIPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 64DACF19276A20AF00FFD285 /* AWSAPIPlugin */; };
+		64DACF1C276A20AF00FFD285 /* AWSCognitoAuthPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 64DACF1B276A20AF00FFD285 /* AWSCognitoAuthPlugin */; };
+		64DACF1E276A20AF00FFD285 /* Amplify in Frameworks */ = {isa = PBXBuildFile; productRef = 64DACF1D276A20AF00FFD285 /* Amplify */; };
 		64DB1DB926C1A114009492AA /* EndpointType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DB1DB826C1A114009492AA /* EndpointType.swift */; };
 		64DB1DBE26C1A161009492AA /* NetworkLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DB1DBD26C1A161009492AA /* NetworkLogger.swift */; };
 		64DB1DC326C1A175009492AA /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DB1DC226C1A175009492AA /* NetworkManager.swift */; };
@@ -251,10 +285,23 @@
 		6420EE4525FA256200B7F47B /* SeriesDataProviderMockFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesDataProviderMockFactory.swift; sourceTree = "<group>"; };
 		642CF2B626D921BC0054B881 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		642CF2B926DB94A30054B881 /* EnvironmentValues+Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EnvironmentValues+Cache.swift"; sourceTree = "<group>"; };
+		64431456276F560A0038FD4B /* Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
+		64431459276F605D0038FD4B /* AuthError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthError.swift; sourceTree = "<group>"; };
 		6469B01B25DD3BD1000148B8 /* Development.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Development.xcconfig; sourceTree = "<group>"; };
 		6469B01C25DD3BDE000148B8 /* Staging.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Staging.xcconfig; sourceTree = "<group>"; };
 		6469B01D25DD3BEF000148B8 /* Production.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Production.xcconfig; sourceTree = "<group>"; };
 		6469B06125DD4115000148B8 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
+		6475FCDC276E547500B643AE /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
+		6475FCE1276E559A00B643AE /* AuthUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUseCase.swift; sourceTree = "<group>"; };
+		6475FCE3276E55AF00B643AE /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
+		6475FCE5276E585A00B643AE /* AuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepository.swift; sourceTree = "<group>"; };
+		6475FCE9276E592A00B643AE /* AuthAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAPIService.swift; sourceTree = "<group>"; };
+		6475FCEC276E603C00B643AE /* AuthRepositoryFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepositoryFactory.swift; sourceTree = "<group>"; };
+		6475FCF1276E61CD00B643AE /* AuthAPIProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAPIProvider.swift; sourceTree = "<group>"; };
+		6475FCF3276E8F6900B643AE /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		6475FCF5276E900B00B643AE /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
+		647640F927834EA40092FFF5 /* ComicsInfoRelease (Production).entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "ComicsInfoRelease (Production).entitlements"; sourceTree = "<group>"; };
+		647640FA27834EA40092FFF5 /* AuthenticationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AuthenticationServices.framework; path = System/Library/Frameworks/AuthenticationServices.framework; sourceTree = SDKROOT; };
 		647773D726D5370C00FED43E /* SeriesSummaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesSummaryViewModel.swift; sourceTree = "<group>"; };
 		647A4AAC270329DC00FACC6D /* ReactionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactionsView.swift; sourceTree = "<group>"; };
 		647A4AAF270330EF00FACC6D /* ReactionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactionsViewModel.swift; sourceTree = "<group>"; };
@@ -348,6 +395,25 @@
 		64B434FB24F43FE90054A20C /* ComicCacheProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicCacheProviderTests.swift; sourceTree = "<group>"; };
 		64B434FD24F440570054A20C /* ComicAPIProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicAPIProvider.swift; sourceTree = "<group>"; };
 		64B4350C24F441CA0054A20C /* ComicAPIServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicAPIServiceTests.swift; sourceTree = "<group>"; };
+		64B759862772006E0085C19E /* UserProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewModel.swift; sourceTree = "<group>"; };
+		64B7598927720B6F0085C19E /* UserProfileUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileUseCase.swift; sourceTree = "<group>"; };
+		64B7598C277210000085C19E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		64B7598E27721D310085C19E /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
+		64B7599027721D8C0085C19E /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		64B7599227734C120085C19E /* ResetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordView.swift; sourceTree = "<group>"; };
+		64B7599427734FE40085C19E /* ResetPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewModel.swift; sourceTree = "<group>"; };
+		64B75996277381730085C19E /* UserAttribute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAttribute.swift; sourceTree = "<group>"; };
+		64B75998277492EB0085C19E /* ChangePasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordView.swift; sourceTree = "<group>"; };
+		64B7599A2774931B0085C19E /* ChangePasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewModel.swift; sourceTree = "<group>"; };
+		64BD8C4F277606D300D12C19 /* SignInOrSignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInOrSignUpView.swift; sourceTree = "<group>"; };
+		64BD8C512778E80900D12C19 /* amplifyconfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = amplifyconfiguration.json; sourceTree = SOURCE_ROOT; };
+		64BD8C522778E80900D12C19 /* awsconfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = awsconfiguration.json; sourceTree = SOURCE_ROOT; };
+		64BD8C552778F76D00D12C19 /* VerificationCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationCodeView.swift; sourceTree = "<group>"; };
+		64BD8C582778F78000D12C19 /* VerificationCodeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationCodeViewModel.swift; sourceTree = "<group>"; };
+		64BD8C5B277A086200D12C19 /* LoadingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingState.swift; sourceTree = "<group>"; };
+		64BD8C5E277A14C200D12C19 /* MainProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainProgressView.swift; sourceTree = "<group>"; };
+		64BD8C60277A48B500D12C19 /* String+Localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Localized.swift"; sourceTree = "<group>"; };
+		64BD8C62277B4BCD00D12C19 /* LoadableObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadableObject.swift; sourceTree = "<group>"; };
 		64D4EC3D26FE4A3E001BB4D6 /* AppTrackingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTrackingManager.swift; sourceTree = "<group>"; };
 		64DACF122764E7EF00FFD285 /* ReactionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactionType.swift; sourceTree = "<group>"; };
 		64DACF142768F07000FFD285 /* MyComicsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyComicsListView.swift; sourceTree = "<group>"; };
@@ -363,6 +429,8 @@
 		64DB1DEC26C1AB69009492AA /* CharacterEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterEndpoint.swift; sourceTree = "<group>"; };
 		64DB1DF126C1BD4F009492AA /* SeriesEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesEndpoint.swift; sourceTree = "<group>"; };
 		64DB1DF626C1BDCA009492AA /* ComicEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicEndpoint.swift; sourceTree = "<group>"; };
+		C299D25EA880516E3196B119 /* awsconfiguration.json */ = {isa = PBXFileReference; explicitFileType = text.json; path = awsconfiguration.json; sourceTree = "<group>"; };
+		FD0265B65E4E2B974B95C431 /* amplifyconfiguration.json */ = {isa = PBXFileReference; explicitFileType = text.json; path = amplifyconfiguration.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -370,7 +438,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				647640FB27834EA40092FFF5 /* AuthenticationServices.framework in Frameworks */,
+				64DACF1A276A20AF00FFD285 /* AWSAPIPlugin in Frameworks */,
+				64DACF1E276A20AF00FFD285 /* Amplify in Frameworks */,
 				648C119C26DD2CDB00F06910 /* FirebaseCrashlytics in Frameworks */,
+				64DACF1C276A20AF00FFD285 /* AWSCognitoAuthPlugin in Frameworks */,
 				648C119A26DD2CDB00F06910 /* FirebaseAnalytics in Frameworks */,
 				6420EE4F25FA25CA00B7F47B /* Domain in Frameworks */,
 				648C11AC26DD39AC00F06910 /* GoogleMobileAds.xcframework in Frameworks */,
@@ -395,6 +467,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		09B49285FE23D321C177DEC6 /* AmplifyConfig */ = {
+			isa = PBXGroup;
+			children = (
+				C299D25EA880516E3196B119 /* awsconfiguration.json */,
+				FD0265B65E4E2B974B95C431 /* amplifyconfiguration.json */,
+			);
+			name = AmplifyConfig;
+			sourceTree = "<group>";
+		};
 		6420EDE225FA24F400B7F47B /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
@@ -539,13 +620,26 @@
 			children = (
 				642CF2B926DB94A30054B881 /* EnvironmentValues+Cache.swift */,
 				64A1311526F5336100B24548 /* Date+StringFormat.swift */,
+				64BD8C60277A48B500D12C19 /* String+Localized.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		64431458276F60480038FD4B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				64431459276F605D0038FD4B /* AuthError.swift */,
+				64B7598C277210000085C19E /* User.swift */,
+				64B75996277381730085C19E /* UserAttribute.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		6469B01425DD3B65000148B8 /* Config */ = {
 			isa = PBXGroup;
 			children = (
+				64BD8C512778E80900D12C19 /* amplifyconfiguration.json */,
+				64BD8C522778E80900D12C19 /* awsconfiguration.json */,
 				648C11C126DE4B5F00F06910 /* GoogleService-Info.plist */,
 				649D5C8824E1F18C004C6328 /* Info.plist */,
 				6469B06125DD4115000148B8 /* Environment.swift */,
@@ -554,6 +648,78 @@
 				6469B01C25DD3BDE000148B8 /* Staging.xcconfig */,
 			);
 			path = Config;
+			sourceTree = "<group>";
+		};
+		6475FCD9276E545200B643AE /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				64431458276F60480038FD4B /* Model */,
+				6475FCF0276E61BB00B643AE /* Network */,
+				6475FCDF276E557400B643AE /* Repository */,
+				6475FCDE276E555800B643AE /* UseCase */,
+				6475FCDA276E545D00B643AE /* View */,
+				6475FCDB276E546100B643AE /* ViewModel */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		6475FCDA276E545D00B643AE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				64B7598E27721D310085C19E /* AuthView.swift */,
+				64B7599227734C120085C19E /* ResetPasswordView.swift */,
+				64BD8C4F277606D300D12C19 /* SignInOrSignUpView.swift */,
+				6475FCDC276E547500B643AE /* SignInView.swift */,
+				6475FCF3276E8F6900B643AE /* SignUpView.swift */,
+				64BD8C552778F76D00D12C19 /* VerificationCodeView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		6475FCDB276E546100B643AE /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				64B7599027721D8C0085C19E /* AuthViewModel.swift */,
+				64B7599427734FE40085C19E /* ResetPasswordViewModel.swift */,
+				6475FCE3276E55AF00B643AE /* SignInViewModel.swift */,
+				6475FCF5276E900B00B643AE /* SignUpViewModel.swift */,
+				64BD8C582778F78000D12C19 /* VerificationCodeViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		6475FCDE276E555800B643AE /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				6475FCE1276E559A00B643AE /* AuthUseCase.swift */,
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
+		6475FCDF276E557400B643AE /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				6475FCE9276E592A00B643AE /* AuthAPIService.swift */,
+				6475FCE5276E585A00B643AE /* AuthRepository.swift */,
+				6475FCEB276E601800B643AE /* Factory */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		6475FCEB276E601800B643AE /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+				6475FCEC276E603C00B643AE /* AuthRepositoryFactory.swift */,
+			);
+			path = Factory;
+			sourceTree = "<group>";
+		};
+		6475FCF0276E61BB00B643AE /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				6475FCF1276E61CD00B643AE /* AuthAPIProvider.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		647A4AAA270329C300FACC6D /* Reactions */ = {
@@ -697,6 +863,7 @@
 			isa = PBXGroup;
 			children = (
 				648C11C926DF9A1000F06910 /* Account */,
+				6475FCD9276E545200B643AE /* Auth */,
 				647A4AB1270342BE00FACC6D /* Bookmark */,
 				648C11C426DF807200F06910 /* Support */,
 				648C11CF26E0DB3400F06910 /* UserProfile */,
@@ -752,7 +919,9 @@
 		648C11CF26E0DB3400F06910 /* UserProfile */ = {
 			isa = PBXGroup;
 			children = (
+				64B7598827720B5C0085C19E /* UseCase */,
 				648C11D026E0DB7600F06910 /* View */,
+				64B759852772005A0085C19E /* ViewModel */,
 			);
 			path = UserProfile;
 			sourceTree = "<group>";
@@ -761,6 +930,7 @@
 			isa = PBXGroup;
 			children = (
 				648C11D126E0DB8800F06910 /* UserProfileView.swift */,
+				64B75998277492EB0085C19E /* ChangePasswordView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -986,6 +1156,7 @@
 				649D5C9B24E1F18C004C6328 /* ComicsInfoUITests */,
 				649D5C7D24E1F18B004C6328 /* Products */,
 				649D5D3224E5C9F6004C6328 /* Frameworks */,
+				09B49285FE23D321C177DEC6 /* AmplifyConfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1002,6 +1173,7 @@
 		649D5C7E24E1F18B004C6328 /* ComicsInfo */ = {
 			isa = PBXGroup;
 			children = (
+				647640F927834EA40092FFF5 /* ComicsInfoRelease (Production).entitlements */,
 				649D5C8324E1F18C004C6328 /* Assets.xcassets */,
 				648C11C326DF7DB300F06910 /* Account */,
 				649D5D3724E5DE6B004C6328 /* App */,
@@ -1183,6 +1355,7 @@
 		649D5D3224E5C9F6004C6328 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				647640FA27834EA40092FFF5 /* AuthenticationServices.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1191,6 +1364,7 @@
 			isa = PBXGroup;
 			children = (
 				649D5C7F24E1F18B004C6328 /* ComicsInfoApp.swift */,
+				64431456276F560A0038FD4B /* Auth.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -1203,7 +1377,9 @@
 				642CF2B826DB947F0054B881 /* Extensions */,
 				648C119E26DD391000F06910 /* Firebase */,
 				647A710326C94D4E0024426E /* ImageLoader */,
+				64BD8C5A277A085000D12C19 /* Loadable */,
 				64B434C424F3F58B0054A20C /* Network */,
+				64BD8C5D277A14B100D12C19 /* ProgressView */,
 				647A4ABE2703870600FACC6D /* ShareView */,
 			);
 			path = Framework;
@@ -1267,6 +1443,40 @@
 				64B434F624F41B2B0054A20C /* SeriesAPIServiceTests.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		64B759852772005A0085C19E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				64B759862772006E0085C19E /* UserProfileViewModel.swift */,
+				64B7599A2774931B0085C19E /* ChangePasswordViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		64B7598827720B5C0085C19E /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				64B7598927720B6F0085C19E /* UserProfileUseCase.swift */,
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
+		64BD8C5A277A085000D12C19 /* Loadable */ = {
+			isa = PBXGroup;
+			children = (
+				64BD8C5B277A086200D12C19 /* LoadingState.swift */,
+				64BD8C62277B4BCD00D12C19 /* LoadableObject.swift */,
+			);
+			path = Loadable;
+			sourceTree = "<group>";
+		};
+		64BD8C5D277A14B100D12C19 /* ProgressView */ = {
+			isa = PBXGroup;
+			children = (
+				64BD8C5E277A14C200D12C19 /* MainProgressView.swift */,
+			);
+			path = ProgressView;
 			sourceTree = "<group>";
 		};
 		64D4EC3C26FE4A12001BB4D6 /* AppTracking */ = {
@@ -1393,6 +1603,9 @@
 				6420EE4E25FA25CA00B7F47B /* Domain */,
 				648C119926DD2CDB00F06910 /* FirebaseAnalytics */,
 				648C119B26DD2CDB00F06910 /* FirebaseCrashlytics */,
+				64DACF19276A20AF00FFD285 /* AWSAPIPlugin */,
+				64DACF1B276A20AF00FFD285 /* AWSCognitoAuthPlugin */,
+				64DACF1D276A20AF00FFD285 /* Amplify */,
 			);
 			productName = ComicsInfo;
 			productReference = 649D5C7C24E1F18B004C6328 /* Comics Info (Development).app */;
@@ -1468,6 +1681,7 @@
 			packageReferences = (
 				6420EE4D25FA25CA00B7F47B /* XCRemoteSwiftPackageReference "comics-info-domain" */,
 				648C119826DD2CDB00F06910 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				64DACF18276A20AF00FFD285 /* XCRemoteSwiftPackageReference "amplify-ios" */,
 			);
 			productRefGroup = 649D5C7D24E1F18B004C6328 /* Products */;
 			projectDirPath = "";
@@ -1486,6 +1700,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				649D5C8724E1F18C004C6328 /* Preview Assets.xcassets in Resources */,
+				64BD8C542778E80900D12C19 /* awsconfiguration.json in Resources */,
+				64BD8C532778E80900D12C19 /* amplifyconfiguration.json in Resources */,
 				649D5C8424E1F18C004C6328 /* Assets.xcassets in Resources */,
 				648C11C226DE4B5F00F06910 /* GoogleService-Info.plist in Resources */,
 			);
@@ -1532,6 +1748,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64B7598F27721D310085C19E /* AuthView.swift in Sources */,
 				64B434FA24F43F650054A20C /* ComicCacheProvider.swift in Sources */,
 				642CF2BA26DB94A30054B881 /* EnvironmentValues+Cache.swift in Sources */,
 				649D5D0524E5C97F004C6328 /* ComicSummaryView.swift in Sources */,
@@ -1543,9 +1760,13 @@
 				649631212724430B00CEEB1D /* MyComicsView.swift in Sources */,
 				64DB1DE326C1A245009492AA /* NetworkResponseHandler.swift in Sources */,
 				649D5D0024E5C97F004C6328 /* ComicsListViewModel.swift in Sources */,
+				6475FCE6276E585A00B643AE /* AuthRepository.swift in Sources */,
 				6420EF1C25FAC2DF00B7F47B /* SeriesAPIWrapperFactory.swift in Sources */,
 				649D5D1524E5C97F004C6328 /* SeriesUseCase.swift in Sources */,
 				6420EF1825FAC2DC00B7F47B /* SeriesRepository.swift in Sources */,
+				64B7599527734FE40085C19E /* ResetPasswordViewModel.swift in Sources */,
+				64BD8C50277606D300D12C19 /* SignInOrSignUpView.swift in Sources */,
+				64B759872772006E0085C19E /* UserProfileViewModel.swift in Sources */,
 				6420EEC025FAC29D00B7F47B /* CharacterAPIService.swift in Sources */,
 				642CF2B726D921BC0054B881 /* Cache.swift in Sources */,
 				648C11C826DF80A200F06910 /* SupportView.swift in Sources */,
@@ -1553,6 +1774,7 @@
 				648C13A726E28C6300F06910 /* FeedbackRepositoryFactory.swift in Sources */,
 				6420EEFC25FAC2C900B7F47B /* ComicDataProviderFactory.swift in Sources */,
 				647A4AB42703430400FACC6D /* BookmarkView.swift in Sources */,
+				64B7599B2774931B0085C19E /* ChangePasswordViewModel.swift in Sources */,
 				648C139226E27BD200F06910 /* FeedbackUseCase.swift in Sources */,
 				648BD21C24F443BE0040CD75 /* Comic.swift in Sources */,
 				6496312327244B7D00CEEB1D /* MyComicsViewModel.swift in Sources */,
@@ -1561,6 +1783,7 @@
 				648C139E26E27FF300F06910 /* FeedbackAPIWrapper.swift in Sources */,
 				64DB1DF226C1BD4F009492AA /* SeriesEndpoint.swift in Sources */,
 				6420EEBC25FAC29800B7F47B /* CharacterCacheService.swift in Sources */,
+				6475FCF4276E8F6900B643AE /* SignUpView.swift in Sources */,
 				648C153126E94D0200F06910 /* CharacterInfoViewModel.swift in Sources */,
 				6420EED825FAC2AC00B7F47B /* CharacterRepositoryFactory.swift in Sources */,
 				648C139526E27D9500F06910 /* Feedback.swift in Sources */,
@@ -1577,15 +1800,20 @@
 				648C11DC26E0EE8D00F06910 /* HomeItem.swift in Sources */,
 				6420EEDC25FAC2AF00B7F47B /* CharacterDataProviderFactory.swift in Sources */,
 				647A4AC02703876900FACC6D /* ShareSheet.swift in Sources */,
+				64B75999277492EC0085C19E /* ChangePasswordView.swift in Sources */,
 				64963127272ECC5300CEEB1D /* MyComicsUseCase.swift in Sources */,
 				6420EEF825FAC2C600B7F47B /* ComicRepositoryFactory.swift in Sources */,
 				6420EF0025FAC2CB00B7F47B /* ComicAPIWrapperFactory.swift in Sources */,
 				64DB1DC926C1A1A7009492AA /* HTTPMethod.swift in Sources */,
+				6443145B276F60C70038FD4B /* AuthAPIService.swift in Sources */,
 				6420EEE025FAC2B700B7F47B /* ComicAPIService.swift in Sources */,
 				6420EDCD25F920B900B7F47B /* SeriesSummary.swift in Sources */,
+				64BD8C5C277A086200D12C19 /* LoadingState.swift in Sources */,
 				648C13AC26E29A3400F06910 /* FeedbackEndpoint.swift in Sources */,
 				647773D826D5370C00FED43E /* SeriesSummaryViewModel.swift in Sources */,
 				64DB1DD326C1A208009492AA /* NetworkResponse.swift in Sources */,
+				6475FCDD276E547500B643AE /* SignInView.swift in Sources */,
+				64BD8C5F277A14C200D12C19 /* MainProgressView.swift in Sources */,
 				648C11CE26E0A70800F06910 /* SupportViewModel.swift in Sources */,
 				64DACF132764E7EF00FFD285 /* ReactionType.swift in Sources */,
 				649D5D0624E5C97F004C6328 /* DescriptionView.swift in Sources */,
@@ -1593,6 +1821,8 @@
 				64B434DE24F413DA0054A20C /* SeriesCacheProvider.swift in Sources */,
 				647A70E226C913E30024426E /* ComicSummaryViewModel.swift in Sources */,
 				647A711226C94F540024426E /* CacheKey.swift in Sources */,
+				64B7599327734C120085C19E /* ResetPasswordView.swift in Sources */,
+				64B7598A27720B6F0085C19E /* UserProfileUseCase.swift in Sources */,
 				6420EECC25FAC2A500B7F47B /* CharacterDataRepository.swift in Sources */,
 				648C11BC26DD647A00F06910 /* GoogleBannerViewController.swift in Sources */,
 				649D5D0324E5C97F004C6328 /* ComicInfoView.swift in Sources */,
@@ -1600,6 +1830,7 @@
 				64DB1DB926C1A114009492AA /* EndpointType.swift in Sources */,
 				64DACF152768F07000FFD285 /* MyComicsListView.swift in Sources */,
 				64B434E424F416190054A20C /* Series.swift in Sources */,
+				64BD8C562778F76D00D12C19 /* VerificationCodeView.swift in Sources */,
 				648C139A26E27EF700F06910 /* FeedbackDataRepository.swift in Sources */,
 				6420EEE825FAC2BC00B7F47B /* ComicCacheService.swift in Sources */,
 				649D5D1324E5C97F004C6328 /* SeriesView.swift in Sources */,
@@ -1607,6 +1838,7 @@
 				6420EEF425FAC2C300B7F47B /* ComicRepository.swift in Sources */,
 				647A4AB72703527100FACC6D /* BookmarkViewModel.swift in Sources */,
 				648C139826E27E2100F06910 /* FeedbackRepository.swift in Sources */,
+				6475FCED276E603C00B643AE /* AuthRepositoryFactory.swift in Sources */,
 				6420EDE625FA250A00B7F47B /* DecoderService.swift in Sources */,
 				648C11CC26DF9A2400F06910 /* AccountView.swift in Sources */,
 				6420EEF025FAC2C100B7F47B /* ComicDataRepository.swift in Sources */,
@@ -1617,35 +1849,47 @@
 				64B434FE24F440570054A20C /* ComicAPIProvider.swift in Sources */,
 				649D5D0E24E5C97F004C6328 /* ExploreViewModel.swift in Sources */,
 				648C152E26E7DF8B00F06910 /* CharacterInfoView.swift in Sources */,
+				6475FCF6276E900B00B643AE /* SignUpViewModel.swift in Sources */,
 				64DB1DED26C1AB69009492AA /* CharacterEndpoint.swift in Sources */,
 				647A710526C94D5D0024426E /* ImageLoader.swift in Sources */,
 				649D5D0224E5C97F004C6328 /* ComicThumbnailView.swift in Sources */,
 				648C11BA26DD640200F06910 /* BannerView.swift in Sources */,
+				6475FCF2276E61CE00B643AE /* AuthAPIProvider.swift in Sources */,
 				6420EEE425FAC2BA00B7F47B /* ComicAPIWrapper.swift in Sources */,
 				6420EF2025FAC2E200B7F47B /* SeriesDataProviderFactory.swift in Sources */,
 				648C11D926E0E08800F06910 /* HomeViewModel.swift in Sources */,
+				6475FCE2276E559A00B643AE /* AuthUseCase.swift in Sources */,
 				647A710D26C94D800024426E /* AsyncImage.swift in Sources */,
 				64B434E824F41A0A0054A20C /* SeriesAPIProvider.swift in Sources */,
+				6475FCE4276E55AF00B643AE /* SignInViewModel.swift in Sources */,
 				64DACF172768F8C700FFD285 /* MyComicsListViewModel.swift in Sources */,
 				647A70F926C91EBE0024426E /* ComicViewModel.swift in Sources */,
+				64BD8C61277A48B500D12C19 /* String+Localized.swift in Sources */,
 				6420EF0C25FAC2D400B7F47B /* SeriesCacheService.swift in Sources */,
 				649D5D0B24E5C97F004C6328 /* CharacterThumbnailView.swift in Sources */,
 				648C13A026E2821300F06910 /* FeedbackDataProvider.swift in Sources */,
 				648C11D526E0DF0B00F06910 /* HomeView.swift in Sources */,
+				64B7598D277210000085C19E /* User.swift in Sources */,
+				64BD8C63277B4BCD00D12C19 /* LoadableObject.swift in Sources */,
 				649D5C8024E1F18B004C6328 /* ComicsInfoApp.swift in Sources */,
 				647A4ABB2703547300FACC6D /* BookmarkUseCase.swift in Sources */,
 				64DB1DC326C1A175009492AA /* NetworkManager.swift in Sources */,
+				64BD8C592778F78000D12C19 /* VerificationCodeViewModel.swift in Sources */,
 				64B434B724F3E5270054A20C /* Character.swift in Sources */,
+				64B75997277381730085C19E /* UserAttribute.swift in Sources */,
 				648C153326EA8F8B00F06910 /* CharacterInfoThumbnailView.swift in Sources */,
 				648C139C26E27F3100F06910 /* FeedbackAPIService.swift in Sources */,
 				6420EDE525FA250A00B7F47B /* DataSourceLayer.swift in Sources */,
 				6420EED425FAC2AA00B7F47B /* CharacterAPIWrapperFactory.swift in Sources */,
+				64431457276F560A0038FD4B /* Auth.swift in Sources */,
 				6420EEC425FAC29F00B7F47B /* CharacterAPIWrapper.swift in Sources */,
 				649D5D0C24E5C97F004C6328 /* CharacterHeaderView.swift in Sources */,
 				64A1311626F5336100B24548 /* Date+StringFormat.swift in Sources */,
+				64B7599127721D8C0085C19E /* AuthViewModel.swift in Sources */,
 				649D5D0424E5C97F004C6328 /* ComicsListView.swift in Sources */,
 				6420EF1425FAC2DA00B7F47B /* SeriesDataRepository.swift in Sources */,
 				64DB1DBE26C1A161009492AA /* NetworkLogger.swift in Sources */,
+				6443145A276F605D0038FD4B /* AuthError.swift in Sources */,
 				6420EDC825F9206900B7F47B /* ComicSummary.swift in Sources */,
 				6420EEC825FAC2A300B7F47B /* CharacterDataProvider.swift in Sources */,
 				649D5D0D24E5C97F004C6328 /* CharacterUseCase.swift in Sources */,
@@ -1775,7 +2019,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1799,7 +2043,7 @@
 				DEVELOPMENT_TEAM = 25K5FYN7Y9;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = ComicsInfo/Config/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1909,7 +2153,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1933,7 +2177,7 @@
 				DEVELOPMENT_TEAM = 25K5FYN7Y9;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = ComicsInfo/Config/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2037,7 +2281,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = "-ObjC";
@@ -2061,7 +2305,7 @@
 				DEVELOPMENT_TEAM = 25K5FYN7Y9;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = ComicsInfo/Config/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2165,7 +2409,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = "-ObjC";
@@ -2183,13 +2427,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "ComicsInfo/ComicsInfoRelease (Production).entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"ComicsInfo/Preview Content\"";
 				DEVELOPMENT_TEAM = 25K5FYN7Y9;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = ComicsInfo/Config/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2299,7 +2544,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -2359,7 +2604,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -2384,7 +2629,7 @@
 				DEVELOPMENT_TEAM = 25K5FYN7Y9;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = ComicsInfo/Config/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2409,7 +2654,7 @@
 				DEVELOPMENT_TEAM = 25K5FYN7Y9;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = ComicsInfo/Config/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2584,6 +2829,14 @@
 				minimumVersion = 8.6.1;
 			};
 		};
+		64DACF18276A20AF00FFD285 /* XCRemoteSwiftPackageReference "amplify-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/aws-amplify/amplify-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -2601,6 +2854,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 648C119826DD2CDB00F06910 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseCrashlytics;
+		};
+		64DACF19276A20AF00FFD285 /* AWSAPIPlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 64DACF18276A20AF00FFD285 /* XCRemoteSwiftPackageReference "amplify-ios" */;
+			productName = AWSAPIPlugin;
+		};
+		64DACF1B276A20AF00FFD285 /* AWSCognitoAuthPlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 64DACF18276A20AF00FFD285 /* XCRemoteSwiftPackageReference "amplify-ios" */;
+			productName = AWSCognitoAuthPlugin;
+		};
+		64DACF1D276A20AF00FFD285 /* Amplify */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 64DACF18276A20AF00FFD285 /* XCRemoteSwiftPackageReference "amplify-ios" */;
+			productName = Amplify;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

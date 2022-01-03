@@ -10,6 +10,8 @@ import Foundation
 
 enum Environment {
     
+    static let passwordMinLength = 8
+    
     private enum Keys {
         static let rootURL = "ROOT_URL"
         static let adUnitID = "AD_UNIT_ID"

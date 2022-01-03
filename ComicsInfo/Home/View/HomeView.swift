@@ -19,6 +19,7 @@ struct HomeView: View {
             makeMyComicsView()
             makeAccountView()
         }
+        .accentColor(Color("AccentColor"))
     }
     
     private func makeExploreView() -> some View {

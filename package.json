@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "amplify-dynamodb-simulator": "^2.2.9"
+  }
+}

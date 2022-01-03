@@ -13,6 +13,8 @@ import GoogleMobileAds
 struct ComicsInfoApp: App {
     
     init() {
+        Auth.configure()
+
         // Use Firebase library to configure APIs.
         FirebaseApp.configure()
 

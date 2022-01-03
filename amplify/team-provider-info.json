@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-comicsinfo-dev-154413-authRole",
+      "UnauthRoleArn": "arn:aws:iam::829182638351:role/amplify-comicsinfo-dev-154413-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::829182638351:role/amplify-comicsinfo-dev-154413-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-comicsinfo-dev-154413-deployment",
+      "UnauthRoleName": "amplify-comicsinfo-dev-154413-unauthRole",
+      "StackName": "amplify-comicsinfo-dev-154413",
+      "StackId": "arn:aws:cloudformation:us-east-1:829182638351:stack/amplify-comicsinfo-dev-154413/fb033f40-6010-11ec-8fbe-0ed99a61ae9b",
+      "AmplifyAppId": "d2qi97yizpnd3u"
+    },
+    "categories": {
+      "auth": {
+        "comicsinfo047e91a1": {}
+      }
+    }
+  }
+}
