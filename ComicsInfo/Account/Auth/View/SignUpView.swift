@@ -14,33 +14,35 @@ struct SignUpView: View {
     
     var body: some View {
         ZStack {
-            VStack(spacing: 4) {
-                Image("Logo")
-                    .resizable()
-                    .frame(width: 200, height: 200)
-                
-                if !viewModel.showConfirmCode {
-                    makeUsernameInputView()
-                    makeEmailInputView()
-                    makePasswordInputView()
+            ScrollView {
+                VStack(spacing: 4) {
+                    Image("Logo")
+                        .resizable()
+                        .frame(width: 200, height: 200)
+                    
+                    if !viewModel.showConfirmCode {
+                        makeUsernameInputView()
+                        makeEmailInputView()
+                        makePasswordInputView()
 
-                    makeSignUpButton()
-                    makeSignInButton()
-                } else {
-                    VerificationCodeView(
-                        username: viewModel.username,
-                        password: viewModel.password
-                    )
+                        makeSignUpButton()
+                        makeSignInButton()
+                    } else {
+                        VerificationCodeView(
+                            username: viewModel.username,
+                            password: viewModel.password
+                        )
+                    }
+
+                    Spacer()
                 }
-
-                Spacer()
+                .padding()
             }
             
             if viewModel.isLoading {
                 MainProgressView()
             }
         }
-        .padding()
         .alert(isPresented: $viewModel.showAlert) {
             Alert(
                 title: Text(viewModel.alertMessage),

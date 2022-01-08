@@ -18,29 +18,32 @@ struct SignInView: View {
     
     var body: some View {
         ZStack {
-            VStack(spacing: 4) {
-                Image("Logo")
-                    .resizable()
-                    .frame(width: 200, height: 200)
-                
-                if !viewModel.showConfirmCode {
-                    makeUsernameInputView()
-                    makePasswordInputView()
+            ScrollView {
+                VStack(spacing: 4) {
+                    Image("Logo")
+                        .resizable()
+                        .frame(width: 200, height: 200)
                     
-                    makeForgotPassword()
-                    
-                    makeSignInButton()
-                    makeSignInWithAppleButton()
-                    
-                    makeSignUpButton()
-                } else {
-                    VerificationCodeView(
-                        username: viewModel.username,
-                        password: viewModel.password
-                    )
-                }
+                    if !viewModel.showConfirmCode {
+                        makeUsernameInputView()
+                        makePasswordInputView()
+                        
+                        makeForgotPassword()
+                        
+                        makeSignInButton()
+                        makeSignInWithAppleButton()
+                        
+                        makeSignUpButton()
+                    } else {
+                        VerificationCodeView(
+                            username: viewModel.username,
+                            password: viewModel.password
+                        )
+                    }
 
-                Spacer()
+                    Spacer()
+                }
+                .padding()
             }
             .onSubmit {
                 switch focusedField {
@@ -65,7 +68,6 @@ struct SignInView: View {
                 dismissButton: .default(Text("OK"))
             )
         }
-        .padding()
     }
     
     private func makeUsernameInputView() -> some View {
