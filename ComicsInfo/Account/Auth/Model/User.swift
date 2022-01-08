@@ -13,6 +13,7 @@ struct User: Codable {
     let username: String
     private(set) var email: String?
     private(set) var nickname: String?
+    private(set) var authProvider: AuthProvider?
     
     mutating func update(with atributes: [UserAttribute]) {
         for atribute in atributes {
@@ -21,6 +22,8 @@ struct User: Codable {
                 email = val
             case let .nickname(val):
                 nickname = val
+            case let .authProvider(val):
+                authProvider = val
             }
         }
     }

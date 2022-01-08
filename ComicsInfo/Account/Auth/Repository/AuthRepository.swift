@@ -37,6 +37,12 @@ struct AuthRepository {
         )
     }
     
+    func signInWithApple(
+        onComplete complete: @escaping (Result<Void, Error>) -> Void
+    ) {
+        authAPIService.signInWithApple(onComplete: complete)
+    }
+    
     func resetPassword(
         for username: String,
         onComplete complete: @escaping (Result<Void, Error>) -> Void

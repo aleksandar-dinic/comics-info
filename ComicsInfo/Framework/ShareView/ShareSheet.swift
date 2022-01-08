@@ -15,7 +15,12 @@ struct ShareSheet {
             activityItems: items,
             applicationActivities: nil
         )
-        UIApplication.shared.windows.first?.rootViewController?.present(
+        UIApplication.shared.connectedScenes
+                .filter({ $0.activationState == .foregroundActive })
+                .map({ $0 as? UIWindowScene })
+                .compactMap({ $0 })
+                .first?.windows
+                .filter({ $0.isKeyWindow }).first?.rootViewController?.present(
             activityVC,
             animated: true,
             completion: nil

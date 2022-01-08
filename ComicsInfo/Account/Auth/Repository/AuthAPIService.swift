@@ -21,6 +21,10 @@ protocol AuthAPIService {
         onComplete complete: @escaping (Result<Void, Error>) -> Void
     )
     
+    func signInWithApple(
+        onComplete complete: @escaping (Result<Void, Error>) -> Void
+    )
+    
     func resetPassword(
         for username: String,
         onComplete complete: @escaping (Result<Void, Error>) -> Void

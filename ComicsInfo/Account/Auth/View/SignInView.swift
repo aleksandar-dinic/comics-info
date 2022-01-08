@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import AuthenticationServices
+import Amplify
 
 struct SignInView: View {
     
@@ -28,6 +30,8 @@ struct SignInView: View {
                     makeForgotPassword()
                     
                     makeSignInButton()
+                    makeSignInWithAppleButton()
+                    
                     makeSignUpButton()
                 } else {
                     VerificationCodeView(
@@ -136,6 +140,29 @@ struct SignInView: View {
         .padding(8)
         .padding(.bottom, 8)
         .disabled(viewModel.isSignInDisabled())
+    }
+    
+    private func makeSignInWithAppleButton() -> some View {
+        Button(action: {
+            viewModel.signInWithApple {
+                presentationMode.wrappedValue.dismiss()
+            }
+        }) {
+            HStack {
+                Image(systemName: "applelogo")
+                Text("Sign in with Apple")
+            }
+            .frame(maxWidth: .infinity, minHeight: 44, maxHeight: 44, alignment: .center)
+            .foregroundColor(Color.black)
+            .background(Color.white)
+            .cornerRadius(8)
+            .overlay(
+                RoundedRectangle(cornerRadius: 8)
+                    .stroke(.black, lineWidth: 1)
+            )
+        }
+        .padding(8)
+        .padding(.bottom, 8)
     }
     
     private func makeSignUpButton() -> some View {

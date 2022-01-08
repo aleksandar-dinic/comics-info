@@ -36,11 +36,8 @@ final class AuthViewModel: ObservableObject {
         }
     }
     
-    var hiMessage: String {
-        guard let username = user?.username else {
-            return "Hi, 🖖"
-        }
-        return "Hi, \(username) 🖖"
+    var myAccount: String {
+        "My Accounnt"
     }
     
 }

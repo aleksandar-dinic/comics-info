@@ -41,7 +41,7 @@ struct AuthView: View {
             HStack {
                 Image(systemName: "person.crop.circle.fill")
                     .font(.largeTitle)
-                Text(viewModel.hiMessage)
+                Text(viewModel.myAccount)
                     .font(.title2)
                 Spacer()
             }

@@ -47,6 +47,16 @@ final class AuthUseCase: AuthRepositoryFactory {
         }
     }
     
+    func signInWithApple(
+        onComplete complete: @escaping (Result<Void, Error>) -> Void
+    ) {
+        repository.signInWithApple { result in
+            DispatchQueue.main.async {
+                complete(result)
+            }
+        }
+    }
+    
     func resetPassword(
         for username: String,
         onComplete complete: @escaping (Result<Void, Error>) -> Void

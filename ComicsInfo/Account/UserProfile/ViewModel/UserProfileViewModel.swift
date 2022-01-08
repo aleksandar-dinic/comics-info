@@ -39,5 +39,9 @@ final class UserProfileViewModel: ObservableObject {
     var nickname: String {
         user.nickname ?? ""
     }
+    
+    var canChangePassword: Bool {
+        user.authProvider == nil
+    }
 
 }

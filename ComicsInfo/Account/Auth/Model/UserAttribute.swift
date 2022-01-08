@@ -11,5 +11,6 @@ enum UserAttribute {
     
     case email(_ value: String)
     case nickname(_ value: String?)
+    case authProvider(_ provider: AuthProvider)
     
 }

@@ -8,6 +8,7 @@
 import Amplify
 import AWSCognitoAuthPlugin
 import Foundation
+import UIKit
 
 final class AuthAPIProvider: AuthAPIService {
     
@@ -36,6 +37,9 @@ final class AuthAPIProvider: AuthAPIService {
                         userAttributes.append(.email(attribute.value))
                     } else if attribute.key == .nickname {
                         userAttributes.append(.nickname(attribute.value))
+                    } else if attribute.key == .unknown("identities"),
+                                attribute.value.contains("SignInWithApple") {
+                        userAttributes.append(.authProvider(.apple))
                     }
                 }
                 
@@ -52,6 +56,29 @@ final class AuthAPIProvider: AuthAPIService {
         onComplete complete: @escaping (Result<Void, Error>) -> Void
     ) {
         Amplify.Auth.signIn(username: username, password: password) { result in
+            switch result {
+            case let .success(authResult):
+                if authResult.isSignedIn {
+                    complete(.success(()))
+                } else {
+                    complete(.failure(AuthError(from: authResult.nextStep)))
+                }
+            case let .failure(error):
+                complete(.failure(AuthError(from: error)))
+            }
+        }
+    }
+    
+    func signInWithApple(
+        onComplete complete: @escaping (Result<Void, Error>) -> Void
+    ) {
+        guard
+            let scene = UIApplication.shared.connectedScenes.first,
+            let windowSceneDelegate = scene.delegate as? UIWindowSceneDelegate,
+            let window = windowSceneDelegate.window as? UIWindow
+        else { return complete(.failure(AuthError.unknown)) }
+        
+        Amplify.Auth.signInWithWebUI(for: .apple, presentationAnchor: window) { result in
             switch result {
             case let .success(authResult):
                 if authResult.isSignedIn {

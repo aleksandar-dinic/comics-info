@@ -42,13 +42,15 @@ struct UserProfileView: View {
                 }
             }
             
-            NavigationLink(destination: ChangePasswordView()) {
-                Text("Change Password")
-                    .frame(maxWidth: .infinity, minHeight: 44, maxHeight: 44, alignment: .center)
-                    .foregroundColor(Color.white)
-                    .background(Color.accentColor)
-                    .cornerRadius(7)
-                    .padding(8)
+            if viewModel.canChangePassword {
+                NavigationLink(destination: ChangePasswordView()) {
+                    Text("Change Password")
+                        .frame(maxWidth: .infinity, minHeight: 44, maxHeight: 44, alignment: .center)
+                        .foregroundColor(Color.white)
+                        .background(Color.accentColor)
+                        .cornerRadius(7)
+                        .padding(8)
+                }
             }
             
             Spacer()

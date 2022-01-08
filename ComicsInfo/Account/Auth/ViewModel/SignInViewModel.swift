@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import AuthenticationServices
 
 final class SignInViewModel: LoadableObject {
     
@@ -48,6 +49,26 @@ final class SignInViewModel: LoadableObject {
             case .success:
                 self.state = .loaded(())
                 onSignIn()
+            case let .failure(error):
+                guard case .signUpIsNotConfirmed = error as? AuthError else {
+                    self.state = .failed(error)
+                    self.showAlert = true
+                    return
+                }
+                self.state = .loaded(())
+                self.showConfirmCode = true
+            }
+        }
+    }
+    
+    func signInWithApple(
+        onSignIn: @escaping () -> Void
+    ) {
+        useCase.signInWithApple { result in
+            switch result {
+            case .success:
+                self.state = .loaded(())
+                    onSignIn()
             case let .failure(error):
                 guard case .signUpIsNotConfirmed = error as? AuthError else {
                     self.state = .failed(error)
