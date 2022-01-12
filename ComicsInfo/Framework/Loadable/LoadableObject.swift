@@ -11,7 +11,6 @@ protocol LoadableObject: ObservableObject {
  
     associatedtype Output
     var state: LoadingState<Output> { get }
-    var showAlert: Bool { get }
 
 }
 

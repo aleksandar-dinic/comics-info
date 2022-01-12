@@ -10,9 +10,14 @@ import Foundation
 struct AuthRepository {
     
     private let authAPIService: AuthAPIService
+    private let keychainWrapper: KeychainWrapper
     
-    init(authAPIService: AuthAPIService) {
+    init(
+        authAPIService: AuthAPIService,
+        keychainWrapper: KeychainWrapper = KeychainWrapper()
+    ) {
         self.authAPIService = authAPIService
+        self.keychainWrapper = keychainWrapper
     }
     
     func getCurrentUser() -> User? {
@@ -88,9 +93,16 @@ struct AuthRepository {
         authAPIService.signUp(
             username: username,
             email: email,
-            password: password,
-            onComplete: complete
-        )
+            password: password
+        ) { result in
+            switch result {
+            case let .success(val):
+                try? keychainWrapper.store(password, for: username, service: "InfoAboutComics")
+                complete(.success(val))
+            case let .failure(error):
+                complete(.failure(error))
+            }
+        }
     }
     
     func resendSignUpCode(

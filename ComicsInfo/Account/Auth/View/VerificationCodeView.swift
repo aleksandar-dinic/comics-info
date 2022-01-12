@@ -13,21 +13,29 @@ struct VerificationCodeView: View {
     @ObservedObject private var viewModel: VerificationCodeViewModel
     
     init(
+        alertController: AlertController,
         username: String,
         password: String
     ) {
         viewModel = VerificationCodeViewModel(
+            alertController: alertController,
             username: username,
             password: password
         )
     }
     
     var body: some View {
-        VStack(spacing: 4) {
-            makeConfirmationCodeView()
+        ZStack {
+            VStack(spacing: 4) {
+                makeConfirmationCodeView()
 
-            makeConfirmAccountButton()
-            makeResendVerificationCodeButton()
+                makeConfirmAccountButton()
+                makeResendVerificationCodeButton()
+            }
+            
+            if viewModel.isLoading {
+                MainProgressView()
+            }
         }
     }
     
@@ -85,7 +93,7 @@ struct VerificationCodeView: View {
 struct VerificationCodeView_Previews: PreviewProvider {
     
     static var previews: some View {
-        VerificationCodeView(username: "", password: "")
+        VerificationCodeView(alertController: AlertController(), username: "", password: "")
     }
     
 }

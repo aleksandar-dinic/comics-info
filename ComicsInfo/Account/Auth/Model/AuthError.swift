@@ -19,7 +19,7 @@ enum AuthError: Error {
     case limitExceeded
     case codeMismatch
     case codeExpired
-    case invalidParameter
+    case invalidParameter(_ message: String)
     case unknown
     
 }
@@ -32,7 +32,7 @@ extension AuthError {
             return
         }
         switch error {
-        case let .service(_, _, err):
+        case let .service(message, _, err):
             switch err {
             case let .some(val) where val as? AWSCognitoAuthError == .userNotFound:
                 self = .userDoesNotExist
@@ -45,7 +45,7 @@ extension AuthError {
             case let .some(val) where val as? AWSCognitoAuthError == .codeExpired:
                 self = .codeExpired
             case let .some(val) where val as? AWSCognitoAuthError == .invalidParameter:
-                self = .invalidParameter
+                self = .invalidParameter(message)
             default:
                 self = .unknown
             }
@@ -112,8 +112,8 @@ extension AuthError: LocalizedError {
             return "Invalid verification code provided, please try again."
         case .codeExpired:
             return "Verification code has expired."
-        case .invalidParameter:
-            return "Cannot reset password for the user as there is no verified email."
+        case let .invalidParameter(message):
+            return message
         case .unknown:
             return "Something went wrong, please try again."
         }
@@ -136,7 +136,7 @@ extension AuthError: LocalizedError {
         case .codeExpired:
             return "Verification code has expired."
         case .invalidParameter:
-            return "Cannot reset password for the user as there is no verified email."
+            return "Invalid parameter"
         case .unknown:
             return "Something went wrong."
         }

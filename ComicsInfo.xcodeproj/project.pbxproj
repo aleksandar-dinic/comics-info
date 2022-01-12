@@ -207,6 +207,10 @@
 		64DB1DF226C1BD4F009492AA /* SeriesEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DB1DF126C1BD4F009492AA /* SeriesEndpoint.swift */; };
 		64DB1DF726C1BDCA009492AA /* ComicEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DB1DF626C1BDCA009492AA /* ComicEndpoint.swift */; };
 		64E24255278A1F9D0077E18A /* AuthProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E24254278A1F9D0077E18A /* AuthProvider.swift */; };
+		64E24258278AEFF40077E18A /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E24257278AEFF40077E18A /* KeychainWrapper.swift */; };
+		64E2425A278B00F30077E18A /* KeychainError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E24259278B00F30077E18A /* KeychainError.swift */; };
+		64E2425D278E09CE0077E18A /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E2425C278E09CE0077E18A /* AlertController.swift */; };
+		64E2425F278E0A090077E18A /* AlertInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E2425E278E0A090077E18A /* AlertInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -435,6 +439,10 @@
 		64E2424F2788AC410077E18A /* awsconfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = awsconfiguration.json; sourceTree = SOURCE_ROOT; };
 		64E242522788AC6D0077E18A /* amplifyconfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = amplifyconfiguration.json; sourceTree = SOURCE_ROOT; };
 		64E24254278A1F9D0077E18A /* AuthProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthProvider.swift; sourceTree = "<group>"; };
+		64E24257278AEFF40077E18A /* KeychainWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainWrapper.swift; sourceTree = "<group>"; };
+		64E24259278B00F30077E18A /* KeychainError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainError.swift; sourceTree = "<group>"; };
+		64E2425C278E09CE0077E18A /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
+		64E2425E278E0A090077E18A /* AlertInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertInfo.swift; sourceTree = "<group>"; };
 		C299D25EA880516E3196B119 /* awsconfiguration.json */ = {isa = PBXFileReference; explicitFileType = text.json; path = awsconfiguration.json; sourceTree = "<group>"; };
 		FD0265B65E4E2B974B95C431 /* amplifyconfiguration.json */ = {isa = PBXFileReference; explicitFileType = text.json; path = amplifyconfiguration.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1383,11 +1391,13 @@
 		64B434AE24F3DF0E0054A20C /* Framework */ = {
 			isa = PBXGroup;
 			children = (
+				64E2425B278E09C20077E18A /* Alert */,
 				64D4EC3C26FE4A12001BB4D6 /* AppTracking */,
 				64B434AF24F3DF1E0054A20C /* Cache */,
 				642CF2B826DB947F0054B881 /* Extensions */,
 				648C119E26DD391000F06910 /* Firebase */,
 				647A710326C94D4E0024426E /* ImageLoader */,
+				64E24256278AEFE90077E18A /* Keychain */,
 				64BD8C5A277A085000D12C19 /* Loadable */,
 				64B434C424F3F58B0054A20C /* Network */,
 				64BD8C5D277A14B100D12C19 /* ProgressView */,
@@ -1593,6 +1603,24 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		64E24256278AEFE90077E18A /* Keychain */ = {
+			isa = PBXGroup;
+			children = (
+				64E24257278AEFF40077E18A /* KeychainWrapper.swift */,
+				64E24259278B00F30077E18A /* KeychainError.swift */,
+			);
+			path = Keychain;
+			sourceTree = "<group>";
+		};
+		64E2425B278E09C20077E18A /* Alert */ = {
+			isa = PBXGroup;
+			children = (
+				64E2425C278E09CE0077E18A /* AlertController.swift */,
+				64E2425E278E0A090077E18A /* AlertInfo.swift */,
+			);
+			path = Alert;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1789,6 +1817,7 @@
 				648C139226E27BD200F06910 /* FeedbackUseCase.swift in Sources */,
 				648BD21C24F443BE0040CD75 /* Comic.swift in Sources */,
 				6496312327244B7D00CEEB1D /* MyComicsViewModel.swift in Sources */,
+				64E2425F278E0A090077E18A /* AlertInfo.swift in Sources */,
 				6420EED025FAC2A700B7F47B /* CharacterRepository.swift in Sources */,
 				64B434B224F3DF480054A20C /* CharacterCacheProvider.swift in Sources */,
 				648C139E26E27FF300F06910 /* FeedbackAPIWrapper.swift in Sources */,
@@ -1865,8 +1894,11 @@
 				647A710526C94D5D0024426E /* ImageLoader.swift in Sources */,
 				649D5D0224E5C97F004C6328 /* ComicThumbnailView.swift in Sources */,
 				648C11BA26DD640200F06910 /* BannerView.swift in Sources */,
+				64E2425A278B00F30077E18A /* KeychainError.swift in Sources */,
+				64E2425D278E09CE0077E18A /* AlertController.swift in Sources */,
 				6475FCF2276E61CE00B643AE /* AuthAPIProvider.swift in Sources */,
 				6420EEE425FAC2BA00B7F47B /* ComicAPIWrapper.swift in Sources */,
+				64E24258278AEFF40077E18A /* KeychainWrapper.swift in Sources */,
 				6420EF2025FAC2E200B7F47B /* SeriesDataProviderFactory.swift in Sources */,
 				648C11D926E0E08800F06910 /* HomeViewModel.swift in Sources */,
 				6475FCE2276E559A00B643AE /* AuthUseCase.swift in Sources */,

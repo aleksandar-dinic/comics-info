@@ -12,6 +12,7 @@ import Amplify
 struct SignInView: View {
     
     @SwiftUI.Environment(\.presentationMode) var presentationMode
+    @EnvironmentObject var alertController: AlertController
     @ObservedObject private var viewModel = SignInViewModel()
     @Binding var showen: Bool
     @FocusState private var focusedField: SignInViewModel.Field?
@@ -36,6 +37,7 @@ struct SignInView: View {
                         makeSignUpButton()
                     } else {
                         VerificationCodeView(
+                            alertController: alertController,
                             username: viewModel.username,
                             password: viewModel.password
                         )
@@ -62,11 +64,8 @@ struct SignInView: View {
                 MainProgressView()
             }
         }
-        .alert(isPresented: $viewModel.showAlert) {
-            Alert(
-                title: Text(viewModel.alertMessage),
-                dismissButton: .default(Text("OK"))
-            )
+        .onAppear {
+            viewModel.alertController = alertController
         }
     }
     

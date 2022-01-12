@@ -9,8 +9,10 @@ import SwiftUI
 
 struct SignUpView: View {
     
+    @EnvironmentObject var alertController: AlertController
     @ObservedObject private var viewModel = SignUpViewModel()
     @Binding var showSignIn: Bool
+    @FocusState private var focusedField: SignUpViewModel.Field?
     
     var body: some View {
         ZStack {
@@ -29,6 +31,7 @@ struct SignUpView: View {
                         makeSignInButton()
                     } else {
                         VerificationCodeView(
+                            alertController: alertController,
                             username: viewModel.username,
                             password: viewModel.password
                         )
@@ -38,16 +41,25 @@ struct SignUpView: View {
                 }
                 .padding()
             }
+            .onSubmit {
+                switch focusedField {
+                case .username:
+                    focusedField = .email
+                case .email:
+                    focusedField = .password
+                case .password:
+                    viewModel.signUp()
+                case .none:
+                    break
+                }
+            }
             
             if viewModel.isLoading {
                 MainProgressView()
             }
         }
-        .alert(isPresented: $viewModel.showAlert) {
-            Alert(
-                title: Text(viewModel.alertMessage),
-                dismissButton: .default(Text("OK"))
-            )
+        .onAppear {
+            viewModel.alertController = alertController
         }
     }
     
@@ -61,8 +73,10 @@ struct SignUpView: View {
                 TextField("Username", text: $viewModel.username)
                     .autocapitalization(.none)
                     .textContentType(.username)
+                    .focused($focusedField, equals: .username)
                     .disabled(viewModel.isInputDisabled())
                     .opacity(viewModel.inputOpacity())
+                    .submitLabel(.next)
             }
             .padding(10)
             .background(
@@ -85,8 +99,10 @@ struct SignUpView: View {
                     .autocapitalization(.none)
                     .keyboardType(.emailAddress)
                     .textContentType(.emailAddress)
+                    .focused($focusedField, equals: .email)
                     .disabled(viewModel.isInputDisabled())
                     .opacity(viewModel.inputOpacity())
+                    .submitLabel(.next)
             }
             .padding(10)
             .background(
@@ -108,8 +124,10 @@ struct SignUpView: View {
                 SecureField("Password", text: $viewModel.password)
                     .autocapitalization(.none)
                     .textContentType(.newPassword)
+                    .focused($focusedField, equals: .password)
                     .disabled(viewModel.isInputDisabled())
                     .opacity(viewModel.inputOpacity())
+                    .submitLabel(.join)
             }
             .padding(10)
             .background(

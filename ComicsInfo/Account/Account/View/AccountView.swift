@@ -10,6 +10,7 @@ import SwiftUI
 struct AccountView: View {
     
     @State private var showBanner = AppTrackingManager.authorization
+    @StateObject private var alertController = AlertController()
     
     var body: some View {
         NavigationView {
@@ -45,6 +46,14 @@ struct AccountView: View {
             .navigationBarTitle("Account", displayMode: .inline)
         }
         .accentColor(Color("AccentColor"))
+        .environmentObject(alertController)
+        .alert(item: $alertController.info) { alert in
+            Alert(
+                title: Text(alert.title),
+                message: Text(alert.message),
+                dismissButton: alert.dismissButton
+            )
+        }
     }
     
 }

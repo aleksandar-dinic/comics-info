@@ -20,20 +20,18 @@ final class SignInViewModel: LoadableObject {
     
     @Published private(set) var state: LoadingState<Void>
     @Published private(set) var showConfirmCode: Bool
-    @Published var showAlert: Bool
     @Published var username: String
     @Published var password: String
+    var alertController: AlertController?
     
     init(
         state: LoadingState<Void> = .idle,
         showConfirmCode: Bool = false,
-        showAlert: Bool = false,
         username: String = "",
         password: String = ""
     ) {
         self.state = state
         self.showConfirmCode = showConfirmCode
-        self.showAlert = showAlert
         self.username = username
         self.password = password
     }
@@ -52,7 +50,7 @@ final class SignInViewModel: LoadableObject {
             case let .failure(error):
                 guard case .signUpIsNotConfirmed = error as? AuthError else {
                     self.state = .failed(error)
-                    self.showAlert = true
+                    self.alertController?.info = AlertInfo(title: self.state.errorMessage)
                     return
                 }
                 self.state = .loaded(())
@@ -72,7 +70,7 @@ final class SignInViewModel: LoadableObject {
             case let .failure(error):
                 guard case .signUpIsNotConfirmed = error as? AuthError else {
                     self.state = .failed(error)
-                    self.showAlert = true
+                    self.alertController?.info = AlertInfo(title: self.state.errorMessage)
                     return
                 }
                 self.state = .loaded(())

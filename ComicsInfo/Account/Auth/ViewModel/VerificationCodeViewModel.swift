@@ -13,25 +13,22 @@ final class VerificationCodeViewModel: LoadableObject {
     private lazy var useCase = AuthUseCase()
     
     @Published private(set) var state: LoadingState<Void>
-    @Published var showAlert: Bool
-    @Published var verificationCodeSubmitted: Bool
     @Published var confirmationCode: String
 
+    private let alertController: AlertController
     private let username: String
     private let password: String
 
     init(
         state: LoadingState<Void> = .idle,
-        showAlert: Bool = false,
-        verificationCodeSubmitted: Bool = false,
         confirmationCode: String = "",
+        alertController: AlertController,
         username: String,
         password: String
     ) {
         self.state = state
-        self.showAlert = showAlert
-        self.verificationCodeSubmitted = verificationCodeSubmitted
         self.confirmationCode = confirmationCode
+        self.alertController = alertController
         self.username = username
         self.password = password
     }
@@ -48,7 +45,7 @@ final class VerificationCodeViewModel: LoadableObject {
                 self.autoSignIn(onComplete: complete)
             case let .failure(error):
                 self.state = .failed(error)
-                self.showAlert = true
+                self.alertController.info = AlertInfo(title: self.state.errorMessage)
             }
         }
     }
@@ -63,7 +60,7 @@ final class VerificationCodeViewModel: LoadableObject {
                 complete()
             case let .failure(error):
                 self.state = .failed(error)
-                self.showAlert = true
+                self.alertController.info = AlertInfo(title: self.state.errorMessage)
             }
         }
     }
@@ -75,23 +72,19 @@ final class VerificationCodeViewModel: LoadableObject {
             switch result {
             case .success:
                 self.state = .loaded(())
-                self.verificationCodeSubmitted = true
+                self.alertController.info = AlertInfo(
+                    .verificationCodeSubmitted,
+                    title: "We have sent a code. Check your email."
+                )
             case let .failure(error):
                 self.state = .failed(error)
+                self.alertController.info = AlertInfo(title: self.state.errorMessage)
             }
-            self.showAlert = true
         }
     }
     
     func isConfirmAccountDisabled() -> Bool {
-        confirmationCode.isEmpty
-    }
-    
-    var alertMessage: String {
-        guard !verificationCodeSubmitted else {
-            return "We have sent a code. Check your email."
-        }
-        return state.errorMessage
+        confirmationCode.isEmpty || isLoading
     }
     
 }
