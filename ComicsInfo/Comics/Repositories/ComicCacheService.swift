@@ -22,6 +22,7 @@ protocol ComicCacheService {
     
     func getMyComics(forSeriesID seriesID: String) -> [ComicSummary]?
     func addInMyComics(comicSummaries: [ComicSummary], forSeriesID seriesID: String)
+    func removeFromMyComics(comicSummaries: [ComicSummary], forSeriesID seriesID: String)
     func isInMyComics(_ comicID: String, forSeriesID seriesID: String) -> Bool
     
     func getBookmarkComics() -> [Comic]?

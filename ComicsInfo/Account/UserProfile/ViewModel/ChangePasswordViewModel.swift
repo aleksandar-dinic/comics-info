@@ -37,7 +37,8 @@ final class ChangePasswordViewModel: LoadableObject {
         guard !isChangePasswordDisabled() else { return }
         state = .loading(currentValue: nil)
         
-        useCase.changePassword(oldPassword: oldPassword, newPassword: newPassword) { result in
+        useCase.changePassword(oldPassword: oldPassword, newPassword: newPassword) { [weak self] result in
+            guard let self = self else { return }
             switch result {
             case .success:
                 self.state = .loaded(())

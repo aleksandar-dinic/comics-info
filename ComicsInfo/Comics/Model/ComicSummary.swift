@@ -33,6 +33,18 @@ struct ComicSummary: Codable, Hashable {
 
 }
 
+extension ComicSummary: Comparable {
+    
+    static func < (lhs: ComicSummary, rhs: ComicSummary) -> Bool {
+        guard lhs.popularity != rhs.popularity else {
+            return lhs.title < rhs.title
+        }
+        
+        return abs(lhs.popularity - 100) < abs(rhs.popularity - 100)
+    }
+    
+}
+
 extension ComicSummary {
     
     init(from summary: Domain.ComicSummary) {

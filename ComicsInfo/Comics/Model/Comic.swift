@@ -78,6 +78,18 @@ extension Comic: Hashable {
 
 }
 
+extension Comic: Comparable {
+    
+    static func < (lhs: Comic, rhs: Comic) -> Bool {
+        guard lhs.popularity != rhs.popularity else {
+            return lhs.title < rhs.title
+        }
+        
+        return abs(lhs.popularity - 100) < abs(rhs.popularity - 100)
+    }
+    
+}
+
 extension Domain.Comic {
 
     init(from comic: Comic) {

@@ -42,7 +42,8 @@ final class SignInViewModel: LoadableObject {
         guard !isSignInDisabled() else { return }
         state = .loading(currentValue: nil)
         
-        useCase.signIn(username: username, password: password) { result in
+        useCase.signIn(username: username, password: password) { [weak self] result in
+            guard let self = self else { return }
             switch result {
             case .success:
                 self.state = .loaded(())
@@ -62,7 +63,8 @@ final class SignInViewModel: LoadableObject {
     func signInWithApple(
         onSignIn: @escaping () -> Void
     ) {
-        useCase.signInWithApple { result in
+        useCase.signInWithApple { [weak self] result in
+            guard let self = self else { return }
             switch result {
             case .success:
                 self.state = .loaded(())

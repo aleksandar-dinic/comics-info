@@ -10,38 +10,18 @@ import Foundation
 
 final class ExploreViewModel: ObservableObject {
 
-    enum Status: Equatable {
-        case loading
-        case error(message: String)
-        case showCharacters
-    }
-
     private let characterUseCase: CharacterUseCase
     private(set) var characters: [Character]
     private var charactersIdentifier = Set<String>()
+    @Published private(set) var status: LoadingState<[Character]>
     @Published private(set) var canLoadMore = true
-    @Published private(set) var isLoading = false
-    @Published var showBanner = false
-
-    @Published private(set) var status: Status {
-        didSet {
-            switch status {
-            case let .error(message):
-                showError = true
-                errorMessage = message
-            default:
-                showError = false
-                errorMessage = ""
-            }
-        }
-    }
-    @Published var showError: Bool = false
-    private(set) var errorMessage: String = ""
+    @Published var showBanner: Bool
+    var alertController: AlertController?
 
     init(
         characterUseCase: CharacterUseCase = CharacterUseCase(),
         characters: [Character] = [],
-        status: Status = .loading,
+        status: LoadingState<[Character]> = .idle,
         showBanner: Bool = AppTrackingManager.authorization
     ) {
         self.characterUseCase = characterUseCase
@@ -56,13 +36,11 @@ final class ExploreViewModel: ObservableObject {
         limit: Int = 20,
         fromDataSource dataSource: DataSourceLayer = .memory
     ) {
-        guard !isLoading, canLoadMore else { return }
+        guard !status.isLoading(), canLoadMore else { return }
         
-        isLoading = true
-        status = .loading
+        status = .loading(currentValue: characters)
         characterUseCase.getAllCharacters(afterID: lastID, fields: fields, limit: limit, fromDataSource: dataSource) { [weak self] result in
             guard let self = self else { return }
-            self.isLoading = false
             
             switch result {
             case let .success(characters):
@@ -71,11 +49,11 @@ final class ExploreViewModel: ObservableObject {
                     self.charactersIdentifier.insert(character.identifier)
                 }
                 self.canLoadMore = characters.count >= limit
-                self.status = .showCharacters
+                self.status = .loaded(self.characters)
             case .failure:
                 self.canLoadMore = false
                 guard self.characters.isEmpty else { return }
-                self.status = .error(message: "Something went wrong. Please try again later ❤️")
+                self.alertController?.info = AlertInfo(title: "Something went wrong. Please try again later ❤️")
             }
         }
     }

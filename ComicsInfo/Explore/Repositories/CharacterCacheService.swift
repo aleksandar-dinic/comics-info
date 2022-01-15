@@ -21,6 +21,7 @@ protocol CharacterCacheService {
     
     func getMyCharacters() -> [Character]?
     func addToMyCharacters(_ character: Character)
+    func updateInMyCharacters(_ character: Character)
     func removeFromMyCharacters(_ character: Character)
     func isInMyCharacters(withID characterID: String) -> Bool
     

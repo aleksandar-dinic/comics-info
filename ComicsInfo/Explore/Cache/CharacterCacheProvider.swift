@@ -67,14 +67,26 @@ struct CharacterCacheProvider: CharacterCacheService {
     
     func addToMyCharacters(_ character: Character) {
         var character = character
+        
         if var mySeries = myCharacterCache[character.identifier]?.mySeries {
+            var dict = [String: Int]()
+            for (i, el) in mySeries.enumerated() {
+                dict[el.identifier] = i
+            }
+            
             for series in character.mySeries ?? [] {
-                guard !mySeries.contains(where: { $0.identifier == series.identifier }) else { continue }
+                guard dict[series.identifier] == nil else { continue }
+                dict[series.identifier] = mySeries.count
                 mySeries.append(series)
             }
             character.mySeries = mySeries.sorted()
         }
         
+        myCharacterCache[character.identifier] = character
+        try? myCharacterCache.saveToDisc(.myCharacters)
+    }
+    
+    func updateInMyCharacters(_ character: Character) {
         myCharacterCache[character.identifier] = character
         try? myCharacterCache.saveToDisc(.myCharacters)
     }

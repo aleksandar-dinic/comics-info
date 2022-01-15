@@ -34,6 +34,11 @@ protocol ComicRepository {
         character: Character,
         seriesSummary: SeriesSummary
     )
+    func removeFromMyComics(
+        _ comicSummary: ComicSummary,
+        character: Character,
+        seriesSummary: SeriesSummary
+    )
     func isInMyComics(
         _ comicID: String,
         forSeriesID seriesID: String

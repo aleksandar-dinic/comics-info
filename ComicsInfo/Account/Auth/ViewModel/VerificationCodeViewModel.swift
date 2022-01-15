@@ -39,7 +39,8 @@ final class VerificationCodeViewModel: LoadableObject {
         guard !isConfirmAccountDisabled() else { return }
         state = .loading(currentValue: nil)
         
-        useCase.confirmSignUp(for: username, with: confirmationCode) { result in
+        useCase.confirmSignUp(for: username, with: confirmationCode) { [weak self] result in
+            guard let self = self else { return }
             switch result {
             case .success:
                 self.autoSignIn(onComplete: complete)
@@ -53,7 +54,8 @@ final class VerificationCodeViewModel: LoadableObject {
     private func autoSignIn(
         onComplete complete: @escaping () -> Void
     ) {
-        useCase.signIn(username: username, password: password) { result in
+        useCase.signIn(username: username, password: password) { [weak self] result in
+            guard let self = self else { return }
             switch result {
             case .success:
                 self.state = .loaded(())
@@ -68,7 +70,8 @@ final class VerificationCodeViewModel: LoadableObject {
     func resendVerificationCode() {
         state = .loading(currentValue: nil)
         
-        useCase.resendSignUpCode(for: username) { result in
+        useCase.resendSignUpCode(for: username) { [weak self] result in
+            guard let self = self else { return }
             switch result {
             case .success:
                 self.state = .loaded(())

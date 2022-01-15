@@ -114,6 +114,10 @@ struct CharacterDataProvider {
         characterCacheService.addToMyCharacters(character)
     }
     
+    func updateInMyCharacters(_ character: Character) {
+        characterCacheService.updateInMyCharacters(character)
+    }
+    
     func removeFromMyCharacters(_ character: Character) {
         characterCacheService.removeFromMyCharacters(character)
     }

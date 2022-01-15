@@ -43,7 +43,8 @@ final class ResetPasswordViewModel: LoadableObject {
         guard !isResetPasswordDisabled() else { return }
         state = .loading(currentValue: nil)
 
-        useCase.resetPassword(for: username) { result in
+        useCase.resetPassword(for: username) { [weak self] result in
+            guard let self = self else { return }
             switch result {
             case .success:
                 self.state = .loaded(())
@@ -62,7 +63,9 @@ final class ResetPasswordViewModel: LoadableObject {
         useCase.confirmResetPassword(
             for: username,
             with: newPassword,
-            confirmationCode: confirmationCode) { result in
+            confirmationCode: confirmationCode
+        ) { [weak self] result in
+            guard let self = self else { return }
             switch result {
             case .success:
                 self.state = .loaded(())

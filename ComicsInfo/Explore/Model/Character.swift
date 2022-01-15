@@ -57,6 +57,13 @@ struct Character: Codable {
             mySeries = [seriesSummary]
         }
     }
+    
+    mutating func removeFromMySeries(_ seriesSummary: SeriesSummary) {
+        guard let index = mySeries?.firstIndex(where: { $0.identifier == seriesSummary.identifier }) else {
+            return
+        }
+        mySeries?.remove(at: index)
+    }
 
 }
 

@@ -48,7 +48,8 @@ final class SignUpViewModel: LoadableObject {
             username: username,
             email: email,
             password: password
-        ) { result in
+        ) { [weak self] result in
+            guard let self = self else { return }
             switch result {
             case .success:
                 self.state = .loaded(())

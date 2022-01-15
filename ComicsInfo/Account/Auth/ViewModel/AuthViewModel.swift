@@ -28,7 +28,8 @@ final class AuthViewModel: ObservableObject {
     }
     
     private func getUserAttributes() {
-        useCase.getUserAttributes { result in
+        useCase.getUserAttributes { [weak self] result in
+            guard let self = self else { return }
             guard let attributes = try? result.get() else {
                 return
             }

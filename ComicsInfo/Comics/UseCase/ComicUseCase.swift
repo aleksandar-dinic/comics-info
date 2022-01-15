@@ -102,6 +102,18 @@ final class ComicUseCase: ComicRepositoryFactory, CharacterRepositoryFactory, Se
         )
     }
     
+    func removeFromMyComics(
+        _ comicSummary: ComicSummary,
+        character: Character,
+        seriesSummary: SeriesSummary
+    ) {
+        repository.removeFromMyComics(
+            comicSummary,
+            character: character,
+            seriesSummary: seriesSummary
+        )
+    }
+    
     func isInMyComics(_ comicID: String, forSeriesID seriesID: String) -> Bool {
         repository.isInMyComics(comicID, forSeriesID: seriesID)
     }

@@ -54,6 +54,10 @@ final class CharacterDataRepository: CharacterRepository {
         characterDataProvider.addToMyCharacters(character)
     }
     
+    func updateInMyCharacters(_ character: Character) {
+        characterDataProvider.updateInMyCharacters(character)
+    }
+    
     func removeFromMyCharacters(_ character: Character) {
         characterDataProvider.removeFromMyCharacters(character)
     }

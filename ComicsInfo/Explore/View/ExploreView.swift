@@ -11,6 +11,7 @@ import SwiftUI
 struct ExploreView: View {
 
     @ObservedObject private var viewModel: ExploreViewModel
+    @StateObject private var alertController = AlertController()
 
     init(viewModel: ExploreViewModel = ExploreViewModel()) {
         self.viewModel = viewModel
@@ -19,7 +20,7 @@ struct ExploreView: View {
     var body: some View {
         NavigationView {
             VStack {
-                if viewModel.status == .loading {
+                if viewModel.status.isLoading() {
                     Spacer()
                     ProgressView("Loading...")
                     Spacer()
@@ -41,12 +42,18 @@ struct ExploreView: View {
         }
         .navigationViewStyle(StackNavigationViewStyle())
         .onAppear {
+            viewModel.alertController = alertController
             viewModel.getAllCharacters()
         }
-        .alert(isPresented: $viewModel.showError) {
-            Alert(title: Text(viewModel.errorMessage))
-        }
         .accentColor(Color("AccentColor"))
+        .environmentObject(alertController)
+        .alert(item: $alertController.info) { alert in
+            Alert(
+                title: Text(alert.title),
+                message: Text(alert.message),
+                dismissButton: alert.dismissButton
+            )
+        }
     }
     
     private var exploreList: some View {
@@ -107,15 +114,17 @@ struct ExploreView: View {
 
 #if DEBUG
 struct ExploreView_Previews: PreviewProvider {
+    
+    static let characters = [
+        Character.make(identifier: "1", name: "Spider-Man"),
+        Character.make(identifier: "2", name: "Flash"),
+        Character.make(identifier: "3", name: "Batman")
+    ]
 
     static let viewModel = ExploreViewModel(
         characterUseCase: CharacterUseCase(),
-        characters: [
-            Character.make(identifier: "1", name: "Spider-Man"),
-            Character.make(identifier: "2", name: "Flash"),
-            Character.make(identifier: "3", name: "Batman")
-        ],
-        status: .showCharacters
+        characters: characters,
+        status: .loading(currentValue: characters)
     )
 
     static var previews: some View {

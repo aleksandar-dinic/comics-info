@@ -131,6 +131,26 @@ struct ComicDataProvider {
         characterRepository.addToMyCharacters(character)
     }
     
+    func removeFromMyComics(
+        _ comicSummary: ComicSummary,
+        character: Character,
+        seriesSummary: SeriesSummary
+    ) {
+        comicCacheService.removeFromMyComics(
+            comicSummaries: [comicSummary],
+            forSeriesID: seriesSummary.identifier
+        )
+        
+        guard getMyComics(forSeriesID: seriesSummary.identifier) == nil else { return }
+        var character = character
+        character.removeFromMySeries(seriesSummary)
+        if character.mySeries?.isEmpty ?? true {
+            characterRepository.removeFromMyCharacters(character)
+        } else {
+            characterRepository.updateInMyCharacters(character)
+        }
+    }
+    
     func isInMyComics(_ comicID: String, forSeriesID seriesID: String) -> Bool {
         comicCacheService.isInMyComics(comicID, forSeriesID: seriesID)
     }

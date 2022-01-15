@@ -79,7 +79,7 @@ struct ComicCacheProvider: ComicCacheService {
     // My Comics
     
     func getMyComics(forSeriesID seriesID: String) -> [ComicSummary]? {
-        myComicCache[seriesID]
+        myComicCache[seriesID]?.sorted()
     }
     
     func addInMyComics(comicSummaries: [ComicSummary], forSeriesID seriesID: String) {
@@ -97,6 +97,26 @@ struct ComicCacheProvider: ComicCacheService {
         }
         
         myComicCache[seriesID] = value
+        try? myComicCache.saveToDisc(.myComics)
+    }
+    
+    func removeFromMyComics(comicSummaries: [ComicSummary], forSeriesID seriesID: String) {
+        guard var value = myComicCache[seriesID] else { return }
+        var dict = [String: Int]()
+        for (i, el) in value.enumerated() {
+            dict[el.identifier] = i
+        }
+        
+        for summary in comicSummaries {
+            guard let index = dict[summary.identifier] else { continue }
+            value.remove(at: index)
+        }
+        
+        if value.isEmpty {
+            myComicCache.removeValue(forKey: seriesID)
+        } else {
+            myComicCache[seriesID] = value
+        }
         try? myComicCache.saveToDisc(.myComics)
     }
     

@@ -98,11 +98,19 @@ final class ComicInfoViewModel {
     }
     
     func onTapAdd() {
-        useCase.addToMyComics(
-            comicSummary,
-            character: character,
-            seriesSummary: seriesSummary
-        )
+        if !isInMyComics() {
+            useCase.addToMyComics(
+                comicSummary,
+                character: character,
+                seriesSummary: seriesSummary
+            )
+        } else {
+            useCase.removeFromMyComics(
+                comicSummary,
+                character: character,
+                seriesSummary: seriesSummary
+            )
+        }
     }
     
     func isInMyComics() -> Bool {
