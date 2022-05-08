@@ -8,34 +8,20 @@
 
 import Foundation
 
-final class ComicUseCase: ComicRepositoryFactory, CharacterRepositoryFactory, SeriesRepositoryFactory {
+final class ComicUseCase: ComicRepositoryFactory {
 
     private lazy var repository = makeComicRepository()
-    lazy var characterRepository = makeCharacterRepository()
-    lazy var seriesRepository = makeSeriesRepository()
+    private lazy var myComicsUseCase = MyComicsUseCase()
     
     let comicAPIService: ComicAPIService
     let comicCacheService: ComicCacheService
-    let characterAPIService: CharacterAPIService
-    let characterCacheService: CharacterCacheService
-    let seriesAPIService: SeriesAPIService
-    let seriesCacheService: SeriesCacheService
-    
         
     init(
         comicAPIService: ComicAPIService = ComicAPIProvider(),
-        comicCacheService: ComicCacheService = ComicCacheProvider(),
-        characterAPIService: CharacterAPIService = CharacterAPIProvider(),
-        characterCacheService: CharacterCacheService = CharacterCacheProvider(),
-        seriesAPIService: SeriesAPIService = SeriesAPIProvider(),
-        seriesCacheService: SeriesCacheService = SeriesCacheProvider()
+        comicCacheService: ComicCacheService = ComicCacheProvider()
     ) {
         self.comicAPIService = comicAPIService
         self.comicCacheService = comicCacheService
-        self.characterAPIService = characterAPIService
-        self.characterCacheService = characterCacheService
-        self.seriesAPIService = seriesAPIService
-        self.seriesCacheService = seriesCacheService
     }
     
     func getComicSummaries(
@@ -70,52 +56,57 @@ final class ComicUseCase: ComicRepositoryFactory, CharacterRepositoryFactory, Se
     
     // My Comics
     
+    func addToMyComics(
+        _ comicSummary: ComicSummary,
+        seriesSummary: SeriesSummary,
+        character: Character,
+        onComplete complete: @escaping (Result<ComicSummary, Error>) -> Void
+    ) {
+        myComicsUseCase.createMyComic(
+            comicSummary,
+            seriesSummary: seriesSummary,
+            character: character,
+            onComplete: complete
+        )
+    }
+    
     func getMyComics(
         for seriesID: String,
-        afterID: String?,
-        limit: Int,
-        fromDataSource dataSource: DataSourceLayer,
         onComplete complete: @escaping (Result<[ComicSummary], Error>) -> Void
     ) {
-        DispatchQueue.global(qos: .utility).async { [weak self] in
-            guard let comics = self?.repository.getMyComics(forSeriesID: seriesID), !comics.isEmpty else {
-                DispatchQueue.main.async {
-                    complete(.failure(NetworkError.missingData))
-                }
-                return
-            }
-            DispatchQueue.main.async {
-                complete(.success(comics))
+        myComicsUseCase.getMyComics(forSeriesID: seriesID, onComplete: complete)
+    }
+    
+    func isInMyComics(
+        _ comicID: String,
+        forSeriesID seriesID: String,
+        onComplete complete: @escaping (Result<Void, Error>) -> Void
+    ) {
+        myComicsUseCase.getMyComic(withID: comicID, forSeriesID: seriesID) { result in
+            switch result {
+            case .success:
+                complete(.success(()))
+            case let .failure(error):
+                complete(.failure(error))
             }
         }
     }
     
-    func addToMyComics(
-        _ comicSummary: ComicSummary,
-        character: Character,
-        seriesSummary: SeriesSummary
-    ) {
-        repository.addToMyComics(
-            comicSummary,
-            character: character,
-            seriesSummary: seriesSummary
-        )
-    }
-    
     func removeFromMyComics(
-        _ comicSummary: ComicSummary,
-        character: Character,
-        seriesSummary: SeriesSummary
+        _ comicID: String,
+        seriesID: String,
+        characterID: String,
+        onComplete complete: @escaping (Result<ComicSummary, Error>) -> Void
     ) {
-        repository.removeFromMyComics(
-            comicSummary,
-            character: character,
-            seriesSummary: seriesSummary
-        )
+        myComicsUseCase.deleteMyComic(withID: comicID, characterID: characterID, seriesID: seriesID, onComplete: complete)
     }
     
-    func isInMyComics(_ comicID: String, forSeriesID seriesID: String) -> Bool {
-        repository.isInMyComics(comicID, forSeriesID: seriesID)
+    func removeMySeries(
+        withID seriesID:
+        String, characterID: String,
+        onComplete complete: @escaping (Result<Void, Error>) -> Void
+    ) {
+        myComicsUseCase.removeMySeries(withID: seriesID, characterID: characterID, onComplete: complete)
     }
     
     // Bookmark

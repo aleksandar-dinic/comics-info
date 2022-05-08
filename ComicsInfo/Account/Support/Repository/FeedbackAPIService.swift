@@ -12,6 +12,7 @@ protocol FeedbackAPIService {
 
     func create(
         _ feedback: Data,
+        token: String?,
         onComplete complete: @escaping (Result<Data, Error>) -> Void
     )
     

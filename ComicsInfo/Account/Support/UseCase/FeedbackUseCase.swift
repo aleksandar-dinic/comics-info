@@ -10,6 +10,7 @@ import Foundation
 final class FeedbackUseCase: FeedbackRepositoryFactory {
     
     private lazy var repository = makeRepository()
+    private lazy var authUseCase = AuthUseCase()
     
     let apiService: FeedbackAPIService
     
@@ -21,10 +22,13 @@ final class FeedbackUseCase: FeedbackRepositoryFactory {
         _ feedback: Feedback,
         onComplete complete: @escaping (Result<Feedback, Error>) -> Void
     ) {
-        DispatchQueue.global(qos: .utility).async { [weak self] in
-            self?.repository.create(feedback) { result in
-                DispatchQueue.main.async {
-                    complete(result)
+        authUseCase.getAccessToken { result in
+            let token = try? result.get()
+            DispatchQueue.global(qos: .utility).async { [weak self] in
+                self?.repository.create(feedback, token: token) { result in
+                    DispatchQueue.main.async {
+                        complete(result)
+                    }
                 }
             }
         }

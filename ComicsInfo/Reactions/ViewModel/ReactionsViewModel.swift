@@ -12,20 +12,20 @@ final class ReactionsViewModel: ObservableObject {
     
     private let types: [ReactionType]
     @Published private(set) var isHeartSelected: Bool
-    @Published private(set) var isInMyComics: Bool
+    @Binding private(set) var isInMyComics: Bool
     @Published private(set) var isBookmarked: Bool
     private let shareSheet: ShareSheet
     
     init(
         types: [ReactionType] = ReactionType.allCases,
         isHeartSelected: Bool = false,
-        isInMyComics: Bool = false,
+        isInMyComics: Binding<Bool> = .constant(false),
         isBookmarked: Bool = false,
         shareSheet: ShareSheet = ShareSheet()
     ) {
         self.types = types
         self.isHeartSelected = isHeartSelected
-        self.isInMyComics = isInMyComics
+        _isInMyComics = isInMyComics
         self.isBookmarked = isBookmarked
         self.shareSheet = shareSheet
     }
@@ -45,10 +45,6 @@ final class ReactionsViewModel: ObservableObject {
     }
     
     // Add
-    
-    func onTapAdd() {
-        isInMyComics.toggle()
-    }
     
     var addImage: Image {
         isInMyComics ? Image(systemName: "minus.circle") : Image(systemName: "plus.circle")

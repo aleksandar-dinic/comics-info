@@ -6,7 +6,7 @@
 //
 
 import Amplify
-import AWSCognitoAuthPlugin
+import AWSPluginsCore
 import Foundation
 import UIKit
 
@@ -22,6 +22,28 @@ final class AuthAPIProvider: AuthAPIService {
             email: nil,
             nickname: nil
         )
+    }
+    
+    func getAccessToken(
+        onComplete complete: @escaping (Result<String, Error>) -> Void
+    ) {
+        Amplify.Auth.fetchAuthSession { result in
+            switch result {
+            case let .success(session):
+                guard let cognitoTokenProvider = session as? AuthCognitoTokensProvider else {
+                    return complete(.failure(AuthError.invalidAccessToken))
+                }
+
+                do {
+                    let tokens = try cognitoTokenProvider.getCognitoTokens().get()
+                    complete(.success(tokens.accessToken))
+                } catch {
+                    complete(.failure(AuthError(from: error)))
+                }
+            case let .failure(error):
+                complete(.failure(AuthError(from: error)))
+            }
+        }
     }
     
     func getUserAttributes(

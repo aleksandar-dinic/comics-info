@@ -10,7 +10,7 @@ import Foundation
 
 enum FeedbackEndpoint: EndpointType {
     
-    case create(feedback: Data)
+    case create(feedback: Data, token: String?)
     
     var baseURL: URL {
         Environment.rootURL
@@ -32,7 +32,7 @@ enum FeedbackEndpoint: EndpointType {
     
     var body: Data? {
         switch self {
-        case let .create(feedback):
+        case let .create(feedback, _):
             return feedback
         }
     }
@@ -42,7 +42,13 @@ enum FeedbackEndpoint: EndpointType {
     }
     
     var headers: [String: String]? {
-        nil
+        switch self {
+        case let .create(_, token):
+            guard let token = token else {
+                return nil
+            }
+            return ["Authorization": token]
+        }
     }
     
 }

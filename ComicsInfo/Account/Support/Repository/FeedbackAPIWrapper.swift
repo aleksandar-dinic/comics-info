@@ -19,11 +19,12 @@ struct FeedbackAPIWrapper: DecoderService {
 
     func create(
         _ feedback: Feedback,
+        token: String?,
         onComplete complete: @escaping (Result<Feedback, Error>) -> Void
     ) {
         do {
             let data = try JSONEncoder().encode(Domain.Feedback(from: feedback))
-            apiService.create(data) { result in
+            apiService.create(data, token: token) { result in
                 switch result {
                 case let .success(data):
                     let decodedResult: Result<Domain.Feedback, Error> = decode(from: data)

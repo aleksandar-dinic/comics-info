@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct MyComicsListView: View {
+    
+    @SwiftUI.Environment(\.presentationMode) var presentationMode
 
     private let character: Character
     private let seriesSummary: SeriesSummary
@@ -28,15 +30,16 @@ struct MyComicsListView: View {
         VStack(spacing: 4) {
             ScrollView {
                 LazyVStack(spacing: 4) {
-                    if viewModel.status == .loading {
+                    if viewModel.isLoading {
                         Spacer()
                         ProgressView("Loading...")
                         Spacer()
+                    } else if viewModel.isEmpty {
+                        Spacer()
+                        makeEmptyView()
+                        Spacer()
                     } else {
                         comicsList
-                        if viewModel.canLoadMore {
-                            loadingIndicator
-                        }
                     }
                 }
                 .padding()
@@ -47,9 +50,6 @@ struct MyComicsListView: View {
         }
         .onAppear {
             viewModel.getComicSummaries(for: seriesSummary.identifier)
-        }
-        .alert(isPresented: $viewModel.showError) {
-            Alert(title: Text(viewModel.errorMessage))
         }
         .navigationBarTitle(seriesSummary.title, displayMode: .inline)
     }
@@ -70,15 +70,31 @@ struct MyComicsListView: View {
                     for: comic,
                     seriesTitle: seriesSummary.title
                 )
-                .onAppear {
-                    guard viewModel.lastIdentifier == comic.identifier else { return }
-                    viewModel.getComicSummaries(
-                        for: seriesSummary.identifier,
-                        lastID: viewModel.lastIdentifier
-                    )
-                }
+//                .onAppear {
+//                    guard viewModel.lastIdentifier == comic.identifier else { return }
+//                    viewModel.getComicSummaries(for: seriesSummary.identifier)
+//                }
             }
             .buttonStyle(PlainButtonStyle())
+        }
+    }
+    
+    private func makeEmptyView() -> some View {
+        VStack {
+            Text("You do not have comics in this series")
+                .font(.title)
+            
+//            Button(action: {
+//                viewModel.removeSeries(withID: seriesSummary.identifier, characterID: character.identifier) {
+//                    presentationMode.wrappedValue.dismiss()
+//                }
+//            }) {
+//                Text("Remove Series")
+//                .frame(maxWidth: .infinity, minHeight: 44, maxHeight: 44, alignment: .center)
+//                .foregroundColor(Color.white)
+//                .background(Color.accentColor)
+//                .cornerRadius(8)
+//            }
         }
     }
 
@@ -112,8 +128,7 @@ struct MyComicsListView_Previews: PreviewProvider {
             ComicSummary.make(),
             ComicSummary.make(),
             ComicSummary.make()
-        ],
-        status: .showComics
+        ]
     )
 
     static var previews: some View {

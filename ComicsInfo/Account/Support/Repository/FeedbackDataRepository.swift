@@ -18,9 +18,10 @@ final class FeedbackDataRepository: FeedbackRepository {
 
     func create(
         _ feedback: Feedback,
+        token: String?,
         onComplete complete: @escaping (Result<Feedback, Error>) -> Void
     ) {
-        dataProvider.create(feedback, onComplete: complete)
+        dataProvider.create(feedback, token: token, onComplete: complete)
     }
     
 }

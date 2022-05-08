@@ -18,7 +18,11 @@ struct MyComicsView: View {
     var body: some View {
         NavigationView {
             VStack {
-                if viewModel.isEmpty {
+                if viewModel.isLoading {
+                    MainProgressView()
+                } else if viewModel.isSignedOut {
+                    makeSignedOutMessage()
+                } else if viewModel.isEmpty {
                     makeEmptyMessage()
                 } else {
                     makeCharacters()
@@ -31,6 +35,14 @@ struct MyComicsView: View {
         }
         .navigationViewStyle(StackNavigationViewStyle())
         .accentColor(Color("AccentColor"))
+    }
+    
+    private func makeSignedOutMessage() -> some View {
+        VStack(alignment: .leading, spacing: 12) {
+            Text("You need to sign in to see your comics.")
+                .font(.title)
+        }
+        .padding()
     }
     
     private func makeEmptyMessage() -> some View {
@@ -54,20 +66,16 @@ struct MyComicsView: View {
     }
     
     private var characterList: some View {
-        ForEach(viewModel.myCharacters, id: \.identifier) { character in
+        ForEach(viewModel.myCharacters, id: \.identifier) { myCharacter in
             Section(
-                header: NavigationLink(destination: CharacterInfoView(for: character)) {
-                    makeCharacterView(for: character)
+                header: NavigationLink(destination: CharacterInfoView(for: Character(from: myCharacter))) {
+                    makeCharacterView(for: Character(from: myCharacter))
                 }
                     .buttonStyle(PlainButtonStyle())
             ) {
-                if let seriesSummaries = character.mySeries {
-                    seriesList(for: character, seriesSummaries: seriesSummaries)
+                if let seriesSummaries = myCharacter.mySeries {
+                    seriesList(for: Character(from: myCharacter), seriesSummaries: seriesSummaries)
                 }
-            }
-            .onAppear {
-                guard viewModel.lastIdentifier == character.identifier else { return }
-                viewModel.getMyCharacters(lastID: viewModel.lastIdentifier)
             }
         }
     }

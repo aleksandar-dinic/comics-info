@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CharacterInfoView: View {
     
-    private let viewModel: CharacterInfoViewModel
+    @ObservedObject private var viewModel: CharacterInfoViewModel
     @State private var showBanner = AppTrackingManager.authorization
     
     init(for character: Character) {
@@ -17,62 +17,71 @@ struct CharacterInfoView: View {
     }
     
     var body: some View {
-        VStack {
-            ScrollView {
-                LazyVStack {
-                    HStack {
-                        CharacterInfoThumbnailView(
-                            imageName: viewModel.thumbnail,
-                            systemName: viewModel.thumbnailSystemName,
-                            height: 100
+        ZStack {
+            VStack {
+                ScrollView {
+                    LazyVStack {
+                        HStack {
+                            CharacterInfoThumbnailView(
+                                imageName: viewModel.thumbnail,
+                                systemName: viewModel.thumbnailSystemName,
+                                height: 100
+                            )
+                    
+                            Text(viewModel.name)
+                                .font(.subheadline)
+                                .frame(minWidth: 0, maxWidth: .infinity)
+                        }
+                        .padding()
+                        
+                        ReactionsView(
+                            types: [.share, .bookmark],
+                            isInMyComics: $viewModel.isInMyCharacters,
+                            isBookmarked: viewModel.isBookmarked(),
+                            shereMessage: viewModel.shereMessage,
+                            onTapAdd: viewModel.onTapAdd,
+                            onTapBookmark: viewModel.onTapBookmark
                         )
                 
-                        Text(viewModel.name)
-                            .font(.subheadline)
-                            .frame(minWidth: 0, maxWidth: .infinity)
-                    }
-                    .padding()
-                    
-                    ReactionsView(
-                        types: [.share, .bookmark],
-                        isInMyComics: viewModel.isInMyCharacters(),
-                        isBookmarked: viewModel.isBookmarked(),
-                        shereMessage: viewModel.shereMessage,
-                        onTapAdd: viewModel.onTapAdd,
-                        onTapBookmark: viewModel.onTapBookmark
-                    )
-            
-                    if !viewModel.realName.isEmpty {
-                        HStack {
-                            Text("Real Name:")
-                                .font(.subheadline)
-                            Text(viewModel.realName)
-                                .font(.subheadline)
-                            Spacer()
+                        if !viewModel.realName.isEmpty {
+                            HStack {
+                                Text("Real Name:")
+                                    .font(.subheadline)
+                                Text(viewModel.realName)
+                                    .font(.subheadline)
+                                Spacer()
+                            }
+                            .padding([.trailing, .leading])
                         }
-                        .padding([.trailing, .leading])
-                    }
-                    
-                    if !viewModel.birthday.isEmpty {
-                        HStack {
-                            Text("Birthday:")
-                                .font(.subheadline)
-                            Text(viewModel.birthday)
-                                .font(.subheadline)
-                            Spacer()
+                        
+                        if !viewModel.birthday.isEmpty {
+                            HStack {
+                                Text("Birthday:")
+                                    .font(.subheadline)
+                                Text(viewModel.birthday)
+                                    .font(.subheadline)
+                                Spacer()
+                            }
+                            .padding([.trailing, .leading])
                         }
-                        .padding([.trailing, .leading])
-                    }
-                    
-                    if !viewModel.description.isEmpty {
-                        DescriptionView(description: viewModel.description)
+                        
+                        if !viewModel.description.isEmpty {
+                            DescriptionView(description: viewModel.description)
+                        }
                     }
                 }
+                if showBanner {
+                    BannerView(showBanner: $showBanner, adUnitID: Environment.characterInfoADUnitID)
+                }
             }
-            if showBanner {
-                BannerView(showBanner: $showBanner, adUnitID: Environment.characterInfoADUnitID)
+            
+            if viewModel.isLoading {
+                MainProgressView()
             }
         }
+//        .onAppear {
+//            viewModel.isInMyCharacters() { _ in }
+//        }
         .navigationBarTitle(viewModel.name, displayMode: .inline)
     }
     

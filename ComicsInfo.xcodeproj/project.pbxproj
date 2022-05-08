@@ -7,6 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		42DC185727A9A1A100193898 /* MyComicsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DC185627A9A1A100193898 /* MyComicsRepository.swift */; };
+		42DC185927A9A1D500193898 /* MyComicsAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DC185827A9A1D500193898 /* MyComicsAPIService.swift */; };
+		42DC185C27A9B21300193898 /* MyCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DC185B27A9B21300193898 /* MyCharacter.swift */; };
+		42DC185F27A9BE7300193898 /* MyComicsAPIProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DC185E27A9BE7300193898 /* MyComicsAPIProvider.swift */; };
+		42DC186127A9CC2100193898 /* MyComicsEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DC186027A9CC2100193898 /* MyComicsEndpoint.swift */; };
+		42DC186327A9D06E00193898 /* MyComicsAPIWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DC186227A9D06E00193898 /* MyComicsAPIWrapper.swift */; };
+		42DC186527AA957800193898 /* MyComicsCacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DC186427AA957700193898 /* MyComicsCacheService.swift */; };
+		42DC186727AA968700193898 /* MyComicsDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DC186627AA968700193898 /* MyComicsDataProvider.swift */; };
+		42DC186A27AAC30700193898 /* MyComicsAPIWrapperFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DC186927AAC30700193898 /* MyComicsAPIWrapperFactory.swift */; };
+		42DC186C27AAC4BB00193898 /* MyComicsRepositoryFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DC186B27AAC4BA00193898 /* MyComicsRepositoryFactory.swift */; };
+		42DC186E27AAC4DA00193898 /* MyComicsDataProviderFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DC186D27AAC4DA00193898 /* MyComicsDataProviderFactory.swift */; };
+		42DC187127AACE7100193898 /* MyComicsCacheProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DC187027AACE7100193898 /* MyComicsCacheProvider.swift */; };
+		42DC187327AADE0B00193898 /* Character+MyCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DC187227AADE0B00193898 /* Character+MyCharacter.swift */; };
 		6420EDBC25F9172D00B7F47B /* CharacterSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6420EDBB25F9172D00B7F47B /* CharacterSummary.swift */; };
 		6420EDC825F9206900B7F47B /* ComicSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6420EDC725F9206900B7F47B /* ComicSummary.swift */; };
 		6420EDCD25F920B900B7F47B /* SeriesSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6420EDCC25F920B900B7F47B /* SeriesSummary.swift */; };
@@ -231,6 +244,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		42DC185627A9A1A100193898 /* MyComicsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyComicsRepository.swift; sourceTree = "<group>"; };
+		42DC185827A9A1D500193898 /* MyComicsAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyComicsAPIService.swift; sourceTree = "<group>"; };
+		42DC185B27A9B21300193898 /* MyCharacter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCharacter.swift; sourceTree = "<group>"; };
+		42DC185E27A9BE7300193898 /* MyComicsAPIProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyComicsAPIProvider.swift; sourceTree = "<group>"; };
+		42DC186027A9CC2100193898 /* MyComicsEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyComicsEndpoint.swift; sourceTree = "<group>"; };
+		42DC186227A9D06E00193898 /* MyComicsAPIWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyComicsAPIWrapper.swift; sourceTree = "<group>"; };
+		42DC186427AA957700193898 /* MyComicsCacheService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyComicsCacheService.swift; sourceTree = "<group>"; };
+		42DC186627AA968700193898 /* MyComicsDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyComicsDataProvider.swift; sourceTree = "<group>"; };
+		42DC186927AAC30700193898 /* MyComicsAPIWrapperFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyComicsAPIWrapperFactory.swift; sourceTree = "<group>"; };
+		42DC186B27AAC4BA00193898 /* MyComicsRepositoryFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyComicsRepositoryFactory.swift; sourceTree = "<group>"; };
+		42DC186D27AAC4DA00193898 /* MyComicsDataProviderFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyComicsDataProviderFactory.swift; sourceTree = "<group>"; };
+		42DC187027AACE7100193898 /* MyComicsCacheProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyComicsCacheProvider.swift; sourceTree = "<group>"; };
+		42DC187227AADE0B00193898 /* Character+MyCharacter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Character+MyCharacter.swift"; sourceTree = "<group>"; };
 		6420EDBB25F9172D00B7F47B /* CharacterSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterSummary.swift; sourceTree = "<group>"; };
 		6420EDC725F9206900B7F47B /* ComicSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicSummary.swift; sourceTree = "<group>"; };
 		6420EDCC25F920B900B7F47B /* SeriesSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesSummary.swift; sourceTree = "<group>"; };
@@ -491,6 +517,42 @@
 				64E2424B2788AA160077E18A /* awsconfiguration.json */,
 			);
 			name = AmplifyConfig;
+			sourceTree = "<group>";
+		};
+		42DC185A27A9B20900193898 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				42DC185B27A9B21300193898 /* MyCharacter.swift */,
+				42DC187227AADE0B00193898 /* Character+MyCharacter.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		42DC185D27A9BE5800193898 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				42DC185E27A9BE7300193898 /* MyComicsAPIProvider.swift */,
+				42DC186027A9CC2100193898 /* MyComicsEndpoint.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		42DC186827AAC2F800193898 /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+				42DC186927AAC30700193898 /* MyComicsAPIWrapperFactory.swift */,
+				42DC186D27AAC4DA00193898 /* MyComicsDataProviderFactory.swift */,
+				42DC186B27AAC4BA00193898 /* MyComicsRepositoryFactory.swift */,
+			);
+			path = Factory;
+			sourceTree = "<group>";
+		};
+		42DC186F27AACE6000193898 /* Cache */ = {
+			isa = PBXGroup;
+			children = (
+				42DC187027AACE7100193898 /* MyComicsCacheProvider.swift */,
+			);
+			path = Cache;
 			sourceTree = "<group>";
 		};
 		6420EDE225FA24F400B7F47B /* Repositories */ = {
@@ -1125,6 +1187,9 @@
 		6496311D272442B100CEEB1D /* MyComics */ = {
 			isa = PBXGroup;
 			children = (
+				42DC186F27AACE6000193898 /* Cache */,
+				42DC185A27A9B20900193898 /* Model */,
+				42DC185D27A9BE5800193898 /* Network */,
 				64963124272EA16200CEEB1D /* Repositories */,
 				64963125272ECC3D00CEEB1D /* UseCase */,
 				6496311E272442E900CEEB1D /* View */,
@@ -1154,6 +1219,12 @@
 		64963124272EA16200CEEB1D /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
+				42DC185827A9A1D500193898 /* MyComicsAPIService.swift */,
+				42DC186227A9D06E00193898 /* MyComicsAPIWrapper.swift */,
+				42DC186427AA957700193898 /* MyComicsCacheService.swift */,
+				42DC186627AA968700193898 /* MyComicsDataProvider.swift */,
+				42DC185627A9A1A100193898 /* MyComicsRepository.swift */,
+				42DC186827AAC2F800193898 /* Factory */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -1694,6 +1765,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 1200;
 				LastUpgradeCheck = 1320;
+				ORGANIZATIONNAME = "Aleksandar Dinic";
 				TargetAttributes = {
 					649D5C7B24E1F18B004C6328 = {
 						CreatedOnToolsVersion = 12.0;
@@ -1790,6 +1862,7 @@
 				64B7598F27721D310085C19E /* AuthView.swift in Sources */,
 				64B434FA24F43F650054A20C /* ComicCacheProvider.swift in Sources */,
 				642CF2BA26DB94A30054B881 /* EnvironmentValues+Cache.swift in Sources */,
+				42DC185727A9A1A100193898 /* MyComicsRepository.swift in Sources */,
 				649D5D0524E5C97F004C6328 /* ComicSummaryView.swift in Sources */,
 				6420EEEC25FAC2BF00B7F47B /* ComicDataProvider.swift in Sources */,
 				647A4AAD270329DC00FACC6D /* ReactionsView.swift in Sources */,
@@ -1799,6 +1872,7 @@
 				649631212724430B00CEEB1D /* MyComicsView.swift in Sources */,
 				64DB1DE326C1A245009492AA /* NetworkResponseHandler.swift in Sources */,
 				649D5D0024E5C97F004C6328 /* ComicsListViewModel.swift in Sources */,
+				42DC186127A9CC2100193898 /* MyComicsEndpoint.swift in Sources */,
 				6475FCE6276E585A00B643AE /* AuthRepository.swift in Sources */,
 				6420EF1C25FAC2DF00B7F47B /* SeriesAPIWrapperFactory.swift in Sources */,
 				649D5D1524E5C97F004C6328 /* SeriesUseCase.swift in Sources */,
@@ -1825,6 +1899,7 @@
 				6420EEBC25FAC29800B7F47B /* CharacterCacheService.swift in Sources */,
 				6475FCF4276E8F6900B643AE /* SignUpView.swift in Sources */,
 				648C153126E94D0200F06910 /* CharacterInfoViewModel.swift in Sources */,
+				42DC186327A9D06E00193898 /* MyComicsAPIWrapper.swift in Sources */,
 				6420EED825FAC2AC00B7F47B /* CharacterRepositoryFactory.swift in Sources */,
 				648C139526E27D9500F06910 /* Feedback.swift in Sources */,
 				6420EF1025FAC2D700B7F47B /* SeriesDataProvider.swift in Sources */,
@@ -1836,6 +1911,7 @@
 				6420EF0425FAC2D000B7F47B /* SeriesAPIService.swift in Sources */,
 				649D5D0924E5C97F004C6328 /* CharacterViewModel.swift in Sources */,
 				649D5D0724E5C97F004C6328 /* ComicUseCase.swift in Sources */,
+				42DC186C27AAC4BB00193898 /* MyComicsRepositoryFactory.swift in Sources */,
 				649D5D1124E5C97F004C6328 /* SeriesThumbnailView.swift in Sources */,
 				648C11DC26E0EE8D00F06910 /* HomeItem.swift in Sources */,
 				6420EEDC25FAC2AF00B7F47B /* CharacterDataProviderFactory.swift in Sources */,
@@ -1852,6 +1928,7 @@
 				648C13AC26E29A3400F06910 /* FeedbackEndpoint.swift in Sources */,
 				647773D826D5370C00FED43E /* SeriesSummaryViewModel.swift in Sources */,
 				64DB1DD326C1A208009492AA /* NetworkResponse.swift in Sources */,
+				42DC187127AACE7100193898 /* MyComicsCacheProvider.swift in Sources */,
 				6475FCDD276E547500B643AE /* SignInView.swift in Sources */,
 				64BD8C5F277A14C200D12C19 /* MainProgressView.swift in Sources */,
 				648C11CE26E0A70800F06910 /* SupportViewModel.swift in Sources */,
@@ -1859,10 +1936,12 @@
 				649D5D0624E5C97F004C6328 /* DescriptionView.swift in Sources */,
 				64B434D824F3F6C20054A20C /* NetworkError.swift in Sources */,
 				64B434DE24F413DA0054A20C /* SeriesCacheProvider.swift in Sources */,
+				42DC185F27A9BE7300193898 /* MyComicsAPIProvider.swift in Sources */,
 				647A70E226C913E30024426E /* ComicSummaryViewModel.swift in Sources */,
 				647A711226C94F540024426E /* CacheKey.swift in Sources */,
 				64B7599327734C120085C19E /* ResetPasswordView.swift in Sources */,
 				64B7598A27720B6F0085C19E /* UserProfileUseCase.swift in Sources */,
+				42DC187327AADE0B00193898 /* Character+MyCharacter.swift in Sources */,
 				6420EECC25FAC2A500B7F47B /* CharacterDataRepository.swift in Sources */,
 				648C11BC26DD647A00F06910 /* GoogleBannerViewController.swift in Sources */,
 				649D5D0324E5C97F004C6328 /* ComicInfoView.swift in Sources */,
@@ -1879,6 +1958,7 @@
 				647A4AB72703527100FACC6D /* BookmarkViewModel.swift in Sources */,
 				648C139826E27E2100F06910 /* FeedbackRepository.swift in Sources */,
 				6475FCED276E603C00B643AE /* AuthRepositoryFactory.swift in Sources */,
+				42DC186E27AAC4DA00193898 /* MyComicsDataProviderFactory.swift in Sources */,
 				6420EDE625FA250A00B7F47B /* DecoderService.swift in Sources */,
 				648C11CC26DF9A2400F06910 /* AccountView.swift in Sources */,
 				6420EEF025FAC2C100B7F47B /* ComicDataRepository.swift in Sources */,
@@ -1909,15 +1989,19 @@
 				647A70F926C91EBE0024426E /* ComicViewModel.swift in Sources */,
 				64BD8C61277A48B500D12C19 /* String+Localized.swift in Sources */,
 				6420EF0C25FAC2D400B7F47B /* SeriesCacheService.swift in Sources */,
+				42DC186727AA968700193898 /* MyComicsDataProvider.swift in Sources */,
 				649D5D0B24E5C97F004C6328 /* CharacterThumbnailView.swift in Sources */,
 				648C13A026E2821300F06910 /* FeedbackDataProvider.swift in Sources */,
 				648C11D526E0DF0B00F06910 /* HomeView.swift in Sources */,
 				64B7598D277210000085C19E /* User.swift in Sources */,
+				42DC186A27AAC30700193898 /* MyComicsAPIWrapperFactory.swift in Sources */,
 				64BD8C63277B4BCD00D12C19 /* LoadableObject.swift in Sources */,
 				649D5C8024E1F18B004C6328 /* ComicsInfoApp.swift in Sources */,
 				647A4ABB2703547300FACC6D /* BookmarkUseCase.swift in Sources */,
+				42DC185927A9A1D500193898 /* MyComicsAPIService.swift in Sources */,
 				64DB1DC326C1A175009492AA /* NetworkManager.swift in Sources */,
 				64BD8C592778F78000D12C19 /* VerificationCodeViewModel.swift in Sources */,
+				42DC185C27A9B21300193898 /* MyCharacter.swift in Sources */,
 				64B434B724F3E5270054A20C /* Character.swift in Sources */,
 				64B75997277381730085C19E /* UserAttribute.swift in Sources */,
 				648C153326EA8F8B00F06910 /* CharacterInfoThumbnailView.swift in Sources */,
@@ -1928,6 +2012,7 @@
 				64431457276F560A0038FD4B /* Auth.swift in Sources */,
 				6420EEC425FAC29F00B7F47B /* CharacterAPIWrapper.swift in Sources */,
 				649D5D0C24E5C97F004C6328 /* CharacterHeaderView.swift in Sources */,
+				42DC186527AA957800193898 /* MyComicsCacheService.swift in Sources */,
 				64A1311626F5336100B24548 /* Date+StringFormat.swift in Sources */,
 				64B7599127721D8C0085C19E /* AuthViewModel.swift in Sources */,
 				649D5D0424E5C97F004C6328 /* ComicsListView.swift in Sources */,

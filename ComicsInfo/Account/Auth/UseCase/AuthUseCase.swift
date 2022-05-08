@@ -33,6 +33,18 @@ final class AuthUseCase: AuthRepositoryFactory {
         }
     }
     
+    func getAccessToken(
+        onComplete complete: @escaping (Result<String, Error>) -> Void
+    ) {
+        DispatchQueue.global(qos: .utility).async { [weak self] in
+            self?.authAPIService.getAccessToken { result in
+                DispatchQueue.main.async {
+                    complete(result)
+                }
+            }
+        }
+    }
+    
     func signIn(
         username: String,
         password: String,

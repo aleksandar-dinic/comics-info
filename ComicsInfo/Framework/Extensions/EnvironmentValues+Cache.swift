@@ -20,7 +20,7 @@ extension EnvironmentValues {
         }
     }
     
-    var myCharacterCache: Cache<String, Character> {
+    var myCharacterCache: Cache<String, MyCharacter> {
         get {
             self[MyCharacterCacheKey.self]
         }

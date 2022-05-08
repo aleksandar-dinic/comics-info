@@ -44,40 +44,6 @@ final class ComicDataRepository: ComicRepository {
         )
     }
     
-    // My Comics
-    
-    func getMyComics(forSeriesID seriesID: String) -> [ComicSummary]? {
-        comicDataProvider.getMyComics(forSeriesID: seriesID)
-    }
-
-    func addToMyComics(
-        _ comicSummary: ComicSummary,
-        character: Character,
-        seriesSummary: SeriesSummary
-    ) {
-        comicDataProvider.addInMyComics(
-            comicSummary,
-            character: character,
-            seriesSummary: seriesSummary
-        )
-    }
-    
-    func removeFromMyComics(
-        _ comicSummary: ComicSummary,
-        character: Character,
-        seriesSummary: SeriesSummary
-    ) {
-        comicDataProvider.removeFromMyComics(
-            comicSummary,
-            character: character,
-            seriesSummary: seriesSummary
-        )
-    }
-    
-    func isInMyComics(_ comicID: String, forSeriesID seriesID: String) -> Bool {
-        comicDataProvider.isInMyComics(comicID, forSeriesID: seriesID)
-    }
-    
     // Bookmark
     
     func getBookmarkComics() -> [Comic]? {

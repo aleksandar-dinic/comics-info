@@ -11,8 +11,6 @@ import Foundation
 protocol ComicDataProviderFactory: ComicAPIWrapperFactory {
 
     var comicCacheService: ComicCacheService { get }
-    var characterRepository: CharacterRepository { get }
-    var seriesRepository: SeriesRepository { get }
 
     func makeComicDataProvider() -> ComicDataProvider
 
@@ -23,9 +21,7 @@ extension ComicDataProviderFactory {
     func makeComicDataProvider() -> ComicDataProvider {
         ComicDataProvider(
             comicAPIWrapper: makeComicAPIWrapper(),
-            comicCacheService: comicCacheService,
-            characterRepository: characterRepository,
-            seriesRepository: seriesRepository
+            comicCacheService: comicCacheService
         )
     }
 

@@ -7,57 +7,29 @@
 
 import Foundation
 
-final class MyComicsListViewModel: ObservableObject {
+final class MyComicsListViewModel: LoadableObject {
 
-    enum Status: Equatable {
-        case loading
-        case error(message: String)
-        case showComics
-    }
-
+    @Published private(set) var state: LoadingState<[ComicSummary]>
     private(set) var useCase: ComicUseCase
     private(set) var comics: [ComicSummary]
     private var comicsIdentifier = Set<String>()
-    @Published private(set) var canLoadMore = true
-    @Published private(set) var isLoading = false
-
-    @Published private(set) var status: Status {
-        didSet {
-            switch status {
-            case let .error(message):
-                showError = true
-                errorMessage = message
-            default:
-                showError = false
-                errorMessage = ""
-            }
-        }
-    }
-    @Published var showError: Bool = false
-    private(set) var errorMessage: String = ""
 
     init(
+        state: LoadingState<[ComicSummary]> = .idle,
         useCase: ComicUseCase = ComicUseCase(),
-        comics: [ComicSummary] = [],
-        status: Status = .loading
+        comics: [ComicSummary] = []
     ) {
+        self.state = state
         self.useCase = useCase
         self.comics = comics
-        self.status = status
     }
 
-    func getComicSummaries(
-        for seriesID: String,
-        lastID: String? = nil,
-        limit: Int = 20,
-        fromDataSource dataSource: DataSourceLayer = .memory
-    ) {
-        guard !isLoading, canLoadMore else { return }
+    func getComicSummaries(for seriesID: String) {
+        guard !isLoading else { return }
+        state = .loading(currentValue: comics)
         
-        isLoading = true
-        useCase.getMyComics(for: seriesID, afterID: lastID, limit: limit, fromDataSource: dataSource) { [weak self] result in
+        useCase.getMyComics(for: seriesID) { [weak self] result in
             guard let self = self else { return }
-            self.isLoading = false
             
             switch result {
             case let .success(comics):
@@ -65,18 +37,41 @@ final class MyComicsListViewModel: ObservableObject {
                     self.comics.append(comic)
                     self.comicsIdentifier.insert(comic.identifier)
                 }
-                self.status = .showComics
-                self.canLoadMore = comics.count >= limit
-            case .failure:
-                self.canLoadMore = false
+                self.state = .loaded(self.comics)
+            case let .failure(error):
                 guard self.comics.isEmpty else { return }
-                self.status = .error(message: "Something went wrong. Please try again later ❤️")
+                self.state = .failed(error)
             }
         }
     }
     
     var lastIdentifier: String? {
         comics.last?.identifier
+    }
+    
+    var isEmpty: Bool {
+        comics.isEmpty
+    }
+    
+    func removeSeries(
+        withID seriesID: String,
+        characterID: String,
+        onComplete complete: @escaping () -> Void
+    ) {
+        guard !isLoading else { return }
+        state = .loading(currentValue: comics)
+        
+        useCase.removeMySeries(withID: seriesID, characterID: characterID) { [weak self] result in
+            guard let self = self else { return }
+            
+            switch result {
+            case .success:
+                self.state = .idle
+                complete()
+            case let .failure(error):
+                self.state = .failed(error)
+            }
+        }
     }
     
 }

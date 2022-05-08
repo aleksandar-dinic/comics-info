@@ -24,9 +24,10 @@ final class FeedbackAPIProvider: FeedbackAPIService, NetworkResponseHandler {
     
     func create(
         _ feedback: Data,
+        token: String?,
         onComplete complete: @escaping (Result<Data, Error>) -> Void
     ) {
-        networkManager.request(.create(feedback: feedback)) { [weak self] in
+        networkManager.request(.create(feedback: feedback, token: token)) { [weak self] in
             guard let self = self else { return }
             complete(self.handle($0, successStatuses: [.created]))
         }

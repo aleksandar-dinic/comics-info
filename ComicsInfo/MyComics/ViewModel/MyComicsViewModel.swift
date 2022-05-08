@@ -7,16 +7,19 @@
 
 import Foundation
 
-final class MyComicsViewModel: ObservableObject {
+final class MyComicsViewModel: LoadableObject {
     
     private let useCase: MyComicsUseCase
     
-    @Published private(set) var myCharacters: [Character]
+    @Published private(set) var state: LoadingState<[MyCharacter]>
+    @Published private(set) var myCharacters: [MyCharacter]
     
     init(
+        state: LoadingState<[MyCharacter]> = .idle,
         useCase: MyComicsUseCase = MyComicsUseCase(),
-        myCharacters: [Character] = []
+        myCharacters: [MyCharacter] = []
     ) {
+        self.state = state
         self.useCase = useCase
         self.myCharacters = myCharacters
     }
@@ -25,21 +28,29 @@ final class MyComicsViewModel: ObservableObject {
         myCharacters.isEmpty
     }
     
-    func getMyCharacters(
-        lastID: String? = nil,
-        fields: Set<String>? = nil,
-        limit: Int = 20,
-        fromDataSource dataSource: DataSourceLayer = .memory
-    ) {
-        myCharacters = useCase.getMyCharacters() ?? []
+    var isSignedOut: Bool {
+        state.isSignedOut
+    }
+    
+    func getMyCharacters() {
+        guard !isLoading else { return }
+        
+        state = .loading(currentValue: myCharacters)
+        useCase.getAllMyCharacters { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case let .success(myCharacters):
+                self.myCharacters = myCharacters
+                self.state = .loaded(myCharacters)
+            case let .failure(error):
+                self.myCharacters = []
+                self.state = .failed(error)
+            }
+        }
     }
     
     var myCharactersString: String {
         "My Characters"
-    }
-    
-    var lastIdentifier: String? {
-        myCharacters.last?.identifier
     }
     
 }

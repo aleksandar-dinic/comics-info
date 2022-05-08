@@ -15,6 +15,10 @@ protocol AuthAPIService {
         onComplete complete: @escaping (Result<[UserAttribute], Error>) -> Void
     )
     
+    func getAccessToken(
+        onComplete complete: @escaping (Result<String, Error>) -> Void
+    )
+    
     func signIn(
         username: String,
         password: String,

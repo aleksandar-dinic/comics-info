@@ -14,16 +14,13 @@ struct CharacterCacheProvider: CharacterCacheService {
     static private var bookmarkKey = "BookmarkCharactersKey"
 
     private let characterCache: Cache<String, Character>
-    private let myCharacterCache: Cache<String, Character>
     private var defaults: UserDefaults
 
     init(
         _ characterCache: Cache<String, Character> = SwiftUI.Environment(\.characterCache).wrappedValue,
-        _ myCharacterCache: Cache<String, Character>  = SwiftUI.Environment(\.myCharacterCache).wrappedValue,
         defaults: UserDefaults = .standard
     ) {
         self.characterCache = characterCache
-        self.myCharacterCache = myCharacterCache
         self.defaults = defaults
     }
 
@@ -57,47 +54,6 @@ struct CharacterCacheProvider: CharacterCacheService {
             characterCache[character.identifier] = character
         }
         try? characterCache.saveToDisc(.characters)
-    }
-    
-    // My Characters
-    
-    func getMyCharacters() -> [Character]? {
-        myCharacterCache.values()?.sorted()
-    }
-    
-    func addToMyCharacters(_ character: Character) {
-        var character = character
-        
-        if var mySeries = myCharacterCache[character.identifier]?.mySeries {
-            var dict = [String: Int]()
-            for (i, el) in mySeries.enumerated() {
-                dict[el.identifier] = i
-            }
-            
-            for series in character.mySeries ?? [] {
-                guard dict[series.identifier] == nil else { continue }
-                dict[series.identifier] = mySeries.count
-                mySeries.append(series)
-            }
-            character.mySeries = mySeries.sorted()
-        }
-        
-        myCharacterCache[character.identifier] = character
-        try? myCharacterCache.saveToDisc(.myCharacters)
-    }
-    
-    func updateInMyCharacters(_ character: Character) {
-        myCharacterCache[character.identifier] = character
-        try? myCharacterCache.saveToDisc(.myCharacters)
-    }
-    
-    func removeFromMyCharacters(_ character: Character) {
-        myCharacterCache.removeValue(forKey: character.identifier)
-        try? myCharacterCache.saveToDisc(.myCharacters)
-    }
-    
-    func isInMyCharacters(withID characterID: String) -> Bool {
-        myCharacterCache[characterID] != nil
     }
     
     // Bookmark

@@ -38,7 +38,7 @@ final class AuthViewModel: ObservableObject {
     }
     
     var myAccount: String {
-        "My Accounnt"
+        "My Account"
     }
     
 }

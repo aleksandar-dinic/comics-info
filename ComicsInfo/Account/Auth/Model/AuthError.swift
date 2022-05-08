@@ -15,10 +15,12 @@ enum AuthError: Error {
     case userDoesNotExist
     case usernameExists
     case notAuthorized
+    case signedOut
     case signUpIsNotConfirmed
     case limitExceeded
     case codeMismatch
     case codeExpired
+    case invalidAccessToken
     case invalidParameter(_ message: String)
     case unknown
     
@@ -51,9 +53,15 @@ extension AuthError {
             }
         case .notAuthorized:
             self = .notAuthorized
+        case .signedOut:
+            self = .signedOut
         default:
             self = .unknown
         }
+    }
+    
+    init(from error: Error) {
+        self.init(from: error as? Amplify.AuthError)
     }
     
     init(from signInStep: Amplify.AuthSignInStep) {
@@ -81,6 +89,8 @@ extension AuthError: LocalizedError {
             return "UsernameExists"
         case .notAuthorized:
             return "NotAuthorized"
+        case .signedOut:
+            return "SignedOut"
         case .signUpIsNotConfirmed:
             return "SignUpIsNotConfirmed"
         case .limitExceeded:
@@ -89,6 +99,8 @@ extension AuthError: LocalizedError {
             return "CodeMismatch"
         case .codeExpired:
             return "CodeExpired"
+        case .invalidAccessToken:
+            return "InvalidAccessToken"
         case .invalidParameter:
             return "InvalidParameter"
         case .unknown:
@@ -104,6 +116,8 @@ extension AuthError: LocalizedError {
             return "Username already exists"
         case .notAuthorized:
             return "Incorrect username or password."
+        case .signedOut:
+            return "There is no user signed in."
         case .signUpIsNotConfirmed:
             return "You need to verify your account."
         case .limitExceeded:
@@ -112,6 +126,8 @@ extension AuthError: LocalizedError {
             return "Invalid verification code provided, please try again."
         case .codeExpired:
             return "Verification code has expired."
+        case .invalidAccessToken:
+            return "Your session has expired. Please log in."
         case let .invalidParameter(message):
             return message
         case .unknown:
@@ -127,14 +143,18 @@ extension AuthError: LocalizedError {
             return "Username already exists"
         case .notAuthorized:
             return "Access is denied."
+        case .signedOut:
+            return "There is no user signed in."
         case .signUpIsNotConfirmed:
-            return "Account is not verified."
+            return "You need to sign in to your account."
         case .limitExceeded:
             return "Attempt limit exceeded, please try after some time."
         case .codeMismatch:
             return "Invalid verification code provided, please try again."
         case .codeExpired:
             return "Verification code has expired."
+        case .invalidAccessToken:
+            return "Invalid access token"
         case .invalidParameter:
             return "Invalid parameter"
         case .unknown:

@@ -18,9 +18,10 @@ struct FeedbackDataProvider {
     
     func create(
         _ feedback: Feedback,
+        token: String?,
         onComplete complete: @escaping (Result<Feedback, Error>) -> Void
     ) {
-        apiWrapper.create(feedback, onComplete: complete)
+        apiWrapper.create(feedback, token: token, onComplete: complete)
     }
 
 }

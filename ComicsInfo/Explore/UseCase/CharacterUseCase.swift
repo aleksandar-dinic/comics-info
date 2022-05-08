@@ -11,6 +11,7 @@ import Foundation
 final class CharacterUseCase: CharacterRepositoryFactory {
 
     private lazy var repository = makeCharacterRepository()
+    private lazy var myComicsUseCase = MyComicsUseCase()
 
     let characterAPIService: CharacterAPIService
     let characterCacheService: CharacterCacheService
@@ -55,20 +56,38 @@ final class CharacterUseCase: CharacterRepositoryFactory {
     
     // MyCharacters
     
-    func getMyCharacters() -> [Character]? {
-        repository.getMyCharacters()
+    func addToMyCharacters(
+        _ myCharacter: MyCharacter,
+        onComplete complete: @escaping (Result<MyCharacter, Error>) -> Void
+    ) {
+        myComicsUseCase.addToMyCharacters(myCharacter, onComplete: complete)
     }
     
-    func addToMyCharacters(_ character: Character) {
-        repository.addToMyCharacters(character)
+    func getAllMyCharacters(
+        onComplete complete: @escaping (Result<[MyCharacter], Error>) -> Void
+    ) {
+        myComicsUseCase.getAllMyCharacters(onComplete: complete)
     }
     
-    func removeFromMyCharacters(_ character: Character) {
-        repository.removeFromMyCharacters(character)
+    func isInMyCharacters(
+        withID myCharacterID: String,
+        onComplete complete: @escaping (Result<Void, Error>) -> Void
+    ) {
+        myComicsUseCase.getMyCharacter(withID: myCharacterID) { result in
+            switch result {
+            case .success:
+                complete(.success(()))
+            case let .failure(error):
+                complete(.failure(error))
+            }
+        }
     }
     
-    func isInMyCharacters(withID characterID: String) -> Bool {
-        repository.isInMyCharacters(withID: characterID)
+    func removeMyCharacter(
+        withID myCharacterID: String,
+        onComplete complete: @escaping (Result<MyCharacter, Error>) -> Void
+    ) {
+        myComicsUseCase.removeMyCharacter(withID: myCharacterID, onComplete: complete)
     }
     
     // Bookmark

@@ -15,6 +15,7 @@ protocol FeedbackRepository {
 
     func create(
         _ feedback: Feedback,
+        token: String?,
         onComplete complete: @escaping (Result<Feedback, Error>) -> Void
     )
     

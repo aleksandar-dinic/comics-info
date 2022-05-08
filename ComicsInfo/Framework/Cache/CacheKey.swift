@@ -32,7 +32,7 @@ struct CharacterCacheKey: EnvironmentKey {
 
 struct MyCharacterCacheKey: EnvironmentKey {
     
-    static let defaultValue: Cache = Cache<String, Character>.getFromDisc(.myCharacters) ?? Cache<String, Character>()
+    static let defaultValue: Cache = Cache<String, MyCharacter>.getFromDisc(.myCharacters) ?? Cache<String, MyCharacter>()
 
 }
 

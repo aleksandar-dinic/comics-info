@@ -76,54 +76,6 @@ struct ComicCacheProvider: ComicCacheService {
         try? comicCache.saveToDisc(.comics)
     }
     
-    // My Comics
-    
-    func getMyComics(forSeriesID seriesID: String) -> [ComicSummary]? {
-        myComicCache[seriesID]?.sorted()
-    }
-    
-    func addInMyComics(comicSummaries: [ComicSummary], forSeriesID seriesID: String) {
-        var value = [ComicSummary]()
-        var keys = Set<String>()
-        if let oldValue = myComicCache[seriesID] {
-            value = oldValue
-            oldValue
-                .map { $0.identifier }
-                .forEach { keys.insert($0) }
-        }
-        
-        for summary in comicSummaries where !keys.contains(summary.identifier) {
-            value.append(summary)
-        }
-        
-        myComicCache[seriesID] = value
-        try? myComicCache.saveToDisc(.myComics)
-    }
-    
-    func removeFromMyComics(comicSummaries: [ComicSummary], forSeriesID seriesID: String) {
-        guard var value = myComicCache[seriesID] else { return }
-        var dict = [String: Int]()
-        for (i, el) in value.enumerated() {
-            dict[el.identifier] = i
-        }
-        
-        for summary in comicSummaries {
-            guard let index = dict[summary.identifier] else { continue }
-            value.remove(at: index)
-        }
-        
-        if value.isEmpty {
-            myComicCache.removeValue(forKey: seriesID)
-        } else {
-            myComicCache[seriesID] = value
-        }
-        try? myComicCache.saveToDisc(.myComics)
-    }
-    
-    func isInMyComics(_ comicID: String, forSeriesID seriesID: String) -> Bool {
-        myComicCache[seriesID]?.contains(where: { $0.identifier == comicID }) ?? false
-    }
-    
     // Bookmark
     
     func getBookmarkComics() -> [Comic]? {

@@ -10,54 +10,60 @@ import SwiftUI
 
 struct ComicInfoView: View {
 
-    let viewModel: ComicInfoViewModel
+    @ObservedObject var viewModel: ComicInfoViewModel
     @State private var showBanner = AppTrackingManager.authorization
 
     var body: some View {
-        VStack {
-            ScrollView {
-                LazyVStack {
-                    HStack {
-                        ComicThumbnailView(
-                            imageName: viewModel.thumbnail,
-                            systemName: viewModel.thumbnailSystemName,
-                            height: 250
-                        )
+        ZStack {
+            VStack {
+                ScrollView {
+                    LazyVStack {
+                        HStack {
+                            ComicThumbnailView(
+                                imageName: viewModel.thumbnail,
+                                systemName: viewModel.thumbnailSystemName,
+                                height: 250
+                            )
 
-                        VStack(spacing: 4) {
-                            Spacer()
-                            Text(viewModel.title)
-                                .font(.subheadline)
-                                .multilineTextAlignment(.center)
-                                .frame(maxWidth: .infinity)
-                                .accessibility(identifier: "Title")
-                            Spacer()
-                            Text(viewModel.publishedDate)
-                                .font(.caption)
-                                .frame(maxWidth: .infinity)
-                                .padding()
-                                .accessibility(identifier: "PublishedDate")
+                            VStack(spacing: 4) {
+                                Spacer()
+                                Text(viewModel.title)
+                                    .font(.subheadline)
+                                    .multilineTextAlignment(.center)
+                                    .frame(maxWidth: .infinity)
+                                    .accessibility(identifier: "Title")
+                                Spacer()
+                                Text(viewModel.publishedDate)
+                                    .font(.caption)
+                                    .frame(maxWidth: .infinity)
+                                    .padding()
+                                    .accessibility(identifier: "PublishedDate")
+                            }
+                            .frame(minWidth: 0, maxWidth: .infinity)
                         }
-                        .frame(minWidth: 0, maxWidth: .infinity)
-                    }
-                    .frame(height: 250)
-                    .padding()
-                    
-                    ReactionsView(
-                        isInMyComics: viewModel.isInMyComics(),
-                        isBookmarked: viewModel.isBookmarked(),
-                        shereMessage: viewModel.shereMessage,
-                        onTapAdd: viewModel.onTapAdd,
-                        onTapBookmark: viewModel.onTapBookmark
-                    )
-
-                    if !viewModel.description.isEmpty {
-                        DescriptionView(description: viewModel.description)
+                        .frame(height: 250)
+                        .padding()
+                        
+                        ReactionsView(
+                            isInMyComics: $viewModel.isInMyComics,
+                            isBookmarked: viewModel.isBookmarked(),
+                            shereMessage: viewModel.shereMessage,
+                            onTapAdd: viewModel.onTapAdd,
+                            onTapBookmark: viewModel.onTapBookmark
+                        )
+                        
+                        if !viewModel.description.isEmpty {
+                            DescriptionView(description: viewModel.description)
+                        }
                     }
                 }
+                if showBanner {
+                    BannerView(showBanner: $showBanner, adUnitID: Environment.comicInfoADUnitID)
+                }
             }
-            if showBanner {
-                BannerView(showBanner: $showBanner, adUnitID: Environment.comicInfoADUnitID)
+            
+            if viewModel.isLoading {
+                MainProgressView()
             }
         }
         .onAppear {

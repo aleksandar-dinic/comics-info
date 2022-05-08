@@ -12,19 +12,13 @@ struct ComicDataProvider {
 
     private let comicAPIWrapper: ComicAPIWrapper
     private let comicCacheService: ComicCacheService
-    private let characterRepository: CharacterRepository
-    private let seriesRepository: SeriesRepository
 
     init(
         comicAPIWrapper: ComicAPIWrapper,
-        comicCacheService: ComicCacheService,
-        characterRepository: CharacterRepository,
-        seriesRepository: SeriesRepository
+        comicCacheService: ComicCacheService
     ) {
         self.comicAPIWrapper = comicAPIWrapper
         self.comicCacheService = comicCacheService
-        self.characterRepository = characterRepository
-        self.seriesRepository = seriesRepository
     }
     
     // Get all comics
@@ -114,47 +108,6 @@ struct ComicDataProvider {
         }
     }
 
-    // My Comics
-    
-    func getMyComics(forSeriesID seriesID: String) -> [ComicSummary]? {
-        comicCacheService.getMyComics(forSeriesID: seriesID)
-    }
-    
-    func addInMyComics(
-        _ comicSummary: ComicSummary,
-        character: Character,
-        seriesSummary: SeriesSummary
-    ) {
-        comicCacheService.addInMyComics(comicSummaries: [comicSummary], forSeriesID: seriesSummary.identifier)
-        var character = character
-        character.addInMySeries(seriesSummary)
-        characterRepository.addToMyCharacters(character)
-    }
-    
-    func removeFromMyComics(
-        _ comicSummary: ComicSummary,
-        character: Character,
-        seriesSummary: SeriesSummary
-    ) {
-        comicCacheService.removeFromMyComics(
-            comicSummaries: [comicSummary],
-            forSeriesID: seriesSummary.identifier
-        )
-        
-        guard getMyComics(forSeriesID: seriesSummary.identifier) == nil else { return }
-        var character = character
-        character.removeFromMySeries(seriesSummary)
-        if character.mySeries?.isEmpty ?? true {
-            characterRepository.removeFromMyCharacters(character)
-        } else {
-            characterRepository.updateInMyCharacters(character)
-        }
-    }
-    
-    func isInMyComics(_ comicID: String, forSeriesID seriesID: String) -> Bool {
-        comicCacheService.isInMyComics(comicID, forSeriesID: seriesID)
-    }
-    
     // Add to bookmark
     
     func getBookmarkComics() -> [Comic]? {

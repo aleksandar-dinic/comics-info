@@ -7,25 +7,31 @@
 
 import Foundation
 
-final class ComicInfoViewModel {
+final class ComicInfoViewModel: LoadableObject {
     
+    @Published private(set) var state: LoadingState<Void>
     private let character: Character
     private let seriesSummary: SeriesSummary
     private let comicSummary: ComicSummary
     private let useCase: ComicUseCase
+    @Published var isInMyComics: Bool
     @Published private(set) var comicViewModel: ComicViewModel?
     
     init(
+        state: LoadingState<Void> = .idle,
         character: Character,
         seriesSummary: SeriesSummary,
         comicSummary: ComicSummary,
         useCase: ComicUseCase,
+        isInMyComics: Bool = false,
         comicViewModel: ComicViewModel? = nil
     ) {
+        self.state = state
         self.character = character
         self.seriesSummary = seriesSummary
         self.comicSummary = comicSummary
         self.useCase = useCase
+        self.isInMyComics = isInMyComics
         self.comicViewModel = comicViewModel
     }
     
@@ -33,17 +39,23 @@ final class ComicInfoViewModel {
         withID comicID: String,
         fromDataSource dataSource: DataSourceLayer = .memory
     ) {
+        guard !isLoading else { return }
+        state = .loading(currentValue: nil)
+
         useCase.getComic(withID: comicID, fromDataSource: dataSource) { [weak self] result in
             guard let self = self else { return }
 
             switch result {
             case let .success(comic):
-                self.comicViewModel = ComicViewModel(
-                    from: comic,
-                    seriesSummary: self.seriesSummary
-                )
+                self.isInMyComics { _ in
+                    self.state = .loaded(())
+                    self.comicViewModel = ComicViewModel(
+                        from: comic,
+                        seriesSummary: self.seriesSummary
+                    )
+                }
             case let .failure(error):
-                print(error)
+                self.state = .failed(error)
             }
         }
     }
@@ -98,26 +110,44 @@ final class ComicInfoViewModel {
     }
     
     func onTapAdd() {
-        if !isInMyComics() {
-            useCase.addToMyComics(
-                comicSummary,
-                character: character,
-                seriesSummary: seriesSummary
-            )
-        } else {
-            useCase.removeFromMyComics(
-                comicSummary,
-                character: character,
-                seriesSummary: seriesSummary
-            )
+        guard !isLoading else { return }
+        state = .loading(currentValue: nil)
+        
+        isInMyComics() { [weak self] inMyComics in
+            guard let self = self else { return }
+            if inMyComics {
+                self.useCase.removeFromMyComics(
+                    self.comicSummary.identifier,
+                    seriesID: self.seriesSummary.identifier,
+                    characterID: self.character.identifier
+                ) { _ in
+                    self.state = .loaded(())
+                    self.isInMyComics = false
+                }
+            } else {
+                self.useCase.addToMyComics(
+                    self.comicSummary,
+                    seriesSummary: self.seriesSummary,
+                    character: self.character
+                ) { _ in
+                    self.state = .loaded(())
+                    self.isInMyComics = true
+                }
+            }
         }
     }
     
-    func isInMyComics() -> Bool {
-        useCase.isInMyComics(
-            comicSummary.identifier,
-            forSeriesID: seriesSummary.identifier
-        )
+    private func isInMyComics(onComplete complete: @escaping (Bool) -> Void) {
+        useCase.isInMyComics(comicSummary.identifier, forSeriesID: seriesSummary.identifier) { [weak self] result in
+            guard let self = self else { return }
+            do {
+                try result.get()
+                self.isInMyComics = true
+            } catch {
+                self.isInMyComics = false
+            }
+            complete(self.isInMyComics)
+        }
     }
     
     func onTapBookmark() {

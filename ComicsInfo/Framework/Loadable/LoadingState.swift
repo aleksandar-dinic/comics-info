@@ -28,6 +28,15 @@ enum LoadingState<Value> {
         return authError.localizedDescription
     }
     
+    var isSignedOut: Bool {
+        guard
+            case let .failed((error as AuthError)) = self,
+            case AuthError.signedOut = error
+        else { return false }
+        
+        return true
+    }
+    
 }
 
 extension LoadingState: Equatable {

@@ -28,12 +28,6 @@ protocol CharacterRepository {
         onComplete complete: @escaping (Result<Character, Error>) -> Void
     )
     
-    func getMyCharacters() -> [Character]?
-    func addToMyCharacters(_ character: Character)
-    func updateInMyCharacters(_ character: Character)
-    func removeFromMyCharacters(_ character: Character)
-    func isInMyCharacters(withID characterID: String) -> Bool
-    
     func getBookmarkCharacters() -> [Character]?
     func addToBookmark(_ character: Character)
     func removeFromBookmark(_ character: Character)

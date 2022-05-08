@@ -16,7 +16,7 @@ struct ReactionsView: View {
     
     init(
         types: [ReactionType] = ReactionType.allCases,
-        isInMyComics: Bool,
+        isInMyComics: Binding<Bool>,
         isBookmarked: Bool,
         shereMessage: String,
         onTapAdd: @escaping () -> Void,
@@ -55,7 +55,6 @@ struct ReactionsView: View {
                 viewModel.addImage
                     .font(.title2)
                     .onTapGesture {
-                        viewModel.onTapAdd()
                         onTapAdd()
                         successFeedback()
                     }
@@ -86,7 +85,7 @@ struct ReactionsView_Previews: PreviewProvider {
     
     static var previews: some View {
         ReactionsView(
-            isInMyComics: false,
+            isInMyComics: .constant(false),
             isBookmarked: false,
             shereMessage: "Hello from preview",
             onTapAdd: { print("Add tapped") },

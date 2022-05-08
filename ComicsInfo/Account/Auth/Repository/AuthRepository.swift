@@ -30,6 +30,12 @@ struct AuthRepository {
         authAPIService.getUserAttributes(onComplete: complete)
     }
     
+    func getAccessToken(
+        onComplete complete: @escaping (Result<String, Error>) -> Void
+    ) {
+        authAPIService.getAccessToken(onComplete: complete)
+    }
+    
     func signIn(
         username: String,
         password: String,

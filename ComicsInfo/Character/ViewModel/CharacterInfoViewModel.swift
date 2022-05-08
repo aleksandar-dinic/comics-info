@@ -7,17 +7,23 @@
 
 import Foundation
 
-struct CharacterInfoViewModel {
+final class CharacterInfoViewModel: LoadableObject {
 
+    @Published private(set) var state: LoadingState<Void>
     private let character: Character
     private let characterUseCase: CharacterUseCase
+    @Published var isInMyCharacters: Bool
     
     init(
+        state: LoadingState<Void> = .idle,
         from character: Character,
-        characterUseCase: CharacterUseCase = CharacterUseCase()
+        characterUseCase: CharacterUseCase = CharacterUseCase(),
+        isInMyCharacters: Bool = false
     ) {
+        self.state = state
         self.character = character
         self.characterUseCase = characterUseCase
+        self.isInMyCharacters = isInMyCharacters
     }
     
     var name: String {
@@ -47,17 +53,38 @@ struct CharacterInfoViewModel {
     // My Characters
     
     func onTapAdd() {
-        if !isInMyCharacters() {
-            characterUseCase.addToMyCharacters(character)
-        } else {
-            characterUseCase.removeFromMyCharacters(character)
+        guard !isLoading else { return }
+        state = .loading(currentValue: nil)
+        
+        isInMyCharacters() { [weak self] inMyCharacters in
+            guard let self = self else { return }
+            if inMyCharacters {
+                self.characterUseCase.removeMyCharacter(withID: self.character.identifier) { _ in
+                    self.isInMyCharacters = false
+                    self.state = .loaded(())
+                }
+            } else {
+                self.characterUseCase.addToMyCharacters(MyCharacter(from: self.character)) { _ in
+                    self.isInMyCharacters = true
+                    self.state = .loaded(())
+                }
+            }
         }
     }
     
-    func isInMyCharacters() -> Bool {
-        characterUseCase.isInMyCharacters(withID: character.identifier)
+    func isInMyCharacters(onComplete complete: @escaping (Bool) -> Void) {
+        characterUseCase.isInMyCharacters(withID: character.identifier) { [weak self] result in
+            guard let self = self else { return }
+            do {
+                try result.get()
+                self.isInMyCharacters = true
+            } catch {
+                self.isInMyCharacters = false
+            }
+            complete(self.isInMyCharacters)
+        }
     }
-    
+        
     // Bookmark
     
     func onTapBookmark() {
