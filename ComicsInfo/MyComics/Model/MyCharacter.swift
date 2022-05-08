@@ -20,6 +20,14 @@ struct MyCharacter: Codable {
     let birth: Date?
     var mySeries: [SeriesSummary]?
     
+    mutating func addInMySeries(_ seriesSummary: SeriesSummary) {
+        if mySeries != nil {
+            mySeries?.append(seriesSummary)
+        } else {
+            mySeries = [seriesSummary]
+        }
+    }
+    
     mutating func removeMySeries(withID seriesID: String) {
         guard let index = mySeries?.firstIndex(where: { $0.identifier == seriesID }) else { return }
         mySeries?.remove(at: index)

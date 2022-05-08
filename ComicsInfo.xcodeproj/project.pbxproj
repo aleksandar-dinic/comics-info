@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4287BE4C28284EE800A3090E /* BookmarkComicsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4287BE4B28284EE800A3090E /* BookmarkComicsListView.swift */; };
+		4287BE4E28284FC700A3090E /* BookmarkComicsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4287BE4D28284FC700A3090E /* BookmarkComicsListViewModel.swift */; };
 		42DC185727A9A1A100193898 /* MyComicsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DC185627A9A1A100193898 /* MyComicsRepository.swift */; };
 		42DC185927A9A1D500193898 /* MyComicsAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DC185827A9A1D500193898 /* MyComicsAPIService.swift */; };
 		42DC185C27A9B21300193898 /* MyCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DC185B27A9B21300193898 /* MyCharacter.swift */; };
@@ -244,6 +246,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4287BE4B28284EE800A3090E /* BookmarkComicsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkComicsListView.swift; sourceTree = "<group>"; };
+		4287BE4D28284FC700A3090E /* BookmarkComicsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkComicsListViewModel.swift; sourceTree = "<group>"; };
 		42DC185627A9A1A100193898 /* MyComicsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyComicsRepository.swift; sourceTree = "<group>"; };
 		42DC185827A9A1D500193898 /* MyComicsAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyComicsAPIService.swift; sourceTree = "<group>"; };
 		42DC185B27A9B21300193898 /* MyCharacter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCharacter.swift; sourceTree = "<group>"; };
@@ -842,6 +846,7 @@
 			isa = PBXGroup;
 			children = (
 				647A4AB32703430400FACC6D /* BookmarkView.swift */,
+				4287BE4B28284EE800A3090E /* BookmarkComicsListView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -850,6 +855,7 @@
 			isa = PBXGroup;
 			children = (
 				647A4AB62703527100FACC6D /* BookmarkViewModel.swift */,
+				4287BE4D28284FC700A3090E /* BookmarkComicsListViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1875,6 +1881,7 @@
 				42DC186127A9CC2100193898 /* MyComicsEndpoint.swift in Sources */,
 				6475FCE6276E585A00B643AE /* AuthRepository.swift in Sources */,
 				6420EF1C25FAC2DF00B7F47B /* SeriesAPIWrapperFactory.swift in Sources */,
+				4287BE4C28284EE800A3090E /* BookmarkComicsListView.swift in Sources */,
 				649D5D1524E5C97F004C6328 /* SeriesUseCase.swift in Sources */,
 				6420EF1825FAC2DC00B7F47B /* SeriesRepository.swift in Sources */,
 				64B7599527734FE40085C19E /* ResetPasswordViewModel.swift in Sources */,
@@ -1997,6 +2004,7 @@
 				42DC186A27AAC30700193898 /* MyComicsAPIWrapperFactory.swift in Sources */,
 				64BD8C63277B4BCD00D12C19 /* LoadableObject.swift in Sources */,
 				649D5C8024E1F18B004C6328 /* ComicsInfoApp.swift in Sources */,
+				4287BE4E28284FC700A3090E /* BookmarkComicsListViewModel.swift in Sources */,
 				647A4ABB2703547300FACC6D /* BookmarkUseCase.swift in Sources */,
 				42DC185927A9A1D500193898 /* MyComicsAPIService.swift in Sources */,
 				64DB1DC326C1A175009492AA /* NetworkManager.swift in Sources */,

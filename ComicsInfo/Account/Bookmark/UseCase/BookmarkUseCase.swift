@@ -38,12 +38,12 @@ final class BookmarkUseCase: CharacterRepositoryFactory, SeriesRepositoryFactory
         self.comicCacheService = comicCacheService
     }
     
-    func getBookmarkCharacters() -> [Character]? {
+    func getBookmarkCharacters() -> [MyCharacter]? {
         characterRepository.getBookmarkCharacters()
     }
     
-    func getBookmarkComics() -> [Comic]? {
-        comicRepository.getBookmarkComics()
+    func getBookmarkComics(forSeriesID seriesID: String) -> [ComicSummary]? {
+        comicRepository.getBookmarkComics(forSeriesID: seriesID)
     }
     
 }

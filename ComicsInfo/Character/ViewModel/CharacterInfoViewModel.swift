@@ -13,17 +13,20 @@ final class CharacterInfoViewModel: LoadableObject {
     private let character: Character
     private let characterUseCase: CharacterUseCase
     @Published var isInMyCharacters: Bool
+    @Published var isBookmarked: Bool
     
     init(
         state: LoadingState<Void> = .idle,
         from character: Character,
         characterUseCase: CharacterUseCase = CharacterUseCase(),
-        isInMyCharacters: Bool = false
+        isInMyCharacters: Bool = false,
+        isBookmarked: Bool = false
     ) {
         self.state = state
         self.character = character
         self.characterUseCase = characterUseCase
         self.isInMyCharacters = isInMyCharacters
+        self.isBookmarked = isBookmarked
     }
     
     var name: String {
@@ -88,15 +91,16 @@ final class CharacterInfoViewModel: LoadableObject {
     // Bookmark
     
     func onTapBookmark() {
-        if !isBookmarked() {
-            characterUseCase.addToBookmark(character)
+        let myCharacter = MyCharacter(from: character)
+        if !isBookmarked {
+            characterUseCase.addToBookmark(myCharacter)
         } else {
-            characterUseCase.removeFromBookmark(character)
+            characterUseCase.removeFromBookmark(myCharacter)
         }
     }
     
-    func isBookmarked() -> Bool {
-        characterUseCase.isBookmarked(withID: character.identifier)
+    func isInBookmark() {
+        isBookmarked = characterUseCase.isBookmarked(withID: character.identifier)
     }
     
     var shereMessage: String {

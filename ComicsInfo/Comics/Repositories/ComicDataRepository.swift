@@ -46,20 +46,20 @@ final class ComicDataRepository: ComicRepository {
     
     // Bookmark
     
-    func getBookmarkComics() -> [Comic]? {
-        comicDataProvider.getBookmarkComics()
+    func getBookmarkComics(forSeriesID seriesID: String) -> [ComicSummary]? {
+        comicDataProvider.getBookmarkComics(forSeriesID: seriesID)
     }
     
-    func addToBookmark(_ comicID: String) {
-        comicDataProvider.addToBookmark(comicID)
+    func addToBookmark(_ comicSummary: ComicSummary, forSeriesID seriesID: String) {
+        comicDataProvider.addToBookmark(comicSummary, forSeriesID: seriesID)
     }
     
-    func removeFromBookmark(_ comicID: String) {
-        comicDataProvider.removeFromBookmark(comicID)
+    func removeFromBookmark(_ comicID: String, forSeriesID seriesID: String) {
+        comicDataProvider.removeFromBookmark(comicID, forSeriesID: seriesID)
     }
     
-    func isBookmarked(withID comicID: String) -> Bool {
-        comicDataProvider.isBookmarked(withID: comicID)
+    func isBookmarked(_ comicID: String, forSeriesID seriesID: String) -> Bool {
+        comicDataProvider.isBookmarked(comicID, forSeriesID: seriesID)
     }
-
+    
 }

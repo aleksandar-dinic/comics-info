@@ -78,34 +78,50 @@ struct ComicCacheProvider: ComicCacheService {
     
     // Bookmark
     
-    func getBookmarkComics() -> [Comic]? {
-        var comics = [Comic]()
-        for id in getBookmarkedComics() {
-            guard let comic = getComic(withID: id) else { continue }
-            comics.append(comic)
+    func getBookmarkComics(forSeriesID seriesID: String) -> [ComicSummary]? {
+        getBookmarkedComics()[seriesID]
+    }
+    
+    func addToBookmark(_ comicSummary: ComicSummary, forSeriesID seriesID: String) {
+        var comics = getBookmarkedComics()
+        comics[seriesID, default: []].append(comicSummary)
+        do {
+            let data = try JSONEncoder().encode(comics)
+            defaults.set(data, forKey: Self.bookmarkKey)
+        } catch {
+            print(error)
         }
-//        comics.sort()
-        return !comics.isEmpty ? comics : nil
     }
     
-    func addToBookmark(_ comicID: String) {
+    func removeFromBookmark(_ comicID: String, forSeriesID seriesID: String) {
         var comics = getBookmarkedComics()
-        comics.insert(comicID)
-        defaults.set(Array(comics), forKey: Self.bookmarkKey)
+        guard let index = comics[seriesID]?.firstIndex(where: { $0.identifier == comicID }) else { return }
+
+        comics[seriesID]?.remove(at: index)
+        do {
+            let data = try JSONEncoder().encode(comics)
+            defaults.set(data, forKey: Self.bookmarkKey)
+        } catch {
+            print(error)
+        }
     }
     
-    func removeFromBookmark(_ comicID: String) {
-        var comics = getBookmarkedComics()
-        comics.remove(comicID)
-        defaults.set(Array(comics), forKey: Self.bookmarkKey)
+    func isBookmarked(_ comicID: String, forSeriesID seriesID: String) -> Bool {
+        getBookmarkedComics()[seriesID]?.contains(where: { $0.identifier == comicID }) ?? false
     }
     
-    func isBookmarked(withID comicID: String) -> Bool {
-        getBookmarkedComics().contains(comicID)
-    }
-    
-    private func getBookmarkedComics() -> Set<String> {
-        Set(defaults.object(forKey: Self.bookmarkKey) as? [String] ?? [String]())
+    private func getBookmarkedComics() -> [String: [ComicSummary]] {
+        guard let data = defaults.object(forKey: Self.bookmarkKey) as? Data else {
+            return [:]
+        }
+        
+        do {
+            let bookmarkedComics = try JSONDecoder().decode([String: [ComicSummary]].self, from: data)
+            return bookmarkedComics
+        } catch {
+            print(error)
+        }
+        return [:]
     }
 
 }

@@ -110,20 +110,20 @@ struct ComicDataProvider {
 
     // Add to bookmark
     
-    func getBookmarkComics() -> [Comic]? {
-        comicCacheService.getBookmarkComics()
+    func getBookmarkComics(forSeriesID seriesID: String) -> [ComicSummary]? {
+        comicCacheService.getBookmarkComics(forSeriesID: seriesID)
     }
     
-    func addToBookmark(_ comicID: String) {
-        comicCacheService.addToBookmark(comicID)
+    func addToBookmark(_ comicSummary: ComicSummary, forSeriesID seriesID: String) {
+        comicCacheService.addToBookmark(comicSummary, forSeriesID: seriesID)
     }
     
-    func removeFromBookmark(_ comicID: String) {
-        comicCacheService.removeFromBookmark(comicID)
+    func removeFromBookmark(_ comicID: String, forSeriesID seriesID: String) {
+        comicCacheService.removeFromBookmark(comicID, forSeriesID: seriesID)
     }
     
-    func isBookmarked(withID comicID: String) -> Bool {
-        comicCacheService.isBookmarked(withID: comicID)
+    func isBookmarked(_ comicID: String, forSeriesID seriesID: String) -> Bool {
+        comicCacheService.isBookmarked(comicID, forSeriesID: seriesID)
     }
 
 }

@@ -152,14 +152,14 @@ final class ComicInfoViewModel: LoadableObject {
     
     func onTapBookmark() {
         if !isBookmarked() {
-            useCase.addToBookmark(comicSummary.identifier)
+            useCase.addToBookmark(comicSummary, seriesSummary: seriesSummary, character: character)
         } else {
-            useCase.removeFromBookmark(comicSummary.identifier)
+            useCase.removeFromBookmark(comicSummary.identifier, forSeriesID: seriesSummary.identifier)
         }
     }
     
     func isBookmarked() -> Bool {
-        useCase.isBookmarked(withID: comicSummary.identifier)
+        useCase.isBookmarked(comicSummary.identifier, forSeriesID: seriesSummary.identifier)
     }
     
     var shereMessage: String {

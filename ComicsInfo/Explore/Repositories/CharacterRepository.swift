@@ -28,9 +28,10 @@ protocol CharacterRepository {
         onComplete complete: @escaping (Result<Character, Error>) -> Void
     )
     
-    func getBookmarkCharacters() -> [Character]?
-    func addToBookmark(_ character: Character)
-    func removeFromBookmark(_ character: Character)
+    func getBookmarkCharacters() -> [MyCharacter]?
+    func addToBookmark(_ myCharacter: MyCharacter)
+    func updateBookmared(_ myCharacters: MyCharacter)
+    func removeFromBookmark(_ myCharacter: MyCharacter)
     func isBookmarked(withID characterID: String) -> Bool
 
 }

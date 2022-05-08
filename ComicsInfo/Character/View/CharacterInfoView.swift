@@ -37,7 +37,7 @@ struct CharacterInfoView: View {
                         ReactionsView(
                             types: [.share, .bookmark],
                             isInMyComics: $viewModel.isInMyCharacters,
-                            isBookmarked: viewModel.isBookmarked(),
+                            isBookmarked: viewModel.isBookmarked,
                             shereMessage: viewModel.shereMessage,
                             onTapAdd: viewModel.onTapAdd,
                             onTapBookmark: viewModel.onTapBookmark
@@ -79,9 +79,9 @@ struct CharacterInfoView: View {
                 MainProgressView()
             }
         }
-//        .onAppear {
-//            viewModel.isInMyCharacters() { _ in }
-//        }
+        .onAppear {
+            viewModel.isInBookmark()
+        }
         .navigationBarTitle(viewModel.name, displayMode: .inline)
     }
     

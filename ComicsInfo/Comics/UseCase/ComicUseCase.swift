@@ -11,6 +11,7 @@ import Foundation
 final class ComicUseCase: ComicRepositoryFactory {
 
     private lazy var repository = makeComicRepository()
+    private lazy var characterUseCase = CharacterUseCase()
     private lazy var myComicsUseCase = MyComicsUseCase()
     
     let comicAPIService: ComicAPIService
@@ -111,20 +112,26 @@ final class ComicUseCase: ComicRepositoryFactory {
     
     // Bookmark
     
-    func getBookmarkComics() -> [Comic]? {
-        repository.getBookmarkComics()
+    func getBookmarkComics(forSeriesID seriesID: String) -> [ComicSummary]? {
+        repository.getBookmarkComics(forSeriesID: seriesID)
     }
     
-    func addToBookmark(_ comicID: String) {
-        repository.addToBookmark(comicID)
+    func addToBookmark(
+        _ comicSummary: ComicSummary,
+        seriesSummary: SeriesSummary,
+        character: Character
+    ) {
+        let myCharacter = MyCharacter(from: character, mySeries: [seriesSummary])
+        characterUseCase.updateBookmared(myCharacter)
+        repository.addToBookmark(comicSummary, forSeriesID: seriesSummary.identifier)
     }
     
-    func removeFromBookmark(_ comicID: String) {
-        repository.removeFromBookmark(comicID)
+    func removeFromBookmark(_ comicID: String, forSeriesID seriesID: String) {
+        repository.removeFromBookmark(comicID, forSeriesID: seriesID)
     }
     
-    func isBookmarked(withID comicID: String) -> Bool {
-        repository.isBookmarked(withID: comicID)
+    func isBookmarked(_ comicID: String, forSeriesID seriesID: String) -> Bool {
+        repository.isBookmarked(comicID, forSeriesID: seriesID)
     }
-
+    
 }

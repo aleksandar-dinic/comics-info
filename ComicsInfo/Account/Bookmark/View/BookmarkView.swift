@@ -20,11 +20,11 @@ struct BookmarkView: View {
             if viewModel.isBookmarkEmpty {
                 makeEmptyMessage()
             } else {
-                makeBookmarks()
+                makeCharacters()
             }
         }
         .onAppear {
-            viewModel.getBookmarks()
+            viewModel.getCharacters()
         }
         .navigationBarTitle("Bookmarks", displayMode: .inline)
     }
@@ -39,43 +39,53 @@ struct BookmarkView: View {
         .padding()
     }
     
-    private func makeBookmarks() -> some View {
+    private func makeCharacters() -> some View {
         ScrollView {
             LazyVStack(spacing: 4, pinnedViews: [.sectionHeaders]) {
-                ForEach(viewModel.characters, id: \.identifier) { character in
-                    Section(header: makeHeader("Characters")) {
-                        NavigationLink(destination: CharacterInfoView(for: character)) {
-                            CharacterView(for: character)
-                        }
-                        .buttonStyle(PlainButtonStyle())
-                    }
-                }
-            }
-            .padding(.leading, 8)
-            .padding(.trailing, 8)
-            
-            LazyVStack(spacing: 4, pinnedViews: [.sectionHeaders]) {
-                ForEach(viewModel.comics, id: \.identifier) { comic in
-                    Section(header: makeHeader("Comics")) {
-                        ComicSummaryView(
-                            for: ComicSummary(from: comic),
-                            seriesTitle: ""
-                        )
-                    }
-                }
+                characterList
             }
             .padding(.leading, 8)
             .padding(.trailing, 8)
         }
     }
     
-    private func makeHeader(_ title: String) -> some View {
-        HStack {
-            Text(title)
-            Spacer()
+    private var characterList: some View {
+        ForEach(viewModel.myCharacters, id: \.identifier) { myCharacter in
+            Section(
+                header: NavigationLink(destination: CharacterInfoView(for: Character(from: myCharacter))) {
+                    makeCharacterView(for: Character(from: myCharacter))
+                }
+                    .buttonStyle(PlainButtonStyle())
+            ) {
+                if let seriesSummaries = myCharacter.mySeries {
+                    seriesList(for: Character(from: myCharacter), seriesSummaries: seriesSummaries)
+                }
+            }
         }
-        .padding(4)
-        .background(Color.secondary)
+    }
+    
+    private func makeCharacterView(for character: Character) -> some View {
+        CharacterHeaderView(viewModel: CharacterViewModel(from: character))
+            .padding(4)
+            .background(Color("AccentColor"))
+    }
+    
+    private func seriesList(for character: Character, seriesSummaries: [SeriesSummary]) -> some View {
+        ForEach(seriesSummaries, id: \.identifier) { seriesSummary in
+            NavigationLink(
+                destination:
+                    BookmarkComicsListView(
+                        character: character,
+                        seriesSummary: seriesSummary,
+                        comicsSummary: viewModel.getComics(forSeriesID: seriesSummary.identifier) ?? []
+                    )
+            ) {
+                SeriesView(seriesSummary: SeriesSummaryViewModel(from: seriesSummary))
+            }
+            .padding(4)
+            .id("\(character.identifier)#\(seriesSummary.identifier)")
+            .buttonStyle(PlainButtonStyle())
+        }
     }
     
 }

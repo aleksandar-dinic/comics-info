@@ -11,45 +11,30 @@ final class BookmarkViewModel: ObservableObject {
     
     private let useCase: BookmarkUseCase
     
-    @Published private(set) var characters: [Character]
-    @Published private(set) var comics: [Comic]
-    @Published private(set) var isBookmarkEmpty: Bool
+    @Published private(set) var myCharacters: [MyCharacter]
     
     init(
         useCase: BookmarkUseCase = BookmarkUseCase(),
-        characters: [Character] = [],
-        comics: [Comic] = [],
-        isBookmarkEmpty: Bool = true
+        myCharacters: [MyCharacter] = []
     ) {
         self.useCase = useCase
-        self.characters = characters
-        self.comics = comics
-        self.isBookmarkEmpty = isBookmarkEmpty
+        self.myCharacters = myCharacters
     }
     
-    func getBookmarks() {
-        getCharacters()
-        getComics()
+    var isBookmarkEmpty: Bool {
+        myCharacters.isEmpty
     }
     
-    private func getCharacters() {
+    func getCharacters() {
         guard let characters = useCase.getBookmarkCharacters() else {
-            self.characters.removeAll()
-            isBookmarkEmpty = comics.isEmpty
+            self.myCharacters.removeAll()
             return
         }
-        isBookmarkEmpty = false
-        self.characters = characters
+        self.myCharacters = characters
     }
     
-    private func getComics() {
-        guard let comics = useCase.getBookmarkComics() else {
-            self.comics.removeAll()
-            isBookmarkEmpty = characters.isEmpty
-            return
-        }
-        isBookmarkEmpty = false
-        self.comics = comics
+    func getComics(forSeriesID seriesID: String) -> [ComicSummary]? {
+        useCase.getBookmarkComics(forSeriesID: seriesID)
     }
     
 }

@@ -8,6 +8,7 @@
 
 import SwiftUI
 import Foundation
+import Domain
 
 struct CharacterCacheProvider: CharacterCacheService {
     
@@ -58,34 +59,62 @@ struct CharacterCacheProvider: CharacterCacheService {
     
     // Bookmark
     
-    func getBookmarkCharacters() -> [Character]? {
-        var characters = [Character]()
-        for id in getBookmarkedCharacters() {
-            guard let character = getCharacter(withID: id) else { continue }
-            characters.append(character)
+    func getBookmarkCharacters() -> [MyCharacter]? {
+        let characters = getBookmarkedCharacters()
+        
+        return !characters.isEmpty ? characters.sorted() : nil
+    }
+    
+    func addToBookmark(_ myCharacter: MyCharacter) {
+        var characters = getBookmarkedCharacters()
+        characters.append(myCharacter)
+        setBookmarkedCharacters(characters)
+    }
+    
+    func updateBookmared(_ myCharacter: MyCharacter) {
+        var characters = getBookmarkedCharacters()
+        if let index = characters.firstIndex(where: { $0.identifier == myCharacter.identifier }) {
+            for series in myCharacter.mySeries ?? [] {
+                characters[index].addInMySeries(series)
+            }
+        } else {
+            characters.append(myCharacter)
         }
-        characters.sort()
-        return !characters.isEmpty ? characters : nil
+        setBookmarkedCharacters(characters)
     }
     
-    func addToBookmark(_ character: Character) {
+    func removeFromBookmark(_ myCharacter: MyCharacter) {
         var characters = getBookmarkedCharacters()
-        characters.insert(character.identifier)
-        defaults.set(Array(characters), forKey: Self.bookmarkKey)
-    }
-    
-    func removeFromBookmark(_ character: Character) {
-        var characters = getBookmarkedCharacters()
-        characters.remove(character.identifier)
-        defaults.set(Array(characters), forKey: Self.bookmarkKey)
+        guard let index = characters.firstIndex(where: { $0.identifier == myCharacter.identifier }) else { return }
+        characters.remove(at: index)
+        setBookmarkedCharacters(characters)
     }
     
     func isBookmarked(withID characterID: String) -> Bool {
-        getBookmarkedCharacters().contains(characterID)
+        getBookmarkedCharacters().contains(where: { $0.identifier == characterID })
     }
     
-    private func getBookmarkedCharacters() -> Set<String> {
-        Set(defaults.object(forKey: Self.bookmarkKey) as? [String] ?? [String]())
+    private func getBookmarkedCharacters() -> [MyCharacter] {
+        guard let data = defaults.object(forKey: Self.bookmarkKey) as? Data else {
+            return []
+        }
+        
+        do {
+            let bookmarkedCharacters = try JSONDecoder().decode([MyCharacter].self, from: data)
+            return bookmarkedCharacters
+        } catch {
+            print(error)
+        }
+        return []
+    }
+    
+    private func setBookmarkedCharacters(_ characters: [MyCharacter]) {
+        do {
+            let data = try JSONEncoder().encode(characters)
+            defaults.set(data, forKey: Self.bookmarkKey)
+        } catch {
+            print(error)
+        }
     }
 
 }

@@ -46,16 +46,20 @@ final class CharacterDataRepository: CharacterRepository {
     
     // Bookmark
     
-    func getBookmarkCharacters() -> [Character]? {
+    func getBookmarkCharacters() -> [MyCharacter]? {
         characterDataProvider.getBookmarkCharacters()
     }
     
-    func addToBookmark(_ character: Character) {
-        characterDataProvider.addToBookmark(character)
+    func addToBookmark(_ myCharacter: MyCharacter) {
+        characterDataProvider.addToBookmark(myCharacter)
     }
     
-    func removeFromBookmark(_ character: Character) {
-        characterDataProvider.removeFromBookmark(character)
+    func updateBookmared(_ myCharacter: MyCharacter) {
+        characterDataProvider.updateBookmared(myCharacter)
+    }
+    
+    func removeFromBookmark(_ myCharacter: MyCharacter) {
+        characterDataProvider.removeFromBookmark(myCharacter)
     }
     
     func isBookmarked(withID characterID: String) -> Bool {
