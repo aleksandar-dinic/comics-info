@@ -78,6 +78,7 @@ struct SignInView: View {
                     .opacity(0.6)
                 TextField("Username", text: $viewModel.username)
                     .autocapitalization(.none)
+                    .disableAutocorrection(true)
                     .focused($focusedField, equals: .username)
                     .textContentType(.username)
                     .submitLabel(.next)

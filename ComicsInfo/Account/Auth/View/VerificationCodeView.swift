@@ -48,6 +48,7 @@ struct VerificationCodeView: View {
                     .opacity(0.6)
                 TextField("Verification code", text: $viewModel.confirmationCode)
                     .autocapitalization(.none)
+                    .disableAutocorrection(true)
             }
             .padding(10)
             .background(

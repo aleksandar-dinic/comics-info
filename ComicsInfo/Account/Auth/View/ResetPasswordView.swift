@@ -57,6 +57,7 @@ struct ResetPasswordView: View {
                     .opacity(viewModel.usernameInputOpacity())
                 TextField("Username", text: $viewModel.username)
                     .autocapitalization(.none)
+                    .disableAutocorrection(true)
                     .keyboardType(.emailAddress)
                     .disabled(viewModel.isUsernameDisabled())
                     .opacity(viewModel.usernameInputOpacity())
@@ -118,6 +119,7 @@ struct ResetPasswordView: View {
                     .opacity(0.6)
                 TextField("Verification code", text: $viewModel.confirmationCode)
                     .autocapitalization(.none)
+                    .disableAutocorrection(true)
                     .disabled(viewModel.isInputDisabled())
                     .opacity(viewModel.inputOpacity())
             }

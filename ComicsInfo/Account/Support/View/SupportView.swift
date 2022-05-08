@@ -16,6 +16,7 @@ struct SupportView: View {
         ZStack {
             VStack(spacing: 8) {
                 TextField("E-mail (optional)", text: $viewModel.email)
+                    .disableAutocorrection(true)
                     .padding(4)
                     .overlay(RoundedRectangle(cornerRadius: 4).stroke(Color.gray, lineWidth: 1))
                     .keyboardType(.emailAddress)
