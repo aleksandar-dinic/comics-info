@@ -32,6 +32,7 @@ struct SeriesView: View {
 
             Spacer()
         }
+        .contentShape(Rectangle())
         .frame(maxWidth: .infinity, alignment: .topLeading)
     }
 

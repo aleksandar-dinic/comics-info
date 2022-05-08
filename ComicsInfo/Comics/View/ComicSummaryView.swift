@@ -52,6 +52,7 @@ struct ComicSummaryView: View {
 
             Spacer()
         }
+        .contentShape(Rectangle())
         .frame(maxWidth: .infinity, alignment: .topLeading)
     }
 
