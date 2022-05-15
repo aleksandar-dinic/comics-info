@@ -39,7 +39,12 @@ final class MyComicsListViewModel: LoadableObject {
                 }
                 self.state = .loaded(self.comics)
             case let .failure(error):
-                guard self.comics.isEmpty else { return }
+                guard self.comics.isEmpty else {
+                    self.comics.removeAll()
+                    self.comicsIdentifier.removeAll()
+                    self.state = .loaded([])
+                    return
+                }
                 self.state = .failed(error)
             }
         }

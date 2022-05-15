@@ -58,12 +58,11 @@ struct MyComicsListView: View {
         ForEach(viewModel.comics, id: \.identifier) { comic in
             NavigationLink(
                 destination: ComicInfoView(
-                    viewModel: ComicInfoViewModel(
-                        character: character,
-                        seriesSummary: seriesSummary,
-                        comicSummary: comic,
-                        useCase: viewModel.useCase
-                    )
+                    character: character,
+                    seriesSummary: seriesSummary,
+                    comicSummary: comic,
+                    useCase: viewModel.useCase,
+                    isInMyComics: true
                 )
             ) {
                 ComicSummaryView(

@@ -10,9 +10,26 @@ import SwiftUI
 
 struct ComicInfoView: View {
 
-    @ObservedObject var viewModel: ComicInfoViewModel
+    @SwiftUI.Environment(\.dismiss) private var dismiss
+    @ObservedObject private var viewModel: ComicInfoViewModel
     @State private var showBanner = AppTrackingManager.authorization
 
+    init(
+        character: Character,
+        seriesSummary: SeriesSummary,
+        comicSummary: ComicSummary,
+        useCase: ComicUseCase = ComicUseCase(),
+        isInMyComics: Bool = false
+    ) {
+        viewModel = ComicInfoViewModel(
+            character: character,
+            seriesSummary: seriesSummary,
+            comicSummary: comicSummary,
+            useCase: useCase,
+            isInMyComics: isInMyComics
+        )
+    }
+    
     var body: some View {
         ZStack {
             VStack {
@@ -70,6 +87,12 @@ struct ComicInfoView: View {
             viewModel.loadComic(withID: viewModel.identifier)
         }
         .navigationBarTitle(viewModel.issue, displayMode: .inline)
+        .alert(isPresented: $viewModel.isShowingAlert) {
+            Alert(
+                title: Text(viewModel.alertMessage),
+                dismissButton: .default(Text("OK"))
+            )
+        }
     }
 
 }
@@ -80,19 +103,14 @@ struct ComicInfoView_Previews: PreviewProvider {
     private static let character = Character.make()
     private static let seriesSummary = SeriesSummary.make()
     private static let comicSummary = ComicSummary.make()
-    private static let useCase = ComicUseCase()
 
     static var previews: some View {
         NavigationView {
             ForEach(ColorScheme.allCases, id: \.self) { color in
                 ComicInfoView(
-                    viewModel:
-                        ComicInfoViewModel(
-                            character: character,
-                            seriesSummary: seriesSummary,
-                            comicSummary: comicSummary,
-                            useCase: useCase
-                        )
+                    character: character,
+                    seriesSummary: seriesSummary,
+                    comicSummary: comicSummary
                 )
                     .previewDisplayName("\(color)")
                     .environment(\.colorScheme, color)

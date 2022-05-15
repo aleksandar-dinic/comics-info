@@ -16,6 +16,8 @@ final class ComicInfoViewModel: LoadableObject {
     private let useCase: ComicUseCase
     @Published var isInMyComics: Bool
     @Published private(set) var comicViewModel: ComicViewModel?
+    @Published var isShowingAlert: Bool
+    var alertMessage: String
     
     init(
         state: LoadingState<Void> = .idle,
@@ -23,8 +25,10 @@ final class ComicInfoViewModel: LoadableObject {
         seriesSummary: SeriesSummary,
         comicSummary: ComicSummary,
         useCase: ComicUseCase,
-        isInMyComics: Bool = false,
-        comicViewModel: ComicViewModel? = nil
+        isInMyComics: Bool,
+        comicViewModel: ComicViewModel? = nil,
+        isShowingAlert: Bool = false,
+        alertMessage: String = ""
     ) {
         self.state = state
         self.character = character
@@ -33,6 +37,8 @@ final class ComicInfoViewModel: LoadableObject {
         self.useCase = useCase
         self.isInMyComics = isInMyComics
         self.comicViewModel = comicViewModel
+        self.isShowingAlert = isShowingAlert
+        self.alertMessage = alertMessage
     }
     
     func loadComic(
@@ -111,6 +117,11 @@ final class ComicInfoViewModel: LoadableObject {
     
     func onTapAdd() {
         guard !isLoading else { return }
+        guard useCase.isUserSignedIn() else {
+            showUserIsNotLoggedInAlert()
+            return
+        }
+        
         state = .loading(currentValue: nil)
         
         isInMyComics() { [weak self] inMyComics in
@@ -135,6 +146,11 @@ final class ComicInfoViewModel: LoadableObject {
                 }
             }
         }
+    }
+    
+    private func showUserIsNotLoggedInAlert() {
+        isShowingAlert = true
+        alertMessage = "You must be logged in to add comics to your list"
     }
     
     private func isInMyComics(onComplete complete: @escaping (Bool) -> Void) {

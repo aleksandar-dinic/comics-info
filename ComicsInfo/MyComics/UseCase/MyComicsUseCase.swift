@@ -255,4 +255,9 @@ final class MyComicsUseCase: MyComicsRepositoryFactory {
         }
     }
     
+    // User
+    func isUserSignedIn() -> Bool {
+        authUseCase.getCurrentUser() != nil
+    }
+    
 }

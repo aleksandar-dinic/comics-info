@@ -134,4 +134,10 @@ final class ComicUseCase: ComicRepositoryFactory {
         repository.isBookmarked(comicID, forSeriesID: seriesID)
     }
     
+    // User
+    
+    func isUserSignedIn() -> Bool {
+        myComicsUseCase.isUserSignedIn()
+    }
+    
 }

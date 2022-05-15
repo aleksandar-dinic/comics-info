@@ -51,12 +51,9 @@ struct BookmarkComicsListView: View {
         ForEach(viewModel.comicsSummary, id: \.identifier) { comic in
             NavigationLink(
                 destination: ComicInfoView(
-                    viewModel: ComicInfoViewModel(
-                        character: character,
-                        seriesSummary: seriesSummary,
-                        comicSummary: comic,
-                        useCase: ComicUseCase()
-                    )
+                    character: character,
+                    seriesSummary: seriesSummary,
+                    comicSummary: comic
                 )
             ) {
                 ComicSummaryView(
